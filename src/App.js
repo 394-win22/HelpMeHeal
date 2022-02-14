@@ -13,7 +13,11 @@ function App() {
     switch (page) {
       case "home":
         return (
+          
         <div>
+          <ProgressIndicator />
+
+          <MailTo />
           <button onClick = {() => {
                 setPage("survey");
           }}
@@ -40,11 +44,6 @@ function App() {
         <img className = "logo" src='https://s2.loli.net/2022/02/15/jvkdyu3NJMc65qT.png'/>
         <h1>Help Me Heal</h1>
       </div>
-
-      <ProgressIndicator />
-
-      <MailTo />
-
 
       <div>
         {getPage()}
