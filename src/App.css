@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.app-header {
+  background-color: darkred;
+  height: 20vh; 
+}
+
+.app-header h1{
+  margin: auto 0;
+  height: 100%;
+  font-size: 4em;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
