@@ -4,6 +4,7 @@ import ProgressIndicator from './components/ProgressBar';
 
 import useStore from './Store';
 
+
 function App() {
   const setPage = useStore(state => state.setPage);
   const page = useStore(state => state.page);
@@ -28,7 +29,11 @@ function App() {
       </div>
 
 
+
       <ProgressIndicator />
+
+      <MailTo />
+
 
       <div>
         {getPage()}
@@ -43,7 +48,6 @@ function App() {
                     }}>
                 survey
         </button>
-        <MailTo />
       </header>
     </div>
   );
