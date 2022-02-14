@@ -3,11 +3,18 @@
 }
 
 .app-header {
-  background-color: darkred;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(208,5,42);
   height: 20vh;
 }
 
+.logo{
+  background-color: white;
+}
+
 .app-header h1{
+  padding-left: 20px;
   margin: auto 0;
   height: 100%;
   font-size: 4em;
