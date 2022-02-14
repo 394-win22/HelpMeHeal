@@ -1,56 +1,58 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import React, { useState } from 'react';
+import './ProgressBar.css';
 
+const steps = [
+  {
+    index: 0,
+    label: 'Phase 1',
+  },
+  {
+    index: 1,
+    label: 'Phase 2',
+  },
+  {
+    index: 2,
+    label: 'Phase 3',
+  },
+  {
+    index: 3,
+    label: 'Phase 4',
+  },
+  {
+    index: 4,
+    label: 'Phase 5',
+  },
+  {
+    index: 5,
+    label: 'Phase 6',
+  }
+  
+];
 
-const StyledLinearProgress = styled(LinearProgress)(({ theme }) => ({
-    height: 10,
-    borderRadius: 5,
-    [`&.${linearProgressClasses.colorPrimary}`]: {
-      backgroundColor: theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
-    },
-    [`& .${linearProgressClasses.bar}`]: {
-      borderRadius: 5,
-      backgroundColor: theme.palette.mode === 'light' ? '#1a90ff' : '#308fe8',
-    },
-  }));
-
-
-
-
-function BorderLinearProgress({completed, total}) {
-    // DEBUG LOGS
-    // console.log(completed)
-    // console.log(total)
-    // console.log(Math.round(completed / total * 100))
-  return (
-    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-      <Box sx={{ width: '100%', mr: 1 }}>
-        <StyledLinearProgress variant="determinate" value={Math.round(completed / total * 100)} />
-    </Box>
-      <Box sx={{ minWidth: 35 }}>
-        <Typography variant="body2" color="white">{`${Math.round(completed / total * 100,
-        )}%`}</Typography>
-      </Box>
-    </Box>
+//TODO: add iterable as an argument and map it
+const ProgressIndicator = () => {
+  //we have to change useState to use a function of 
+  //day number (day 5 / 40 = phase 2)
+	const [activeIndex, setActiveIndex] = useState(4);
+	return (
+    <div className="progress-container">
+      <ul className="progress-indicator">
+      {steps.map((step) => (
+        <li
+          key={step.index}
+          className={`
+            progress-step
+            ${activeIndex === step.index ? 'active' : 'inactive'}
+            ${activeIndex > step.index ? 'complete' : 'incomplete'}
+          `}
+        >
+          <span className="step-number">{step.index + 1}</span>
+          <h3>{step.label}</h3>
+        </li>
+      ))}
+    </ul>
+    </div>
   );
 }
 
-
-
-export default function LinearWithValueLabel() {
-
-  // We need to fetch these real-time from firebase once we decide on
-  // on how we are going to calculate the progress
-  const [itemsCompleted, setCompleted] = React.useState(20);
-  const [totalItems, setTotalItems] = React.useState(30);
-
-
-  return (
-    <Box sx={{ width: '80%' }}>
-      <BorderLinearProgress completed={itemsCompleted} total={totalItems} />
-     </Box>
-  );
-}
+export default ProgressIndicator;
