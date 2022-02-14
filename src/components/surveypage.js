@@ -1,6 +1,7 @@
 import "survey-react/survey.css"
 //import * as Survey from 'survey-react';
 import { Model, Survey } from 'survey-react';
+import useStore from '../Store';
 
 const surveyJson = {
     "completedHtml": "<h3>Thank you for completing the check-in survey.</h3> <h5>Remember to contact your doctor if you have any concerns about your recovery.</h5>",
@@ -53,9 +54,25 @@ const surveyJson = {
 };
 
 function SurveyPage() {
+    const setPage = useStore(state => state.setPage);
+    const page = useStore(state => state.page);
     const survey = new Model(surveyJson);
 
-    return <Survey model={survey} />;
+    return (
+        <div>
+        <Survey model={survey} />
+        <button onClick = {() => {
+            setPage("home");
+        }}
+        id="available-btn"
+                    style={{
+                        fontWeight: page === "available" ? "bold" : "normal",
+                        backgroundColor: page === "available" ? "#364059" : "#586994"
+                        }}>
+                    back
+        </button>
+    </div>
+    );
 }
 
 export default SurveyPage;
