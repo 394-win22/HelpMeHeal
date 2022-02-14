@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import SurveyPage from './components/surveypage';
+import MailTo from './components/emailWidget';
 
 function App() {
   return (
@@ -17,6 +19,9 @@ function App() {
         >
           Learn React
         </a>
+        <MailTo />
+
+        <SurveyPage />
       </header>
     </div>
   );
