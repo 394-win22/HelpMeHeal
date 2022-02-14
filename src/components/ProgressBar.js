@@ -33,7 +33,7 @@ const steps = [
 const ProgressIndicator = () => {
   //we have to change useState to use a function of 
   //day number (day 5 / 40 = phase 2)
-	const [activeIndex, setActiveIndex] = useState(4);
+	const [activeIndex, setActiveIndex] = useState(2);
 	return (
     <div className="progress-container">
       <ul className="progress-indicator">
