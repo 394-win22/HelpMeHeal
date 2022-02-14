@@ -3,7 +3,7 @@ import MailTo from './components/emailWidget';
 import ProgressIndicator from './components/ProgressBar';
 import './App.css';
 import useStore from './Store';
-
+import logo from './logo.png' 
 
 function App() {
   const setPage = useStore(state => state.setPage);
@@ -41,7 +41,7 @@ function App() {
   return (
     <div className="App">
       <div className="app-header">
-        <img className = "logo" src='https://s2.loli.net/2022/02/15/jvkdyu3NJMc65qT.png'/>
+        <img className = "logo" src={logo}/>
         <h1>Help Me Heal</h1>
       </div>
 
