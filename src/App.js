@@ -12,7 +12,21 @@ function App() {
   function getPage() {
     switch (page) {
       case "home":
-        return <div>home</div>
+        return (
+        <div>
+          <button onClick = {() => {
+                setPage("survey");
+          }}
+          id="available-btn"
+                    style={{
+                        fontWeight: page === "available" ? "bold" : "normal",
+                        backgroundColor: page === "available" ? "#364059" : "#586994"
+                        }}>
+                    survey
+            </button>
+          home
+        </div>)
+
       case "survey":
         return <SurveyPage />;
       default:
@@ -35,16 +49,6 @@ function App() {
       <div>
         {getPage()}
       </div>
-      <button onClick = {() => {
-                setPage("survey");
-      }}
-      id="available-btn"
-                style={{
-                    fontWeight: page === "available" ? "bold" : "normal",
-                    backgroundColor: page === "available" ? "#364059" : "#586994"
-                    }}>
-                survey
-        </button>
     </div>
   );
 }
