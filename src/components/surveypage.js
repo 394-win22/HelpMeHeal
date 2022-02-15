@@ -64,10 +64,9 @@ function SurveyPage() {
             <button onClick={() => {
                 setPage("home");
             }}
-                id="available-btn"
                 style={{
-                    fontWeight: page === "available" ? "bold" : "normal",
-                    backgroundColor: page === "available" ? "#364059" : "#586994"
+                    fontWeight: "normal",
+                    backgroundColor: "#586994"
                 }}>
                 back
             </button>
