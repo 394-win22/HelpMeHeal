@@ -5,13 +5,16 @@
 .app-header {
   display: flex;
   justify-content: center;
-  background-color: rgb(208,5,42);
-  height: 20vh;
+  background-color: #b43434;
+  height: 10rem;
+  margin-bottom: 3rem;
 }
 
 .logo{
-  border: 3px solid rgb(208,5,42);
+  border: 3px solid #b43434;
   background-color: white;
+  height: 8rem;
+  margin-top: 1rem;
 }
 
 .app-header h1{
