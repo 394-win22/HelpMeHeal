@@ -1,0 +1,30 @@
+.App {
+  text-align: center;
+}
+
+.app-header {
+  display: flex;
+  justify-content: center;
+  background-color: #b43434;
+  height: 10rem;
+  margin-bottom: 3rem;
+}
+
+.logo{
+  border: 3px solid #b43434;
+  background-color: white;
+  height: 8rem;
+  margin-top: 1rem;
+}
+
+.app-header h1{
+  padding-left: 20px;
+  margin: auto 0;
+  height: 100%;
+  font-size: 4em;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}

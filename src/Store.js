@@ -1,8 +1,11 @@
 import create from 'zustand';
 
 const useStore = create(set => ({
-    page: "home",
-    setPage: (newPage) => set({ page: newPage })
+    UserPage: "home",
+    setUserPage: (newPage) => set({ UserPage: newPage }),
+
+    userType: "user",
+    setUserType: (newType) => set({ userType: newType })
 }));
 
 export default useStore;

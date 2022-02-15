@@ -54,24 +54,24 @@ const surveyJson = {
 };
 
 function SurveyPage() {
-    const setPage = useStore(state => state.setPage);
-    const page = useStore(state => state.page);
+    const setPage = useStore(state => state.setUserPage);
+    const page = useStore(state => state.UserPage);
     const survey = new Model(surveyJson);
 
     return (
         <div>
-        <Survey model={survey} />
-        <button onClick = {() => {
-            setPage("home");
-        }}
-        id="available-btn"
-                    style={{
-                        fontWeight: page === "available" ? "bold" : "normal",
-                        backgroundColor: page === "available" ? "#364059" : "#586994"
-                        }}>
-                    back
-        </button>
-    </div>
+            <Survey model={survey} />
+            <button onClick={() => {
+                setPage("home");
+            }}
+                id="available-btn"
+                style={{
+                    fontWeight: page === "available" ? "bold" : "normal",
+                    backgroundColor: page === "available" ? "#364059" : "#586994"
+                }}>
+                back
+            </button>
+        </div>
     );
 }
 
