@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './ProgressBar.css';
+import calculateDay from '../utilities/calculateday';
 
 const steps = [
     {
@@ -30,12 +31,29 @@ const steps = [
 ];
 
 //TODO: add iterable as an argument and map it
-const ProgressIndicator = ({activeIndex, setActiveIndex}) => {
+const ProgressIndicator = ({ activeIndex, setActiveIndex, startdate, phaseEndDay }) => {
     //we have to change useState to use a function of
     //day number (day 5 / 40 = phase 2)
 
     // this part move to User.js for common use
     // const [activeIndex, setActiveIndex] = useState(2);
+    const steps = []
+
+    let days = calculateDay(startdate);
+    let phase;
+    //phaseEndDay[0] is empty. Don't know why
+    for (let i = 1; i < phaseEndDay.length; i++) {
+        if (days <= phaseEndDay[i]) {
+            phase = i;
+            break;
+        }
+    }
+    setActiveIndex(phase)
+    for (let i = 1; i < phaseEndDay.length; i++) {
+        var dict = { index: i - 1, label: 'Phase' + i }
+        steps.push(dict)
+    }
+
     return (
         <div className="progress-container">
             <ul className="progress-indicator">
@@ -44,8 +62,8 @@ const ProgressIndicator = ({activeIndex, setActiveIndex}) => {
                         key={step.index}
                         className={`
             progress-step
-            ${activeIndex === step.index ? 'active' : 'inactive'}
-            ${activeIndex > step.index ? 'complete' : 'incomplete'}
+            ${phase - 1 === step.index ? 'active' : 'inactive'}
+            ${phase - 1 > step.index ? 'complete' : 'incomplete'}
           `}
                     >
                         <span className="step-number">{step.index + 1}</span>

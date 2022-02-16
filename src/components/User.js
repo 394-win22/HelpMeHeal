@@ -32,8 +32,9 @@ function User() {
             case "home":
                 return (
                     <div>
-                        <Welcome user={user} firebaseData={data} activeIndex={activeIndex} />
-                        <ProgressIndicator activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
+                        {/* the zero bellow has to change userid as its real id later */}
+                        <Welcome user={user} firebaseData={data} activeIndex={activeIndex} startdate={data["user"][0]["startDate"]} />
+                        <ProgressIndicator setActiveIndex={setActiveIndex} startdate={data["user"][0]["startDate"]} phaseEndDay={data["surgery"]["acl"]["phaseEndDay"]} />
                         <Box>
                             <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, background: '#b43434', flexDirection: 'row', justifyContent: 'center', p: 3 }}>
                                 <Button onClick={() => window.location = 'mailto:helpmeheal.project@gmail.com'}>
