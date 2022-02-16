@@ -1,5 +1,6 @@
 const Welcome = ({user, firebaseData, activeIndex}) => {
-    console.log(firebaseData);
+    // console.log(firebaseData);
+    const date = 2;
     return (
         <div>
             <div classNamme="WelcomeTitle" style={{color: '#b43434', fontSize: 25}}>
@@ -13,8 +14,9 @@ const Welcome = ({user, firebaseData, activeIndex}) => {
                         .map(data => { return(Object.entries(data[1]) // Second: entry phase
                                                     .filter(phase => phase[0] === "phase1")
                                                     .map(phase => Object.entries(phase[1]) // Third: entry msg
+                                                                        .filter(msg => msg[0] == date)
                                                                         .map(msg => {
-                                                                                console.log(msg[1].message)
+                                                                                console.log(msg[0])
                                                                                 return (
                                                                                     <span>
                                                                                         {msg[1].message}
