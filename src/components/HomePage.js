@@ -5,13 +5,13 @@ import Button from '@mui/material/Button';
 import ProgressIndicator from './ProgressBar';
 import Welcome from './Welcome';
 
-const HomePage = ({data, user, setPage, activeIndex, setActiveIndex}) => {
+const HomePage = ({ data, name, type, setPage, activeIndex, setActiveIndex }) => {
 
     return (
         <div>
             {/* the zero bellow has to change userid as its real id later */}
-            <Welcome user={user} firebaseData={data} activeIndex={activeIndex} startdate={data["user"][0]["startDate"]} />
-            <ProgressIndicator setActiveIndex={setActiveIndex} startdate={data["user"][0]["startDate"]} phaseEndDay={data["surgery"]["acl"]["phaseEndDay"]} />
+            <Welcome username={name} surgeryType={type} firebaseData={data} activeIndex={activeIndex} startdate={data["user"][0]["startDate"]} daysDict={data["surgery"][type]["days"]} />
+            <ProgressIndicator setActiveIndex={setActiveIndex} startdate={data["user"][0]["startDate"]} phaseEndDay={data["surgery"][type]["phaseEndDay"]} />
             <Box>
                 <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, background: '#b43434', flexDirection: 'row', justifyContent: 'center', p: 3 }}>
                     <Button onClick={() => window.location = 'mailto:helpmeheal.project@gmail.com'}>
@@ -21,16 +21,17 @@ const HomePage = ({data, user, setPage, activeIndex, setActiveIndex}) => {
                         setPage("survey");
                     }}
 
-                            style={{
-                                fontWeight: "normal",
-                                color: 'white',
-                                fontSize: '1.5rem',
-                                marginLeft: "5rem",
-                            }}>
+                        style={{
+                            fontWeight: "normal",
+                            color: 'white',
+                            fontSize: '1.5rem',
+                            marginLeft: "5rem",
+                        }}>
                         survey
                     </Button>
                 </AppBar>
             </Box>
+
         </div>
     )
 
