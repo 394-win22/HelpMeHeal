@@ -1,5 +1,4 @@
 import SurveyPage from './surveypage';
-import MailTo from './emailWidget';
 import ProgressIndicator from './ProgressBar';
 import Welcome from './Welcome';
 import useStore from '../Store';
@@ -7,6 +6,10 @@ import {useUserState, useData} from '../utilities/firebase';
 import React, { useEffect, useState } from 'react';
 import {Loading} from "./Loading";
 import {Error404} from "./404";
+import Box from '@mui/material/Box';
+import AppBar from '@mui/material/AppBar';
+import EmailIcon from '@mui/icons-material/Email';
+import Button from '@mui/material/Button';
 
 function User() {
     const setPage = useStore(state => state.setUserPage);
@@ -31,18 +34,26 @@ function User() {
                     <div>
                         <Welcome user={user} firebaseData={data} activeIndex={activeIndex}/>
                         <ProgressIndicator activeIndex={activeIndex} setActiveIndex={setActiveIndex}/>
-                        <MailTo />
-                        <button onClick={() => {
-                            setPage("survey");
-                        }}
+                        <Box>
+                            <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, background: '#b43434', flexDirection: 'row', justifyContent: 'center', p: 3}}>
+                                <Button onClick ={() => window.location = 'mailto:helpmeheal.project@gmail.com'}>
+                                    <EmailIcon  style={{ color: 'white', fontSize: '2.7rem'}}/>
+                                </Button>
+                                <Button onClick={() => {
+                                    setPage("survey");
+                                }}
 
-                            style={{
-                                fontWeight: "normal",
-                                backgroundColor: "#586994"
-                            }}>
-                            survey
-                        </button>
-                        home
+                                    style={{
+                                        fontWeight: "normal",
+                                        color: 'white',
+                                        fontSize: '1.5rem',
+                                        marginLeft: "5rem",
+                                    }}>
+                                    survey
+                                </Button>
+                            </AppBar>
+                        </Box>
+
                     </div>)
 
             case "survey":

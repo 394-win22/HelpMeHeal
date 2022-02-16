@@ -2,6 +2,7 @@ import "survey-react/survey.css"
 //import * as Survey from 'survey-react';
 import { Model, Survey } from 'survey-react';
 import useStore from '../Store';
+import Button from '@mui/material/Button';
 
 const surveyJson = {
     "completedHtml": "<h3>Thank you for completing the check-in survey.</h3> <h5>Remember to contact your doctor if you have any concerns about your recovery.</h5>",
@@ -61,15 +62,17 @@ function SurveyPage() {
     return (
         <div>
             <Survey model={survey} />
-            <button onClick={() => {
+            <Button onClick={() => {
                 setPage("home");
             }}
                 style={{
                     fontWeight: "normal",
-                    backgroundColor: "#586994"
+                    color: 'white',
+                    backgroundColor: '#b43434',
+                    fontSize: '1rem',
                 }}>
                 back
-            </button>
+            </Button>
         </div>
     );
 }
