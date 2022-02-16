@@ -11,12 +11,13 @@ import {Error404} from "./404";
 function User() {
     const setPage = useStore(state => state.setUserPage);
     const page = useStore(state => state.UserPage);
-    const user = useUserState();
+    const user = useUserState()[0];
     const [data, loadingData, errorData] = useData("/");
     const [activeIndex, setActiveIndex] = useState(2);
 
     // firebase data initialize
     useEffect(() => {
+        console.log(data)
         if (data === undefined) return;
     }, [data]);
 

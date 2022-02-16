@@ -75,11 +75,11 @@ const firebaseSignOut = () => signOut(getAuth(app));
 export { firebaseSignOut as signOut };
 
 export const useUserState = () => {
-    const [user, setUser] = useState();
-  
-    useEffect(() => {
-        onIdTokenChanged(getAuth(app), setUser);
-    }, []);
+    // const [user, setUser] = useState();
+    const [user, setUser] = useData('/User/0');
+    // useEffect(() => {
+    //     onIdTokenChanged(getAuth(app), setUser);
+    // }, []);
   
     return [user];
 };
