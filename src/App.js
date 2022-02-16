@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+import User from './components/User';
 import './App.css';
+import useStore from './Store';
 
 function App() {
+  const userType = useStore(state => state.userType);
+
+  function getUserType() {
+    switch (userType) {
+      case "user":
+        return <User />
+      case "doctor":
+        return <></>
+      default:
+        return <p>Sorry, there's been an error.</p>
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <div className="app-header">
+        <img className="logo" src="bannerlogo.jpg" />
+        <h1>Help Me Heal</h1>
+      </div>
+
+      <div>
+        {getUserType()}
+      </div>
     </div>
   );
 }
