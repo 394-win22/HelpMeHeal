@@ -8,7 +8,7 @@ const Welcome = ({ user, firebaseData, activeIndex }) => {
 
     return (
         <div>
-            <div classNamme="WelcomeTitle" style={{ color: '#b43434', fontSize: 25 }}>
+            <div className="WelcomeTitle" style={{ color: '#b43434', fontSize: 25 }}>
                 <h2>Welcome back {user.email ? user.email : user.name},</h2>
 
             </div>
