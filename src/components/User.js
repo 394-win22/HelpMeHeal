@@ -1,15 +1,14 @@
 import SurveyPage from './surveypage';
 import useStore from '../Store';
-import { useUserState, useData } from '../utilities/firebase';
+import { useData } from '../utilities/firebase';
 import React, { useEffect, useState } from 'react';
 import { Loading } from "./Loading";
 import { Error404 } from "./404";
 import HomePage from './HomePage';
 
-function User() {
+function User(user) {
     const setPage = useStore(state => state.setUserPage);
     const page = useStore(state => state.UserPage);
-    const user = useUserState()[0];
     const [data, loadingData, errorData] = useData("/");
     const [activeIndex, setActiveIndex] = useState(2);
     const [name, setName] = useState("");

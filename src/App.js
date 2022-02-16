@@ -1,14 +1,23 @@
 import User from './components/User';
 import './App.css';
 import useStore from './Store';
+import React, { useEffect } from 'react';
+import { useUserState} from './utilities/firebase';
 
 function App() {
   const userType = useStore(state => state.userType);
+  const setUserType = useStore(state => state.setUserType);
+  const user = useUserState()[0];
+  
+  useEffect(() => {
+    if (user === undefined) return;
+    setUserType(user.userType)
+  }, [user]);
 
   function getUserType() {
     switch (userType) {
       case "user":
-        return <User />
+        return <User user = {user}/>
       case "doctor":
         return <></>
       default:
