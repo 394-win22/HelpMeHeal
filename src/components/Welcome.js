@@ -33,6 +33,7 @@ const Welcome = ({ username, surgeryType, firebaseData, activeIndex, startdate, 
                             })
                         )
                     }
+
                     )
                 }
             </div>
