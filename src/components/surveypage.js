@@ -3,6 +3,7 @@ import "survey-react/survey.css"
 import { Model, Survey } from 'survey-react';
 import useStore from '../Store';
 import Button from '@mui/material/Button';
+import swal from 'sweetalert';
 
 const surveyJson = {
     "completedHtml": "<h3>Thank you for completing the check-in survey.</h3> <h5>Remember to contact your doctor if you have any concerns about your recovery.</h5>",
@@ -54,6 +55,14 @@ const surveyJson = {
     "showQuestionNumbers": "off"
 };
 
+const showPopupAlert = (pain) =>{
+    if(pain < 5){
+        swal("Happy to know", "You are on track with your progress, You got this!", "success");
+    }else{
+        swal("Sorry to hear that", "We have informed the doctor and you will hear back soon", "warning");
+    }
+}
+
 function SurveyPage() {
     const setPage = useStore(state => state.setUserPage);
     const page = useStore(state => state.UserPage);
@@ -64,6 +73,7 @@ function SurveyPage() {
             <Survey model={survey} />
             <Button onClick={() => {
                 setPage("home");
+                showPopupAlert(4);
             }}
                 style={{
                     fontWeight: "normal",
