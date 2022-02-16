@@ -2,10 +2,10 @@ import SurveyPage from './surveypage';
 import ProgressIndicator from './ProgressBar';
 import Welcome from './Welcome';
 import useStore from '../Store';
-import {useUserState, useData} from '../utilities/firebase';
+import { useUserState, useData } from '../utilities/firebase';
 import React, { useEffect, useState } from 'react';
-import {Loading} from "./Loading";
-import {Error404} from "./404";
+import { Loading } from "./Loading";
+import { Error404 } from "./404";
 import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
 import EmailIcon from '@mui/icons-material/Email';
@@ -20,7 +20,7 @@ function User() {
 
     // firebase data initialize
     useEffect(() => {
-        console.log(data)
+        // console.log(data)
         if (data === undefined) return;
     }, [data]);
 
@@ -32,12 +32,12 @@ function User() {
             case "home":
                 return (
                     <div>
-                        <Welcome user={user} firebaseData={data} activeIndex={activeIndex}/>
-                        <ProgressIndicator activeIndex={activeIndex} setActiveIndex={setActiveIndex}/>
+                        <Welcome user={user} firebaseData={data} activeIndex={activeIndex} />
+                        <ProgressIndicator activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
                         <Box>
-                            <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, background: '#b43434', flexDirection: 'row', justifyContent: 'center', p: 3}}>
-                                <Button onClick ={() => window.location = 'mailto:helpmeheal.project@gmail.com'}>
-                                    <EmailIcon  style={{ color: 'white', fontSize: '2.7rem'}}/>
+                            <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, background: '#b43434', flexDirection: 'row', justifyContent: 'center', p: 3 }}>
+                                <Button onClick={() => window.location = 'mailto:helpmeheal.project@gmail.com'}>
+                                    <EmailIcon style={{ color: 'white', fontSize: '2.7rem' }} />
                                 </Button>
                                 <Button onClick={() => {
                                     setPage("survey");

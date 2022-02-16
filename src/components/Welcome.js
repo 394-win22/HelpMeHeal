@@ -1,7 +1,10 @@
 import calculateDay from "../utilities/calculateday";
 
 const Welcome = ({ user, firebaseData, activeIndex }) => {
-    console.log(firebaseData);
+    //has to change userid as its real id later
+    let userid = 0
+    let startdate = firebaseData["user"][userid]["startDate"]
+    let days = calculateDay(startdate)
 
     return (
         <div>
@@ -12,27 +15,17 @@ const Welcome = ({ user, firebaseData, activeIndex }) => {
 
             <div className="WelcomeDetails" style={{ marginLeft: '7.5%', marginRight: '7.5%' }}>
                 Today you are in <b>phase {activeIndex}</b> of your ACL recovery.
-
-                {/* {Object.entries(firebaseData) // First: entry 'ACL'
-                    .map(data => {
-                        return (Object.entries(data[1]) // Second: entry phase
-                            .filter(phase => phase[0] === "phase1")
-                            .map(phase => Object.entries(phase[1]) // Third: entry msg
-                                .filter(msg => msg[0] == date)
-                                .map(msg => {
-                                    console.log(msg[0])
-                                    return (
-                                        <span>
-                                            {msg[1].message}
-                                        </span>
-                                    )
-                                }
-                                )
+                <br />
+                {
+                    Object.entries(firebaseData["surgery"]["acl"]["days"])
+                        .filter(data => data[0] == days).map(msg => {
+                            return (
+                                <span>
+                                    {msg[1].message}
+                                </span>
                             )
-                        )
-                    }
-                    )
-                } */}
+                        })
+                }
             </div>
 
         </div>
