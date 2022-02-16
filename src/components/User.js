@@ -20,7 +20,6 @@ function User() {
 
     // firebase data initialize
     useEffect(() => {
-        // console.log(data)
         if (data === undefined) return;
     }, [data]);
 
