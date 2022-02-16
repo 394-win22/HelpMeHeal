@@ -2,33 +2,33 @@ import React, { useState } from 'react';
 import './ProgressBar.css';
 import calculateDay from '../utilities/calculateday';
 
-const steps = [
-    {
-        index: 0,
-        label: 'Phase 1',
-    },
-    {
-        index: 1,
-        label: 'Phase 2',
-    },
-    {
-        index: 2,
-        label: 'Phase 3',
-    },
-    {
-        index: 3,
-        label: 'Phase 4',
-    },
-    {
-        index: 4,
-        label: 'Phase 5',
-    },
-    {
-        index: 5,
-        label: 'Phase 6',
-    }
+// const steps = [
+//     {
+//         index: 0,
+//         label: 'Phase 1',
+//     },
+//     {
+//         index: 1,
+//         label: 'Phase 2',
+//     },
+//     {
+//         index: 2,
+//         label: 'Phase 3',
+//     },
+//     {
+//         index: 3,
+//         label: 'Phase 4',
+//     },
+//     {
+//         index: 4,
+//         label: 'Phase 5',
+//     },
+//     {
+//         index: 5,
+//         label: 'Phase 6',
+//     }
 
-];
+// ];
 
 //TODO: add iterable as an argument and map it
 const ProgressIndicator = ({ activeIndex, setActiveIndex, startdate, phaseEndDay }) => {
