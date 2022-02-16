@@ -1,17 +1,19 @@
 {
-  "User": {
+  "user": {
     "0": {
-      "usertype": 0,
-      "surgerytype": "acl",
-      "startdate": "",
-      "doctorid": ""
+      "userType": 0,
+      "surgeryType": "acl",
+      "startDate": "1644978994449",
+      "doctorId": "",
+      "name": "Edward",
+      "email": ""
     }
   },
   "surgery": {
     "acl": {
       "phaseEndDay": {
-        "phase1": 14,
-        "phase2": 21
+        "phase1": 21,
+        "phase2": 42
       },
       "1": {
         "message": "The first day after surgery is hard, but today marks the beginning of your recovery journey. Please make sure to ice and elevate your leg today. Eat as well as you can. Good nutrition will help the recovery time."

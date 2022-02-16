@@ -1,16 +1,19 @@
+import calculateDay from "../utilities/calculateday";
+
 const Welcome = ({ user, firebaseData, activeIndex }) => {
-    // console.log(firebaseData);
-    const date = 2;
+    console.log(firebaseData);
+
     return (
         <div>
             <div classNamme="WelcomeTitle" style={{ color: '#b43434', fontSize: 25 }}>
                 <h2>Welcome back {user.email ? user.email : user.name},</h2>
+
             </div>
 
             <div className="WelcomeDetails" style={{ marginLeft: '7.5%', marginRight: '7.5%' }}>
                 Today you are in <b>phase {activeIndex}</b> of your ACL recovery.
 
-                {Object.entries(firebaseData) // First: entry 'ACL'
+                {/* {Object.entries(firebaseData) // First: entry 'ACL'
                     .map(data => {
                         return (Object.entries(data[1]) // Second: entry phase
                             .filter(phase => phase[0] === "phase1")
@@ -29,7 +32,7 @@ const Welcome = ({ user, firebaseData, activeIndex }) => {
                         )
                     }
                     )
-                }
+                } */}
             </div>
 
         </div>

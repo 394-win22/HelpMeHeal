@@ -20,8 +20,8 @@ const firebaseConfig = {
     storageBucket: "helpmeheal-49a3f.appspot.com",
     messagingSenderId: "659893085250",
     appId: "1:659893085250:web:df1b73d52c11f8fef7f9db"
-  };
-  
+};
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -76,10 +76,10 @@ export { firebaseSignOut as signOut };
 
 export const useUserState = () => {
     // const [user, setUser] = useState();
-    const [user, setUser] = useData('/User/0');
+    const [user, setUser] = useData('/user/0');
     // useEffect(() => {
     //     onIdTokenChanged(getAuth(app), setUser);
     // }, []);
-  
+
     return [user];
 };
