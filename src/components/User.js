@@ -17,11 +17,26 @@ function User() {
     const user = useUserState()[0];
     const [data, loadingData, errorData] = useData("/");
     const [activeIndex, setActiveIndex] = useState(2);
+    const [name, setName] = useState("");
+    const [type, setType] = useState("");
+
+
+    const initUser = (user) => {
+        setName(user.name);
+        setType(user.surgeryType);
+    }
+
+    const defaultUser = () => {
+        setName("Edward");
+        setType("acl");
+    }
 
     // firebase data initialize
     useEffect(() => {
-        // console.log(data)
         if (data === undefined) return;
+        Object.entries(data.user).map((entry) => {
+            entry[1].email === user.email ? initUser(entry[1]) : defaultUser();
+        })
     }, [data]);
 
     if (errorData) return <Error404 />;
@@ -33,8 +48,8 @@ function User() {
                 return (
                     <div>
                         {/* the zero bellow has to change userid as its real id later */}
-                        <Welcome user={user} firebaseData={data} activeIndex={activeIndex} startdate={data["user"][0]["startDate"]} />
-                        <ProgressIndicator setActiveIndex={setActiveIndex} startdate={data["user"][0]["startDate"]} phaseEndDay={data["surgery"]["acl"]["phaseEndDay"]} />
+                        <Welcome username={name} surgeryType={type} firebaseData={data} activeIndex={activeIndex} startdate={data["user"][0]["startDate"]} daysDict={data["surgery"][type]["days"]} />
+                        <ProgressIndicator setActiveIndex={setActiveIndex} startdate={data["user"][0]["startDate"]} phaseEndDay={data["surgery"][type]["phaseEndDay"]} />
                         <Box>
                             <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, background: '#b43434', flexDirection: 'row', justifyContent: 'center', p: 3 }}>
                                 <Button onClick={() => window.location = 'mailto:helpmeheal.project@gmail.com'}>

@@ -41,16 +41,18 @@ const ProgressIndicator = ({ activeIndex, setActiveIndex, startdate, phaseEndDay
 
     let days = calculateDay(startdate);
     let phase;
-    //phaseEndDay[0] is empty. Don't know why
-    for (let i = 1; i < phaseEndDay.length; i++) {
-        if (days <= phaseEndDay[i]) {
-            phase = i;
+
+    for (const [key, value] of Object.entries(phaseEndDay)) {
+        if (days <= value) {
+            phase = key;
+            //this line will cause error 
+            setActiveIndex(phase)
             break;
         }
     }
-    setActiveIndex(phase)
-    for (let i = 1; i < phaseEndDay.length; i++) {
-        var dict = { index: i - 1, label: 'Phase' + i }
+
+    for (const [key,] of Object.entries(phaseEndDay)) {
+        var dict = { index: key - 1, label: 'Phase' + key }
         steps.push(dict)
     }
 
