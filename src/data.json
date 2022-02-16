@@ -1,0 +1,47 @@
+{
+  "User": {
+    "0": {
+      "usertype": 0,
+      "surgerytype": "acl",
+      "startdate": "",
+      "doctorid": ""
+    }
+  },
+  "surgery": {
+    "acl": {
+      "phaseEndDay": {
+        "phase1": 14,
+        "phase2": 21
+      },
+      "1": {
+        "message": "The first day after surgery is hard, but today marks the beginning of your recovery journey. Please make sure to ice and elevate your leg today. Eat as well as you can. Good nutrition will help the recovery time."
+      },
+      "2": {
+        "message": "Over the next week, we will be working towards small controlled movements of the knee. This may be painful at first, but it's necessary to get your range of motion back as soon as possible. Please see today's exercise to help you stay on track. Don't forget to ice!"
+      },
+      "6": {
+        "message": "Your almost at the end of your first week. If you can, it's time to think about tapering down on the pain medication. Please reach out the your doctor if your pain is too high to begin tapering down."
+      },
+      "8": {
+        "message": "Tomorrow is your first post-surgery doctor appointment. The doctor will be looking at your leg flexion and extension, and reviewing the swelling and incision."
+      },
+      "10": {
+        "message": "Today you should have reached full leg extension. Not quite there yet? Don't worry, that's not uncommon. Try these additional excercises to help get you there."
+      },
+      "12": {
+        "message": "Today you should be able to bend your knee to 90 degrees. Have you reached this milestone? If not, no need to worry. Here are some more exercises to help get you there."
+      },
+      "14": {
+        "message": "You survived your first 2 weeks post-ACL surgery. The hardest part is over, but it's still a long road ahead. Don't give up! Here are some inspirational stories to help you feel motivated."
+      },
+      "22": {
+        "message": "Congratulations on reaching Phase 2 of your ACL Recovery. You can expect to feel some soreness still. We will be working through a few exercises and stetches today."
+      }
+    }
+  },
+  "survey": {
+    "acl": {
+      "1": {}
+    }
+  }
+}
