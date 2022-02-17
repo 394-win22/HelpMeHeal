@@ -3,6 +3,7 @@ import './App.css';
 import useStore from './Store';
 import React, { useEffect, useState } from 'react';
 import { useUserState } from './utilities/firebase';
+import calculateDay from './utilities/calculateday';
 
 function App() {
   const userType = useStore(state => state.userType);
@@ -11,10 +12,12 @@ function App() {
   const user = useUserState()[0];
   const [name, setName] = useState("");
   const [surgeryType, setSurgeryType] = useState("");
+  const [currentDay, setCurrentDay] = useState();
 
   const initPatient = (user) => {
     setName(user.name);
     setSurgeryType(user.surgeryType);
+    setCurrentDay(calculateDay(user.startDate));
   }
 
   const defaultUser = () => {
@@ -36,7 +39,7 @@ function App() {
   function getUserType() {
     switch (userType) {
       case "patient":
-        return <User name={name} surgeryType={surgeryType} />
+        return <User name={name} surgeryType={surgeryType} currentDay={currentDay} />
       case "doctor":
         return <></>
       default:

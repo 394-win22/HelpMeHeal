@@ -1,49 +1,16 @@
 import React, { useState } from 'react';
 import './ProgressBar.css';
-import calculateDay from '../utilities/calculateday';
 
-// const steps = [
-//     {
-//         index: 0,
-//         label: 'Phase 1',
-//     },
-//     {
-//         index: 1,
-//         label: 'Phase 2',
-//     },
-//     {
-//         index: 2,
-//         label: 'Phase 3',
-//     },
-//     {
-//         index: 3,
-//         label: 'Phase 4',
-//     },
-//     {
-//         index: 4,
-//         label: 'Phase 5',
-//     },
-//     {
-//         index: 5,
-//         label: 'Phase 6',
-//     }
-
-// ];
 
 //TODO: add iterable as an argument and map it
-const ProgressIndicator = ({ activeIndex, setActiveIndex, startdate, phaseEndDay }) => {
-    //we have to change useState to use a function of
-    //day number (day 5 / 40 = phase 2)
-
-    // this part move to User.js for common use
-    // const [activeIndex, setActiveIndex] = useState(2);
+const ProgressIndicator = ({setActiveIndex, currentDay, phaseEndDay }) => {
+   
     const steps = []
 
-    let days = calculateDay(startdate);
     let phase;
-
+    
     for (const [key, value] of Object.entries(phaseEndDay)) {
-        if (days <= value) {
+        if (currentDay <= value) {
             phase = key;
             //this line will cause error 
             setActiveIndex(phase)

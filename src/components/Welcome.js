@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import calculateDay from '../utilities/calculateday';
 
-const Welcome = ({ username, surgeryType, firebaseData, activeIndex, startdate, daysDict }) => {
-    let day = calculateDay(startdate)
+const Welcome = ({ username, surgeryType, firebaseData, activeIndex, currentDay, daysDict }) => {
+    
 
     let daysHasMessage
 
     for (const [key,] of Object.entries(daysDict)) {
-        if (day >= key) {
+        if (currentDay >= key) {
             daysHasMessage = key
         }
     }
