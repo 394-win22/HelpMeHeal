@@ -88,7 +88,7 @@ function SurveyPage() {
             <Survey model={survey} />
             <Button onClick={() => {
                 setPage("home");
-                showPopupAlert(4);
+                // showPopupAlert(4);
             }} sx={buttonStyle}>
                 Continue
             </Button>
