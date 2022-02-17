@@ -23,7 +23,7 @@ function User({ name, surgeryType, userType }) {
     function getPage() {
         switch (page) {
             case "home":
-                return <HomePage data={data} name={name} surgeryType={surgeryType} setPage={setPage} activeIndex={activeIndex} setActiveIndex={setActiveIndex} userType={userType} />;
+                return <HomePage data={data} name={name} surgeryType={surgeryType} setPage={setPage} activeIndex={activeIndex} setActiveIndex={setActiveIndex} />;
 
             case "survey":
                 return <SurveyPage />;
