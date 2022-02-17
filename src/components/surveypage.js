@@ -5,6 +5,22 @@ import useStore from '../Store';
 import Button from '@mui/material/Button';
 import swal from 'sweetalert';
 
+
+const buttonStyle = {
+    fontWeight: "normal",
+    backgroundColor: "#b43434",
+    color: 'white',
+    fontSize: '1.5rem',
+    marginLeft: "5rem",
+    borderRadius: 2,
+    '&:hover': {
+        bgcolor: "#b36464"
+    },
+    '&:focus': {
+        bgcolor: "#b36464"
+    },
+}
+
 const surveyJson = {
     "completedHtml": "<h3>Thank you for completing the check-in survey.</h3> <h5>Remember to contact your doctor if you have any concerns about your recovery.</h5>",
     "completedHtmlOnCondition": [
@@ -73,17 +89,12 @@ function SurveyPage() {
             <Survey model={survey} />
             <Button onClick={() => {
                 setPage("home");
-                showPopupAlert(4);
-            }}
-                style={{
-                    fontWeight: "normal",
-                    color: 'white',
-                    backgroundColor: '#b43434',
-                    fontSize: '1rem',
-                }}>
-                back
+                // showPopupAlert(4);
+            }} sx={buttonStyle}>
+                Continue
+
             </Button>
-        </div>
+        </div >
     );
 }
 

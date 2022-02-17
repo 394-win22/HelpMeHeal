@@ -4,7 +4,7 @@ const useStore = create(set => ({
     UserPage: "home",
     setUserPage: (newPage) => set({ UserPage: newPage }),
 
-    userType: "user",
+    userType: "docter",
     setUserType: (newType) => set({ userType: newType })
 }));
 
