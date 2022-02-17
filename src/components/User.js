@@ -6,7 +6,7 @@ import { Loading } from "./Loading";
 import { Error404 } from "./404";
 import HomePage from './HomePage';
 
-function User({ name, type, userType }) {
+function User({ name, surgeryType, userType }) {
     const setPage = useStore(state => state.setUserPage);
     const page = useStore(state => state.UserPage);
     const [data, loadingData, errorData] = useData("/");
@@ -23,7 +23,7 @@ function User({ name, type, userType }) {
     function getPage() {
         switch (page) {
             case "home":
-                return <HomePage data={data} name={name} type={type} setPage={setPage} activeIndex={activeIndex} setActiveIndex={setActiveIndex} userType={userType} />;
+                return <HomePage data={data} name={name} surgeryType={surgeryType} setPage={setPage} activeIndex={activeIndex} setActiveIndex={setActiveIndex} userType={userType} />;
 
             case "survey":
                 return <SurveyPage />;

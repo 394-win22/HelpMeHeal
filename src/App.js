@@ -9,16 +9,16 @@ function App() {
   const setUserType = useStore(state => state.setUserType);
   const user = useUserState()[0];
   const [name, setName] = useState("");
-  const [type, setType] = useState("");
+  const [surgeryType, setSurgeryType] = useState("");
 
   const initUser = (user) => {
     setName(user.name);
-    setType(user.surgeryType);
+    setSurgeryType(user.surgeryType);
   }
 
   const defaultUser = () => {
     setName("Edward");
-    setType("acl");
+    setSurgeryType("acl");
   }
 
   useEffect(() => {
@@ -33,7 +33,7 @@ function App() {
   function getUserType() {
     switch (userType) {
       case "patient":
-        return <User name={name} type={type} userType={userType} />
+        return <User name={name} surgeryType={surgeryType} userType={userType} />
       case "doctor":
         return <></>
       default:
