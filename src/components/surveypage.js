@@ -5,6 +5,7 @@ import useStore from '../Store';
 import Button from '@mui/material/Button';
 import swal from 'sweetalert';
 
+
 const buttonStyle = {
     fontWeight: "normal",
     backgroundColor: "#b43434",
@@ -70,10 +71,10 @@ const surveyJson = {
     "showQuestionNumbers": "off"
 };
 
-const showPopupAlert = (pain) => {
-    if (pain < 5) {
+const showPopupAlert = (pain) =>{
+    if(pain < 5){
         swal("Happy to know", "You are on track with your progress, You got this!", "success");
-    } else {
+    }else{
         swal("Sorry to hear that", "We have informed the doctor and you will hear back soon", "warning");
     }
 }
@@ -91,6 +92,7 @@ function SurveyPage() {
                 // showPopupAlert(4);
             }} sx={buttonStyle}>
                 Continue
+
             </Button>
         </div >
     );
