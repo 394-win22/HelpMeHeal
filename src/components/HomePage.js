@@ -6,7 +6,8 @@ import ProgressIndicator from './ProgressBar';
 import Welcome from './Welcome';
 
 const HomePage = ({ data, name, type, setPage, activeIndex, setActiveIndex }) => {
-
+    console.log(1, data)
+    console.log(2, type)
     return (
         <div>
             {/* the zero bellow has to change userid as its real id later */}

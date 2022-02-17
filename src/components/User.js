@@ -6,31 +6,15 @@ import { Loading } from "./Loading";
 import { Error404 } from "./404";
 import HomePage from './HomePage';
 
-function User(user) {
+function User({ name, type }) {
     const setPage = useStore(state => state.setUserPage);
     const page = useStore(state => state.UserPage);
     const [data, loadingData, errorData] = useData("/");
     const [activeIndex, setActiveIndex] = useState(2);
-    const [name, setName] = useState("");
-    const [type, setType] = useState("");
-
-
-    const initUser = (user) => {
-        setName(user.name);
-        setType(user.surgeryType);
-    }
-
-    const defaultUser = () => {
-        setName("Edward");
-        setType("acl");
-    }
 
     // firebase data initialize
     useEffect(() => {
         if (data === undefined) return;
-        Object.entries(data.user).map((entry) => {
-            entry[1].email === user.email ? initUser(entry[1]) : defaultUser();
-        })
     }, [data]);
 
     if (errorData) return <Error404 />;
