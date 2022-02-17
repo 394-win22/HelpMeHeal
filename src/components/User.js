@@ -27,6 +27,7 @@ function User({ name, surgeryType, userType }) {
 
             case "survey":
                 return <SurveyPage />;
+
             default:
                 return <p>Sorry, there's been an error.</p>
         }
