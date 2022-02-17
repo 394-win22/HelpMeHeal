@@ -9,7 +9,7 @@ const buttonStyle = {
     backgroundColor: "#b43434",
     color: 'white',
     fontSize: '1.5rem',
-    marginLeft: "5rem",
+    padding: 1,
     borderRadius: 2,
     '&:hover': {
         bgcolor: "#b36464"
