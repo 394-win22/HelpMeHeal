@@ -5,7 +5,6 @@ import useStore from '../Store';
 import Button from '@mui/material/Button';
 import swal from 'sweetalert';
 
-
 const buttonStyle = {
     fontWeight: "normal",
     backgroundColor: "#b43434",
