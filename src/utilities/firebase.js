@@ -76,7 +76,7 @@ export { firebaseSignOut as signOut };
 
 export const useUserState = () => {
     // const [user, setUser] = useState();
-    const [user, setUser] = useData('/user/0');
+    const [user, setUser] = useData('/user/patient/0');
     // useEffect(() => {
     //     onIdTokenChanged(getAuth(app), setUser);
     // }, []);

@@ -26,14 +26,14 @@ function App() {
     // Object.entries(user).map((entry) => {
     //   entry[1].email === user.email ? initUser(entry[1]) : defaultUser();
     // })
-    defaultUser();
+    initUser(user)
     setUserType(user.userType)
   }, [user]);
 
   function getUserType() {
     switch (userType) {
-      case "user":
-        return <User name={name} type={type} />
+      case "patient":
+        return <User name={name} type={type} userType={userType} />
       case "doctor":
         return <></>
       default:
