@@ -7,11 +7,12 @@ import { useUserState } from './utilities/firebase';
 function App() {
   const userType = useStore(state => state.userType);
   const setUserType = useStore(state => state.setUserType);
+
   const user = useUserState()[0];
   const [name, setName] = useState("");
   const [surgeryType, setSurgeryType] = useState("");
 
-  const initUser = (user) => {
+  const initPatient = (user) => {
     setName(user.name);
     setSurgeryType(user.surgeryType);
   }
@@ -26,8 +27,10 @@ function App() {
     // Object.entries(user).map((entry) => {
     //   entry[1].email === user.email ? initUser(entry[1]) : defaultUser();
     // })
-    initUser(user)
     setUserType(user.userType)
+    if (user.userType === "patient") {
+      initPatient(user)
+    }
   }, [user]);
 
   function getUserType() {
