@@ -3,6 +3,7 @@ import "survey-react/survey.css"
 import { Model, Survey } from 'survey-react';
 import useStore from '../Store';
 import Button from '@mui/material/Button';
+import swal from 'sweetalert';
 
 const buttonStyle = {
     fontWeight: "normal",
@@ -69,6 +70,14 @@ const surveyJson = {
     "showQuestionNumbers": "off"
 };
 
+const showPopupAlert = (pain) => {
+    if (pain < 5) {
+        swal("Happy to know", "You are on track with your progress, You got this!", "success");
+    } else {
+        swal("Sorry to hear that", "We have informed the doctor and you will hear back soon", "warning");
+    }
+}
+
 function SurveyPage() {
     const setPage = useStore(state => state.setUserPage);
     const page = useStore(state => state.UserPage);
@@ -77,10 +86,13 @@ function SurveyPage() {
     return (
         <div>
             <Survey model={survey} />
-            <Button onClick={() => setPage("home")} sx={buttonStyle}>
+            <Button onClick={() => {
+                setPage("home");
+                showPopupAlert(4);
+            }} sx={buttonStyle}>
                 Continue
             </Button>
-        </div>
+        </div >
     );
 }
 
