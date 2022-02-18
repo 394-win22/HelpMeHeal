@@ -5,13 +5,12 @@ import useStore from '../Store';
 import Button from '@mui/material/Button';
 import swal from 'sweetalert';
 
-
 const buttonStyle = {
     fontWeight: "normal",
     backgroundColor: "#b43434",
     color: 'white',
     fontSize: '1.5rem',
-    marginLeft: "5rem",
+    padding: 1,
     borderRadius: 2,
     '&:hover': {
         bgcolor: "#b36464"

@@ -39,7 +39,11 @@ function App() {
   function getUserType() {
     switch (userType) {
       case "patient":
-        return <User name={name} surgeryType={surgeryType} currentDay={currentDay} />
+        return (
+          <div>
+            < User name={name} surgeryType={surgeryType} currentDay={currentDay} />
+          </div>
+        )
       case "doctor":
         return <></>
       default:

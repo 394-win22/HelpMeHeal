@@ -7,21 +7,6 @@ import Welcome from './Welcome';
 import FactCheckIcon from '@mui/icons-material/FactCheck';
 import calculateDay from '../utilities/calculateday';
 
-
-const buttonStyle = {
-    fontWeight: "normal",
-    color: 'white',
-    fontSize: '1.5rem',
-    marginLeft: "5rem",
-    borderRadius: 2,
-    '&:hover': {
-        bgcolor: "#b36464"
-    },
-    '&:focus': {
-        bgcolor: "#b36464"
-    },
-}
-
 const IconStyle = {
     color: 'white',
     fontSize: '2.7rem',
@@ -47,19 +32,10 @@ const HomePage = ({ data, currentDay, surgeryType, name, type, setPage, activeIn
             <Box>
                 <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, background: '#b43434', flexDirection: 'row', justifyContent: 'center', p: 2 }}>
                     <Button onClick={() => window.location = 'mailto:helpmeheal.project@gmail.com'}>
-                        <EmailIcon sx={IconStyle}/>
+                        <EmailIcon sx={IconStyle} />
                     </Button>
-                    <Button onClick={() => {
-                        setPage("survey");
-                    }}
-
-                        style={{
-                            fontWeight: "normal",
-                            color: 'white',
-                            fontSize: '1.5rem',
-                            marginLeft: "5rem",
-                        }}>
-                        <FactCheckIcon style={{ color: 'white', fontSize: '2.7rem' }}/>
+                    <Button onClick={() => setPage("survey")} style={{ marginLeft: "5rem" }}>
+                        <FactCheckIcon sx={IconStyle} />
                     </Button>
                 </AppBar>
             </Box>

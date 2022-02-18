@@ -83,3 +83,13 @@ export const useUserState = () => {
 
     return [user];
 };
+
+export const useGoogleUserState = () => {
+    const [user, setUser] = useState();
+
+    useEffect(() => {
+        onIdTokenChanged(getAuth(app), setUser);
+    }, []);
+
+    return [user];
+};
