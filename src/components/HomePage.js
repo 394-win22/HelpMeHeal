@@ -32,10 +32,10 @@ const HomePage = ({ data, currentDay, surgeryType, name, type, setPage, activeIn
             <Box>
                 <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, background: '#b43434', flexDirection: 'row', justifyContent: 'center', p: 2 }}>
                     <Button onClick={() => window.location = 'mailto:helpmeheal.project@gmail.com'}>
-                        <EmailIcon sx={IconStyle}/>
+                        <EmailIcon sx={IconStyle} />
                     </Button>
-                    <Button onClick={() => setPage("survey")} style={{marginLeft: "5rem"}}>
-                        <FactCheckIcon sx={IconStyle}/>
+                    <Button onClick={() => setPage("survey")} style={{ marginLeft: "5rem" }}>
+                        <FactCheckIcon sx={IconStyle} />
                     </Button>
                 </AppBar>
             </Box>
