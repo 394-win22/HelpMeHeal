@@ -20,7 +20,7 @@ const IconStyle = {
 }
 
 
-const HomePage = ({ data, currentDay, surgeryType, name, type, setPage, activeIndex, setActiveIndex }) => {
+const HomePage = ({ data, currentDay, surgeryType, name, type, setPage, activeIndex, setActiveIndex}) => {
 
 
     return (

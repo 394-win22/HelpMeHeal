@@ -4,7 +4,7 @@ import calculateDay from '../utilities/calculateday';
 const Welcome = ({ username, surgeryType, firebaseData, activeIndex, currentDay, daysDict }) => {
 
 
-    let daysHasMessage
+    let daysHasMessage;
 
     for (const [key,] of Object.entries(daysDict)) {
         if (currentDay >= key) {

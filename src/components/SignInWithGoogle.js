@@ -1,30 +1,25 @@
-import { signInWithGoogle, signOut, useGoogleUserState } from '../utilities/firebase.js';
+import { signInWithGoogle, signOut, useGoogleUserState, setData } from '../utilities/firebase.js';
 import Button from "@mui/material/Button";
-
 const buttonStyle = {
     mx: 2,
     width: 1 / 14,
     margin: '1%',
-    bgcolor: "rgba(28,133,255,0.95)",
+    bgcolor: "#b43434",
     borderRadius: 2,
     color: "rgb(255, 255, 255)",
     '&:hover': {
-        bgcolor: "rgba(129,182,239,0.95)"
+        bgcolor: "#b36464"
     },
     '&:focus': {
-        bgcolor: "rgba(129,182,239,0.95)"
+        bgcolor: "#b36464"
     },
 }
 
-
-
-export const SignInOut = (setuserEmail) => {
+export const SignInOut = () => {
     const [user] = useGoogleUserState();
-    console.log(user)
     const SignInButton = () => (
         <Button sx={buttonStyle} onClick={() => {
             signInWithGoogle()
-            setuserEmail(user.email)
         }
         }> Sign In </Button>
     );

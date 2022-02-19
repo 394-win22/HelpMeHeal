@@ -6,10 +6,9 @@ const LoginPage = () => {
         2. if not then go to register page
         3. if yes then setUser and show userpage
        */
-    const [userEmail, setUserEmail] = useState()
     return (
         <div>
-            <SignInOut setUserEmail={setUserEmail} />
+            <SignInOut />
         </div>
     )
 }
