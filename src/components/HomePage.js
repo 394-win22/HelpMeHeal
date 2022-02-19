@@ -5,7 +5,6 @@ import Button from '@mui/material/Button';
 import ProgressIndicator from './ProgressBar';
 import Welcome from './Welcome';
 import FactCheckIcon from '@mui/icons-material/FactCheck';
-import calculateDay from '../utilities/calculateday';
 
 const IconStyle = {
     color: 'white',
@@ -20,7 +19,7 @@ const IconStyle = {
 }
 
 
-const HomePage = ({ data, currentDay, surgeryType, name, type, setPage, activeIndex, setActiveIndex}) => {
+const HomePage = ({ data, currentDay, surgeryType, name, type, setPage, activeIndex, setActiveIndex }) => {
 
 
     return (
