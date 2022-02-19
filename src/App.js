@@ -4,7 +4,7 @@ import GetUser from './components/GetUser';
 import { SignInOut } from "./components/SignInWithGoogle"
 function App() {
   const [googleUser] = useGoogleUserState();
-  console.log(googleUser)
+
   return (
     <div className="App">
 

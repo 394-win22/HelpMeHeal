@@ -7,6 +7,7 @@ import calculateDay from '../utilities/calculateday';
 import { SignInOut } from './SignInWithGoogle';
 import RegisterPage from './Register';
 import Doctor from '../doctor_components/Doctor';
+
 const GetUser = ({ googleUser }) => {
 
   const userType = useStore(state => state.userType);
@@ -17,7 +18,7 @@ const GetUser = ({ googleUser }) => {
   const user = useUserState(googleUser?.uid)[0];
 
   const initPatient = () => {
-    setName(user.name);
+    setName(user.name.toUpperCase());
     setSurgeryType(user.surgeryType);
     setCurrentDay(calculateDay(user.startDate));
   }

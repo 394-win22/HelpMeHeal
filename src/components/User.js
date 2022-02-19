@@ -26,7 +26,14 @@ function User({ name, surgeryType, currentDay, googleUser }) {
     function getPage() {
         switch (page) {
             case "home":
-                return <HomePage data={data} currentDay={currentDay} surgeryType={surgeryType} name={name} setPage={setPage} activeIndex={activeIndex} setActiveIndex={setActiveIndex}/>;
+                return <HomePage data={data}
+                                 currentDay={currentDay}
+                                 surgeryType={surgeryType}
+                                 name={name}
+                                 setPage={setPage}
+                                 activeIndex={activeIndex}
+                                 setActiveIndex={setActiveIndex}
+                                 user={googleUser}/>;
             case "survey":
                 return <SurveyPage currentDay={currentDay}  googleUser = {googleUser}/>;
 

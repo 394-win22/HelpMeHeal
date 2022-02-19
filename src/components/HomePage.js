@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
 import EmailIcon from '@mui/icons-material/Email';
@@ -5,6 +6,7 @@ import Button from '@mui/material/Button';
 import ProgressIndicator from './ProgressBar';
 import Welcome from './Welcome';
 import FactCheckIcon from '@mui/icons-material/FactCheck';
+import MailTo from './emailWidget';
 
 const IconStyle = {
     color: 'white',
@@ -18,9 +20,9 @@ const IconStyle = {
     },
 }
 
-
-const HomePage = ({ data, currentDay, surgeryType, name, type, setPage, activeIndex, setActiveIndex }) => {
-
+const HomePage = ({ data, currentDay, surgeryType, name, type, setPage, activeIndex, setActiveIndex, user }) => {
+    const [showEmailForm, setShowEmailForm] = useState(false);
+    const handleShowEmailFormClose = () => setShowEmailForm(false);
 
     return (
         <div>
@@ -30,9 +32,10 @@ const HomePage = ({ data, currentDay, surgeryType, name, type, setPage, activeIn
 
             <Box>
                 <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, background: '#b43434', flexDirection: 'row', justifyContent: 'center', p: 2 }}>
-                    <Button onClick={() => window.location = 'mailto:helpmeheal.project@gmail.com'}>
+                    <Button onClick={() => setShowEmailForm(true)}>
                         <EmailIcon sx={IconStyle} />
                     </Button>
+                    <MailTo toEmail={"HMHtest@gmail.com"} show={showEmailForm} handleClose={handleShowEmailFormClose} user={user}/>
                     <Button onClick={() => setPage("survey")} style={{ marginLeft: "5rem" }}>
                         <FactCheckIcon sx={IconStyle} />
                     </Button>
