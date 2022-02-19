@@ -30,19 +30,21 @@ const ValidatePatientCode = (patientCode, userData) => {
     return userData[patientCodeParse[0]] && userData[patientCodeParse[0]]['userType'] === 'doctor'
 }
 
-const onClickRegister = (googleUser, type, patientCode) => {
+const onClickRegister = (googleUser, type, patientCode, userData) => {
     // TODO remove default values
     // const patientCode = document.querySelector('#patientCode').value;
     let patientCodeParse = patientCode.split("+")
     const uid = googleUser?.uid;
+    if (ValidatePatientCode(patientCode, userData)) {
+        setData(`/user/${uid}/userType`, type);
+        setData(`/user/${uid}/name`, googleUser?.displayName);
+        setData(`/user/${uid}/startDate`, Date.now());
+        setData(`/user/${uid}/email`, googleUser?.email);
+        setData(`/user/${uid}/doctorId `, patientCodeParse[0]);
+        setData(`/user/${uid}/surgeryType`, patientCodeParse[1]);
+        setData(`/user/${patientCodeParse[0]}/patientId/${uid}`, googleUser?.displayName)
+    }
 
-    setData(`/user/${uid}/userType`, type);
-    setData(`/user/${uid}/name`, googleUser?.displayName);
-    setData(`/user/${uid}/startDate`, Date.now());
-    setData(`/user/${uid}/email`, googleUser?.email);
-    setData(`/user/${uid}/doctorId `, patientCodeParse[0]);
-    setData(`/user/${uid}/surgeryType`, patientCodeParse[1]);
-    setData(`/user/${patientCodeParse[0]}/patientId/${uid}`, googleUser?.displayName)
 }
 
 const RegisterPage = ({ googleUser }) => {
@@ -80,7 +82,7 @@ const RegisterPage = ({ googleUser }) => {
                 }}
             />
             <br />
-            <Button onClick={() => onClickRegister(googleUser, userType, textValue)} sx={buttonStyle}>
+            <Button onClick={() => onClickRegister(googleUser, userType, textValue, userData)} sx={buttonStyle}>
                 register
             </Button>
         </div>
