@@ -28,3 +28,7 @@
   justify-content: center;
   color: white;
 }
+
+.app-nav {
+  text-align: right;
+}

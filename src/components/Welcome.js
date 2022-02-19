@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import calculateDay from '../utilities/calculateday';
 
 const Welcome = ({ username, surgeryType, firebaseData, activeIndex, currentDay, daysDict }) => {
-    
 
-    let daysHasMessage
+
+    let daysHasMessage;
 
     for (const [key,] of Object.entries(daysDict)) {
         if (currentDay >= key) {
@@ -13,7 +13,7 @@ const Welcome = ({ username, surgeryType, firebaseData, activeIndex, currentDay,
     }
 
     return (
-        <div style={{ width: '55%', marginLeft: '23%' }}>
+        <div style={{ width: '55%', marginLeft: '23%', marginBottom: "10%" }}>
             <div style={{ color: '#b43434', fontSize: 25, marginBottom: '4rem', marginTop: '4rem' }}>
                 <h2 style={{ textAlign: 'left' }}> Welcome back {username ? username : "Nobody"}, </h2>
             </div>

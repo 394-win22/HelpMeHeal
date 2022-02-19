@@ -19,7 +19,7 @@ const ProgressIndicator = ({setActiveIndex, currentDay, phaseEndDay }) => {
     }
 
     for (const [key,] of Object.entries(phaseEndDay)) {
-        var dict = { index: key - 1, label: 'Phase' + key }
+        var dict = { index: key - 1, label: 'Phase ' + key }
         steps.push(dict)
     }
 

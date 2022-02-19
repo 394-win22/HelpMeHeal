@@ -4,14 +4,16 @@ import { Model, Survey } from 'survey-react';
 import useStore from '../Store';
 import Button from '@mui/material/Button';
 import swal from 'sweetalert';
-
-
+import { setData } from "../utilities/firebase";
+import { useState } from "react";
+import './surveypage.css'
+    
 const buttonStyle = {
     fontWeight: "normal",
     backgroundColor: "#b43434",
     color: 'white',
-    fontSize: '1.5rem',
-    marginLeft: "5rem",
+    fontSize: '1rem',
+    padding: 1,
     borderRadius: 2,
     '&:hover': {
         bgcolor: "#b36464"
@@ -79,20 +81,40 @@ const showPopupAlert = (pain) =>{
     }
 }
 
-function SurveyPage() {
+var surveyValueChanged = function (sender, options) {
+    var el = document.getElementById(options.name);
+    if (el) {
+        el.value = options.value;
+    }
+};
+
+function SurveyPage({ currentDay, googleUser }) {
     const setPage = useStore(state => state.setUserPage);
     const page = useStore(state => state.UserPage);
     const survey = new Model(surveyJson);
+    survey.showCompletedPage = true;
+    survey.completedHtml = surveyJson.completedHtml;
+    survey
+        .onComplete
+        .add(function (sender) {
+            setData(`/user/${googleUser?.uid}/surveyResults/${currentDay}`, sender.data);
+            showPopupAlert(sender.data.pain_rating);
+            setPage("home");
+        });
 
+    var myCss = {
+        navigationButton: "button-btn-lg",
+    };
+        
     return (
         <div>
-            <Survey model={survey} />
+            <Survey model={survey} onValueChanged={surveyValueChanged} css={myCss}/>
             <Button onClick={() => {
                 setPage("home");
-                // showPopupAlert(4);
+                
             }} sx={buttonStyle}>
-                Continue
-
+                Cancel
+            
             </Button>
         </div >
     );

@@ -74,12 +74,19 @@ const firebaseSignOut = () => signOut(getAuth(app));
 
 export { firebaseSignOut as signOut };
 
-export const useUserState = () => {
-    // const [user, setUser] = useState();
-    const [user, setUser] = useData('/user/0');
-    // useEffect(() => {
-    //     onIdTokenChanged(getAuth(app), setUser);
-    // }, []);
+export const useUserState = (uid) => {
+    // const [user, setUser] = useState();ref
+    const [user] = useData(`/user/${uid}`);
+    console.log(user);
+    return [user];
+};
+
+export const useGoogleUserState = () => {
+    const [user, setUser] = useState();
+
+    useEffect(() => {
+        onIdTokenChanged(getAuth(app), setUser);
+    }, []);
 
     return [user];
 };
