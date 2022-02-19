@@ -1,6 +1,10 @@
+import React, { useState } from 'react';
+
 const Doctor = () => {
     return (
-        <div>you're doctor</div>
+        <div>
+
+        </div>
     )
 }
 export default Doctor
