@@ -23,7 +23,7 @@ const IconStyle = {
 const HomePage = ({ data, currentDay, surgeryType, name, type, setPage, activeIndex, setActiveIndex, user }) => {
     const [showEmailForm, setShowEmailForm] = useState(false);
     const handleShowEmailFormClose = () => setShowEmailForm(false);
-
+    const doctorEmail = data["user"][user.doctorId]["email"];
     return (
         <div>
             {/* the zero bellow has to change userid as its real id later */}
@@ -35,7 +35,7 @@ const HomePage = ({ data, currentDay, surgeryType, name, type, setPage, activeIn
                     <Button onClick={() => setShowEmailForm(true)}>
                         <EmailIcon sx={IconStyle} />
                     </Button>
-                    <MailTo toEmail={"HMHtest@gmail.com"} show={showEmailForm} handleClose={handleShowEmailFormClose} user={user}/>
+                    <MailTo toEmail={doctorEmail} show={showEmailForm} handleClose={handleShowEmailFormClose} user={user} />
                     <Button onClick={() => setPage("survey")} style={{ marginLeft: "5rem" }}>
                         <FactCheckIcon sx={IconStyle} />
                     </Button>

@@ -40,7 +40,7 @@ const GetUser = ({ googleUser }) => {
       case "patient":
         return (
           <div>
-            <User name={name} surgeryType={surgeryType} currentDay={currentDay} googleUser={googleUser} />
+            <User name={name} surgeryType={surgeryType} currentDay={currentDay} user={user} />
           </div>
         )
       case "doctor":

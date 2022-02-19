@@ -40,7 +40,7 @@ const onClickRegister = (googleUser, type, patientCode, userData) => {
         setData(`/user/${uid}/name`, googleUser?.displayName);
         setData(`/user/${uid}/startDate`, Date.now());
         setData(`/user/${uid}/email`, googleUser?.email);
-        setData(`/user/${uid}/doctorId `, patientCodeParse[0]);
+        setData(`/user/${uid}/doctorId`, patientCodeParse[0]);
         setData(`/user/${uid}/surgeryType`, patientCodeParse[1]);
         setData(`/user/${patientCodeParse[0]}/patientId/${uid}`, googleUser?.displayName)
     }

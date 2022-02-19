@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import {Box} from '@mui/material';
+import { Box } from '@mui/material';
 import { Stack } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import emailjs from '@emailjs/browser';
@@ -39,9 +39,9 @@ const MailTo = ({ toEmail, show, handleClose, user }) => {
 
     const ContactUs = (toEmail, handleClose) => {
         const fromEmail = document.querySelector('#fromEmail').value;
-        const message   = document.querySelector('#message').value;
+        const message = document.querySelector('#message').value;
         const disclosure_message = "DISCLOSURE: Kindly verify the credentials of the person who is claiming the ownership of the item";
-        const final_message = message + "\n\n"+ disclosure_message
+        const final_message = message + "\n\n" + disclosure_message
         const params = {
             "to_email": toEmail,
             "from_email": fromEmail,
@@ -49,7 +49,7 @@ const MailTo = ({ toEmail, show, handleClose, user }) => {
         };
 
         if (toEmail?.length > 0 && fromEmail?.length > 0 && validateEmail(fromEmail) && message?.length > 0) {
-            emailjs.send('service_HelpMeHeal', 'HelpMeHeal', params, 'user_ishH85RysqiVJXw8CLgcJ')
+            emailjs.send('service_wildcatFinder', 'wildcatFinder', params, 'user_ishH85RysqiVJXw8CLgcJ')
                 .then((result) => {
                     swal("Message received!", "Will Reply Back Soon..", "success");
                 }, (error) => {
@@ -73,39 +73,48 @@ const MailTo = ({ toEmail, show, handleClose, user }) => {
                 }}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
-                style={{ overflow: 'scroll'}}
+                style={{ overflow: 'scroll' }}
             >
                 <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2" style={{textAlign: "center", marginBottom: 10}}>
+                    <Typography id="modal-modal-title" variant="h6" component="h2" style={{ textAlign: "center", marginBottom: 10 }}>
                         Email Your Doctor Now
                     </Typography>
 
                     <Stack spacing={spacing}>
                         <TextField id='fromEmail'
-                                   label="From Email"
-                                   name='from_email'
-                                   variant="outlined"
-                                   defaultValue = {user ? user.email : ""}
-                                   required
-                                   helperText='Must be valid email'
-                                   error={!validFromEmail} />
+                            label="From Email"
+                            name='from_email'
+                            variant="outlined"
+                            defaultValue={user ? user.email : ""}
+                            required
+                            helperText='Must be valid email'
+                            error={!validFromEmail} />
+                        <TextField id='toEmail'
+                            label="To Email"
+                            name='to_email'
+                            variant="outlined"
+                            defaultValue={toEmail ? toEmail : ""}
+                            required
+                            disabled
+                            helperText='Must be valid email'
+                            error={!validFromEmail} />
                         <TextField id='message'
-                                   label="Message"
-                                   name='msg'
-                                   variant="outlined"
-                                   multiline
-                                   rows={4}
-                                   placeholder="What is your concern?"
-                                   sequired
-                                   helperText="Cannot be blank"
-                                   error={!validMessage} />
+                            label="Message"
+                            name='msg'
+                            variant="outlined"
+                            multiline
+                            rows={4}
+                            placeholder="What is your concern?"
+                            sequired
+                            helperText="Cannot be blank"
+                            error={!validMessage} />
                     </Stack>
 
                     <Box textAlign="right">
                         <Button sx={{ mt: spacing }} size="small" variant="outlined" onClick={() => ContactUs(toEmail, handleClose)}>
                             Submit
                         </Button>
-                        <Button sx={{ mt: spacing, marginLeft: "5%"}} size="small" variant="outlined" onClick={() => handleClose()}>
+                        <Button sx={{ mt: spacing, marginLeft: "5%" }} size="small" variant="outlined" onClick={() => handleClose()}>
                             Close
                         </Button>
                     </Box>
@@ -116,5 +125,5 @@ const MailTo = ({ toEmail, show, handleClose, user }) => {
 }
 
 export default MailTo;
-// once we store doctor's email address in the database we can have that be the mailto address 
+// once we store doctor's email address in the database we can have that be the mailto address
 // also do we want this to be a logo or is that not intuitive enough
