@@ -1,9 +1,12 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Loading } from "./Loading";
+import { Error404 } from "./404";
 import RadioGroup from "@mui/material/RadioGroup";
 import Radio from '@mui/material/Radio';
-import { setData } from "../utilities/firebase";
+import { useData, setData } from "../utilities/firebase";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 const buttonStyle = {
     mx: 2,
@@ -20,30 +23,64 @@ const buttonStyle = {
     },
 }
 
-const onClickRegister = (googleUser, type) => {
+const ValidatePatientCode = (patientCode, userData) => {
+    let patientCodeParse = patientCode.split("+")
+    console.log(patientCodeParse[0])
+    console.log(userData[patientCodeParse[0]])
+    return userData[patientCodeParse[0]] && userData[patientCodeParse[0]]['userType'] === 'doctor'
+}
+
+const onClickRegister = (googleUser, type, patientCode) => {
     // TODO remove default values
+    // const patientCode = document.querySelector('#patientCode').value;
+    let patientCodeParse = patientCode.split("+")
     const uid = googleUser?.uid;
+
     setData(`/user/${uid}/userType`, type);
     setData(`/user/${uid}/name`, googleUser?.displayName);
     setData(`/user/${uid}/startDate`, Date.now());
     setData(`/user/${uid}/email`, googleUser?.email);
-    setData(`/user/${uid}/surgeryType`, 'acl');
+    setData(`/user/${uid}/doctorId `, patientCodeParse[0]);
+    setData(`/user/${uid}/surgeryType`, patientCodeParse[1]);
+    setData(`/user/${patientCodeParse[0]}/patientId/${uid}`, googleUser?.displayName)
 }
 
 const RegisterPage = ({ googleUser }) => {
     const [userType, setUserType] = useState("patient");
+    const [textValue, setTextValue] = useState("")
+    const [userData, loadingData, errorData] = useData("/user");
+    useEffect(() => {
+        if (userData === undefined) return;
+
+    }, [userData]);
+
+    if (errorData) return <Error404 />;
+    if (loadingData) return <Loading />;
+
     return (
         <div>
             <h1>Are you a patient or doctor?</h1>
             <RadioGroup
-                style={{ alignItems: "center"}}
+                style={{ alignItems: "center" }}
                 onChange={(e) => setUserType(e.target.value)}
                 value={userType}
             >
                 <FormControlLabel value="patient" label="Patient" control={<Radio />} />
                 {/* <FormControlLabel value="doctor" label="Doctor" control={<Radio />} /> */}
             </RadioGroup>
-            <Button onClick={() => onClickRegister(googleUser, userType)} sx={buttonStyle}>
+            <TextField id='patientCode'
+                label="PatientCode"
+                name='patient_code'
+                variant="outlined"
+                required
+                error={!ValidatePatientCode(textValue, userData)}
+                helperText='Must be the code get from your doctor!'
+                onChange={e => {
+                    setTextValue(e.target.value)
+                }}
+            />
+            <br />
+            <Button onClick={() => onClickRegister(googleUser, userType, textValue)} sx={buttonStyle}>
                 register
             </Button>
         </div>

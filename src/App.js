@@ -1,7 +1,7 @@
 import LoginPage from './components/LoginPage';
 import { useGoogleUserState } from './utilities/firebase';
 import GetUser from './components/GetUser';
-import { SignInOut } from "./components/SignInWithGoogle"
+
 function App() {
   const [googleUser] = useGoogleUserState();
 

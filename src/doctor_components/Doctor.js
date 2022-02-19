@@ -1,6 +1,6 @@
 const Doctor = () => {
     return (
-        <div></div>
+        <div>you're doctor</div>
     )
 }
 export default Doctor

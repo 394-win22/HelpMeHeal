@@ -11,13 +11,13 @@ function User({ name, surgeryType, currentDay, googleUser }) {
     const page = useStore(state => state.UserPage);
 
     const [data, loadingData, errorData] = useData("/");
-    
+
     const [activeIndex, setActiveIndex] = useState(2);
-    console.log(currentDay)
+
     // firebase data initialize
     useEffect(() => {
         if (data === undefined) return;
-        
+
     }, [data]);
 
     if (errorData) return <Error404 />;
@@ -27,15 +27,15 @@ function User({ name, surgeryType, currentDay, googleUser }) {
         switch (page) {
             case "home":
                 return <HomePage data={data}
-                                 currentDay={currentDay}
-                                 surgeryType={surgeryType}
-                                 name={name}
-                                 setPage={setPage}
-                                 activeIndex={activeIndex}
-                                 setActiveIndex={setActiveIndex}
-                                 user={googleUser}/>;
+                    currentDay={currentDay}
+                    surgeryType={surgeryType}
+                    name={name}
+                    setPage={setPage}
+                    activeIndex={activeIndex}
+                    setActiveIndex={setActiveIndex}
+                    user={googleUser} />;
             case "survey":
-                return <SurveyPage currentDay={currentDay}  googleUser = {googleUser}/>;
+                return <SurveyPage currentDay={currentDay} googleUser={googleUser} />;
 
             default:
                 return <p>Sorry, there's been an error.</p>
