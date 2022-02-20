@@ -36,7 +36,7 @@ function User({ name, surgeryType, currentDay, user, googleUser }) {
                     user={user}
                 />;
             case "survey":
-                return <SurveyPage currentDay={currentDay} googleUser={googleUser} />;
+                return <SurveyPage currentDay={currentDay} googleUser={googleUser} data={data} />;
 
             default:
                 return <p>Sorry, there's been an error.</p>
