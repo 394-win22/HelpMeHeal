@@ -10,11 +10,11 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import useStore from '../Store';
 
-const DoctorHomePage = ({ }) => {
+const DoctorHomePage = ({ username }) => {
     const setPage = useStore(state => state.setDoctorPage);
     const [tablePage, setTablePage] = useState(0);
     const [rowsPerTablePage, setRowsPerTablePage] = useState(5);
-
+    console.log(username)
     const handleChangePage = (event, newPage) => {
         setTablePage(newPage);
     };
@@ -73,44 +73,50 @@ const DoctorHomePage = ({ }) => {
     ];
 
     return (
-        <Paper sx={TableContainerStyle}>
-            <TableContainer>
-                <Table sx={{ minWidth: 700 }} aria-label="customized table">
-                    <TableHead>
-                        <TableRow>
-                            <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-                            <StyledTableCell align="right">Calories</StyledTableCell>
-                            <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-                            <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-                            <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {rows.slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage)
-                            .map((row) => (
-                            <StyledTableRow hover key={row.name} onClick={() => showPatientDetailPage()}>
-                                <StyledTableCell component="th" scope="row">
-                                    {row.name}
-                                </StyledTableCell>
-                                <StyledTableCell align="right">{row.calories}</StyledTableCell>
-                                <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                                <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                                <StyledTableCell align="right">{row.protein}</StyledTableCell>
-                            </StyledTableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer >
-            <TablePagination
-                rowsPerPageOptions={[5, 10, 15]}
-                component="div"
-                count={rows.length}
-                rowsPerPage={rowsPerTablePage}
-                page={tablePage}
-                onPageChange={handleChangePage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-            />
-        </Paper>
+
+        <div style={{ width: '55%', marginLeft: '23%', marginBottom: "10%" }}>
+            <div style={{ color: '#b43434', fontSize: 25, marginBottom: '4rem', marginTop: '4rem' }}>
+                <h2 style={{ textAlign: 'left' }}> Welcome back Doctor {username ? username : "Nobody"}, </h2>
+            </div>
+            <Paper sx={TableContainerStyle}>
+                <TableContainer>
+                    <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                        <TableHead>
+                            <TableRow>
+                                <StyledTableCell>Dessert (100g serving)</StyledTableCell>
+                                <StyledTableCell align="right">Calories</StyledTableCell>
+                                <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
+                                <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
+                                <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {rows.slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage)
+                                .map((row) => (
+                                    <StyledTableRow hover key={row.name} onClick={() => showPatientDetailPage()}>
+                                        <StyledTableCell component="th" scope="row">
+                                            {row.name}
+                                        </StyledTableCell>
+                                        <StyledTableCell align="right">{row.calories}</StyledTableCell>
+                                        <StyledTableCell align="right">{row.fat}</StyledTableCell>
+                                        <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+                                        <StyledTableCell align="right">{row.protein}</StyledTableCell>
+                                    </StyledTableRow>
+                                ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer >
+                <TablePagination
+                    rowsPerPageOptions={[5, 10, 15]}
+                    component="div"
+                    count={rows.length}
+                    rowsPerPage={rowsPerTablePage}
+                    page={tablePage}
+                    onPageChange={handleChangePage}
+                    onRowsPerPageChange={handleChangeRowsPerPage}
+                />
+            </Paper>
+        </div>
     );
 }
 

@@ -9,7 +9,6 @@ import HomePage from './HomePage';
 function User({ name, surgeryType, currentDay, user, googleUser }) {
     const setPage = useStore(state => state.setUserPage);
     const page = useStore(state => state.UserPage);
-
     const [data, loadingData, errorData] = useData("/");
 
     const [activeIndex, setActiveIndex] = useState(2);

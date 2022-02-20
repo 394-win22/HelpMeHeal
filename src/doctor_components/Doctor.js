@@ -6,7 +6,7 @@ import { Error404 } from "../components/404";
 import DoctorHomePage from './DoctorHomePage';
 import PatientDetail from './PatientDetail';
 
-const Doctor = () => {
+const Doctor = ({ name }) => {
     const [data, loadingData, errorData] = useData("/");
     const page = useStore(state => state.DoctorPage);
     // firebase data initialize
@@ -21,7 +21,7 @@ const Doctor = () => {
     function getPage() {
         switch (page) {
             case "DoctorHome":
-                return <DoctorHomePage />;
+                return <DoctorHomePage username={name} />;
             case "PatientDetail":
                 return <PatientDetail />;
 

@@ -16,11 +16,14 @@ const GetUser = ({ googleUser }) => {
   const [surgeryType, setSurgeryType] = useState("");
   const [currentDay, setCurrentDay] = useState();
   const user = useUserState(googleUser?.uid)[0];
-
   const initPatient = () => {
     setName(user.name.toUpperCase());
     setSurgeryType(user.surgeryType);
     setCurrentDay(calculateDay(user.startDate));
+  }
+
+  const initDoctor = () => {
+    setName(user.name.toUpperCase());
   }
 
   useEffect(() => {
@@ -29,7 +32,10 @@ const GetUser = ({ googleUser }) => {
     if (user) {
       setUserType(user.userType)
       if (user.userType === "patient") {
-        initPatient(user)
+        initPatient()
+      }
+      if (user.userType === "doctor") {
+        initDoctor()
       }
     }
 
@@ -44,7 +50,7 @@ const GetUser = ({ googleUser }) => {
           </div>
         )
       case "doctor":
-        return <Doctor />
+        return <Doctor name={name} />
       default:
         return <p>Sorry, there's been an error.</p>
     }
