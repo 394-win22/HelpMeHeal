@@ -35,7 +35,7 @@ const onClickRegister = (googleUser, type, patientCode, userData) => {
     // const patientCode = document.querySelector('#patientCode').value;
     let patientCodeParse = patientCode.split("+")
     const uid = googleUser?.uid;
-    if (ValidatePatientCode(patientCode, userData)) {
+    if (ValidatePatientCode(patientCode, userData) && type === 'patient') {
         setData(`/user/${uid}/userType`, type);
         setData(`/user/${uid}/name`, googleUser?.displayName);
         setData(`/user/${uid}/startDate`, Date.now());
@@ -44,7 +44,11 @@ const onClickRegister = (googleUser, type, patientCode, userData) => {
         setData(`/user/${uid}/surgeryType`, patientCodeParse[1]);
         setData(`/user/${patientCodeParse[0]}/patientId/${uid}`, googleUser?.displayName)
     }
-
+    if (type === 'doctor') {
+        setData(`/user/${uid}/userType`, type);
+        setData(`/user/${uid}/name`, googleUser?.displayName);
+        setData(`/user/${uid}/email`, googleUser?.email);
+    }
 }
 
 const RegisterPage = ({ googleUser }) => {
@@ -68,14 +72,15 @@ const RegisterPage = ({ googleUser }) => {
                 value={userType}
             >
                 <FormControlLabel value="patient" label="Patient" control={<Radio />} />
-                {/* <FormControlLabel value="doctor" label="Doctor" control={<Radio />} /> */}
+                <FormControlLabel value="doctor" label="Doctor" control={<Radio />} />
             </RadioGroup>
             <TextField id='patientCode'
                 label="PatientCode"
                 name='patient_code'
                 variant="outlined"
                 required
-                error={!ValidatePatientCode(textValue, userData)}
+                disabled={userType === 'doctor' ? true : false}
+                error={userType === 'patient' ? !ValidatePatientCode(textValue, userData) : false}
                 helperText='Must be the code get from your doctor!'
                 onChange={e => {
                     setTextValue(e.target.value)
