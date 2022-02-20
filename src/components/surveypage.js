@@ -1,11 +1,10 @@
 import "survey-react/survey.css"
-//import * as Survey from 'survey-react';
 import { Model, Survey } from 'survey-react';
 import useStore from '../Store';
 import Button from '@mui/material/Button';
 import swal from 'sweetalert';
 import { setData } from "../utilities/firebase";
-import { useState } from "react";
+import React, { useState } from "react";
 import './surveypage.css'
     
 const buttonStyle = {
@@ -109,12 +108,8 @@ function SurveyPage({ currentDay, googleUser }) {
     return (
         <div>
             <Survey model={survey} onValueChanged={surveyValueChanged} css={myCss}/>
-            <Button onClick={() => {
-                setPage("home");
-                
-            }} sx={buttonStyle}>
+            <Button onClick={() => setPage("home")} sx={buttonStyle}>
                 Cancel
-            
             </Button>
         </div >
     );
