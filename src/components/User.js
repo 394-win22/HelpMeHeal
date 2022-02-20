@@ -6,7 +6,7 @@ import { Loading } from "./Loading";
 import { Error404 } from "./404";
 import HomePage from './HomePage';
 
-function User({ name, surgeryType, currentDay, user }) {
+function User({ name, surgeryType, currentDay, user, googleUser }) {
     const setPage = useStore(state => state.setUserPage);
     const page = useStore(state => state.UserPage);
 
@@ -36,7 +36,7 @@ function User({ name, surgeryType, currentDay, user }) {
                     user={user}
                 />;
             case "survey":
-                return <SurveyPage currentDay={currentDay} />;
+                return <SurveyPage currentDay={currentDay} googleUser={googleUser} />;
 
             default:
                 return <p>Sorry, there's been an error.</p>

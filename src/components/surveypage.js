@@ -6,7 +6,7 @@ import swal from 'sweetalert';
 import { setData } from "../utilities/firebase";
 import React, { useState } from "react";
 import './surveypage.css'
-    
+
 const buttonStyle = {
     fontWeight: "normal",
     backgroundColor: "#b43434",
@@ -72,10 +72,10 @@ const surveyJson = {
     "showQuestionNumbers": "off"
 };
 
-const showPopupAlert = (pain) =>{
-    if(pain < 5){
+const showPopupAlert = (pain) => {
+    if (pain < 5) {
         swal("Happy to know", "You are on track with your progress, You got this!", "success");
-    }else{
+    } else {
         swal("Sorry to hear that", "We have informed the doctor and you will hear back soon", "warning");
     }
 }
@@ -104,10 +104,10 @@ function SurveyPage({ currentDay, googleUser }) {
     var myCss = {
         navigationButton: "button-btn-lg",
     };
-        
+
     return (
         <div>
-            <Survey model={survey} onValueChanged={surveyValueChanged} css={myCss}/>
+            <Survey model={survey} onValueChanged={surveyValueChanged} css={myCss} />
             <Button onClick={() => setPage("home")} sx={buttonStyle}>
                 Cancel
             </Button>
