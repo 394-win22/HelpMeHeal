@@ -8,7 +8,7 @@ import { SignInOut } from './SignInWithGoogle';
 import RegisterPage from './Register';
 import Doctor from '../doctor_components/Doctor';
 
-const GetUser = ({ googleUser }) => {
+const GetUser = ({ googleUser, isMobile }) => {
 
   const userType = useStore(state => state.userType);
   const setUserType = useStore(state => state.setUserType);
@@ -46,7 +46,7 @@ const GetUser = ({ googleUser }) => {
       case "patient":
         return (
           <div>
-            <User name={name} surgeryType={surgeryType} currentDay={currentDay} user={user} googleUser={googleUser} />
+            <User name={name} surgeryType={surgeryType} currentDay={currentDay} user={user} googleUser={googleUser} isMobile={isMobile} />
           </div>
         )
       case "doctor":

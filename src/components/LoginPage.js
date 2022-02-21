@@ -1,6 +1,6 @@
 import { SignInOut } from "./SignInWithGoogle"
 import React, { useState } from 'react';
-const LoginPage = () => {
+const LoginPage = ({isMobile}) => {
     /*To do 
         1. get user data from firebase, then find if there is data[user][userEmail]
         2. if not then go to register page
@@ -8,7 +8,7 @@ const LoginPage = () => {
        */
     return (
         <div>
-            <SignInOut />
+            <SignInOut isMobile={isMobile}/>
         </div>
     )
 }

@@ -1,14 +1,28 @@
 import LoginPage from './components/LoginPage';
-import { useGoogleUserState } from './utilities/firebase';
+import { useGoogleUserState, useUserState } from './utilities/firebase';
 import GetUser from './components/GetUser';
+import { useEffect, useState } from 'react';
 
 function App() {
   const [googleUser] = useGoogleUserState();
+  const [isMobile, setIsMobile] = useState(false);
+    //choose the screen size
+  const handleResize = () => {
+    if (window.innerWidth < 720) {
+      setIsMobile(true)
+    } else {
+      setIsMobile(false)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+  })
 
   return (
     <div className="App">
 
-      <div className="app-header">
+      <div className={isMobile ? "app-header mobile" : "app-header"}>
         <img className="logo" src="bannerlogo.jpg" />
         <h1>Help Me Heal</h1>
       </div>
@@ -16,10 +30,10 @@ function App() {
       <div>
         {googleUser ?
           <div>
-            <GetUser googleUser={googleUser} />
+            <GetUser googleUser={googleUser} isMobile={isMobile} />
           </div>
           :
-          <LoginPage />
+          <LoginPage isMobile={isMobile}/>
         }
       </div>
     </div>

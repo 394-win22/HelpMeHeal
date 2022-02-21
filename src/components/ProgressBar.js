@@ -3,7 +3,7 @@ import './ProgressBar.css';
 
 
 //TODO: add iterable as an argument and map it
-const ProgressIndicator = ({setActiveIndex, currentDay, phaseEndDay }) => {
+const ProgressIndicator = ({setActiveIndex, currentDay, phaseEndDay, isMobile }) => {
    
     const steps = []
 
@@ -30,7 +30,7 @@ const ProgressIndicator = ({setActiveIndex, currentDay, phaseEndDay }) => {
                     <li
                         key={step.index}
                         className={`
-            progress-step
+            ${isMobile ? "progress-step mobile" : "progress-step"}
             ${phase - 1 === step.index ? 'active' : 'inactive'}
             ${phase - 1 > step.index ? 'complete' : 'incomplete'}
           `}

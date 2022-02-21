@@ -1,8 +1,8 @@
 import { signInWithGoogle, signOut, useGoogleUserState, setData } from '../utilities/firebase.js';
 import Button from "@mui/material/Button";
-const buttonStyle = {
+const buttonStyle = (isMobile) => ({
     mx: 2,
-    width: 1 / 14,
+    width: isMobile ? '20vw' : '6rem',
     margin: '1%',
     bgcolor: "#b43434",
     borderRadius: 2,
@@ -13,19 +13,19 @@ const buttonStyle = {
     '&:focus': {
         bgcolor: "#b36464"
     },
-}
+})
 
-export const SignInOut = () => {
+export const SignInOut = ({isMobile}) => {
     const [user] = useGoogleUserState();
     const SignInButton = () => (
-        <Button sx={buttonStyle} onClick={() => {
+        <Button sx={() => buttonStyle(isMobile)} onClick={() => {
             signInWithGoogle()
         }
         }> Sign In </Button>
     );
 
     const SignOutButton = () => (
-        <Button sx={buttonStyle} onClick={() => signOut()}> Sign Out </Button>
+        <Button sx={() => buttonStyle(isMobile)} onClick={() => signOut()}> Sign Out </Button>
     );
     return (
         <div className="signInAndOut">

@@ -29,7 +29,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
   }
   
   .progress-step .step-number {
@@ -46,6 +45,13 @@
     z-index: 1;
     color: var(--red);
     transition: transform 0.5s ease 0.5s, background 0.5s ease, border-color 0.5s ease;
+  }
+
+  .progress-step.mobile .step-number {
+    height: 4px;
+    width: 4px;
+    font-size: 16px;
+    
   }
   
   .progress-step.incomplete .step-number {
@@ -89,6 +95,16 @@
   left: 50%;
   top: calc(32px);
 }
+
+.progress-step.mobile:not(:last-child):before,
+.progress-step.mobile:not(:last-child):after {
+  content: '';
+  position: absolute;
+  height: 4px;
+  left: 50%;
+  top: calc(26px);
+}
+
 
 .progress-step:before {
   width: 100%;
