@@ -6,9 +6,10 @@ import { Error404 } from "../components/404";
 import DoctorHomePage from './DoctorHomePage';
 import PatientDetail from './PatientDetail';
 
-const Doctor = ({ name }) => {
+const Doctor = ({ name, googleUser}) => {
     const [data, loadingData, errorData] = useData("/");
     const page = useStore(state => state.DoctorPage);
+    const [patientInfo, setpatientInfo] = useState("");
     // firebase data initialize
     useEffect(() => {
         if (data === undefined) return;
@@ -21,9 +22,9 @@ const Doctor = ({ name }) => {
     function getPage() {
         switch (page) {
             case "DoctorHome":
-                return <DoctorHomePage username={name} />;
+                return <DoctorHomePage username={name} data={data} googleUser={googleUser} setpatientInfo={setpatientInfo}/>;
             case "PatientDetail":
-                return <PatientDetail />;
+                return <PatientDetail patientInfo={ patientInfo }/>;
 
             default:
                 return <p>Sorry, there's been an error.</p>
