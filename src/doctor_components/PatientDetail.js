@@ -1,6 +1,7 @@
 import useStore from "../Store"
 import Button from '@mui/material/Button';
-const PatientDetail = () => {
+const PatientDetail = (patientInfo) => {
+    console.log(patientInfo.patientInfo.name)
     const setPage = useStore(state => state.setDoctorPage);
     const buttonStyle = {
         fontWeight: "normal",
@@ -18,7 +19,9 @@ const PatientDetail = () => {
     }
     return (
         <div>
-            <div>PatientDetail</div>
+            <div>
+                {patientInfo.patientInfo.name}
+            </div>
             <Button onClick={() => {
                 setPage("DoctorHome");
             }} sx={buttonStyle}>

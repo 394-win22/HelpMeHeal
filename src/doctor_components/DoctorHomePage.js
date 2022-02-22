@@ -9,12 +9,19 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import useStore from '../Store';
+import calculateDay from '../utilities/calculateday';
+import { maxHeight } from '@mui/system';
+import { connectStorageEmulator } from 'firebase/storage';
 
-const DoctorHomePage = ({ username }) => {
+const DoctorHomePage = ({ username, data, googleUser, setpatientInfo}) => {
     const setPage = useStore(state => state.setDoctorPage);
     const [tablePage, setTablePage] = useState(0);
     const [rowsPerTablePage, setRowsPerTablePage] = useState(5);
-    console.log(username)
+    const patientDict = data["user"][googleUser?.uid]["patientId"];
+
+    const patientsInfo = Object.keys(patientDict).map(key => data["user"][key])
+    console.log(patientsInfo)
+
     const handleChangePage = (event, newPage) => {
         setTablePage(newPage);
     };
@@ -24,9 +31,10 @@ const DoctorHomePage = ({ username }) => {
         setTablePage(0);
     };
 
-    const showPatientDetailPage = () => {
+    const showPatientDetailPage = (patientInfo) => {
         // set page
-        console.log("click");
+        //console.log(patientInfo);
+        setpatientInfo(patientInfo);
         setPage("PatientDetail");
     }
 
@@ -55,22 +63,27 @@ const DoctorHomePage = ({ username }) => {
         },
     }));
 
-    function createData(name, calories, fat, carbs, protein) {
-        return { name, calories, fat, carbs, protein };
+    const concernRow = (user) => {
+        const currDate = calculateDay(user.startDate);
+        console.log("c",currDate);
+        
+        if (user.surveyResults && user.surveyResults.length === currDate)
+        {
+            //console.log("k",Math.max(user.surveyResults.filter(n=>n).map));
+            if (user.surveyResults[currDate - 1].concerns)
+            {
+                return "Yes";
+            }
+            else
+            {
+                return "No";
+            }
+        } 
+        else
+        {
+            return "N/A" // maybe change in future
+        }
     }
-
-    const rows = [
-        createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-        createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-        createData('Eclair', 262, 16.0, 24, 6.0),
-        createData('Cupcake', 305, 3.7, 67, 4.3),
-        createData('Gingerbread', 356, 16.0, 49, 3.9),
-        createData('Gingerbread', 356, 16.0, 49, 3.9),
-        createData('Cupcake', 305, 3.7, 67, 4.3),
-        createData('Eclair', 262, 16.0, 24, 6.0),
-        createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-        createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    ];
 
     return (
 
@@ -83,24 +96,24 @@ const DoctorHomePage = ({ username }) => {
                     <Table sx={{ minWidth: 700 }} aria-label="customized table">
                         <TableHead>
                             <TableRow>
-                                <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-                                <StyledTableCell align="right">Calories</StyledTableCell>
-                                <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-                                <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-                                <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
+                                <StyledTableCell>Name</StyledTableCell>
+                                <StyledTableCell align="right">Status</StyledTableCell>
+                                <StyledTableCell align="right">Concerns</StyledTableCell>
+                                {/* <StyledTableCell align="right">Concer</StyledTableCell>
+                                <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell> */}
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {rows.slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage)
-                                .map((row) => (
-                                    <StyledTableRow hover key={row.name} onClick={() => showPatientDetailPage()}>
+                            {patientsInfo.slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage)
+                                .map((patientInfo) => (
+                                    <StyledTableRow hover key={patientInfo.email} onClick={() => showPatientDetailPage(patientInfo)}>
                                         <StyledTableCell component="th" scope="row">
-                                            {row.name}
+                                            {patientInfo.name}
                                         </StyledTableCell>
-                                        <StyledTableCell align="right">{row.calories}</StyledTableCell>
-                                        <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                                        <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                                        <StyledTableCell align="right">{row.protein}</StyledTableCell>
+                                        <StyledTableCell align="right">dummy</StyledTableCell>
+                                        <StyledTableCell align="right">{concernRow(patientInfo)}</StyledTableCell>
+                                        {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+                                        <StyledTableCell align="right">{row.protein}</StyledTableCell> */}
                                     </StyledTableRow>
                                 ))}
                         </TableBody>
@@ -109,7 +122,7 @@ const DoctorHomePage = ({ username }) => {
                 <TablePagination
                     rowsPerPageOptions={[5, 10, 15]}
                     component="div"
-                    count={rows.length}
+                    count={patientsInfo.length}
                     rowsPerPage={rowsPerTablePage}
                     page={tablePage}
                     onPageChange={handleChangePage}
