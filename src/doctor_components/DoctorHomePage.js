@@ -17,10 +17,9 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
     const setPage = useStore(state => state.setDoctorPage);
     const [tablePage, setTablePage] = useState(0);
     const [rowsPerTablePage, setRowsPerTablePage] = useState(5);
-    const patientDict = data["user"][googleUser?.uid]["patientId"];
+    const patientDict = data["user"][googleUser?.uid]["patientId"] ? data["user"][googleUser?.uid]["patientId"] : null;
 
-    const patientsInfo = Object.keys(patientDict).map(key => data["user"][key])
-    console.log(patientsInfo)
+    const patientsInfo = patientDict ? Object.keys(patientDict).map(key => data["user"][key]) : null;
 
     const handleChangePage = (event, newPage) => {
         setTablePage(newPage);
@@ -87,46 +86,47 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
             <div style={{ color: '#b43434', fontSize: 25, marginBottom: '4rem', marginTop: '4rem' }}>
                 <h2 style={{ textAlign: 'left' }}> Welcome back Doctor {username ? username : "Nobody"}, </h2>
             </div>
-            <Paper sx={TableContainerStyle}>
-                <TableContainer>
-                    <Table sx={{ minWidth: 700 }} aria-label="customized table">
-                        <TableHead>
-                            <TableRow>
-                                <StyledTableCell>Name</StyledTableCell>
-                                <StyledTableCell align="right">SurgeryType</StyledTableCell>
-                                <StyledTableCell align="right">Status</StyledTableCell>
-                                <StyledTableCell align="right">Concerns</StyledTableCell>
-                                {/* <StyledTableCell align="right">Concer</StyledTableCell>
+            {patientDict ?
+                <Paper sx={TableContainerStyle}>
+                    <TableContainer>
+                        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                            <TableHead>
+                                <TableRow>
+                                    <StyledTableCell>Name</StyledTableCell>
+                                    <StyledTableCell align="right">SurgeryType</StyledTableCell>
+                                    <StyledTableCell align="right">Status</StyledTableCell>
+                                    <StyledTableCell align="right">Concerns</StyledTableCell>
+                                    {/* <StyledTableCell align="right">Concer</StyledTableCell>
                                 <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell> */}
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {patientsInfo.slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage)
-                                .map((patientInfo) => (
-                                    <StyledTableRow hover key={patientInfo.email} onClick={() => showPatientDetailPage(patientInfo)}>
-                                        <StyledTableCell component="th" scope="row">
-                                            {patientInfo.name}
-                                        </StyledTableCell>
-                                        <StyledTableCell align="right">{patientInfo.surgeryType.toUpperCase()}</StyledTableCell>
-                                        <StyledTableCell align="right">dummy</StyledTableCell>
-                                        <StyledTableCell align="right">{concernRow(patientInfo)}</StyledTableCell>
-                                        {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {patientsInfo.slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage)
+                                    .map((patientInfo) => (
+                                        <StyledTableRow hover key={patientInfo.email} onClick={() => showPatientDetailPage(patientInfo)}>
+                                            <StyledTableCell component="th" scope="row">
+                                                {patientInfo.name}
+                                            </StyledTableCell>
+                                            <StyledTableCell align="right">{patientInfo.surgeryType.toUpperCase()}</StyledTableCell>
+                                            <StyledTableCell align="right">dummy</StyledTableCell>
+                                            <StyledTableCell align="right">{concernRow(patientInfo)}</StyledTableCell>
+                                            {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
                                         <StyledTableCell align="right">{row.protein}</StyledTableCell> */}
-                                    </StyledTableRow>
-                                ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer >
-                <TablePagination
-                    rowsPerPageOptions={[5, 10, 15]}
-                    component="div"
-                    count={patientsInfo.length}
-                    rowsPerPage={rowsPerTablePage}
-                    page={tablePage}
-                    onPageChange={handleChangePage}
-                    onRowsPerPageChange={handleChangeRowsPerPage}
-                />
-            </Paper>
+                                        </StyledTableRow>
+                                    ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer >
+                    <TablePagination
+                        rowsPerPageOptions={[5, 10, 15]}
+                        component="div"
+                        count={patientsInfo.length}
+                        rowsPerPage={rowsPerTablePage}
+                        page={tablePage}
+                        onPageChange={handleChangePage}
+                        onRowsPerPageChange={handleChangeRowsPerPage}
+                    />
+                </Paper> : "You have no patient yet!"}
         </div>
     );
 }
