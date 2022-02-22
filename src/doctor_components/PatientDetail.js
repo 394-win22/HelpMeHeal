@@ -75,12 +75,13 @@ const PatientDetail = (patientInfo) => {
                 <h2>{patientInfo.patientInfo.name}</h2>
                 <a href={"mailto:" + patientInfo.patientInfo.email}>{patientInfo.patientInfo.email}</a>
             </div>
-            <div style={{
-                display: "flex", alignItems: "flex-start", flexDirection: "column", justifyContent: "flex-start",
-                marginTop: "3rem"
-            }}>
-                <h3 style={{ marginLeft: "10%" }}>Survey Results </h3>
-                {patientInfo.patientInfo.surveyResults ?
+            {patientInfo.patientInfo.surveyResults ?
+                <div style={{
+                    display: "flex", alignItems: "flex-start", flexDirection: "column", justifyContent: "flex-start",
+                    marginTop: "3rem"
+                }}>
+                    <h3 style={{ marginLeft: "10%" }}>Survey Results </h3>
+
                     <Paper sx={TableContainerStyle}>
                         <TableContainer>
                             <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -118,8 +119,8 @@ const PatientDetail = (patientInfo) => {
                             onPageChange={handleChangePage}
                             onRowsPerPageChange={handleChangeRowsPerPage}
                         />
-                    </Paper> : "No survey Result yet"}
-            </div>
+                    </Paper>
+                </div> : <div style={{ textAlign: "center", marginTop: "10px" }}><strong>No survey Result yet!</strong></div>}
             <Button onClick={() => {
                 setPage("DoctorHome");
             }} sx={buttonStyle}>
