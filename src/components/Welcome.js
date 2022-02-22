@@ -7,7 +7,7 @@ const Welcome = ({ username, surgeryType, firebaseData, activeIndex, currentDay,
     for (const [key,] of Object.entries(daysDict)) {
         if (currentDay >= key) {
             daysHasMessage = key
-        }
+        } 
     }
 
     return (
@@ -17,7 +17,7 @@ const Welcome = ({ username, surgeryType, firebaseData, activeIndex, currentDay,
             </div>
 
             <div style={{ textAlign: 'left', fontSize: '1.9rem', marginBottom: '20vh' }}>
-                Today you are in <b>phase {activeIndex}</b> of your ACL recovery. <br /> <br />
+                Today you are on <b>phase {activeIndex}, day {currentDay}</b> of your ACL recovery. <br /> <br />
                 {Object.entries(firebaseData.surgery) // First: entry 'ACL'
                     .filter(data => data[0] === surgeryType)
                     .map(data => {

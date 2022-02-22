@@ -81,7 +81,7 @@ const RegisterPage = ({ googleUser }) => {
                 required
                 disabled={userType === 'doctor' ? true : false}
                 error={userType === 'patient' ? !ValidatePatientCode(textValue, userData) : false}
-                helperText='Must be the code get from your doctor!'
+                helperText='Please enter code provided by doctor.'
                 onChange={e => {
                     setTextValue(e.target.value)
                 }}

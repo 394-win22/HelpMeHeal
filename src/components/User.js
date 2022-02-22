@@ -6,7 +6,7 @@ import { Loading } from "./Loading";
 import { Error404 } from "./404";
 import HomePage from './HomePage';
 
-function User({ name, surgeryType, currentDay, user, googleUser, isMobile }) {
+function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCurrentDay }) {
     const setPage = useStore(state => state.setUserPage);
     const page = useStore(state => state.UserPage);
     const [data, loadingData, errorData] = useData("/");
@@ -34,14 +34,18 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile }) {
                     setActiveIndex={setActiveIndex}
                     user={user}
                     isMobile={isMobile}
+                    setCurrentDay={setCurrentDay}
                 />;
             case "survey":
                 return <SurveyPage currentDay={currentDay} googleUser={googleUser} data={data} />;
+    
 
             default:
                 return <p>Sorry, there's been an error.</p>
         }
     }
+
+
 
     return (
         <div>
