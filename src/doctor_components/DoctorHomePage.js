@@ -13,7 +13,7 @@ import calculateDay from '../utilities/calculateday';
 import { maxHeight } from '@mui/system';
 import { connectStorageEmulator } from 'firebase/storage';
 
-const DoctorHomePage = ({ username, data, googleUser, setpatientInfo}) => {
+const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
     const setPage = useStore(state => state.setDoctorPage);
     const [tablePage, setTablePage] = useState(0);
     const [rowsPerTablePage, setRowsPerTablePage] = useState(5);
@@ -65,22 +65,18 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo}) => {
 
     const concernRow = (user) => {
         const currDate = calculateDay(user.startDate);
-        console.log("c",currDate);
-        
-        if (user.surveyResults && user.surveyResults.length === currDate)
-        {
+        console.log("c", currDate);
+
+        if (user.surveyResults && user.surveyResults.length === currDate) {
             //console.log("k",Math.max(user.surveyResults.filter(n=>n).map));
-            if (user.surveyResults[currDate - 1].concerns)
-            {
+            if (user.surveyResults[currDate - 1].concerns) {
                 return "Yes";
             }
-            else
-            {
+            else {
                 return "No";
             }
-        } 
-        else
-        {
+        }
+        else {
             return "N/A" // maybe change in future
         }
     }
@@ -97,6 +93,7 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo}) => {
                         <TableHead>
                             <TableRow>
                                 <StyledTableCell>Name</StyledTableCell>
+                                <StyledTableCell align="right">SurgeryType</StyledTableCell>
                                 <StyledTableCell align="right">Status</StyledTableCell>
                                 <StyledTableCell align="right">Concerns</StyledTableCell>
                                 {/* <StyledTableCell align="right">Concer</StyledTableCell>
@@ -110,6 +107,7 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo}) => {
                                         <StyledTableCell component="th" scope="row">
                                             {patientInfo.name}
                                         </StyledTableCell>
+                                        <StyledTableCell align="right">{patientInfo.surgeryType.toUpperCase()}</StyledTableCell>
                                         <StyledTableCell align="right">dummy</StyledTableCell>
                                         <StyledTableCell align="right">{concernRow(patientInfo)}</StyledTableCell>
                                         {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
