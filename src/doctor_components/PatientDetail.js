@@ -13,8 +13,6 @@ import Button from '@mui/material/Button';
 
 
 const PatientDetail = (patientInfo) => {
-    console.log(patientInfo.patientInfo)
-    console.log(patientInfo.patientInfo.surveyResults[1])
 
     const setPage = useStore(state => state.setDoctorPage);
     const [tablePage, setTablePage] = useState(0);
@@ -82,43 +80,45 @@ const PatientDetail = (patientInfo) => {
                 marginTop: "3rem"
             }}>
                 <h3 style={{ marginLeft: "10%" }}>Survey Results </h3>
-                <Paper sx={TableContainerStyle}>
-                    <TableContainer>
-                        <Table sx={{ minWidth: 700 }} aria-label="customized table">
-                            <TableHead>
-                                <TableRow>
-                                    <StyledTableCell>Pain Level</StyledTableCell>
-                                    <StyledTableCell align="right">Rehab Successful</StyledTableCell>
-                                    <StyledTableCell align="right">Concerns</StyledTableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {patientInfo.patientInfo.surveyResults.slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage)
-                                    .map((surveyResult) => (
-                                        <StyledTableRow hover key={surveyResult.key} >
-                                            <StyledTableCell component="th" scope="row">
-                                                {surveyResult.pain_rating}
-                                            </StyledTableCell>
-                                            <StyledTableCell align="right">{surveyResult.rehab_successful}</StyledTableCell>
-                                            <StyledTableCell align="right">{surveyResult.concerns}</StyledTableCell>
-                                            {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+                {patientInfo.patientInfo.surveyResults ?
+                    <Paper sx={TableContainerStyle}>
+                        <TableContainer>
+                            <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                                <TableHead>
+                                    <TableRow>
+                                        <StyledTableCell>Pain Level</StyledTableCell>
+                                        <StyledTableCell align="right">Rehab Successful</StyledTableCell>
+                                        <StyledTableCell align="right">Concerns</StyledTableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {
+                                        patientInfo.patientInfo.surveyResults.slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage)
+                                            .map((surveyResult) => (
+                                                <StyledTableRow hover key={surveyResult.key} >
+                                                    <StyledTableCell component="th" scope="row">
+                                                        {surveyResult.pain_rating}
+                                                    </StyledTableCell>
+                                                    <StyledTableCell align="right">{surveyResult.rehab_successful}</StyledTableCell>
+                                                    <StyledTableCell align="right">{surveyResult.concerns}</StyledTableCell>
+                                                    {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
                                         <StyledTableCell align="right">{row.protein}</StyledTableCell> */}
-                                        </StyledTableRow>
-                                    ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer >
-                    <TablePagination
-                        rowsPerPageOptions={[5, 10, 15]}
-                        component="div"
-                        // first in array is empty, adjust for it in length
-                        count={patientInfo.patientInfo.surveyResults.length - 1}
-                        rowsPerPage={rowsPerTablePage}
-                        page={tablePage}
-                        onPageChange={handleChangePage}
-                        onRowsPerPageChange={handleChangeRowsPerPage}
-                    />
-                </Paper>
+                                                </StyledTableRow>
+                                            ))}
+                                </TableBody>
+                            </Table>
+                        </TableContainer >
+                        <TablePagination
+                            rowsPerPageOptions={[5, 10, 15]}
+                            component="div"
+                            // first in array is empty, adjust for it in length
+                            count={patientInfo.patientInfo.surveyResults.length - 1}
+                            rowsPerPage={rowsPerTablePage}
+                            page={tablePage}
+                            onPageChange={handleChangePage}
+                            onRowsPerPageChange={handleChangeRowsPerPage}
+                        />
+                    </Paper> : "No survey Result yet"}
             </div>
             <Button onClick={() => {
                 setPage("DoctorHome");
