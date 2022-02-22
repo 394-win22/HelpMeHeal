@@ -30,7 +30,7 @@ const ProgressBar = ({steps, phase, currentDay, phaseEndDay, isMobile, onPhaseCl
 const ProgressBarZoomed =  ({currentDay, phase, totalDays, onPhaseClick }) => {
     return (
         <div>
-            <h3 style={{color: "rgb(155, 11, 11)"}}>{currentDay}/{totalDays} days complete</h3>
+            <h3 style={{color: "rgb(155, 11, 11)"}}>{currentDay}/{totalDays} days complete in this phase</h3>
             <Box sx={{mr:'25%', ml:'25%'}}>        
                 <LinearProgress color='error' variant='determinate' value={Math.floor((currentDay/totalDays)*100)} />
             </Box>
@@ -65,13 +65,15 @@ const ProgressIndicator = ({setActiveIndex, currentDay, phaseEndDay, isMobile })
         var dict = { index: key - 1, label: 'Phase ' + key }
         steps.push(dict)
     }
-    const totalDays = phaseEndDay[phase];
+    const totalDays = phase > 1 ? phaseEndDay[phase] - phaseEndDay[phase-1] : phaseEndDay[phase];
+    
+    const currentDayPhase = phase > 1 ? currentDay - phaseEndDay[phase-1] : currentDay;
    
 
     return(
         <div>
-            {isZoom ? <ProgressBarZoomed totalDays={totalDays} phase={phase} currentDay={currentDay} phaseEndDay={phaseEndDay} onPhaseClick={() => setZoom(!isZoom)}  /> : 
-            <ProgressBar steps={steps} phase={phase} currentDay={currentDay} phaseEndDay={phaseEndDay} isMobile={isMobile} onPhaseClick={() => setZoom(!isZoom)} />}
+            {isZoom ? <ProgressBarZoomed totalDays={totalDays} phase={phase} currentDay={currentDayPhase} phaseEndDay={phaseEndDay} onPhaseClick={() => setZoom(!isZoom)}  /> : 
+            <ProgressBar steps={steps} phase={phase} currentDay={currentDayPhase} phaseEndDay={phaseEndDay} isMobile={isMobile} onPhaseClick={() => setZoom(!isZoom)} />}
         </div>
     );
 
