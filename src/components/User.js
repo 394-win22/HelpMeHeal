@@ -37,7 +37,7 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
                     setCurrentDay={setCurrentDay}
                 />;
             case "survey":
-                return <SurveyPage currentDay={currentDay} googleUser={googleUser} data={data} />;
+                return <SurveyPage currentDay={currentDay} user={user} googleUser={googleUser} data={data} />;
     
 
             default:
