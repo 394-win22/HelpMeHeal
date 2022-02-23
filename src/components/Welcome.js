@@ -7,7 +7,7 @@ const Welcome = ({ username, surgeryType, firebaseData, activeIndex, currentDay,
     for (const [key,] of Object.entries(daysDict)) {
         if (currentDay >= key) {
             daysHasMessage = key
-        } 
+        }
     }
 
     const progressComplete = currentDay >= phaseEndDay[Object.entries(phaseEndDay).length];
@@ -19,7 +19,7 @@ const Welcome = ({ username, surgeryType, firebaseData, activeIndex, currentDay,
             </div>
 
             <div style={{ textAlign: 'left', fontSize: '1.9rem', marginBottom: '20vh' }}>
-                Today you are on <b>phase {activeIndex}, day {progressComplete 
+                Today you are on <b>phase {activeIndex}, day {progressComplete
                     ? phaseEndDay[Object.entries(phaseEndDay).length]
                     : currentDay}</b> of your ACL recovery. <br /> <br />
                 {Object.entries(firebaseData.surgery) // First: entry 'ACL'
