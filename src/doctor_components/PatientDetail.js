@@ -10,28 +10,78 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
+import { Line } from 'react-chartjs-2';
 import {
-    // main component
-    Chart,
-    // graphs
-    Bars, Cloud, Dots, Labels, Lines, Pies, RadialLines, Ticks, Title,
-    // wrappers
-    Layer, Animate, Transform, Handlers,
-    // helpers
-    helpers, DropShadow, Gradient
-} from 'rumble-charts';
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+} from 'chart.js';
+
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+);
 
 const PatientDetail = (patientInfo) => {
 
     const setPage = useStore(state => state.setDoctorPage);
     const [tablePage, setTablePage] = useState(0);
     const [rowsPerTablePage, setRowsPerTablePage] = useState(5);
+
+    // handle the graph
     var painData = [];
     // obtain pain level of each patient
     {
         patientInfo.patientInfo.surveyResults.map((surveyResult) => painData.push(surveyResult.pain_rating));
         console.log(painData);
     }
+
+    const options = {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+                font: {
+                    size: 26,
+                },
+            },
+            title: {
+                display: true,
+                text: 'Patients Detail',
+                font: {
+                    size: 26,
+                },
+                padding: {
+                    top: 30,
+                    bottom: 15
+                }
+            },
+        },
+    };
+
+    const labels = ['Day1', 'Day2', 'Day3', 'Day4', 'Day5'];
+
+    const data = {
+        labels,
+        datasets: [
+            {
+                label: 'Pain Level',
+                data: painData,
+                borderColor: 'rgb(255, 99, 132)',
+                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            }
+        ],
+    };
 
     const handleChangePage = (event, newPage) => {
         setTablePage(newPage);
@@ -137,41 +187,8 @@ const PatientDetail = (patientInfo) => {
                     </Paper>
                 </div> : <div style={{ textAlign: "center", marginTop: "10px" }}><strong>No survey Result yet!</strong></div>}
 
-            <div>
-                <Chart width={600}
-                       height={250}
-                       series={[{data: painData}]}
-                       minY={0}
-                       maxY={20}>
-                    <Ticks
-                        axis="y"
-                        labelStyle={{
-                            dominantBaseline: 'middle',
-                            fill: 'lightgray',
-                            textAnchor: 'end'
-                        }}
-                        lineLength="100%"
-                        lineStyle={{
-                            stroke: 'lightgray'
-                        }}
-                        lineVisible/>
-                    <Ticks
-                        axis="x"
-                        label={function noRefCheck(){}}
-                        labelStyle={{
-                            dominantBaseline: 'text-before-edge',
-                            fill: 'lightgray',
-                            textAnchor: 'middle'
-                        }}/>
-                    <Lines lineWidth={3} />
-                    <Dots
-                        className="dots"
-                        dotStyle={{
-                            fillOpacity: 1,
-                            transition: 'all 250ms'
-                        }}
-                    />
-                </Chart>
+            <div style={{ width:"50%", height:"30%", margin:"0 auto"}}>
+                <Line options={options} data={data} />
             </div>
 
             <Button onClick={() => {
