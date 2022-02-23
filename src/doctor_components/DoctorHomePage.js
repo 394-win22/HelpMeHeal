@@ -13,6 +13,8 @@ import calculateDay from '../utilities/calculateday';
 import { maxHeight } from '@mui/system';
 import { connectStorageEmulator } from 'firebase/storage';
 import CreateFakePatient from './CreateFakePatient';
+import ErrorIcon from '@mui/icons-material/Error';
+
 const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
     const setPage = useStore(state => state.setDoctorPage);
     const [tablePage, setTablePage] = useState(0);
@@ -62,6 +64,10 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
         },
     }));
 
+    const styleIcon = {
+        backgroundColor: "red"
+    };
+
     const concernRow = (user) => {
         const currDate = calculateDay(user.startDate);
         console.log("c", currDate);
@@ -78,7 +84,28 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
         else {
             return "N/A" // maybe change in future
         }
-    }
+    };
+
+    const statusIcon = (user) => {
+        const currDate = calculateDay(user.startDate);
+        console.log("c", currDate);
+
+        if (user.surveyResults && user.surveyResults.length === currDate) {
+            //console.log("k",Math.max(user.surveyResults.filter(n=>n).map));
+            if (user.surveyResults[currDate - 1].concerns) {
+                return (<div style={{color: '#b43434' }}>
+                            <ErrorIcon sx={{styleIcon}}/>
+                        </div>);
+            }
+            else {
+                return " "
+            }
+        }
+        else {
+            return "N/A" // maybe change in future
+        }
+    };
+
 
     return (
 
@@ -94,9 +121,9 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
                             <TableHead>
                                 <TableRow>
                                     <StyledTableCell>Name</StyledTableCell>
-                                    <StyledTableCell align="right">SurgeryType</StyledTableCell>
-                                    <StyledTableCell align="right">Status</StyledTableCell>
-                                    <StyledTableCell align="right">Concerns</StyledTableCell>
+                                    <StyledTableCell align="center">SurgeryType</StyledTableCell>
+                                    <StyledTableCell align="center">Status</StyledTableCell>
+                                    <StyledTableCell align="center">Concerns</StyledTableCell>
                                     {/* <StyledTableCell align="right">Concer</StyledTableCell>
                                 <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell> */}
                                 </TableRow>
@@ -108,9 +135,9 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
                                             <StyledTableCell component="th" scope="row">
                                                 {patientInfo.name}
                                             </StyledTableCell>
-                                            <StyledTableCell align="right">{patientInfo.surgeryType.toUpperCase()}</StyledTableCell>
-                                            <StyledTableCell align="right">dummy</StyledTableCell>
-                                            <StyledTableCell align="right">{concernRow(patientInfo)}</StyledTableCell>
+                                            <StyledTableCell align="center">{patientInfo.surgeryType.toUpperCase()}</StyledTableCell>
+                                            <StyledTableCell align="center">{statusIcon(patientInfo)}</StyledTableCell>
+                                            <StyledTableCell align="center">{concernRow(patientInfo)}</StyledTableCell>
                                             {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
                                         <StyledTableCell align="right">{row.protein}</StyledTableCell> */}
                                         </StyledTableRow>
