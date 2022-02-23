@@ -27,6 +27,7 @@ const HomePage = ({ data, currentDay, surgeryType, name, type, setPage, activeIn
     const doctorEmail = data["user"][user.doctorId]["email"];
     return (
         <div>
+
             {/* the zero bellow has to change userid as its real id later */}
             <ProgressIndicator setActiveIndex={setActiveIndex} currentDay={currentDay} phaseEndDay={data["surgery"][surgeryType]["phaseEndDay"]} isMobile={isMobile} />
             <SwitchDay currentDay={currentDay} setCurrentDay={setCurrentDay} isMobile={isMobile} phaseEndDay={data["surgery"][surgeryType]["phaseEndDay"]}/>
@@ -38,7 +39,6 @@ const HomePage = ({ data, currentDay, surgeryType, name, type, setPage, activeIn
                     // handleShowEmailFormClose={handleShowEmailFormClose} 
                     setPage={setPage}
     user={user}/>*/}
-
 
         </div>
     )

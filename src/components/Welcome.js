@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import calculateDay from '../utilities/calculateday';
 
-const Welcome = ({ username, surgeryType, firebaseData, activeIndex, currentDay, daysDict }) => {
+const Welcome = ({ username, surgeryType, firebaseData, activeIndex, currentDay, daysDict, phaseEndDay }) => {
     let daysHasMessage;
 
     for (const [key,] of Object.entries(daysDict)) {
@@ -10,6 +10,8 @@ const Welcome = ({ username, surgeryType, firebaseData, activeIndex, currentDay,
         } 
     }
 
+    const progressComplete = currentDay >= phaseEndDay[Object.entries(phaseEndDay).length];
+
     return (
         <div style={{ width: '55%', marginLeft: '23%', marginBottom: "10%" }}>
             <div style={{ color: '#b43434', fontSize: 25, marginBottom: '4rem', marginTop: '4rem' }}>
@@ -17,7 +19,9 @@ const Welcome = ({ username, surgeryType, firebaseData, activeIndex, currentDay,
             </div>
 
             <div style={{ textAlign: 'left', fontSize: '1.9rem', marginBottom: '20vh' }}>
-                Today you are on <b>phase {activeIndex}, day {currentDay}</b> of your ACL recovery. <br /> <br />
+                Today you are on <b>phase {activeIndex}, day {progressComplete 
+                    ? phaseEndDay[Object.entries(phaseEndDay).length]
+                    : currentDay}</b> of your ACL recovery. <br /> <br />
                 {Object.entries(firebaseData.surgery) // First: entry 'ACL'
                     .filter(data => data[0] === surgeryType)
                     .map(data => {
