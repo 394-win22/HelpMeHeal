@@ -18,7 +18,7 @@ const buttonStyle = () => ({
 
 const CreateFakeData = ({ googleUser }) => {
     const id = "Fake" + getRefByPush('/');
-    const fakesurveydata = { pain_rating: 6, rehab_successful: Array(1), concerns: "I can't finish the rehab exercise, because it is so painful." }
+    const fakesurveydata = { pain_rating: 6, rehab_successful: ['No'], concerns: "I can't finish the rehab exercise, because it is so painful." }
     setData(`/user/${id}/userType`, "patient");
     setData(`/user/${id}/name`, "FakePatient");
     setData(`/user/${id}/startDate`, Date.now() - 86400000 * 5);
