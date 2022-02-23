@@ -32,12 +32,12 @@ const HomePage = ({ data, currentDay, surgeryType, name, type, setPage, activeIn
             <SwitchDay currentDay={currentDay} setCurrentDay={setCurrentDay} isMobile={isMobile} phaseEndDay={data["surgery"][surgeryType]["phaseEndDay"]}/>
             <Welcome username={name} surgeryType={surgeryType} firebaseData={data} activeIndex={activeIndex} currentDay={currentDay} daysDict={data["surgery"][surgeryType]["days"]} />
             
-            <NavBar data={data} 
+            {/*<NavBar data={data} 
                     // showEmailForm={showEmailForm} 
                     // setShowEmailForm={setShowEmailForm} 
                     // handleShowEmailFormClose={handleShowEmailFormClose} 
                     setPage={setPage}
-                    user={user}/>
+    user={user}/>*/}
 
 
         </div>

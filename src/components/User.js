@@ -5,6 +5,8 @@ import React, { useEffect, useState } from 'react';
 import { Loading } from "./Loading";
 import { Error404 } from "./404";
 import HomePage from './HomePage';
+import PlayVideo  from './PlayVideo';
+import NavBar from './NavBar';
 
 function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCurrentDay }) {
     const setPage = useStore(state => state.setUserPage);
@@ -38,7 +40,8 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
                 />;
             case "survey":
                 return <SurveyPage currentDay={currentDay} user={user} googleUser={googleUser} data={data} />;
-    
+            case "playVideo":
+                return <PlayVideo currentDay={currentDay} data={data["surgery"][surgeryType]} />;
 
             default:
                 return <p>Sorry, there's been an error.</p>
@@ -50,7 +53,14 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
     return (
         <div>
             {getPage()}
+            <NavBar data={data} 
+            // showEmailForm={showEmailForm} 
+            // setShowEmailForm={setShowEmailForm} 
+            // handleShowEmailFormClose={handleShowEmailFormClose} 
+            setPage={setPage}
+            user={user}/>
         </div>
+        
     );
 }
 

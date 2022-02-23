@@ -1,5 +1,4 @@
 import React from "react";
-import './YouTubeEmbed.css';
 import YoutubeEmbed from "./YouTubeEmbed";
 
 const PlayVideo = ({ currentDay, data }) => {
@@ -15,13 +14,9 @@ const PlayVideo = ({ currentDay, data }) => {
         }
     }
 
-    console.log("phase: "+phase);
-    console.log("url: "+ data["videoUrls"][phase-1]);
-
-    console.log("came here to load video");
     return (
         <div>
-        <h1>Youtube Embed</h1>
+        <h1>Please do these exercises</h1>
         <YoutubeEmbed embedId={data["videoUrls"][phase-1]} />
         </div>
     );
