@@ -4,6 +4,7 @@ import AppBar from '@mui/material/AppBar';
 import EmailIcon from '@mui/icons-material/Email';
 import Button from '@mui/material/Button';
 import FactCheckIcon from '@mui/icons-material/FactCheck';
+import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
 import MailTo from './emailWidget';
 
 const IconStyle = {
@@ -34,7 +35,9 @@ const NavBar = ({data, setPage, user}) => {
             <Button onClick={() => setPage("survey")} style={{ marginLeft: "5rem" }}>
                 <FactCheckIcon sx={IconStyle} />
             </Button>
-            {/* sai put the button here and add the imports */}
+            <Button onClick={() => setPage("playVideo")} style={{ marginLeft: "5rem" }}>
+                <PlayCircleFilledWhiteIcon sx={IconStyle} />
+            </Button>
         </AppBar>
     
     )

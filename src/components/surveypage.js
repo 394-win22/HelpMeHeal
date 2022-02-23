@@ -64,12 +64,6 @@ function SurveyPage({ currentDay, user, googleUser, data }) {
             <Button onClick={() => setPage("home")} sx={buttonStyle}>
                 Cancel
             </Button>
-            <NavBar data={data} 
-                    // showEmailForm={showEmailForm} 
-                    // setShowEmailForm={setShowEmailForm} 
-                    // handleShowEmailFormClose={handleShowEmailFormClose} 
-                    setPage={setPage}
-                    user={user}/>
         </div >
     );
 }
