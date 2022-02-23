@@ -22,7 +22,7 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
     const [tablePage, setTablePage] = useState(0);
     const [rowsPerTablePage, setRowsPerTablePage] = useState(5);
     const [searchTerm, setSearchTerm] = useState("");
-    
+
     const patientDict = data["user"][googleUser?.uid]["patientId"] ? data["user"][googleUser?.uid]["patientId"] : null;
 
     const patientsInfo = patientDict ? Object.keys(patientDict).map(key => data["user"][key]) : null;
@@ -37,8 +37,7 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
     };
 
     const showPatientDetailPage = (patientInfo) => {
-        // set page
-        //console.log(patientInfo);
+
         setpatientInfo(patientInfo);
         setPage("PatientDetail");
     }
@@ -91,14 +90,13 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
 
     const statusIcon = (user) => {
         const currDate = calculateDay(user.startDate);
-        console.log("c", currDate);
 
         if (user.surveyResults && user.surveyResults.length === currDate) {
             //console.log("k",Math.max(user.surveyResults.filter(n=>n).map));
             if (user.surveyResults[currDate - 1].concerns) {
-                return (<div style={{color: '#b43434' }}>
-                            <ErrorIcon sx={{styleIcon}}/>
-                        </div>);
+                return (<div style={{ color: '#b43434' }}>
+                    <ErrorIcon sx={{ styleIcon }} />
+                </div>);
             }
             else {
                 return " "
@@ -108,7 +106,7 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
             return "N/A" // maybe change in future
         }
     };
-    
+
 
     return (
 
@@ -117,7 +115,7 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
                 <h2 style={{ textAlign: 'center' }}> Welcome back Doctor {username ? username : "Nobody"}, </h2>
                 <CreateFakePatient googleUser={googleUser} />
             </div>
-                    
+
             {patientDict ?
                 <Paper sx={TableContainerStyle}>
                     <div style={{ marginBottom: '2rem', float: 'right', marginRight: '2rem', width: '40%', marginTop: '2rem' }}>
