@@ -35,7 +35,7 @@ const CreateFakeData = ({ googleUser }) => {
 
 const CreateFakePatient = (googleUser) => {
     return (
-        <Button sx={() => buttonStyle()} onClick={() => CreateFakeData(googleUser)}> CreatePatient </Button>
+        <Button sx={() => buttonStyle()} onClick={() => CreateFakeData(googleUser)}> CreateFakePatient </Button>
     )
 }
 
