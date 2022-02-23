@@ -34,6 +34,7 @@ const NavBar = ({data, setPage, user}) => {
             <Button onClick={() => setPage("survey")} style={{ marginLeft: "5rem" }}>
                 <FactCheckIcon sx={IconStyle} />
             </Button>
+            {/* sai put the button here and add the imports */}
         </AppBar>
     
     )
