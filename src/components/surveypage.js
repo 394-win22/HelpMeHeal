@@ -48,6 +48,7 @@ function SurveyPage({ currentDay, googleUser, data }) {
         .onComplete
         .add(function (sender) {
             setData(`/user/${googleUser?.uid}/surveyResults/${currentDay - 1}`, sender.data);
+            console.log(sender.data);
             showPopupAlert(sender.data.pain_rating);
             setPage("home");
         });
