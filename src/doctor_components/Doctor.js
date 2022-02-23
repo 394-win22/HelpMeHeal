@@ -10,6 +10,8 @@ const Doctor = ({ name, googleUser }) => {
     const [data, loadingData, errorData] = useData("/");
     const page = useStore(state => state.DoctorPage);
     const [patientInfo, setpatientInfo] = useState("");
+    
+    
     // firebase data initialize
     useEffect(() => {
         if (data === undefined) return;
