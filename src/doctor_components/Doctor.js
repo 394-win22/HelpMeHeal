@@ -6,7 +6,7 @@ import { Error404 } from "../components/404";
 import DoctorHomePage from './DoctorHomePage';
 import PatientDetail from './PatientDetail';
 
-const Doctor = ({ name, googleUser}) => {
+const Doctor = ({ name, googleUser }) => {
     const [data, loadingData, errorData] = useData("/");
     const page = useStore(state => state.DoctorPage);
     const [patientInfo, setpatientInfo] = useState("");
@@ -22,9 +22,9 @@ const Doctor = ({ name, googleUser}) => {
     function getPage() {
         switch (page) {
             case "DoctorHome":
-                return <DoctorHomePage username={name} data={data} googleUser={googleUser} setpatientInfo={setpatientInfo}/>;
+                return <DoctorHomePage username={name} data={data} googleUser={googleUser} setpatientInfo={setpatientInfo} />;
             case "PatientDetail":
-                return <PatientDetail patientInfo={ patientInfo }/>;
+                return <PatientDetail patientInfo={patientInfo} />;
 
             default:
                 return <p>Sorry, there's been an error.</p>

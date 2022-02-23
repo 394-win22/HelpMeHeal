@@ -12,7 +12,7 @@ import useStore from '../Store';
 import calculateDay from '../utilities/calculateday';
 import { maxHeight } from '@mui/system';
 import { connectStorageEmulator } from 'firebase/storage';
-
+import CreateFakePatient from './CreateFakePatient';
 const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
     const setPage = useStore(state => state.setDoctorPage);
     const [tablePage, setTablePage] = useState(0);
@@ -85,6 +85,7 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
         <div>
             <div style={{ color: '#b43434', fontSize: 25, marginBottom: '4rem', marginTop: '4rem' }}>
                 <h2 style={{ textAlign: 'center' }}> Welcome back Doctor {username ? username : "Nobody"}, </h2>
+                <CreateFakePatient googleUser={googleUser} />
             </div>
             {patientDict ?
                 <Paper sx={TableContainerStyle}>
