@@ -2,7 +2,7 @@ import User from './User';
 import '../App.css';
 import useStore from '../Store';
 import React, { useEffect, useState } from 'react';
-import { useUserState, useGoogleUserState } from '../utilities/firebase';
+import { useUserState } from '../utilities/firebase';
 import calculateDay from '../utilities/calculateday';
 import { SignInOut } from './SignInWithGoogle';
 import RegisterPage from './Register';
@@ -46,11 +46,11 @@ const GetUser = ({ googleUser, isMobile }) => {
       case "patient":
         return (
           <div>
-            <User name={name} surgeryType={surgeryType} currentDay={currentDay} user={user} googleUser={googleUser} isMobile={isMobile} setCurrentDay={setCurrentDay}/>
+            <User name={name} surgeryType={surgeryType} currentDay={currentDay} user={user} googleUser={googleUser} isMobile={isMobile} setCurrentDay={setCurrentDay} />
           </div>
         )
       case "doctor":
-        return <Doctor name={name} googleUser={ googleUser}/>
+        return <Doctor name={name} googleUser={googleUser} />
       default:
         return <p>Sorry, there's been an error.</p>
     }

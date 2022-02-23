@@ -1,14 +1,8 @@
 import React, { useState } from 'react';
-import Box from '@mui/material/Box';
-import AppBar from '@mui/material/AppBar';
-import EmailIcon from '@mui/icons-material/Email';
-import Button from '@mui/material/Button';
 import ProgressIndicator from './ProgressBar';
 import Welcome from './Welcome';
-import FactCheckIcon from '@mui/icons-material/FactCheck';
-import MailTo from './emailWidget';
 import { SwitchDay } from './SwitchDay'
-import NavBar from './NavBar';
+
 
 const IconStyle = {
     color: 'white',
@@ -23,7 +17,7 @@ const IconStyle = {
 }
 
 const HomePage = ({ data, currentDay, surgeryType, name, type, setPage, activeIndex, setActiveIndex, user, isMobile, setCurrentDay }) => {
-    console.log(user)
+
     const doctorEmail = data["user"][user.doctorId]["email"];
     return (
         <div>

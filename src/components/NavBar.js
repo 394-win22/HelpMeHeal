@@ -19,18 +19,18 @@ const IconStyle = {
     },
 }
 
-const NavBar = ({data, setPage, user}) => {
+const NavBar = ({ data, setPage, user }) => {
     const doctorEmail = data["user"][user.doctorId]["email"];
     const [showEmailForm, setShowEmailForm] = useState(false);
     const handleShowEmailFormClose = () => setShowEmailForm(false);
     return (
         <AppBar position="sticky" color="primary" sx={{ top: 'auto', bottom: 0, background: '#b43434', flexDirection: 'row', justifyContent: 'center', p: 2 }}>
             <Button onClick={() => setShowEmailForm(true)}>
-                <EmailIcon sx={IconStyle}/>
+                <EmailIcon sx={IconStyle} />
             </Button>
             <MailTo toEmail={doctorEmail} show={showEmailForm} handleClose={handleShowEmailFormClose} user={user} />
             <Button onClick={() => setPage("home")} style={{ marginLeft: "5rem" }}>
-                <HomeIcon sx={IconStyle}/>
+                <HomeIcon sx={IconStyle} />
             </Button>
             <Button onClick={() => setPage("survey")} style={{ marginLeft: "5rem" }}>
                 <FactCheckIcon sx={IconStyle} />
@@ -39,7 +39,6 @@ const NavBar = ({data, setPage, user}) => {
                 <PlayCircleFilledWhiteIcon sx={IconStyle} />
             </Button>
         </AppBar>
-    
     )
 }
 

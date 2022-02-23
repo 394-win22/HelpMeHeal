@@ -6,7 +6,6 @@ import swal from 'sweetalert';
 import { setData } from "../utilities/firebase";
 import React, { useState } from "react";
 import './surveypage.css'
-import NavBar from "./NavBar";
 
 const buttonStyle = {
     fontWeight: "normal",
@@ -15,6 +14,7 @@ const buttonStyle = {
     fontSize: '1rem',
     padding: 1,
     borderRadius: 2,
+    marginBottom: "10vh",
     '&:hover': {
         bgcolor: "#b36464"
     },

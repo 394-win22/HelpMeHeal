@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import calculateDay from '../utilities/calculateday';
 
 const Welcome = ({ username, surgeryType, firebaseData, activeIndex, currentDay, daysDict, phaseEndDay }) => {
     let daysHasMessage;
@@ -18,7 +17,7 @@ const Welcome = ({ username, surgeryType, firebaseData, activeIndex, currentDay,
                 <h2 style={{ textAlign: 'left' }}> Welcome back {username ? username : "Nobody"}, </h2>
             </div>
 
-            <div style={{ textAlign: 'left', fontSize: '1.9rem', marginBottom: '20vh' }}>
+            <div style={{ textAlign: 'left', fontSize: '1.9rem' }}>
                 Today you are on <b>phase {activeIndex}, day {progressComplete
                     ? phaseEndDay[Object.entries(phaseEndDay).length]
                     : currentDay}</b> of your ACL recovery. <br /> <br />

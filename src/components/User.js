@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { Loading } from "./Loading";
 import { Error404 } from "./404";
 import HomePage from './HomePage';
-import PlayVideo  from './PlayVideo';
+import PlayVideo from './PlayVideo';
 import NavBar from './NavBar';
 
 function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCurrentDay }) {
@@ -52,15 +52,16 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
 
     return (
         <div>
-            {getPage()}
-            <NavBar data={data} 
-            // showEmailForm={showEmailForm} 
-            // setShowEmailForm={setShowEmailForm} 
-            // handleShowEmailFormClose={handleShowEmailFormClose} 
-            setPage={setPage}
-            user={user}/>
+            <div>
+                {getPage()}
+            </div>
+            <NavBar data={data}
+                // showEmailForm={showEmailForm} 
+                // setShowEmailForm={setShowEmailForm} 
+                // handleShowEmailFormClose={handleShowEmailFormClose} 
+                setPage={setPage}
+                user={user} />
         </div>
-        
     );
 }
 

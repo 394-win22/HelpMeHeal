@@ -3,7 +3,7 @@ import YoutubeEmbed from "./YouTubeEmbed";
 
 const PlayVideo = ({ currentDay, data }) => {
 
-    console.log("data: "+data);
+    console.log("data: " + data);
     let phase;
     let phaseEndDay = data["phaseEndDay"];
 
@@ -16,10 +16,10 @@ const PlayVideo = ({ currentDay, data }) => {
 
     return (
         <div>
-        <h1>Please do these exercises</h1>
-        <YoutubeEmbed embedId={data["videoUrls"][phase-1]} />
+            <h1>Please do these exercises</h1>
+            <YoutubeEmbed embedId={data["videoUrls"][phase - 1]} />
         </div>
     );
 }
 
-export default  PlayVideo;
+export default PlayVideo;
