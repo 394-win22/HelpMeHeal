@@ -16,9 +16,11 @@ const buttonStyle = (isMobile) => ({
 })
 
 
-export const SwitchDay = ({ currentDay, setCurrentDay, isMobile }) => {
+export const SwitchDay = ({ currentDay, setCurrentDay, isMobile, phaseEndDay }) => {
     const NextDayButton = () => (
-        <Button sx={() => buttonStyle(isMobile)} onClick={() => setCurrentDay(currentDay + 1)}> Next Day </Button>);
+        <Button sx={() => buttonStyle(isMobile)} onClick={() => {
+            currentDay < phaseEndDay[Object.entries(phaseEndDay).length] && setCurrentDay(currentDay + 1)
+        }}> Next Day </Button>);
 
     const PrevDayButton = () => (
         <Button sx={() => buttonStyle(isMobile)} onClick={() => {
