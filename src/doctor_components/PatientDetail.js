@@ -42,8 +42,9 @@ const PatientDetail = (patientInfo) => {
     var painData = [];
     // obtain pain level of each patient
     {
-        patientInfo.patientInfo.surveyResults.map((surveyResult) => painData.push(surveyResult.pain_rating));
-        console.log(painData);
+        if (patientInfo.patientInfo.surveyResults) {
+            patientInfo.patientInfo.surveyResults.map((surveyResult) => painData.push(surveyResult.pain_rating));
+        }
     }
 
     const options = {
@@ -141,6 +142,7 @@ const PatientDetail = (patientInfo) => {
                 <a href={"mailto:" + patientInfo.patientInfo.email}>{patientInfo.patientInfo.email}</a>
             </div>
             {patientInfo.patientInfo.surveyResults ?
+
                 <div style={{
                     display: "flex", alignItems: "flex-start", flexDirection: "column", justifyContent: "flex-start",
                     marginTop: "3rem"
@@ -185,9 +187,10 @@ const PatientDetail = (patientInfo) => {
                             onRowsPerPageChange={handleChangeRowsPerPage}
                         />
                     </Paper>
-                </div> : <div style={{ textAlign: "center", marginTop: "10px" }}><strong>No survey Result yet!</strong></div>}
+                </div> : <div style={{ textAlign: "center", marginTop: "10px" }}><strong>No survey Result yet!</strong></div>
+            }
 
-            <div style={{ width:"50%", height:"30%", margin:"0 auto"}}>
+            <div style={{ width: "50%", height: "30%", margin: "0 auto" }}>
                 <Line options={options} data={data} />
             </div>
 
