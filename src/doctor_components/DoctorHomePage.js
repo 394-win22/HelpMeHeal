@@ -12,11 +12,15 @@ import useStore from '../Store';
 import calculateDay from '../utilities/calculateday';
 import { maxHeight } from '@mui/system';
 import { connectStorageEmulator } from 'firebase/storage';
+import TextField from '@mui/material/TextField';
+
 
 const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
     const setPage = useStore(state => state.setDoctorPage);
     const [tablePage, setTablePage] = useState(0);
     const [rowsPerTablePage, setRowsPerTablePage] = useState(5);
+    const [searchTerm, setSearchTerm] = useState("");
+    
     const patientDict = data["user"][googleUser?.uid]["patientId"] ? data["user"][googleUser?.uid]["patientId"] : null;
 
     const patientsInfo = patientDict ? Object.keys(patientDict).map(key => data["user"][key]) : null;
@@ -64,7 +68,6 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
 
     const concernRow = (user) => {
         const currDate = calculateDay(user.startDate);
-        console.log("c", currDate);
 
         if (user.surveyResults && user.surveyResults.length === currDate) {
             //console.log("k",Math.max(user.surveyResults.filter(n=>n).map));
@@ -79,6 +82,7 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
             return "N/A" // maybe change in future
         }
     }
+    
 
     return (
 
@@ -86,8 +90,18 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
             <div style={{ color: '#b43434', fontSize: 25, marginBottom: '4rem', marginTop: '4rem' }}>
                 <h2 style={{ textAlign: 'center' }}> Welcome back Doctor {username ? username : "Nobody"}, </h2>
             </div>
+                    
             {patientDict ?
                 <Paper sx={TableContainerStyle}>
+                    <div style={{ marginBottom: '2rem', float: 'right', marginRight: '2rem', width: '40%', marginTop: '2rem' }}>
+                        <TextField
+                            value={searchTerm}
+                            placeholder="Search…"
+                            inputProps={{ 'aria-label': 'search' }}
+                            onChange={(event) => { setSearchTerm(event.target.value) }}
+                            sx={{ width: '100%' }}
+                        />
+                    </div>
                     <TableContainer>
                         <Table sx={{ minWidth: 700 }} aria-label="customized table">
                             <TableHead>
@@ -102,6 +116,7 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
                             </TableHead>
                             <TableBody>
                                 {patientsInfo.slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage)
+                                    .filter(patientInfo => patientInfo.name.toLowerCase().includes(searchTerm.toLowerCase()))
                                     .map((patientInfo) => (
                                         <StyledTableRow hover key={patientInfo.email} onClick={() => showPatientDetailPage(patientInfo)}>
                                             <StyledTableCell component="th" scope="row">

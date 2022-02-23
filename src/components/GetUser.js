@@ -50,7 +50,7 @@ const GetUser = ({ googleUser, isMobile }) => {
           </div>
         )
       case "doctor":
-        return <Doctor name={name} googleUser={ googleUser}/>
+        return <Doctor name={name} googleUser={googleUser}/>
       default:
         return <p>Sorry, there's been an error.</p>
     }

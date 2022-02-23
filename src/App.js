@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 function App() {
   const [googleUser] = useGoogleUserState();
   const [isMobile, setIsMobile] = useState(false);
+  
     //choose the screen size
   const handleResize = () => {
     if (window.innerWidth < 720) {
@@ -30,7 +31,7 @@ function App() {
       <div>
         {googleUser ?
           <div>
-            <GetUser googleUser={googleUser} isMobile={isMobile} />
+            <GetUser googleUser={googleUser} isMobile={isMobile}/>
           </div>
           :
           <LoginPage isMobile={isMobile}/>
