@@ -1,23 +1,9 @@
 {
-  "user": {
-    "0": {
-      "userType": 0,
-      "surgeryType": "acl",
-      "startDate": "1644978994449",
-      "doctorId": "",
-      "name": "Edward",
-      "email": ""
-    }
+  "doctor": {
+    "Yg2OvFEEFJSOKquVD3XKtORiNjB2": "Kaixin Zheng"
   },
   "surgery": {
     "acl": {
-      "phaseEndDay": {
-        "1": 21,
-        "2": 42,
-        "3": 43,
-        "4": 44,
-        "5": 45
-      },
       "days": {
         "1": {
           "message": "The first day after surgery is hard, but today marks the beginning of your recovery journey. Please make sure to ice and elevate your leg today. Eat as well as you can. Good nutrition will help the recovery time."
@@ -43,12 +29,114 @@
         "22": {
           "message": "Congratulations on reaching Phase 2 of your ACL Recovery. You can expect to feel some soreness still. We will be working through a few exercises and stetches today."
         }
-      }
+      },
+      "phaseEndDay": [
+        null,
+        21,
+        42,
+        43,
+        44,
+        45
+      ]
     }
   },
   "survey": {
-    "acl": {
-      "1": {}
+    "1": "{     'completedHtml': '<h3>Thank you for completing the check-in survey.</h3> <h5>Remember to contact your doctor if you have any concerns about your recovery.</h5>',     'completedHtmlOnCondition': [         {             'expression': '{pain_rating} <= 3',             'html': '<h3>Please contact your doctor to discuss your pain.</h3>'         }, {             'expression': '{nps_score} > 3',             'html': '<h3>Thank you for completing the check-in survey.</h3> <h5>Remember to contact your doctor if you have any concerns about your recovery.</h5>',         }     ],     'pages': [         {             'name': 'page1',             'elements': [                 {                     'type': 'rating',                     'name': 'pain_rating',                     'title': 'What is your pain level today on a scale from 1 to 10?',                     'isRequired': true,                     'rateMin': 1,                     'rateMax': 10,                     'minRateDescription': 'No pain',                     'maxRateDescription': 'Unbearable pain'                 }, {                     'type': 'checkbox',                     'name': 'rehab_successful',                     'title': 'Were you able to complete yesterday's rehab completely?',                     'isRequired': true,                     'validators': [                         {                             'type': 'answercount',                             'text': 'Please select only one response.',                             'maxCount': 1                         }                     ],                     'choices': [                         'Yes', 'No'                     ],                 }, {                     'type': 'comment',                     'name': 'concerns',                     'title': 'Do you have any concerns with where you are in recovery?'                 },             ]         }     ],     'showQuestionNumbers': 'off' }",
+    "day1": {
+      "completedHtml": "<h3>Thank you for completing the check-in survey.</h3> <h5>Remember to contact your doctor if you have any concerns about your recovery.</h5>",
+      "completedHtmlOnCondition": [
+        {
+          "expression": "{pain_rating} <= 3",
+          "html": "<h3>Please contact your doctor to discuss your pain.</h3>"
+        },
+        {
+          "expression": "{nps_score} > 3",
+          "html": "<h3>Thank you for completing the check-in survey.</h3> <h5>Remember to contact your doctor if you have any concerns about your recovery.</h5>"
+        }
+      ],
+      "pages": [
+        {
+          "elements": [
+            {
+              "isRequired": true,
+              "maxRateDescription": "Unbearable pain",
+              "minRateDescription": "No pain",
+              "name": "pain_rating",
+              "rateMax": 10,
+              "rateMin": 1,
+              "title": "What is your pain level today on a scale from 1 to 10?",
+              "type": "rating"
+            },
+            {
+              "choices": [
+                "Yes",
+                "No"
+              ],
+              "isRequired": true,
+              "name": "rehab_successful",
+              "title": "Were you able to complete yesterday's rehab completely?",
+              "type": "checkbox",
+              "validators": [
+                {
+                  "maxCount": 1,
+                  "text": "Please select only one response.",
+                  "type": "answercount"
+                }
+              ]
+            },
+            {
+              "name": "concerns",
+              "title": "Do you have any concerns with where you are in recovery?",
+              "type": "comment"
+            }
+          ],
+          "name": "page1"
+        }
+      ],
+      "showQuestionNumbers": "off"
+    }
+  },
+  "user": {
+    "LXVdjGl5pRcYfW3nqUwFR9KtTnx2": {
+      "doctorId": "Yg2OvFEEFJSOKquVD3XKtORiNjB2",
+      "email": "kiss101326@gmail.com",
+      "name": "郑凯鑫",
+      "startDate": 1645318965367,
+      "surgeryType": "acl",
+      "surveyResults": [
+        null,
+        {
+          "pain_rating": 7,
+          "rehab_successful": [
+            "No"
+          ]
+        }
+      ],
+      "userType": "patient"
+    },
+    "OGSakRcYhRbKPGKAQHvdPCCjoNJ2": {
+      "doctorId": "jtRLOtCtchahnMHcPNDvrZTyyGE3",
+      "email": "zacdeng0720@gmail.com",
+      "name": "zachary Deng",
+      "startDate": 1645313218366,
+      "surgeryType": "acl",
+      "userType": "patient"
+    },
+    "Yg2OvFEEFJSOKquVD3XKtORiNjB2": {
+      "email": "kaixinzheng2022@u.northwestern.edu",
+      "name": "Kaixin Zheng",
+      "patientId": {
+        "LXVdjGl5pRcYfW3nqUwFR9KtTnx2": "郑凯鑫"
+      },
+      "userType": "doctor"
+    },
+    "jtRLOtCtchahnMHcPNDvrZTyyGE3": {
+      "email": "zhihaodeng2023@u.northwestern.edu",
+      "name": "Zhihao Deng",
+      "patientId": {
+        "OGSakRcYhRbKPGKAQHvdPCCjoNJ2": "zachary Deng"
+      },
+      "userType": "doctor"
     }
   }
 }

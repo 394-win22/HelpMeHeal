@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
 import EmailIcon from '@mui/icons-material/Email';
@@ -5,7 +6,8 @@ import Button from '@mui/material/Button';
 import ProgressIndicator from './ProgressBar';
 import Welcome from './Welcome';
 import FactCheckIcon from '@mui/icons-material/FactCheck';
-import calculateDay from '../utilities/calculateday';
+import MailTo from './emailWidget';
+import { SwitchDay } from './SwitchDay'
 
 const IconStyle = {
     color: 'white',
@@ -19,21 +21,24 @@ const IconStyle = {
     },
 }
 
-
-const HomePage = ({ data, currentDay, surgeryType, name, type, setPage, activeIndex, setActiveIndex}) => {
-
-
+const HomePage = ({ data, currentDay, surgeryType, name, type, setPage, activeIndex, setActiveIndex, user, isMobile, setCurrentDay }) => {
+    const [showEmailForm, setShowEmailForm] = useState(false);
+    const handleShowEmailFormClose = () => setShowEmailForm(false);
+    const doctorEmail = data["user"][user.doctorId]["email"];
     return (
         <div>
             {/* the zero bellow has to change userid as its real id later */}
-            <ProgressIndicator setActiveIndex={setActiveIndex} currentDay={currentDay} phaseEndDay={data["surgery"][surgeryType]["phaseEndDay"]} />
+            <ProgressIndicator setActiveIndex={setActiveIndex} currentDay={currentDay} phaseEndDay={data["surgery"][surgeryType]["phaseEndDay"]} isMobile={isMobile} />
+            <SwitchDay currentDay={currentDay} setCurrentDay={setCurrentDay} isMobile={isMobile}/>
             <Welcome username={name} surgeryType={surgeryType} firebaseData={data} activeIndex={activeIndex} currentDay={currentDay} daysDict={data["surgery"][surgeryType]["days"]} />
+            
 
             <Box>
                 <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, background: '#b43434', flexDirection: 'row', justifyContent: 'center', p: 2 }}>
-                    <Button onClick={() => window.location = 'mailto:helpmeheal.project@gmail.com'}>
+                    <Button onClick={() => setShowEmailForm(true)}>
                         <EmailIcon sx={IconStyle} />
                     </Button>
+                    <MailTo toEmail={doctorEmail} show={showEmailForm} handleClose={handleShowEmailFormClose} user={user} />
                     <Button onClick={() => setPage("survey")} style={{ marginLeft: "5rem" }}>
                         <FactCheckIcon sx={IconStyle} />
                     </Button>
