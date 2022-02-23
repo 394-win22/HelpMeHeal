@@ -10,11 +10,6 @@
   margin-bottom: 3rem;
 }
 
-.app-header.mobile {
-  position: relative;
-  font-size: 10px;
-}
-
 .logo{
   border: 3px solid #b43434;
   background-color: white;

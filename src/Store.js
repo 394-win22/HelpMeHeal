@@ -5,11 +5,7 @@ const useStore = create(set => ({
     setUserPage: (newPage) => set({ UserPage: newPage }),
 
     userType: "docter",
-    setUserType: (newType) => set({ userType: newType }),
-
-    DoctorPage: "DoctorHome",
-    setDoctorPage: (newPage) => set({ DoctorPage: newPage }),
-
+    setUserType: (newType) => set({ userType: newType })
 }));
 
 export default useStore;
