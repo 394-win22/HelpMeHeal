@@ -16,12 +16,16 @@ const buttonStyle = () => ({
     },
 })
 
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
 const CreateFakeData = ({ googleUser }) => {
     const id = "Fake" + getRefByPush('/');
     const fakesurveydata = { pain_rating: 6, rehab_successful: ['No'], concerns: "I can't finish the rehab exercise, because it is so painful." }
     setData(`/user/${id}/userType`, "patient");
     setData(`/user/${id}/name`, "FakePatient");
-    setData(`/user/${id}/startDate`, Date.now() - 86400000 * 5);
+    setData(`/user/${id}/startDate`, Date.now() - 86400000 * 4);
     setData(`/user/${id}/email`, id + "@email.com");
     setData(`/user/${id}/doctorId`, googleUser?.uid);
     setData(`/user/${id}/surgeryType`, "acl");
