@@ -10,13 +10,28 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
-
+import {
+    // main component
+    Chart,
+    // graphs
+    Bars, Cloud, Dots, Labels, Lines, Pies, RadialLines, Ticks, Title,
+    // wrappers
+    Layer, Animate, Transform, Handlers,
+    // helpers
+    helpers, DropShadow, Gradient
+} from 'rumble-charts';
 
 const PatientDetail = (patientInfo) => {
 
     const setPage = useStore(state => state.setDoctorPage);
     const [tablePage, setTablePage] = useState(0);
     const [rowsPerTablePage, setRowsPerTablePage] = useState(5);
+    var painData = [];
+    // obtain pain level of each patient
+    {
+        patientInfo.patientInfo.surveyResults.map((surveyResult) => painData.push(surveyResult.pain_rating));
+        console.log(painData);
+    }
 
     const handleChangePage = (event, newPage) => {
         setTablePage(newPage);
@@ -121,6 +136,44 @@ const PatientDetail = (patientInfo) => {
                         />
                     </Paper>
                 </div> : <div style={{ textAlign: "center", marginTop: "10px" }}><strong>No survey Result yet!</strong></div>}
+
+            <div>
+                <Chart width={600}
+                       height={250}
+                       series={[{data: painData}]}
+                       minY={0}
+                       maxY={20}>
+                    <Ticks
+                        axis="y"
+                        labelStyle={{
+                            dominantBaseline: 'middle',
+                            fill: 'lightgray',
+                            textAnchor: 'end'
+                        }}
+                        lineLength="100%"
+                        lineStyle={{
+                            stroke: 'lightgray'
+                        }}
+                        lineVisible/>
+                    <Ticks
+                        axis="x"
+                        label={function noRefCheck(){}}
+                        labelStyle={{
+                            dominantBaseline: 'text-before-edge',
+                            fill: 'lightgray',
+                            textAnchor: 'middle'
+                        }}/>
+                    <Lines lineWidth={3} />
+                    <Dots
+                        className="dots"
+                        dotStyle={{
+                            fillOpacity: 1,
+                            transition: 'all 250ms'
+                        }}
+                    />
+                </Chart>
+            </div>
+
             <Button onClick={() => {
                 setPage("DoctorHome");
             }} sx={buttonStyle}>
