@@ -29,7 +29,7 @@ const CreateFakeData = ({ googleUser }) => {
     const fakesurveydata4 = { pain_rating: getRandomInt(4, 7), rehab_successful: ['No'], concerns: "I can't finish the rehab exercise, because it is so painful." }
     setData(`/user/${id}/userType`, "patient");
     setData(`/user/${id}/name`, "FakePatient");
-    setData(`/user/${id}/startDate`, Date.now() - 86400000 * 5);
+    setData(`/user/${id}/startDate`, Date.now() - 86400000 * 4);
     setData(`/user/${id}/email`, id + "@email.com");
     setData(`/user/${id}/doctorId`, googleUser?.uid);
     setData(`/user/${id}/surgeryType`, "acl");
