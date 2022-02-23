@@ -8,6 +8,7 @@ import Welcome from './Welcome';
 import FactCheckIcon from '@mui/icons-material/FactCheck';
 import MailTo from './emailWidget';
 import { SwitchDay } from './SwitchDay'
+import NavBar from './NavBar';
 
 const IconStyle = {
     color: 'white',
@@ -22,8 +23,7 @@ const IconStyle = {
 }
 
 const HomePage = ({ data, currentDay, surgeryType, name, type, setPage, activeIndex, setActiveIndex, user, isMobile, setCurrentDay }) => {
-    const [showEmailForm, setShowEmailForm] = useState(false);
-    const handleShowEmailFormClose = () => setShowEmailForm(false);
+    console.log(user)
     const doctorEmail = data["user"][user.doctorId]["email"];
     return (
         <div>
@@ -31,19 +31,14 @@ const HomePage = ({ data, currentDay, surgeryType, name, type, setPage, activeIn
             <ProgressIndicator setActiveIndex={setActiveIndex} currentDay={currentDay} phaseEndDay={data["surgery"][surgeryType]["phaseEndDay"]} isMobile={isMobile} />
             <SwitchDay currentDay={currentDay} setCurrentDay={setCurrentDay} isMobile={isMobile} />
             <Welcome username={name} surgeryType={surgeryType} firebaseData={data} activeIndex={activeIndex} currentDay={currentDay} daysDict={data["surgery"][surgeryType]["days"]} />
+            
+            <NavBar data={data} 
+                    // showEmailForm={showEmailForm} 
+                    // setShowEmailForm={setShowEmailForm} 
+                    // handleShowEmailFormClose={handleShowEmailFormClose} 
+                    setPage={setPage}
+                    user={user}/>
 
-
-            <Box>
-                <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, background: '#b43434', flexDirection: 'row', justifyContent: 'center', p: 2 }}>
-                    <Button onClick={() => setShowEmailForm(true)}>
-                        <EmailIcon sx={IconStyle} />
-                    </Button>
-                    <MailTo toEmail={doctorEmail} show={showEmailForm} handleClose={handleShowEmailFormClose} user={user} />
-                    <Button onClick={() => setPage("survey")} style={{ marginLeft: "5rem" }}>
-                        <FactCheckIcon sx={IconStyle} />
-                    </Button>
-                </AppBar>
-            </Box>
 
         </div>
     )

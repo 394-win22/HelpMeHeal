@@ -6,6 +6,7 @@ import swal from 'sweetalert';
 import { setData } from "../utilities/firebase";
 import React, { useState } from "react";
 import './surveypage.css'
+import NavBar from "./NavBar";
 
 const buttonStyle = {
     fontWeight: "normal",
@@ -37,10 +38,10 @@ var surveyValueChanged = function (sender, options) {
     }
 };
 
-function SurveyPage({ currentDay, googleUser, data }) {
+function SurveyPage({ currentDay, user, googleUser, data }) {
     //Now is day1 if we want to have different survey everyday we will use currentDay
     const surveyJson = data["survey"]["day1"]
-
+    console.log(googleUser)
     const setPage = useStore(state => state.setUserPage);
     const page = useStore(state => state.UserPage);
     const survey = new Model(surveyJson);
@@ -62,6 +63,12 @@ function SurveyPage({ currentDay, googleUser, data }) {
             <Button onClick={() => setPage("home")} sx={buttonStyle}>
                 Cancel
             </Button>
+            <NavBar data={data} 
+                    // showEmailForm={showEmailForm} 
+                    // setShowEmailForm={setShowEmailForm} 
+                    // handleShowEmailFormClose={handleShowEmailFormClose} 
+                    setPage={setPage}
+                    user={user}/>
         </div >
     );
 }
