@@ -1,7 +1,7 @@
 {
   "hosting": [
     {
-      "site": "helpmeheal-49a3f",
+      "target": "stable",
       "public": "build",
       "ignore": [
         "firebase.json",
@@ -16,7 +16,7 @@
       ]
     },
     {
-      "site": "helpmeheal-49a3g",
+      "target": "test",
       "public": "build",
       "ignore": [
         "firebase.json",
