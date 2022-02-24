@@ -24,7 +24,7 @@ function App() {
     <div className="App">
 
       <div className={isMobile ? "app-header mobile" : "app-header"}>
-        <img className="logo" src="bannerlogo.jpg" />
+        <img className="logo" src="bannerlogo.jpg" alt="help-me-heal-logo" />
         <h1>Help Me Heal</h1>
       </div>
 

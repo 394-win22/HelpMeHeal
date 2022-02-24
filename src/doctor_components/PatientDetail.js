@@ -38,6 +38,7 @@ const PatientDetail = (patientInfo) => {
     const setPage = useStore(state => state.setDoctorPage);
     const [tablePage, setTablePage] = useState(0);
     const [rowsPerTablePage, setRowsPerTablePage] = useState(5);
+    var painData = [];
 
     const options = {
         responsive: true,
@@ -127,7 +128,7 @@ const PatientDetail = (patientInfo) => {
         },
     }));
     // handle the graph
-    var painData = [];
+
     // obtain pain level of each patient
     if (patientInfo.patientInfo.surveyResults) {
         patientInfo.patientInfo.surveyResults.map((surveyResult) => painData.push(surveyResult.pain_rating));
