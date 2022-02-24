@@ -1,7 +1,7 @@
 import SurveyPage from './surveypage';
 import useStore from '../Store';
 import { useData } from '../utilities/firebase';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Loading } from "./Loading";
 import { Error404 } from "./404";
 import HomePage from './HomePage';
@@ -13,12 +13,10 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
     const page = useStore(state => state.UserPage);
     const [data, loadingData, errorData] = useData("/");
 
-    const [activeIndex, setActiveIndex] = useState(2);
-
     // firebase data initialize
     useEffect(() => {
         if (data === undefined) return;
-        setActiveIndex(calculatePhase(currentDay, data["surgery"][surgeryType]["phaseEndDay"]));
+
     }, [data]);
 
     if (errorData) return <Error404 />;
@@ -32,7 +30,7 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
                     surgeryType={surgeryType}
                     name={name}
                     setPage={setPage}
-                    activeIndex={activeIndex}
+                    activeIndex={calculatePhase(currentDay, data["surgery"][surgeryType]["phaseEndDay"])}
                     user={user}
                     isMobile={isMobile}
                     setCurrentDay={setCurrentDay}
