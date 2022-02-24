@@ -9,7 +9,6 @@ import TablePagination from '@mui/material/TablePagination';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
 import { Chart } from 'react-chartjs-2';
 
 import {
@@ -38,7 +37,6 @@ ChartJS.register(
 
 const PatientDetail = (patientInfo) => {
 
-    const setPage = useStore(state => state.setDoctorPage);
     const [tablePage, setTablePage] = useState(0);
     const [rowsPerTablePage, setRowsPerTablePage] = useState(5);
     var painData = [];
