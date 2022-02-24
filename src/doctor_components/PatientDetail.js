@@ -109,23 +109,7 @@ const PatientDetail = (patientInfo) => {
         setRowsPerTablePage(+event.target.value);
         setTablePage(0);
     };
-
-    const buttonStyle = {
-        fontWeight: "normal",
-        backgroundColor: "#b43434",
-        color: 'white',
-        fontSize: '1rem',
-        padding: 1,
-        marginTop: "2rem",
-        marginBottom: "2rem",
-        borderRadius: 2,
-        '&:hover': {
-            bgcolor: "#b36464"
-        },
-        '&:focus': {
-            bgcolor: "#b36464"
-        },
-    }
+  
 
     const TableContainerStyle = {
         width: "80%",
@@ -215,13 +199,9 @@ const PatientDetail = (patientInfo) => {
                 </div> : <div style={{ textAlign: "center", marginTop: "10px" }}><strong>No survey Result yet!</strong></div>
             }
 
-            <div style={{ width: "50%", height: "30%", margin: "0 auto" }}>
+            <div style={{ width: "50%", height: "30%", margin: "0 auto", marginBottom: '5rem' }}>
                 <Chart type='bar' options={options} data={data} />
             </div>
-
-            <Button onClick={() => {setPage("DoctorHome");}} sx={buttonStyle}>
-                return
-            </Button>
         </div>
     )
 }

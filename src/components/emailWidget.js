@@ -103,7 +103,7 @@ const MailTo = ({ toEmail, show, handleClose, user }) => {
                             multiline
                             rows={4}
                             placeholder="What is your concern?"
-                            sequired
+                            required
                             helperText="Cannot be blank"
                             error={!validMessage} />
                     </Stack>
