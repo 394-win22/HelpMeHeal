@@ -14,7 +14,7 @@ const LoginPage = ({ isMobile }) => {
                 <div><h1>Help <br></br>patient heal<br></br>keep contact.</h1>
                     <SignInOut className="signIn-btn" isMobile={isMobile} />
                 </div>
-                <img className="demoImg" src="Demo.png" alt="app-demo-image" />
+                <img className="demoImg" src="Demo.png" alt="app-demo" />
             </div>
 
         </div>
