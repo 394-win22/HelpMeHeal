@@ -75,7 +75,7 @@ const MailTo = ({ toEmail, show, handleClose, user }) => {
             >
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2" style={{ textAlign: "center", marginBottom: 10 }}>
-                        Email Your Doctor Now
+                        {user.userType === "doctor" ? "Email Your Patient Now" : "Email Your Doctor Now"}
                     </Typography>
 
                     <Stack spacing={spacing}>
