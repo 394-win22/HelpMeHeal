@@ -32,6 +32,95 @@ ChartJS.register(
     Legend
 );
 
+
+const options = {
+    responsive: true,
+    plugins: {
+        legend: {
+            position: 'top',
+            font: {
+                size: 26,
+            },
+        },
+        title: {
+            display: true,
+            text: 'Patients Detail',
+            font: {
+                size: 26,
+            },
+            padding: {
+                top: 30,
+                bottom: 15
+            }
+        },
+    },
+};
+
+const labels = ['Day1', 'Day2', 'Day3', 'Day4', 'Day5'];
+
+const data = {
+    labels,
+    datasets: [
+        {
+            label: 'Pain Level',
+            data: painData,
+            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        }
+    ],
+};
+
+const handleChangePage = (event, newPage) => {
+    setTablePage(newPage);
+};
+
+const handleChangeRowsPerPage = (event) => {
+    setRowsPerTablePage(+event.target.value);
+    setTablePage(0);
+};
+
+const buttonStyle = {
+    fontWeight: "normal",
+    backgroundColor: "#b43434",
+    color: 'white',
+    fontSize: '1rem',
+    padding: 1,
+    marginTop: "2rem",
+    borderRadius: 2,
+    '&:hover': {
+        bgcolor: "#b36464"
+    },
+    '&:focus': {
+        bgcolor: "#b36464"
+    },
+}
+
+const TableContainerStyle = {
+    width: "80%",
+    margin: "0 auto",
+
+}
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+        backgroundColor: "#b43434",
+        color: "white",
+    },
+    [`&.${tableCellClasses.body}`]: {
+        fontSize: 14,
+    },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    '&:nth-of-type(odd)': {
+        backgroundColor: theme.palette.action.hover,
+    },
+    // hide last border
+    '&:last-child td, &:last-child th': {
+        border: 0,
+    },
+}));
+
 const PatientDetail = (patientInfo) => {
 
     const setPage = useStore(state => state.setDoctorPage);
@@ -41,99 +130,9 @@ const PatientDetail = (patientInfo) => {
     // handle the graph
     var painData = [];
     // obtain pain level of each patient
-    {
-        if (patientInfo.patientInfo.surveyResults) {
-            patientInfo.patientInfo.surveyResults.map((surveyResult) => painData.push(surveyResult.pain_rating));
-        }
+    if (patientInfo.patientInfo.surveyResults) {
+        patientInfo.patientInfo.surveyResults.map((surveyResult) => painData.push(surveyResult.pain_rating));
     }
-
-    const options = {
-        responsive: true,
-        plugins: {
-            legend: {
-                position: 'top',
-                font: {
-                    size: 26,
-                },
-            },
-            title: {
-                display: true,
-                text: 'Patients Detail',
-                font: {
-                    size: 26,
-                },
-                padding: {
-                    top: 30,
-                    bottom: 15
-                }
-            },
-        },
-    };
-
-    const labels = ['Day1', 'Day2', 'Day3', 'Day4', 'Day5'];
-
-    const data = {
-        labels,
-        datasets: [
-            {
-                label: 'Pain Level',
-                data: painData,
-                borderColor: 'rgb(255, 99, 132)',
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-            }
-        ],
-    };
-
-    const handleChangePage = (event, newPage) => {
-        setTablePage(newPage);
-    };
-
-    const handleChangeRowsPerPage = (event) => {
-        setRowsPerTablePage(+event.target.value);
-        setTablePage(0);
-    };
-
-    const buttonStyle = {
-        fontWeight: "normal",
-        backgroundColor: "#b43434",
-        color: 'white',
-        fontSize: '1rem',
-        padding: 1,
-        marginTop: "2rem",
-        borderRadius: 2,
-        '&:hover': {
-            bgcolor: "#b36464"
-        },
-        '&:focus': {
-            bgcolor: "#b36464"
-        },
-    }
-
-    const TableContainerStyle = {
-        width: "80%",
-        margin: "0 auto",
-
-    }
-
-    const StyledTableCell = styled(TableCell)(({ theme }) => ({
-        [`&.${tableCellClasses.head}`]: {
-            backgroundColor: "#b43434",
-            color: "white",
-        },
-        [`&.${tableCellClasses.body}`]: {
-            fontSize: 14,
-        },
-    }));
-
-    const StyledTableRow = styled(TableRow)(({ theme }) => ({
-        '&:nth-of-type(odd)': {
-            backgroundColor: theme.palette.action.hover,
-        },
-        // hide last border
-        '&:last-child td, &:last-child th': {
-            border: 0,
-        },
-    }));
 
     return (
         <div>
