@@ -1,18 +1,9 @@
 import React from "react";
 import YoutubeEmbed from "./YouTubeEmbed";
-
+import calculatePhase from "../utilities/calculatePhase";
 const PlayVideo = ({ currentDay, data }) => {
 
-    console.log("data: " + data);
-    let phase;
-    let phaseEndDay = data["phaseEndDay"];
-
-    for (const [key, value] of Object.entries(phaseEndDay)) {
-        if (currentDay <= value) {
-            phase = key;
-            break;
-        }
-    }
+    let phase = calculatePhase(currentDay, data["phaseEndDay"]);
 
     return (
         <div>

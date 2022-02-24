@@ -25,8 +25,8 @@ const buttonStyle = {
 
 const ValidatePatientCode = (patientCode, userData) => {
     let patientCodeParse = patientCode.split("+")
-    console.log(patientCodeParse[0])
-    console.log(userData[patientCodeParse[0]])
+    // console.log(patientCodeParse[0])
+    // console.log(userData[patientCodeParse[0]])
     return userData[patientCodeParse[0]] && userData[patientCodeParse[0]]['userType'] === 'doctor' && patientCodeParse[1] === 'acl'
 }
 
