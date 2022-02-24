@@ -15,14 +15,14 @@ import { SwitchDay } from './SwitchDay'
 //     },
 // }
 
-const HomePage = ({ data, currentDay, surgeryType, name, activeIndex, isMobile, setCurrentDay }) => {
+const HomePage = ({ data, currentDay, surgeryType, name, activeIndex, isMobile, setCurrentDay, setZoom, zoom }) => {
 
     // const doctorEmail = data["user"][user.doctorId]["email"];
     return (
         <div>
 
             {/* the zero bellow has to change userid as its real id later */}
-            <ProgressIndicator phase={activeIndex} currentDay={currentDay} phaseEndDay={data["surgery"][surgeryType]["phaseEndDay"]} isMobile={isMobile} />
+            <ProgressIndicator phase={activeIndex} currentDay={currentDay} phaseEndDay={data["surgery"][surgeryType]["phaseEndDay"]} isMobile={isMobile} setZoom={setZoom} zoom={zoom}/>
             <SwitchDay currentDay={currentDay} setCurrentDay={setCurrentDay} isMobile={isMobile} phaseEndDay={data["surgery"][surgeryType]["phaseEndDay"]} />
             <Welcome username={name} surgeryType={surgeryType} firebaseData={data} currentDay={currentDay} daysDict={data["surgery"][surgeryType]["days"]} phaseEndDay={data["surgery"][surgeryType]["phaseEndDay"]} />
 

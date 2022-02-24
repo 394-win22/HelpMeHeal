@@ -11,6 +11,7 @@ const IconStyle = {
     color: 'white',
     fontSize: '2.7rem',
     borderRadius: 2,
+    
     '&:hover': {
         bgcolor: "#b36464"
     },
@@ -19,7 +20,7 @@ const IconStyle = {
     },
 }
 
-const NavBar = ({ data, setPage, user }) => {
+const NavBar = ({ data, setPage, user, setZoom }) => {
     const doctorEmail = data["user"][user.doctorId]["email"];
     const [showEmailForm, setShowEmailForm] = useState(false);
     const handleShowEmailFormClose = () => setShowEmailForm(false);
@@ -29,7 +30,7 @@ const NavBar = ({ data, setPage, user }) => {
                 <EmailIcon sx={IconStyle} />
             </Button>
             <MailTo toEmail={doctorEmail} show={showEmailForm} handleClose={handleShowEmailFormClose} user={user} />
-            <Button onClick={() => setPage("home")} style={{ marginLeft: "5rem" }}>
+            <Button onClick={() => {setPage("home"); setZoom(false);}} style={{ marginLeft: "5rem" }}>
                 <HomeIcon sx={IconStyle} />
             </Button>
             <Button onClick={() => setPage("survey")} style={{ marginLeft: "5rem" }}>

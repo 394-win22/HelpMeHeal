@@ -1,7 +1,7 @@
 import SurveyPage from './surveypage';
 import useStore from '../Store';
 import { useData } from '../utilities/firebase';
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Loading } from "./Loading";
 import { Error404 } from "./404";
 import HomePage from './HomePage';
@@ -10,6 +10,7 @@ import NavBar from './NavBar';
 import calculatePhase from '../utilities/calculatePhase';
 function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCurrentDay }) {
     const setPage = useStore(state => state.setUserPage);
+    const [zoom, setZoom] = useState(false);
     const page = useStore(state => state.UserPage);
     const [data, loadingData, errorData] = useData("/");
 
@@ -34,6 +35,8 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
                     user={user}
                     isMobile={isMobile}
                     setCurrentDay={setCurrentDay}
+                    setZoom={setZoom}
+                    zoom={zoom}
                 />;
             case "survey":
                 return <SurveyPage currentDay={currentDay} user={user} googleUser={googleUser} data={data} />;
@@ -57,7 +60,8 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
                 // setShowEmailForm={setShowEmailForm} 
                 // handleShowEmailFormClose={handleShowEmailFormClose} 
                 setPage={setPage}
-                user={user} />
+                user={user}
+                setZoom={setZoom} />
         </div>
     );
 }
