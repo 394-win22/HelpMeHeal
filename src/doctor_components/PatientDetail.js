@@ -10,13 +10,15 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
-import { Line } from 'react-chartjs-2';
+import { Chart } from 'react-chartjs-2';
+
 import {
     Chart as ChartJS,
     CategoryScale,
     LinearScale,
     PointElement,
     LineElement,
+    BarElement,
     Title,
     Tooltip,
     Legend,
@@ -27,6 +29,7 @@ ChartJS.register(
     LinearScale,
     PointElement,
     LineElement,
+    BarElement,
     Title,
     Tooltip,
     Legend
@@ -61,6 +64,16 @@ const PatientDetail = (patientInfo) => {
                 }
             },
         },
+        scales: {
+            y: {
+                min: -1,
+                max: 11,
+                ticks: {
+                    // forces step size to be 50 units
+                    stepSize: 3,
+                }
+            }
+        }
     };
 
     const labels = ['Day1', 'Day2', 'Day3', 'Day4', 'Day5'];
@@ -69,10 +82,21 @@ const PatientDetail = (patientInfo) => {
         labels,
         datasets: [
             {
-                label: 'Pain Level',
+                type: 'line',
+                label: 'Pain Level Line',
                 data: painData,
                 borderColor: 'rgb(255, 99, 132)',
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                cubicInterpolationMode: 'monotone',
+                fill: true,
+            },
+            {
+                type: 'bar',
+                label: 'Pain Level Bar',
+                data: painData,
+                borderColor: 'rgb(53, 162, 235, 0.5)',
+                backgroundColor: 'rgb(53, 162, 235, 0.5)',
+                borderRadius: 5,
             }
         ],
     };
@@ -147,7 +171,7 @@ const PatientDetail = (patientInfo) => {
                     display: "flex", alignItems: "flex-start", flexDirection: "column", justifyContent: "flex-start",
                     marginTop: "3rem"
                 }}>
-                    <h3 style={{ marginLeft: "10%" }}>Survey Results </h3>
+                    <b style={{ margin:"0 auto", fontSize: "26px", paddingTop:"1rem", paddingBottom:"1rem"}}>Survey Results </b>
 
                     <Paper sx={TableContainerStyle}>
                         <TableContainer>
@@ -192,7 +216,7 @@ const PatientDetail = (patientInfo) => {
             }
 
             <div style={{ width: "50%", height: "30%", margin: "0 auto" }}>
-                <Line options={options} data={data} />
+                <Chart type='bar' options={options} data={data} />
             </div>
 
             <Button onClick={() => {setPage("DoctorHome");}} sx={buttonStyle}>
