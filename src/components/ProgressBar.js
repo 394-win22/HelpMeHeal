@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './ProgressBar.css';
 import LinearProgress from '@mui/material/LinearProgress';
 import { Box } from '@mui/system';
