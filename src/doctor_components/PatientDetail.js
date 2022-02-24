@@ -161,17 +161,18 @@ const PatientDetail = (patientInfo) => {
                                 <TableBody>
                                     {
                                         patientInfo.patientInfo.surveyResults.slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage)
-                                            .map((surveyResult) => (
-                                                <StyledTableRow hover key={surveyResult.key} >
-                                                    <StyledTableCell component="th" scope="row">
+                                            .map((surveyResult, i) => (
+                                                <StyledTableRow hover key={"surveyResult" + i}>
+                                                    <StyledTableCell key={"pain_rating" + i} component="th" scope="row">
                                                         {surveyResult.pain_rating}
                                                     </StyledTableCell>
-                                                    <StyledTableCell align="right">{surveyResult.rehab_successful}</StyledTableCell>
-                                                    <StyledTableCell align="right">{surveyResult.concerns}</StyledTableCell>
+                                                    <StyledTableCell key={"rehab" + i} align="right">{surveyResult.rehab_successful}</StyledTableCell>
+                                                    <StyledTableCell key={"concerns" + i} align="right">{surveyResult.concerns}</StyledTableCell>
                                                     {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
                                         <StyledTableCell align="right">{row.protein}</StyledTableCell> */}
                                                 </StyledTableRow>
-                                            ))}
+                                            ))
+                                    }
                                 </TableBody>
                             </Table>
                         </TableContainer >
