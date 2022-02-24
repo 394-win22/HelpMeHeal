@@ -1,4 +1,4 @@
-import { signInWithGoogle, signOut, useGoogleUserState, setData } from '../utilities/firebase.js';
+import { signInWithGoogle, signOut, useGoogleUserState } from '../utilities/firebase.js';
 import Button from "@mui/material/Button";
 const buttonStyle = (isMobile) => ({
     mx: 2,
@@ -15,7 +15,7 @@ const buttonStyle = (isMobile) => ({
     },
 })
 
-export const SignInOut = ({isMobile}) => {
+export const SignInOut = ({ isMobile }) => {
     const [user] = useGoogleUserState();
     const SignInButton = () => (
         <Button sx={() => buttonStyle(isMobile)} onClick={() => {

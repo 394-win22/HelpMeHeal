@@ -1,6 +1,5 @@
 import User from './User';
 import '../App.css';
-import useStore from '../Store';
 import React, { useEffect, useState } from 'react';
 import { useUserState } from '../utilities/firebase';
 import calculateDay from '../utilities/calculateday';
@@ -10,27 +9,25 @@ import Doctor from '../doctor_components/Doctor';
 
 const GetUser = ({ googleUser, isMobile }) => {
 
-  const userType = useStore(state => state.userType);
-  const setUserType = useStore(state => state.setUserType);
   const [name, setName] = useState("");
   const [surgeryType, setSurgeryType] = useState("");
   const [currentDay, setCurrentDay] = useState();
   const user = useUserState(googleUser?.uid)[0];
-  const initPatient = () => {
-    setName(user.name.toUpperCase());
-    setSurgeryType(user.surgeryType);
-    setCurrentDay(calculateDay(user.startDate));
-  }
-
-  const initDoctor = () => {
-    setName(user.name.toUpperCase());
-  }
 
   useEffect(() => {
     if (user === undefined) return;
 
+    const initPatient = () => {
+      setName(user.name.toUpperCase());
+      setSurgeryType(user.surgeryType);
+      setCurrentDay(calculateDay(user.startDate));
+    }
+
+    const initDoctor = () => {
+      setName(user.name.toUpperCase());
+    }
+
     if (user) {
-      setUserType(user.userType)
       if (user.userType === "patient") {
         initPatient()
       }
@@ -42,7 +39,7 @@ const GetUser = ({ googleUser, isMobile }) => {
   }, [user]);
 
   function getUserType() {
-    switch (userType) {
+    switch (user.userType) {
       case "patient":
         return (
           <div>

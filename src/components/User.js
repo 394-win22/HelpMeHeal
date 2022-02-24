@@ -7,7 +7,7 @@ import { Error404 } from "./404";
 import HomePage from './HomePage';
 import PlayVideo from './PlayVideo';
 import NavBar from './NavBar';
-
+import calculatePhase from '../utilities/calculatePhase';
 function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCurrentDay }) {
     const setPage = useStore(state => state.setUserPage);
     const page = useStore(state => state.UserPage);
@@ -18,7 +18,7 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
     // firebase data initialize
     useEffect(() => {
         if (data === undefined) return;
-
+        setActiveIndex(calculatePhase(currentDay, data["surgery"][surgeryType]["phaseEndDay"]));
     }, [data]);
 
     if (errorData) return <Error404 />;
@@ -33,7 +33,6 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
                     name={name}
                     setPage={setPage}
                     activeIndex={activeIndex}
-                    setActiveIndex={setActiveIndex}
                     user={user}
                     isMobile={isMobile}
                     setCurrentDay={setCurrentDay}

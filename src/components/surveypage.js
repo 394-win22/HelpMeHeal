@@ -4,7 +4,6 @@ import useStore from '../Store';
 import Button from '@mui/material/Button';
 import swal from 'sweetalert';
 import { setData } from "../utilities/firebase";
-import React, { useState } from "react";
 import './surveypage.css'
 
 const buttonStyle = {
@@ -38,12 +37,11 @@ var surveyValueChanged = function (sender, options) {
     }
 };
 
-function SurveyPage({ currentDay, user, googleUser, data }) {
+function SurveyPage({ currentDay, googleUser, data }) {
     //Now is day1 if we want to have different survey everyday we will use currentDay
     const surveyJson = data["survey"]["day1"]
     console.log(googleUser)
     const setPage = useStore(state => state.setUserPage);
-    const page = useStore(state => state.UserPage);
     const survey = new Model(surveyJson);
     survey
         .onComplete

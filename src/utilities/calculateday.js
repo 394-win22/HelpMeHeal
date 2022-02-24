@@ -8,6 +8,6 @@ const calculateDay = (startdate) => {
     let dateNow = Date.now() - (timeDifToUTC * milisec_in_hours)
     startdate = Math.floor(startdate / milisec_in_days) * milisec_in_days
     let days = (dateNow - startdate) / milisec_in_days
-    return Math.floor(days) +1
+    return Math.floor(days) + 1
 }
 export default calculateDay

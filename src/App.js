@@ -1,13 +1,13 @@
 import LoginPage from './components/LoginPage';
-import { useGoogleUserState, useUserState } from './utilities/firebase';
+import { useGoogleUserState } from './utilities/firebase';
 import GetUser from './components/GetUser';
 import { useEffect, useState } from 'react';
 
 function App() {
   const [googleUser] = useGoogleUserState();
   const [isMobile, setIsMobile] = useState(false);
-  
-    //choose the screen size
+
+  //choose the screen size
   const handleResize = () => {
     if (window.innerWidth < 720) {
       setIsMobile(true)
@@ -31,10 +31,10 @@ function App() {
       <div>
         {googleUser ?
           <div>
-            <GetUser googleUser={googleUser} isMobile={isMobile}/>
+            <GetUser googleUser={googleUser} isMobile={isMobile} />
           </div>
           :
-          <LoginPage isMobile={isMobile}/>
+          <LoginPage isMobile={isMobile} />
         }
       </div>
     </div>

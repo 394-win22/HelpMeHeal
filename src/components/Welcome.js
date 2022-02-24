@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from 'react';
-
 const Welcome = ({ username, surgeryType, firebaseData, activeIndex, currentDay, daysDict, phaseEndDay }) => {
     let daysHasMessage;
 
@@ -25,10 +23,10 @@ const Welcome = ({ username, surgeryType, firebaseData, activeIndex, currentDay,
                     .filter(data => data[0] === surgeryType)
                     .map(data => {
                         return (Object.entries(data[1].days) // Second: entry phase
-                            .filter(days => days[0] == daysHasMessage)
-                            .map(msg => {
+                            .filter(days => days[0] === daysHasMessage)
+                            .map((msg, i) => {
                                 return (
-                                    <span>{msg[1].message}</span>
+                                    <span key={i}>{msg[1].message}</span>
                                 )
                             })
                         )
