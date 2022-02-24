@@ -54,8 +54,8 @@ const ProgressBarZoomed =  ({currentDay, phase, totalDays, onPhaseClick, phaseEn
 }
 
 //TODO: add iterable as an argument and map it
-const ProgressIndicator = ({setActiveIndex, currentDay, phaseEndDay, isMobile }) => {
-    const[isZoom,setZoom] = useState(false);
+const ProgressIndicator = ({setActiveIndex, currentDay, phaseEndDay, isMobile, setZoom, zoom }) => {
+    //const [isZoom, setZoom] = useState(false);
     const steps = []
     let phase;
 
@@ -82,8 +82,8 @@ const ProgressIndicator = ({setActiveIndex, currentDay, phaseEndDay, isMobile })
 
     return(
         <div>
-            {isZoom ? <ProgressBarZoomed totalDays={totalDays} phase={phase} currentDay={currentDayPhase} phaseEndDay={phaseEndDay} onPhaseClick={() => setZoom(!isZoom)}  /> : 
-            <ProgressBar steps={steps} phase={phase} currentDay={currentDayPhase} phaseEndDay={phaseEndDay} isMobile={isMobile} onPhaseClick={() => setZoom(!isZoom)} />}
+            {zoom ? <ProgressBarZoomed totalDays={totalDays} phase={phase} currentDay={currentDayPhase} phaseEndDay={phaseEndDay} onPhaseClick={() => setZoom(!zoom)} /> :
+                <ProgressBar steps={steps} phase={phase} currentDay={currentDayPhase} phaseEndDay={phaseEndDay} isMobile={isMobile} onPhaseClick={() => setZoom(!zoom)} />}
         </div>
     );
 

@@ -11,6 +11,7 @@ const IconStyle = {
     color: 'white',
     fontSize: '2.7rem',
     borderRadius: 2,
+    
     '&:hover': {
         bgcolor: "#b36464"
     },
@@ -19,13 +20,13 @@ const IconStyle = {
     },
 }
 
-const NavBar = ({ data, setPage, user }) => {
+const NavBar = ({ data, setPage, user, setZoom }) => {
     const doctorEmail = data["user"][user.doctorId]["email"];
     const [showEmailForm, setShowEmailForm] = useState(false);
     const handleShowEmailFormClose = () => setShowEmailForm(false);
     return (
         <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, background: '#b43434', flexDirection: 'row', justifyContent: 'center', p: 2 }}>
-            <Button onClick={() => setPage("home")}>
+            <Button onClick={() => {setPage("home"); setZoom(false);}}>
                 <HomeIcon sx={IconStyle} />
             </Button>
             <Button onClick={() => setShowEmailForm(true)} style={{ marginLeft: "5rem" }}>
