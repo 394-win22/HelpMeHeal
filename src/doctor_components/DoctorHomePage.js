@@ -45,6 +45,8 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
     const TableContainerStyle = {
         width: "80%",
         margin: "0 auto",
+        borderRadius: "1rem",
+        marginBottom: "2rem",
     }
 
     const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -111,9 +113,8 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
     return (
 
         <div>
-            <div style={{ color: '#b43434', fontSize: 25, marginBottom: '4rem', marginTop: '4rem' }}>
-                <h2 style={{ textAlign: 'center' }}> Welcome back Doctor {username ? username : "Nobody"}, </h2>
-                <CreateFakePatient googleUser={googleUser} />
+            <div style={{ color: '#b43434', fontSize: 25, marginBottom: '2rem', marginTop: '4rem' }}>
+                <h2 style={{ textAlign: 'center' }}> Welcome back Doctor {username.toUpperCase() ? username : "Nobody"}, </h2>
             </div>
 
             {patientDict ?
@@ -140,12 +141,12 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {patientsInfo.slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage)
-                                    .filter(patientInfo => patientInfo.name.toLowerCase().includes(searchTerm.toLowerCase()))
+                                {patientsInfo.filter(patientInfo => patientInfo.name.toLowerCase().includes(searchTerm.toLowerCase()))
+                                    .slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage)
                                     .map((patientInfo) => (
                                         <StyledTableRow hover key={patientInfo.email} onClick={() => showPatientDetailPage(patientInfo)}>
                                             <StyledTableCell component="th" scope="row">
-                                                {patientInfo.name}
+                                                {patientInfo.name.toUpperCase()}
                                             </StyledTableCell>
                                             <StyledTableCell align="center">{patientInfo.surgeryType.toUpperCase()}</StyledTableCell>
                                             <StyledTableCell align="center">{statusIcon(patientInfo)}</StyledTableCell>
@@ -167,6 +168,8 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
                         onRowsPerPageChange={handleChangeRowsPerPage}
                     />
                 </Paper> : "You have no patient yet!"}
+
+            <CreateFakePatient googleUser={googleUser} />
         </div>
     );
 }

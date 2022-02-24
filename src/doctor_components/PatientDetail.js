@@ -93,6 +93,7 @@ const PatientDetail = (patientInfo) => {
         fontSize: '1rem',
         padding: 1,
         marginTop: "2rem",
+        marginBottom: "2rem",
         borderRadius: 2,
         '&:hover': {
             bgcolor: "#b36464"
@@ -194,9 +195,7 @@ const PatientDetail = (patientInfo) => {
                 <Line options={options} data={data} />
             </div>
 
-            <Button onClick={() => {
-                setPage("DoctorHome");
-            }} sx={buttonStyle}>
+            <Button onClick={() => {setPage("DoctorHome");}} sx={buttonStyle}>
                 return
             </Button>
         </div>
