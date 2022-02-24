@@ -1,26 +1,25 @@
 import "survey-react/survey.css"
 import { Model, Survey } from 'survey-react';
 import useStore from '../Store';
-import Button from '@mui/material/Button';
 import swal from 'sweetalert';
 import { setData } from "../utilities/firebase";
 import './surveypage.css'
 
-const buttonStyle = {
-    fontWeight: "normal",
-    backgroundColor: "#b43434",
-    color: 'white',
-    fontSize: '1rem',
-    padding: 1,
-    borderRadius: 2,
-    marginBottom: "10vh",
-    '&:hover': {
-        bgcolor: "#b36464"
-    },
-    '&:focus': {
-        bgcolor: "#b36464"
-    },
-}
+// const buttonStyle = {
+//     fontWeight: "normal",
+//     backgroundColor: "#b43434",
+//     color: 'white',
+//     fontSize: '1rem',
+//     padding: 1,
+//     borderRadius: 2,
+//     marginBottom: "10vh",
+//     '&:hover': {
+//         bgcolor: "#b36464"
+//     },
+//     '&:focus': {
+//         bgcolor: "#b36464"
+//     },
+// }
 
 const showPopupAlert = (pain) => {
     if (pain < 5) {
@@ -59,9 +58,6 @@ function SurveyPage({ currentDay, googleUser, data }) {
     return (
         <div>
             <Survey model={survey} onValueChanged={surveyValueChanged} css={myCss} />
-            <Button onClick={() => setPage("home")} sx={buttonStyle}>
-                Cancel
-            </Button>
         </div >
     );
 }

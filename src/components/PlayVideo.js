@@ -7,7 +7,7 @@ const PlayVideo = ({ currentDay, data }) => {
 
     return (
         <div>
-            <h1>Please do these exercises</h1>
+            <h1>Please do these exercises to go along with phase {phase}:</h1>
             <YoutubeEmbed embedId={data["videoUrls"][phase - 1]} />
         </div>
     );

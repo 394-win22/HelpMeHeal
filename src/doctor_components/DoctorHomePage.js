@@ -56,13 +56,11 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
         },
         [`&.${tableCellClasses.body}`]: {
             fontSize: 14,
+            cursor: "pointer",
         },
     }));
 
     const StyledTableRow = styled(TableRow)(({ theme }) => ({
-        '&:nth-of-type(odd)': {
-            backgroundColor: theme.palette.action.hover,
-        },
         // hide last border
         '&:last-child td, &:last-child th': {
             border: 0,
