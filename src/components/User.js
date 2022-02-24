@@ -1,17 +1,18 @@
 import SurveyPage from './surveypage';
 import useStore from '../Store';
 import { useData } from '../utilities/firebase';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Loading } from "./Loading";
 import { Error404 } from "./404";
 import HomePage from './HomePage';
 import PlayVideo from './PlayVideo';
 import NavBar from './NavBar';
-import calculatePhase from '../utilities/calculatePhase';
+
 function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCurrentDay }) {
     const setPage = useStore(state => state.setUserPage);
     const page = useStore(state => state.UserPage);
     const [data, loadingData, errorData] = useData("/");
+    const [activeIndex, setActiveIndex] = useState();
 
     // firebase data initialize
     useEffect(() => {
@@ -30,7 +31,8 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
                     surgeryType={surgeryType}
                     name={name}
                     setPage={setPage}
-                    activeIndex={calculatePhase(currentDay, data["surgery"][surgeryType]["phaseEndDay"])}
+                    activeIndex={activeIndex}
+                    setActiveIndex={setActiveIndex}
                     user={user}
                     isMobile={isMobile}
                     setCurrentDay={setCurrentDay}

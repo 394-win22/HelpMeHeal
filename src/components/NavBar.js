@@ -24,7 +24,7 @@ const NavBar = ({ data, setPage, user }) => {
     const [showEmailForm, setShowEmailForm] = useState(false);
     const handleShowEmailFormClose = () => setShowEmailForm(false);
     return (
-        <AppBar position="sticky" color="primary" sx={{ top: 'auto', bottom: 0, background: '#b43434', flexDirection: 'row', justifyContent: 'center', p: 2 }}>
+        <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, background: '#b43434', flexDirection: 'row', justifyContent: 'center', p: 2 }}>
             <Button onClick={() => setShowEmailForm(true)}>
                 <EmailIcon sx={IconStyle} />
             </Button>
