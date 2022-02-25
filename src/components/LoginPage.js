@@ -25,7 +25,7 @@ const LoginPage = ({ isMobile }) => {
                 </div>
             </div>
 
-            <Divider style={{ width: "80%", margin: "0 auto", paddingLeft: "50px", paddingRight: "50px" }} />
+            {/* <Divider style={{ width: "80%", margin: "0 auto", paddingLeft: "50px", paddingRight: "50px" }} /> */}
 
             {/* <Grow in={true} {...({ timeout: 1000 })}>
                 <div className="mainTitle">
