@@ -55,20 +55,20 @@
 }
 
 .contentPage h1{
-    font-size: 5vw;
-    line-height: 5vw;
+    font-size: 12vw;
+    line-height: 12vw;
     margin-top:2rem;
     margin-bottom: 10rem;
     margin: 20px 0;
 } 
 .subtext{
-    font-size: 2vw;
-    line-height: 2vw;
+    font-size: 5vw;
+    line-height: 5vw;
     margin-bottom: 3rem;
 }
 .contentPage img{
     border-radius: 0.5rem;
-    max-width:80%;
+    max-width:100%;
 }
 .container{
         max-width: none;
@@ -97,7 +97,9 @@
         max-width: 600px;
     }
 } */
+@media(max-width:500px){
 
+}
 @media (min-width: 992px)
 {
     .contentPage img{
