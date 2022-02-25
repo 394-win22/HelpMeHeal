@@ -176,7 +176,7 @@ const PatientDetail = (patientInfo) => {
                 </div> : <div style={{ textAlign: "center", marginTop: "10px" }}><strong>No survey Result yet!</strong></div>
             }
 
-            <div style={{ width: "50%", height: "30%", margin: "0 auto", marginBottom: '5rem' }}>
+            <div style={{ width: "50%", height: "30%", margin: "0 auto", marginBottom: '10rem' }}>
                 <Chart type='bar' options={options} data={data} />
             </div>
         </div>

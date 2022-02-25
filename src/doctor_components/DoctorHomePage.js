@@ -167,7 +167,9 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
                     />
                 </Paper> : "You have no patient yet!"}
 
-            <CreateFakePatient googleUser={googleUser} />
+            <div style={{ marginBottom: '10rem' }}>
+                <CreateFakePatient googleUser={googleUser} />
+            </div>
         </div>
     );
 }
