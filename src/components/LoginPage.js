@@ -37,9 +37,9 @@ const LoginPage = ({ isMobile }) => {
                 <div className="contentPage">
                     <Grow in={true} {...({ timeout: 1500 })}>
                         <div className="content1" >
-                            <h1> Help <br />patient heal <br /> keep contact.</h1>
+                            <h1> Help <br />patients heal. <br /> Stay in touch.</h1>
                             <div className="subtext">
-                                This is an app that help patient keep contact with his or hers doctors.
+                                This is an app that helps patients keep contact with their doctor.
                             </div>
                         </div>
                     </Grow>
