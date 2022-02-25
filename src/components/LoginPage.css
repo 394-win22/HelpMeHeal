@@ -1,45 +1,41 @@
+.loginPage{
+    background-color: rgb(243, 245, 247);
+}
 
 .navbar{
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    background-color: #b43434;;
+    margin-bottom: 1rem ;
+    background-color: rgb(243, 245, 247);
 }
 
-.navbar h1{
-    padding-left: 20px;
+.navbarContent{
+    margin-top: 1rem;
+    display: flex;
+    vertical-align: middle;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+}
+
+.mainTitle{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: rgb(243, 245, 247);
+    margin-top: 5rem;
+    height: 10rem;
+    margin-bottom: 3rem;
+}
+
+.mainTitle h2{
+    padding-left: 4%;
     margin: auto 0;
     height: 100%;
-    font-size: 25px;
+    font-size: 4em;
     display: flex;
     text-align: center;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: #b43434;
   }
-
-.navbar img{
-    background-color: white;
-    height: 50px;
-}
-
-.contentPage{
-    margin-top: 100px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.demoImg{
-    width:761.5px;
-    height:360px;
-}
-
-
-
-.contentPage h1{
-    text-align: left;
-    width:600px;
-    font-size: 90px;
-}
