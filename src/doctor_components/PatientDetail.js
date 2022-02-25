@@ -13,6 +13,8 @@ import { Chart } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
     CategoryScale,
+    ChartConfiguration,
+    LineController,
     LinearScale,
     PointElement,
     LineElement,
@@ -23,6 +25,7 @@ import {
 } from 'chart.js';
 
 ChartJS.register(
+    LineController,
     CategoryScale,
     LinearScale,
     PointElement,
@@ -106,7 +109,7 @@ const PatientDetail = (patientInfo) => {
         setRowsPerTablePage(+event.target.value);
         setTablePage(0);
     };
-  
+
 
     const TableContainerStyle = {
         width: "80%",
@@ -152,7 +155,7 @@ const PatientDetail = (patientInfo) => {
                     display: "flex", alignItems: "flex-start", flexDirection: "column", justifyContent: "flex-start",
                     marginTop: "3rem"
                 }}>
-                    <b style={{ margin:"0 auto", fontSize: "26px", paddingTop:"1rem", paddingBottom:"1rem"}}>Survey Results </b>
+                    <b style={{ margin: "0 auto", fontSize: "26px", paddingTop: "1rem", paddingBottom: "1rem" }}>Survey Results </b>
 
                     <Paper sx={TableContainerStyle}>
                         <TableContainer>
