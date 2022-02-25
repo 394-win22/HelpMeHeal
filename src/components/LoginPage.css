@@ -105,13 +105,13 @@
     .contentPage img{
         border-radius: 0.5rem;
         max-width: 100%;
-        padding-left: 20px;
+        margin-left: 20px;
         height:auto;
     }
     .contentPage h1{
         font-size: 60px;
         line-height: 70px;
-        padding-right: 20px;
+        margin-right: 20px;
         text-align: left;
     }
     .content1{
