@@ -23,7 +23,7 @@ const DoctorNavBar = ({ setPage, user }) => {
     const [showEmailForm, setShowEmailForm] = useState(false);
     const handleShowEmailFormClose = () => setShowEmailForm(false);
     return (
-        <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, background: '#b43434', flexDirection: 'row', justifyContent: 'center', p: 2, marginTop: '2rem' }}>
+        <AppBar position="sticky" color="primary" sx={{ top: 'auto', bottom: 0, background: '#b43434', flexDirection: 'row', justifyContent: 'center', p: 2, marginTop: '2rem' }}>
             <Button onClick={() => setPage("DoctorHome")} style={{ marginLeft: "5rem" }}>
                 <HomeIcon sx={IconStyle} />
             </Button>
