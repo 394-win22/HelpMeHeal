@@ -13,19 +13,13 @@ const LoginPage = ({ isMobile }) => {
                 <div className="container navbarContent">
                     <div className="logoContent">
                         <img src="bannerlogo.jpg" alt="help-me-heal-logo" style={{ borderRadius: "0.2rem", height: "2rem" }} />
-                        <span style={{
-                            whiteSpace: "nowrap",
-                            marginLeft: "1rem",
-                            marginTop: "0.3rem",
-                            paddingRight: "30%",
-                            color: "rgb(142,149,160)"
-                        }}><b>Help Me Heal</b></span>
+                        <span><b>Help Me Heal</b></span>
                     </div>
                     <SignInOut isMobile={isMobile} />
                 </div>
             </div>
 
-            {/* <Divider style={{ width: "80%", margin: "0 auto", paddingLeft: "50px", paddingRight: "50px" }} /> */}
+            <Divider style={{ width: "80%", margin: "0 auto", paddingLeft: isMobile ? "0px" : "50px", paddingRight: isMobile ? "0px" : "50px" }} />
 
             {/* <Grow in={true} {...({ timeout: 1000 })}>
                 <div className="mainTitle">
