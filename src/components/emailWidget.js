@@ -88,7 +88,7 @@ const MailTo = ({ toEmail, show, handleClose, user }) => {
                             helperText='Must be valid email'
                             error={!validFromEmail} />
                         <TextField id='toEmail'
-                            label="Doctor Email"
+                            label={user.userType === "doctor" ? "Patient Email" : "Doctor Email"}
                             name='to_email'
                             variant="outlined"
                             defaultValue={toEmail ? toEmail : ""}
