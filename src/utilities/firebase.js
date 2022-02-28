@@ -13,14 +13,15 @@ import { getAuth, GoogleAuthProvider, onIdTokenChanged, signInWithPopup, signOut
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyDW39TqmTDmQlx-3RcKV91pqi07YVhwipM",
-    authDomain: "helpmeheal-783b9.firebaseapp.com",
-    databaseURL: "https://helpmeheal-783b9-default-rtdb.firebaseio.com",
-    projectId: "helpmeheal-783b9",
-    storageBucket: "helpmeheal-783b9.appspot.com",
-    messagingSenderId: "136158784410",
-    appId: "1:136158784410:web:ce5f3a50cc75b835b76823"
-  };
+    apiKey: "AIzaSyAdjQ9ZnfXyb258VqFgbVUz4SzEiWBiPAQ",
+    authDomain: "helpmeheal-49a3f.firebaseapp.com",
+    databaseURL: "https://helpmeheal-49a3f-default-rtdb.firebaseio.com",
+    projectId: "helpmeheal-49a3f",
+    storageBucket: "helpmeheal-49a3f.appspot.com",
+    messagingSenderId: "659893085250",
+    appId: "1:659893085250:web:df1b73d52c11f8fef7f9db"
+};
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -73,12 +74,19 @@ const firebaseSignOut = () => signOut(getAuth(app));
 
 export { firebaseSignOut as signOut };
 
-export const useUserState = () => {
+export const useUserState = (uid) => {
+    // const [user, setUser] = useState();ref
+    const [user] = useData(`/user/${uid}`);
+    console.log(user);
+    return [user];
+};
+
+export const useGoogleUserState = () => {
     const [user, setUser] = useState();
-  
+
     useEffect(() => {
         onIdTokenChanged(getAuth(app), setUser);
     }, []);
-  
+
     return [user];
 };

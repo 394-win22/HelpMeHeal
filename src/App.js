@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import LoginPage from './components/LoginPage';
+import { useGoogleUserState, useUserState } from './utilities/firebase';
+import GetUser from './components/GetUser';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [googleUser] = useGoogleUserState();
+  const [isMobile, setIsMobile] = useState(false);
+  
+    //choose the screen size
+  const handleResize = () => {
+    if (window.innerWidth < 720) {
+      setIsMobile(true)
+    } else {
+      setIsMobile(false)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+  })
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <div className={isMobile ? "app-header mobile" : "app-header"}>
+        <img className="logo" src="bannerlogo.jpg" />
+        <h1>Help Me Heal</h1>
+      </div>
+
+      <div>
+        {googleUser ?
+          <div>
+            <GetUser googleUser={googleUser} isMobile={isMobile}/>
+          </div>
+          :
+          <LoginPage isMobile={isMobile}/>
+        }
+      </div>
     </div>
   );
 }
