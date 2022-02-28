@@ -23,12 +23,6 @@ const LoginPage = ({ isMobile }) => {
 
             <Divider style={{ width: "80%", margin: "0 auto", paddingLeft: isMobile ? "0px" : "50px", paddingRight: isMobile ? "0px" : "50px" }} />
 
-            {/* <Grow in={true} {...({ timeout: 1000 })}>
-                <div className="mainTitle">
-                    <img src="bannerlogo.jpg" alt="help-me-heal-logo" style={{borderRadius:"0.5rem", height:"50%", marginTop:"2.8%"}}/>
-                    <h2>Help Me Heal</h2>
-                </div>
-            </Grow> */}
             <div className="container">
                 <div className="contentPage">
                     <Grow in={true} {...({ timeout: 1500 })}>

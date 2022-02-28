@@ -1,4 +1,5 @@
 import Button from "@mui/material/Button";
+import Grow from '@mui/material/Grow';
 
 const buttonStyle = (isMobile) => ({
     mx: 2,
@@ -30,8 +31,11 @@ export const SwitchDay = ({ currentDay, setCurrentDay, isMobile, phaseEndDay }) 
         }}> Prev. Day </Button>
     );
     return (
-        <div className="nextPrevDay">
-            <PrevDayButton/>
-            <NextDayButton/>
-        </div>);
+        <Grow in={true} {...({ timeout: 1500 })}>
+            <div className="nextPrevDay">
+                <PrevDayButton/>
+                <NextDayButton/>
+            </div>
+        </Grow>
+    );
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import './ProgressBar.css';
 import LinearProgress from '@mui/material/LinearProgress';
 import { Box } from '@mui/system';
+import Grow from '@mui/material/Grow';
 
 const ProgressBar = ({steps, phase, currentDay, phaseEndDay, isMobile, onPhaseClick}) => {
     const complete = currentDay+phaseEndDay[phase-1] >= phaseEndDay[Object.entries(phaseEndDay).length];
@@ -81,10 +82,12 @@ const ProgressIndicator = ({setActiveIndex, currentDay, phaseEndDay, isMobile, s
    
 
     return(
-        <div>
-            {zoom ? <ProgressBarZoomed totalDays={totalDays} phase={phase} currentDay={currentDayPhase} phaseEndDay={phaseEndDay} onPhaseClick={() => setZoom(!zoom)} /> :
-                <ProgressBar steps={steps} phase={phase} currentDay={currentDayPhase} phaseEndDay={phaseEndDay} isMobile={isMobile} onPhaseClick={() => setZoom(!zoom)} />}
-        </div>
+        <Grow in={true} {...({ timeout: 1500 })}>
+            <div>
+                {zoom ? <ProgressBarZoomed totalDays={totalDays} phase={phase} currentDay={currentDayPhase} phaseEndDay={phaseEndDay} onPhaseClick={() => setZoom(!zoom)} /> :
+                    <ProgressBar steps={steps} phase={phase} currentDay={currentDayPhase} phaseEndDay={phaseEndDay} isMobile={isMobile} onPhaseClick={() => setZoom(!zoom)} />}
+            </div>
+        </Grow>
     );
 
     

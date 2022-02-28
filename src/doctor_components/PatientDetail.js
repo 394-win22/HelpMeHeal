@@ -9,6 +9,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Chart } from 'react-chartjs-2';
+import Grow from '@mui/material/Grow';
 
 import { Chart as ChartJS, registerables } from 'chart.js';
 ChartJS.register(...registerables);
@@ -122,63 +123,69 @@ const PatientDetail = (patientInfo) => {
 
     return (
         <div>
-            <div>
-                <h2>{patientInfo.patientInfo.name}</h2>
-                <a href={"mailto:" + patientInfo.patientInfo.email}>{patientInfo.patientInfo.email}</a>
-            </div>
-            {patientInfo.patientInfo.surveyResults ?
+            <Grow in={true} {...({ timeout: 1000 })}>
+                <div>
+                    <h2>{patientInfo.patientInfo.name}</h2>
+                    <a href={"mailto:" + patientInfo.patientInfo.email}>{patientInfo.patientInfo.email}</a>
+                </div>
+            </Grow>
 
-                <div style={{
-                    display: "flex", alignItems: "flex-start", flexDirection: "column", justifyContent: "flex-start",
-                    marginTop: "3rem"
-                }}>
-                    <b style={{ margin: "0 auto", fontSize: "26px", paddingTop: "1rem", paddingBottom: "1rem" }}>Survey Results </b>
+            <Grow in={true} {...({ timeout: 1500 })}>
+                {patientInfo.patientInfo.surveyResults ?
+                    <div style={{
+                        display: "flex", alignItems: "flex-start", flexDirection: "column", justifyContent: "flex-start",
+                        marginTop: "3rem"
+                    }}>
+                        <b style={{ margin: "0 auto", fontSize: "26px", paddingTop: "1rem", paddingBottom: "1rem" }}>Survey Results </b>
 
-                    <Paper sx={TableContainerStyle}>
-                        <TableContainer>
-                            <Table sx={{ minWidth: 700 }} aria-label="customized table">
-                                <TableHead>
-                                    <TableRow>
-                                        <StyledTableCell>Pain Level</StyledTableCell>
-                                        <StyledTableCell align="right">Rehab Successful</StyledTableCell>
-                                        <StyledTableCell align="right">Concerns</StyledTableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {
-                                        patientInfo.patientInfo.surveyResults.slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage)
-                                            .map((surveyResult, i) => (
-                                                <StyledTableRow hover key={"surveyResult" + i}>
-                                                    <StyledTableCell key={"pain_rating" + i} component="th" scope="row">
-                                                        {surveyResult.pain_rating}
-                                                    </StyledTableCell>
-                                                    <StyledTableCell key={"rehab" + i} align="right">{surveyResult.rehab_successful}</StyledTableCell>
-                                                    <StyledTableCell key={"concerns" + i} align="right">{surveyResult.concerns}</StyledTableCell>
-                                                    {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                                        <StyledTableCell align="right">{row.protein}</StyledTableCell> */}
-                                                </StyledTableRow>
-                                            ))
-                                    }
-                                </TableBody>
-                            </Table>
-                        </TableContainer >
-                        <TablePagination
-                            rowsPerPageOptions={[5, 10, 15]}
-                            component="div"
-                            // first in array is empty, adjust for it in length
-                            count={patientInfo.patientInfo.surveyResults.length - 1}
-                            rowsPerPage={rowsPerTablePage}
-                            page={tablePage}
-                            onPageChange={handleChangePage}
-                            onRowsPerPageChange={handleChangeRowsPerPage}
-                        />
-                    </Paper>
-                </div> : <div style={{ textAlign: "center", marginTop: "10px" }}><strong>No survey Result yet!</strong></div>
-            }
+                        <Paper sx={TableContainerStyle}>
+                            <TableContainer>
+                                <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                                    <TableHead>
+                                        <TableRow>
+                                            <StyledTableCell>Pain Level</StyledTableCell>
+                                            <StyledTableCell align="right">Rehab Successful</StyledTableCell>
+                                            <StyledTableCell align="right">Concerns</StyledTableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {
+                                            patientInfo.patientInfo.surveyResults.slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage)
+                                                .map((surveyResult, i) => (
+                                                    <StyledTableRow hover key={"surveyResult" + i}>
+                                                        <StyledTableCell key={"pain_rating" + i} component="th" scope="row">
+                                                            {surveyResult.pain_rating}
+                                                        </StyledTableCell>
+                                                        <StyledTableCell key={"rehab" + i} align="right">{surveyResult.rehab_successful}</StyledTableCell>
+                                                        <StyledTableCell key={"concerns" + i} align="right">{surveyResult.concerns}</StyledTableCell>
+                                                        {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+                                            <StyledTableCell align="right">{row.protein}</StyledTableCell> */}
+                                                    </StyledTableRow>
+                                                ))
+                                        }
+                                    </TableBody>
+                                </Table>
+                            </TableContainer >
+                            <TablePagination
+                                rowsPerPageOptions={[5, 10, 15]}
+                                component="div"
+                                // first in array is empty, adjust for it in length
+                                count={patientInfo.patientInfo.surveyResults.length - 1}
+                                rowsPerPage={rowsPerTablePage}
+                                page={tablePage}
+                                onPageChange={handleChangePage}
+                                onRowsPerPageChange={handleChangeRowsPerPage}
+                            />
+                        </Paper>
+                    </div> : <div style={{ textAlign: "center", marginTop: "10px" }}><strong>No survey Result yet!</strong></div>
+                }
+            </Grow>
 
-            <div style={{ width: "50%", height: "30%", margin: "0 auto", marginBottom: '10rem' }}>
-                <Chart type='bar' options={options} data={data} />
-            </div>
+            <Grow in={true} {...({ timeout: 1500 })}>
+                <div style={{ width: "50%", height: "30%", margin: "0 auto", marginBottom: '10rem' }}>
+                    <Chart type='bar' options={options} data={data} />
+                </div>
+            </Grow>
         </div>
     )
 }
