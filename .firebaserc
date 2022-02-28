@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "helpmeheal-49a3f"
+  },
+  "targets": {
+    "helpmeheal-49a3f": {
+      "hosting": {
+        "test": [
+          "helpmeheal-49a3g"
+        ],
+        "stable": [
+          "49a3f"
+        ]
+      }
+    }
   }
 }

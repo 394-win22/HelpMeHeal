@@ -5,6 +5,10 @@
     height: 0;
   }
   
+  h1 {
+    margin-bottom: 6vh;
+  }
+
   .video-responsive iframe {
     left: 10%;
     top: 0;

@@ -75,7 +75,7 @@ const MailTo = ({ toEmail, show, handleClose, user }) => {
             >
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2" style={{ textAlign: "center", marginBottom: 10 }}>
-                        Email Your Doctor Now
+                        {user.userType === "doctor" ? "Email Your Patient Now" : "Email Your Doctor Now"}
                     </Typography>
 
                     <Stack spacing={spacing}>
@@ -88,7 +88,7 @@ const MailTo = ({ toEmail, show, handleClose, user }) => {
                             helperText='Must be valid email'
                             error={!validFromEmail} />
                         <TextField id='toEmail'
-                            label="Doctor Email"
+                            label={user.userType === "doctor" ? "Patient Email" : "Doctor Email"}
                             name='to_email'
                             variant="outlined"
                             defaultValue={toEmail ? toEmail : ""}
@@ -103,7 +103,7 @@ const MailTo = ({ toEmail, show, handleClose, user }) => {
                             multiline
                             rows={4}
                             placeholder="What is your concern?"
-                            sequired
+                            required
                             helperText="Cannot be blank"
                             error={!validMessage} />
                     </Stack>

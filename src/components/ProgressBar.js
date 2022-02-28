@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './ProgressBar.css';
 import LinearProgress from '@mui/material/LinearProgress';
 import { Box } from '@mui/system';
+import Grow from '@mui/material/Grow';
 
 const ProgressBar = ({steps, phase, currentDay, phaseEndDay, isMobile, onPhaseClick}) => {
     const complete = currentDay+phaseEndDay[phase-1] >= phaseEndDay[Object.entries(phaseEndDay).length];
@@ -54,8 +55,8 @@ const ProgressBarZoomed =  ({currentDay, phase, totalDays, onPhaseClick, phaseEn
 }
 
 //TODO: add iterable as an argument and map it
-const ProgressIndicator = ({setActiveIndex, currentDay, phaseEndDay, isMobile }) => {
-    const[isZoom,setZoom] = useState(false);
+const ProgressIndicator = ({setActiveIndex, currentDay, phaseEndDay, isMobile, setZoom, zoom }) => {
+    //const [isZoom, setZoom] = useState(false);
     const steps = []
     let phase;
 
@@ -63,7 +64,7 @@ const ProgressIndicator = ({setActiveIndex, currentDay, phaseEndDay, isMobile })
         if (currentDay <= value) {
             phase = key;
             //this line will cause error 
-            setActiveIndex(phase)
+            setActiveIndex(phase);
             break;
         }
         else {
@@ -81,10 +82,12 @@ const ProgressIndicator = ({setActiveIndex, currentDay, phaseEndDay, isMobile })
    
 
     return(
-        <div>
-            {isZoom ? <ProgressBarZoomed totalDays={totalDays} phase={phase} currentDay={currentDayPhase} phaseEndDay={phaseEndDay} onPhaseClick={() => setZoom(!isZoom)}  /> : 
-            <ProgressBar steps={steps} phase={phase} currentDay={currentDayPhase} phaseEndDay={phaseEndDay} isMobile={isMobile} onPhaseClick={() => setZoom(!isZoom)} />}
-        </div>
+        <Grow in={true} {...({ timeout: 1500 })}>
+            <div>
+                {zoom ? <ProgressBarZoomed totalDays={totalDays} phase={phase} currentDay={currentDayPhase} phaseEndDay={phaseEndDay} onPhaseClick={() => setZoom(!zoom)} /> :
+                    <ProgressBar steps={steps} phase={phase} currentDay={currentDayPhase} phaseEndDay={phaseEndDay} isMobile={isMobile} onPhaseClick={() => setZoom(!zoom)} />}
+            </div>
+        </Grow>
     );
 
     

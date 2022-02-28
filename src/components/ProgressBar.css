@@ -69,6 +69,17 @@
     border-color: var(--red);
     color: var(--red);
     transform: scale(1.2);
+
+  }
+
+  .progress-step.active .step-number:hover {
+    background-color: rgb(155, 11, 11);
+    border: width 2px; 
+    border-color: white;
+    border-style: double;
+    color: white;
+    transition: transform 0.1s ease 0.1s, background 0.1s ease, border-color 0.1s ease;
+    transform: scale(1.5);
   }
   
   .progress-step.complete .step-number {

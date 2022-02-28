@@ -1,0 +1,148 @@
+.loginPage{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(243, 245, 247);
+}
+
+.navbar{
+    margin-bottom: 1rem ;
+    background-color: rgb(243, 245, 247);
+}
+
+.navbarContent{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.logoContent{
+    max-width: 50%;
+    display: flex;
+    flex-direction: row;
+}
+
+.logoContent span{
+    white-space: nowrap;
+    margin-left: 1rem;
+    margin-top: 0.3rem;
+    padding-right: 30%;
+    color: rgb(142,149,160);
+}
+
+.contentPage{
+    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 22rem;
+}
+
+.contentPage h1{
+    font-size: 12vw;
+    line-height: 12vw;
+    margin-top:2rem;
+    margin-bottom: 10rem;
+    margin: 20px 0;
+} 
+.subtext{
+    font-size: 5vw;
+    line-height: 5vw;
+    margin-bottom: 3rem;
+}
+.contentPage img{
+    border-radius: 0.5rem;
+    max-width:100%;
+}
+.container{
+    max-width: none;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.content1{
+    width: 100%;
+}
+
+@media(max-width:320px){
+    .logoContent span{
+        margin-top: 0;
+        white-space: normal;
+    }
+}
+@media(max-width:400px){
+    .contentPage h1{
+        font-size: 10vw;
+        line-height: 10vw;
+        margin-top:2rem;
+        margin-bottom: 10rem;
+        margin: 20px 0;
+    } 
+}
+@media (min-width: 992px)
+{
+    .contentPage img{
+        border-radius: 0.5rem;
+        max-width: 100%;
+        margin-left: 20px;
+        height:auto;
+    }
+    .contentPage h1{
+        font-size: 60px;
+        line-height: 70px;
+        margin-right: 20px;
+        text-align: left;
+    }
+    .content1{
+        max-width: 50%;
+    }
+    .demo-img{
+        max-width: 50%;
+    }
+    .container{
+        max-width: 900px;
+    }
+    .subtext{
+        font-size: 18px;
+        line-height: 28px;
+        text-align: left;
+    }
+}
+
+
+@media (min-width: 1100px)
+{
+    .contentPage h1{
+        font-size: 70px;
+        line-height: 84px;
+        padding-right: 20px;
+        text-align: left;
+    }
+    .container{
+        max-width: 1000px;
+    }
+}
+
+@media (min-width: 1330px){
+    .contentPage h1{
+        font-size: 81px;
+        line-height: 89px;
+        padding-right: 20px;
+        text-align: left;
+    }
+    .container{
+        max-width: 1340px;
+        padding-left: 120px;
+        padding-right: 120px;
+    }
+}
+
+@media (min-width: 1630px){
+    .container{
+        max-width: 1640px;
+        padding-left: 120px;
+        padding-right: 120px;
+    }
+}

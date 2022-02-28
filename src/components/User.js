@@ -10,10 +10,10 @@ import NavBar from './NavBar';
 
 function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCurrentDay }) {
     const setPage = useStore(state => state.setUserPage);
+    const [zoom, setZoom] = useState(false);
     const page = useStore(state => state.UserPage);
     const [data, loadingData, errorData] = useData("/");
-
-    const [activeIndex, setActiveIndex] = useState(2);
+    const [activeIndex, setActiveIndex] = useState();
 
     // firebase data initialize
     useEffect(() => {
@@ -37,6 +37,8 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
                     user={user}
                     isMobile={isMobile}
                     setCurrentDay={setCurrentDay}
+                    setZoom={setZoom}
+                    zoom={zoom}
                 />;
             case "survey":
                 return <SurveyPage currentDay={currentDay} user={user} googleUser={googleUser} data={data} />;
@@ -60,7 +62,8 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
                 // setShowEmailForm={setShowEmailForm} 
                 // handleShowEmailFormClose={handleShowEmailFormClose} 
                 setPage={setPage}
-                user={user} />
+                user={user}
+                setZoom={setZoom} />
         </div>
     );
 }

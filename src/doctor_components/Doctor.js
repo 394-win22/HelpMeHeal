@@ -5,9 +5,11 @@ import { Loading } from "../components/Loading";
 import { Error404 } from "../components/404";
 import DoctorHomePage from './DoctorHomePage';
 import PatientDetail from './PatientDetail';
+import DoctorNavBar from './DoctorNav';
 
-const Doctor = ({ name, googleUser }) => {
+const Doctor = ({ name, googleUser, user }) => {
     const [data, loadingData, errorData] = useData("/");
+    const setPage = useStore(state => state.setDoctorPage);
     const page = useStore(state => state.DoctorPage);
     const [patientInfo, setpatientInfo] = useState("");
     
@@ -32,9 +34,15 @@ const Doctor = ({ name, googleUser }) => {
                 return <p>Sorry, there's been an error.</p>
         }
     }
+
     return (
         <div>
-            {getPage()}
+            <div>
+                {getPage()}
+            </div>
+            <DoctorNavBar 
+                setPage={setPage}
+                user={user} />
         </div>
     );
 }
