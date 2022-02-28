@@ -15,7 +15,9 @@ const LoginPage = ({ isMobile }) => {
                         <img src="bannerlogo.jpg" alt="help-me-heal-logo" style={{ borderRadius: "0.2rem", height: "2rem" }} />
                         <span><b>Help Me Heal</b></span>
                     </div>
-                    <SignInOut isMobile={isMobile} />
+                    <div style={{marginLeft: isMobile ? "35%" : "70%"}}>
+                        <SignInOut isMobile={isMobile} />
+                    </div>
                 </div>
             </div>
 
@@ -31,9 +33,9 @@ const LoginPage = ({ isMobile }) => {
                 <div className="contentPage">
                     <Grow in={true} {...({ timeout: 1500 })}>
                         <div className="content1" >
-                            <h1> Help <br />patients heal. <br /> Stay in touch.</h1>
+                            <h1> Get back to the activities you love.</h1>
                             <div className="subtext">
-                                This is an app that helps patients keep contact with their doctor.
+                                Day-by-day recovery tips to keep your rehab on track and connected to your healthcare provider.
                             </div>
                         </div>
                     </Grow>

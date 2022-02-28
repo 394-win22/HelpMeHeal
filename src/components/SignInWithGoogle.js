@@ -4,7 +4,7 @@ import useStore from '../Store.js';
 
 const buttonStyle = (isMobile) => ({
     mx: 2,
-    fontSize: isMobile ? '2vw' : "0.5rem",
+    fontSize: isMobile ? '3vw' : "0.8rem",
     width: isMobile ? '12vw' : '6rem',
     margin: '1%',
     bgcolor: "#b43434",

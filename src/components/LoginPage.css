@@ -12,10 +12,7 @@
 .navbarContent{
     margin-top: 1rem;
     display: flex;
-    justify-content: space-between;
-    /* vertical-align: middle;
-    justify-content: center;
-    align-content: center; */
+    justify-content: space-around;
 }
 
 .logoContent{
@@ -31,27 +28,6 @@
     padding-right: 30%;
     color: rgb(142,149,160);
 }
-/* .mainTitle{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    background-color: rgb(243, 245, 247);
-    margin-top: 5rem;
-    height: 10rem;
-    margin-bottom: 3rem;
-}
-
-.mainTitle h2{
-    padding-left: 4%;
-    margin: auto 0;
-    height: 100%;
-    font-size: 4em;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    color: #b43434;
-} */
 
 .contentPage{
     margin-top: 100px;
@@ -79,32 +55,17 @@
     max-width:100%;
 }
 .container{
-        max-width: none;
-        margin-right: auto;
-        margin-left: auto;
-        padding-left: 50px;
-        padding-right: 50px;
+    max-width: none;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 .content1{
     width: 100%;
 }
 
-/* @media (min-width: 768px){
-    .contentPage img{
-        max-width: calc(100% + 20px);
-        height:auto;
-    }
-    .content1{
-        max-width: 50%;
-    }
-    .demo-img{
-        max-width: 50%;
-    }
-    .page-container{
-        max-width: 600px;
-    }
-} */
 @media(max-width:320px){
     .logoContent span{
         margin-top: 0;
