@@ -1,9 +1,9 @@
 import Grow from '@mui/material/Grow';
 import { setData } from '../utilities/firebase';
 import swal from 'sweetalert';
+import Button from "@mui/material/Button";
 
-const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysDict, phaseEndDay }) => {
-
+const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysDict, phaseEndDay, isMobile }) => {
     let daysHasMessage;
 
     for (const [key,] of Object.entries(daysDict)) {
@@ -11,13 +11,45 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
             daysHasMessage = key
         }
     }
+    const popupWelcomeMsg = () => {
+        let welcomeMsg = '';
+        Object.entries(firebaseData.surgery) // First: entry 'ACL'
+            .filter(data => data[0] === surgeryType)
+            .map(data => {
+                return (Object.entries(data[1].days) // Second: entry phase
+                    .filter(days => days[0] === daysHasMessage)
+                    .map((msg) => {
+                        welcomeMsg = msg[1].message
+                    })
+                )
+            })
+        swal(`Welcome back ${username ? username : "Nobody"}  Today you are on phase ${phase}, day ${progressComplete
+            ? phaseEndDay[Object.entries(phaseEndDay).length]
+            : currentDay} of your ACL recovery.${welcomeMsg}`)
+
+    }
+
+    const buttonStyle = (isMobile) => ({
+        mx: 2,
+        fontSize: isMobile ? '3vw' : "0.8rem",
+        width: isMobile ? '12vw' : '6rem',
+        margin: '1%',
+        bgcolor: "#b43434",
+        borderRadius: 2,
+        color: "rgb(255, 255, 255)",
+        '&:hover': {
+            bgcolor: "#b36464"
+        },
+        '&:focus': {
+            bgcolor: "#b36464"
+        },
+    })
+
     const progressComplete = currentDay >= phaseEndDay[Object.entries(phaseEndDay).length];
     let isFirstLogin = (localStorage.getItem("lastLoginDay") === null || localStorage.getItem("lastLoginDay") !== currentDay.toString()) ? true : false;
     if (isFirstLogin === true) {
         //Better to use a modal instead of using swal?
-        swal(`Welcome back ${username ? username : "Nobody"}  Today you are on phase ${phase}, day ${progressComplete
-            ? phaseEndDay[Object.entries(phaseEndDay).length]
-            : currentDay} of your ACL recovery.`)
+        popupWelcomeMsg();
         localStorage.setItem("lastLoginDay", currentDay);
         // return (
         //     <Grow in={true} {...({ timeout: 1500 })}>
@@ -50,7 +82,7 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
         //         </div>
         //     </Grow>)
     }
-    return <div>you have already seen welcome message</div>
+    return <Button sx={() => buttonStyle(isMobile)} onClick={() => { popupWelcomeMsg() }} >Show Welcome Message</Button>
 }
 
 export default Welcome;

@@ -3,7 +3,8 @@ import Grow from '@mui/material/Grow';
 
 const buttonStyle = (isMobile) => ({
     mx: 2,
-    width: isMobile ? '20vw' : '6rem',
+    fontSize: isMobile ? '3vw' : "0.8rem",
+    width: isMobile ? '12vw' : '6rem',
     margin: '1%',
     bgcolor: "#b43434",
     borderRadius: 2,
@@ -21,7 +22,7 @@ export const SwitchDay = ({ currentDay, setCurrentDay, isMobile, phaseEndDay }) 
     const NextDayButton = () => (
         <Button sx={() => buttonStyle(isMobile)} onClick={() => {
             currentDay < phaseEndDay[Object.entries(phaseEndDay).length] && setCurrentDay(currentDay + 1)
-            
+
         }}> Next Day </Button>);
 
     const PrevDayButton = () => (
@@ -34,8 +35,8 @@ export const SwitchDay = ({ currentDay, setCurrentDay, isMobile, phaseEndDay }) 
     return (
         <Grow in={true} {...({ timeout: 1500 })}>
             <div className="nextPrevDay">
-                <PrevDayButton/>
-                <NextDayButton/>
+                <PrevDayButton />
+                <NextDayButton />
             </div>
         </Grow>
     );
