@@ -50,8 +50,6 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
         }
     }
 
-
-
     return (
         <div>
             <div>
