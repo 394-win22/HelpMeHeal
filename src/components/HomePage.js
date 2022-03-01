@@ -4,7 +4,9 @@ import { SwitchDay } from './SwitchDay'
 import PatientGraphs from "./PatientGraphs";
 import ToDoList from "./ToDoList";
 
+
 const HomePage = ({ phase, data, currentDay, surgeryType, name, isMobile, setCurrentDay, setZoom, zoom, user, setPage, surveyCheck, videoCheck }) => {
+
 
     return (
         <div>
@@ -14,6 +16,7 @@ const HomePage = ({ phase, data, currentDay, surgeryType, name, isMobile, setCur
             <Welcome phase={phase} username={name} surgeryType={surgeryType} firebaseData={data} currentDay={currentDay} daysDict={data["surgery"][surgeryType]["days"]} phaseEndDay={data["surgery"][surgeryType]["phaseEndDay"]} />
             <ToDoList setPage={setPage} surveyCheck={surveyCheck} videoCheck={videoCheck} />
             <PatientGraphs patientInfo={user} />
+
         </div>
     )
 
