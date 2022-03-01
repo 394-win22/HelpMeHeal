@@ -20,7 +20,7 @@ var surveyValueChanged = function (sender, options) {
     }
 };
 
-function SurveyPage({ currentDay, googleUser, data, setSurveyCheck }) {
+function SurveyPage({ currentDay, googleUser, data }) {
     //Now is day1 if we want to have different survey everyday we will use currentDay
     const surveyJson = data["survey"]["day1"]
     // console.log(googleUser)
@@ -32,7 +32,6 @@ function SurveyPage({ currentDay, googleUser, data, setSurveyCheck }) {
             setData(`/user/${googleUser?.uid}/surveyResults/${currentDay - 1}`, sender.data);
             //console.log(sender.data);
             showPopupAlert(sender.data.pain_rating);
-            setSurveyCheck(true);
             setPage("home");
         });
 

@@ -9,7 +9,7 @@ import PlayVideo from './PlayVideo';
 import NavBar from './NavBar';
 import calculatePhase from '../utilities/calculatePhase';
 
-function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCurrentDay, isFirstLogin }) {
+function User({ name, surgeryType, currentDay, user, surveyCheck, googleUser, isMobile, setCurrentDay, isFirstLogin }) {
 
     const setPage = useStore(state => state.setUserPage);
     const [zoom, setZoom] = useState(false);
@@ -40,10 +40,9 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
                     setCurrentDay={setCurrentDay}
                     setZoom={setZoom}
                     zoom={zoom}
-                    surveyCheck={data["user"][googleUser.uid]["surveyResults"] ? data["user"][googleUser.uid]["surveyResults"][currentDay - 1] !== undefined : false}
+                    surveyCheck={surveyCheck}
                     videoCheck={videoCheck}
                     googleUser={googleUser}
-
                 />;
             case "survey":
                 return <SurveyPage currentDay={currentDay} user={user} googleUser={googleUser} data={data} />;
@@ -65,7 +64,7 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
                 setPage={setPage}
                 user={user}
                 setZoom={setZoom}
-                surveyCheck={data["user"][googleUser.uid]["surveyResults"] ? data["user"][googleUser.uid]["surveyResults"][currentDay - 1] !== undefined : false}
+                surveyCheck={surveyCheck}
             />
         </div>
     );

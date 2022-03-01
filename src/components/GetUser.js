@@ -13,8 +13,9 @@ const GetUser = ({ googleUser, isMobile }) => {
   const [name, setName] = useState("");
   const [surgeryType, setSurgeryType] = useState("");
   const [currentDay, setCurrentDay] = useState();
+  const [surveyCheck, setSurveyCheck] = useState(false);
   const user = useUserState(googleUser?.uid)[0];
-  
+
 
   useEffect(() => {
     if (user === undefined) return;
@@ -23,6 +24,7 @@ const GetUser = ({ googleUser, isMobile }) => {
       setName(user.name.toUpperCase());
       setSurgeryType(user.surgeryType);
       setCurrentDay(calculateDay(user.startDate));
+      setSurveyCheck(user.surveyResults ? user.surveyResults[calculateDay(user.startDate) - 1] !== undefined : false)
     }
 
     const initDoctor = () => {
@@ -32,7 +34,7 @@ const GetUser = ({ googleUser, isMobile }) => {
     if (user) {
       if (user.userType === "patient") {
         initPatient()
-        
+
       }
       if (user.userType === "doctor") {
         initDoctor()
@@ -47,7 +49,7 @@ const GetUser = ({ googleUser, isMobile }) => {
       case "patient":
         return (
           <div>
-            <User name={name} surgeryType={surgeryType} currentDay={currentDay} user={user} googleUser={googleUser} isMobile={isMobile} setCurrentDay={setCurrentDay} />
+            <User name={name} surgeryType={surgeryType} currentDay={currentDay} user={user} surveyCheck={surveyCheck} googleUser={googleUser} isMobile={isMobile} setCurrentDay={setCurrentDay} />
           </div>
         )
       case "doctor":
