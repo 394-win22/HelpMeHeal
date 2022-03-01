@@ -58,6 +58,8 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
                 {getPage()}
             </div>
             <NavBar data={data}
+                currentDay={currentDay}
+                googleUser={googleUser}
                 // showEmailForm={showEmailForm} 
                 // setShowEmailForm={setShowEmailForm} 
                 // handleShowEmailFormClose={handleShowEmailFormClose} 

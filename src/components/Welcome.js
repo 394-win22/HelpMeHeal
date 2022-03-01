@@ -13,7 +13,7 @@ const Welcome = ({ username, surgeryType, firebaseData, activeIndex, currentDay,
 
     return (
         <Grow in={true} {...({ timeout: 1500 })}>
-            <div style={{ width: '55%', marginLeft: '23%', marginBottom: "10%" }}>
+            <div style={{ width: '55%', marginLeft: '23%', marginBottom: "200px" }}>
                 <div style={{ color: '#b43434', fontSize: 25, marginBottom: '4rem', marginTop: '4rem' }}>
                     <h2 style={{ textAlign: 'left' }}> Welcome back {username ? username : "Nobody"}, </h2>
                 </div>
@@ -40,7 +40,7 @@ const Welcome = ({ username, surgeryType, firebaseData, activeIndex, currentDay,
                     Remember to take the daily survey to ensure your recovery is on track.
                 </div>
             </div>
-    </Grow>
+        </Grow>
     )
 }
 
