@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 
 const ToDoList = ({ setPage, surveyCheck, videoCheck }) => {
     return (
-        <div style={{ marginTop: "4%", marginLeft: "40%" }}>
+        <div style={{ marginTop: "0.8rem", marginLeft: "40%" }}>
             <List
                 sx={{ width: '100%', maxWidth: 360, bgcolor: "rgb(243, 245, 247)", borderRadius: "2rem" }}
                 subheader={<ListSubheader sx={{ bgcolor: "rgb(243, 245, 247)", borderRadius: "2rem" }}> To Do List </ListSubheader>}

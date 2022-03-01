@@ -15,7 +15,6 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
     const [zoom, setZoom] = useState(false);
     const page = useStore(state => state.UserPage);
     const [data, loadingData, errorData] = useData("/");
-    const [surveyCheck, setSurveyCheck] = useState(false);
     const [videoCheck, setVideoCheck] = useState(false);
 
     // firebase data initialize
@@ -41,13 +40,13 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
                     setCurrentDay={setCurrentDay}
                     setZoom={setZoom}
                     zoom={zoom}
-                    surveyCheck={surveyCheck}
+                    surveyCheck={data["user"][googleUser.uid]["surveyResults"] ? data["user"][googleUser.uid]["surveyResults"][currentDay - 1] !== undefined : false}
                     videoCheck={videoCheck}
                     googleUser={googleUser}
 
                 />;
             case "survey":
-                return <SurveyPage currentDay={currentDay} user={user} googleUser={googleUser} data={data} setSurveyCheck={setSurveyCheck} />;
+                return <SurveyPage currentDay={currentDay} user={user} googleUser={googleUser} data={data} />;
             case "playVideo":
                 return <PlayVideo currentDay={currentDay} phase={calculatePhase(currentDay, data["surgery"][surgeryType]["phaseEndDay"])} data={data["surgery"][surgeryType]} setVideoCheck={setVideoCheck} />;
             default:
@@ -66,6 +65,7 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
                 setPage={setPage}
                 user={user}
                 setZoom={setZoom}
+                surveyCheck={data["user"][googleUser.uid]["surveyResults"] ? data["user"][googleUser.uid]["surveyResults"][currentDay - 1] !== undefined : false}
             />
         </div>
     );

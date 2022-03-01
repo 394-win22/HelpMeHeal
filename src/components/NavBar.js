@@ -24,13 +24,11 @@ const IconStyle = {
 
 
 
-const NavBar = ({ data, currentDay, googleUser, setPage, user, setZoom }) => {
+const NavBar = ({ data, currentDay, googleUser, setPage, user, setZoom, surveyCheck }) => {
     const doctorEmail = data["user"][user.doctorId]["email"];
     const [showEmailForm, setShowEmailForm] = useState(false);
     const handleShowEmailFormClose = () => setShowEmailForm(false);
     const page = useStore(state => state.UserPage);
-
-    const isFilled = data["user"][googleUser.uid]["surveyResults"] ? data["user"][googleUser.uid]["surveyResults"][currentDay - 1] !== undefined : false;
 
     const showPopupAlert = () => {
         swal({
@@ -56,7 +54,7 @@ const NavBar = ({ data, currentDay, googleUser, setPage, user, setZoom }) => {
                 <EmailIcon sx={IconStyle} />
             </Button>
             <MailTo toEmail={doctorEmail} show={showEmailForm} handleClose={handleShowEmailFormClose} user={user} />
-            {page !== "survey" ? <div> <Button Button onClick={() => isFilled ? showPopupAlert() : setPage("survey")} style={{ marginLeft: "5rem" }}>
+            {page !== "survey" ? <div> <Button Button onClick={() => surveyCheck ? showPopupAlert() : setPage("survey")} style={{ marginLeft: "5rem" }}>
                 <FactCheckIcon sx={IconStyle} />
             </Button></div> : <div></div>}
             <Button onClick={() => setPage("playVideo")} style={{ marginLeft: "5rem" }}>

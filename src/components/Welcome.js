@@ -54,7 +54,7 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
     }
     return (
         <Grow in={true} {...({ timeout: 1500 })}>
-            <div style={{ width: '55%', marginLeft: '23%', marginBottom: "10%" }}>
+            <div style={{ width: '55%', marginLeft: '23%' }}>
                 <div style={{ color: '#b43434', fontSize: 25, marginBottom: '4rem', marginTop: '4rem' }}>
                     <h2 style={{ textAlign: 'left' }}> Welcome back {username ? username : "Nobody"}, </h2>
                 </div>
