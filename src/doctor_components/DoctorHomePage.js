@@ -36,7 +36,6 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
     };
 
     const showPatientDetailPage = (patientInfo) => {
-
         setpatientInfo(patientInfo);
         setPage("PatientDetail");
     }

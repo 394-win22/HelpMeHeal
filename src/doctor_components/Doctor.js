@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import useStore from '../Store';
 import { useData } from '../utilities/firebase';
-import { Loading } from "../components/Loading";
-import { Error404 } from "../components/404";
+import { Loading } from "../utilities/Loading";
+import { Error404 } from "../utilities/404";
 import DoctorHomePage from './DoctorHomePage';
 import PatientDetail from './PatientDetail';
 import DoctorNavBar from './DoctorNav';

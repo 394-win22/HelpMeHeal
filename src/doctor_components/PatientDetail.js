@@ -88,7 +88,6 @@ const PatientDetail = (patientInfo) => {
         setTablePage(0);
     };
 
-
     const TableContainerStyle = {
         width: "80%",
         margin: "0 auto",
