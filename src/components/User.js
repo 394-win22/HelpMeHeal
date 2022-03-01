@@ -2,18 +2,20 @@ import SurveyPage from './surveypage';
 import useStore from '../Store';
 import { useData } from '../utilities/firebase';
 import React, { useEffect, useState } from 'react';
-import { Loading } from "./Loading";
-import { Error404 } from "./404";
+import { Loading } from "../utilities/Loading";
+import { Error404 } from "../utilities/404";
 import HomePage from './HomePage';
 import PlayVideo from './PlayVideo';
 import NavBar from './NavBar';
+import calculatePhase from '../utilities/calculatePhase';
 
-function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCurrentDay }) {
+function User({ name, surgeryType, currentDay, user, surveyCheck, googleUser, isMobile, setCurrentDay, isFirstLogin }) {
+
     const setPage = useStore(state => state.setUserPage);
     const [zoom, setZoom] = useState(false);
     const page = useStore(state => state.UserPage);
     const [data, loadingData, errorData] = useData("/");
-    const [activeIndex, setActiveIndex] = useState();
+    const [videoCheck, setVideoCheck] = useState(false);
 
     // firebase data initialize
     useEffect(() => {
@@ -32,25 +34,24 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
                     surgeryType={surgeryType}
                     name={name}
                     setPage={setPage}
-                    activeIndex={activeIndex}
-                    setActiveIndex={setActiveIndex}
+                    phase={calculatePhase(currentDay, data["surgery"][surgeryType]["phaseEndDay"])}
                     user={user}
                     isMobile={isMobile}
                     setCurrentDay={setCurrentDay}
                     setZoom={setZoom}
                     zoom={zoom}
+                    surveyCheck={surveyCheck}
+                    videoCheck={videoCheck}
+                    googleUser={googleUser}
                 />;
             case "survey":
                 return <SurveyPage currentDay={currentDay} user={user} googleUser={googleUser} data={data} />;
             case "playVideo":
-                return <PlayVideo currentDay={currentDay} data={data["surgery"][surgeryType]} />;
-
+                return <PlayVideo currentDay={currentDay} phase={calculatePhase(currentDay, data["surgery"][surgeryType]["phaseEndDay"])} data={data["surgery"][surgeryType]} setVideoCheck={setVideoCheck} />;
             default:
                 return <p>Sorry, there's been an error.</p>
         }
     }
-
-
 
     return (
         <div>
@@ -58,12 +59,13 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
                 {getPage()}
             </div>
             <NavBar data={data}
-                // showEmailForm={showEmailForm} 
-                // setShowEmailForm={setShowEmailForm} 
-                // handleShowEmailFormClose={handleShowEmailFormClose} 
+                currentDay={currentDay}
+                googleUser={googleUser}
                 setPage={setPage}
                 user={user}
-                setZoom={setZoom} />
+                setZoom={setZoom}
+                surveyCheck={surveyCheck}
+            />
         </div>
     );
 }

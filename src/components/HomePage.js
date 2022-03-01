@@ -1,17 +1,21 @@
 import ProgressIndicator from './ProgressBar';
 import Welcome from './Welcome';
 import { SwitchDay } from './SwitchDay'
+import PatientGraphs from "./PatientGraphs";
+import ToDoList from "./ToDoList";
 
 
-const HomePage = ({ setActiveIndex, data, currentDay, surgeryType, name, activeIndex, isMobile, setCurrentDay, setZoom, zoom  }) => {
+const HomePage = ({ phase, data, currentDay, surgeryType, name, isMobile, setCurrentDay, setZoom, zoom, user, setPage, surveyCheck, videoCheck }) => {
+
 
     return (
         <div>
             {/* the zero bellow has to change userid as its real id later */}
-
-            <ProgressIndicator activeIndex={activeIndex} setActiveIndex={setActiveIndex} currentDay={currentDay} phaseEndDay={data["surgery"][surgeryType]["phaseEndDay"]} isMobile={isMobile} setZoom={setZoom} zoom={zoom}/>
+            <ProgressIndicator phase={phase} currentDay={currentDay} phaseEndDay={data["surgery"][surgeryType]["phaseEndDay"]} isMobile={isMobile} setZoom={setZoom} zoom={zoom} />
             <SwitchDay currentDay={currentDay} setCurrentDay={setCurrentDay} isMobile={isMobile} phaseEndDay={data["surgery"][surgeryType]["phaseEndDay"]} />
-            <Welcome activeIndex={activeIndex} username={name} surgeryType={surgeryType} firebaseData={data} currentDay={currentDay} daysDict={data["surgery"][surgeryType]["days"]} phaseEndDay={data["surgery"][surgeryType]["phaseEndDay"]} />
+            <Welcome phase={phase} username={name} surgeryType={surgeryType} firebaseData={data} currentDay={currentDay} daysDict={data["surgery"][surgeryType]["days"]} phaseEndDay={data["surgery"][surgeryType]["phaseEndDay"]} isMobile={isMobile} />
+            <ToDoList setPage={setPage} surveyCheck={surveyCheck} videoCheck={videoCheck} />
+            <PatientGraphs patientInfo={user} />
 
         </div>
     )

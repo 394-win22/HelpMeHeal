@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Loading } from "./Loading";
-import { Error404 } from "./404";
+import { Loading } from "../utilities/Loading";
+import { Error404 } from "../utilities/404";
 import RadioGroup from "@mui/material/RadioGroup";
 import Radio from '@mui/material/Radio';
 import { useData, setData } from "../utilities/firebase";

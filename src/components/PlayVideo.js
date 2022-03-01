@@ -1,9 +1,7 @@
 import React from "react";
 import YoutubeEmbed from "./YouTubeEmbed";
-import calculatePhase from "../utilities/calculatePhase";
-const PlayVideo = ({ currentDay, data }) => {
 
-    let phase = calculatePhase(currentDay, data["phaseEndDay"]);
+const PlayVideo = ({ phase, data, setVideoCheck }) => {
 
     return (
         <div>

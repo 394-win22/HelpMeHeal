@@ -1,0 +1,319 @@
+[debug] [2022-02-28T02:15:59.819Z] ----------------------------------------------------------------------
+[debug] [2022-02-28T02:15:59.820Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2022-02-28T02:15:59.820Z] CLI Version:   10.0.1
+[debug] [2022-02-28T02:15:59.820Z] Platform:      darwin
+[debug] [2022-02-28T02:15:59.820Z] Node Version:  v16.13.0
+[debug] [2022-02-28T02:15:59.823Z] Time:          Sun Feb 27 2022 20:15:59 GMT-0600 (Central Standard Time)
+[debug] [2022-02-28T02:15:59.823Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-02-28T02:15:59.824Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2022-02-28T02:15:59.856Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-02-28T02:15:59.856Z] > authorizing via signed-in user (zacdeng0720@gmail.com)
+[debug] [2022-02-28T02:15:59.856Z] [iam] checking project helpmeheal-49a3f for permissions ["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]
+[debug] [2022-02-28T02:15:59.857Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2022-02-28T02:15:59.857Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-02-28T02:16:00.012Z] <<< HTTP RESPONSE 200 {"date":"Mon, 28 Feb 2022 02:15:59 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-02-28T02:16:00.069Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/helpmeheal-49a3f:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]}
+[debug] [2022-02-28T02:16:00.073Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2022-02-28T02:16:00.073Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2022-02-28T02:16:00.310Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 28 Feb 2022 02:16:00 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=45","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-02-28T02:16:00.312Z] > refreshing access token with scopes: []
+[debug] [2022-02-28T02:16:00.312Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-02-28T02:16:00.451Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","date":"Mon, 28 Feb 2022 02:16:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-02-28T02:16:00.498Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/helpmeheal-49a3f [none]
+[debug] [2022-02-28T02:16:00.914Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/helpmeheal-49a3f 200
+[debug] [2022-02-28T02:16:00.915Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/helpmeheal-49a3f {"projectId":"helpmeheal-49a3f","projectNumber":"659893085250","displayName":"HelpMeHeal","name":"projects/helpmeheal-49a3f","resources":{"hostingSite":"helpmeheal-49a3f","realtimeDatabaseInstance":"helpmeheal-49a3f-default-rtdb","storageBucket":"helpmeheal-49a3f.appspot.com","locationId":"us-central"},"state":"ACTIVE"}
+[debug] [2022-02-28T02:16:00.915Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/helpmeheal-49a3f [none]
+[debug] [2022-02-28T02:16:01.120Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/helpmeheal-49a3f 200
+[debug] [2022-02-28T02:16:01.120Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/helpmeheal-49a3f {"projectId":"helpmeheal-49a3f","projectNumber":"659893085250","displayName":"HelpMeHeal","name":"projects/helpmeheal-49a3f","resources":{"hostingSite":"helpmeheal-49a3f","realtimeDatabaseInstance":"helpmeheal-49a3f-default-rtdb","storageBucket":"helpmeheal-49a3f.appspot.com","locationId":"us-central"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'helpmeheal-49a3f'...
+[info] 
+[info] i  deploying database, hosting 
+[info] i  database: checking rules syntax... 
+[debug] [2022-02-28T02:16:01.125Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2022-02-28T02:16:01.125Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-02-28T02:16:01.293Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","date":"Mon, 28 Feb 2022 02:16:01 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-02-28T02:16:01.338Z] >>> HTTP REQUEST GET https://firebasedatabase.googleapis.com/v1beta/projects/helpmeheal-49a3f/locations/-/instances/helpmeheal-49a3f-default-rtdb  
+ 
+[debug] [2022-02-28T02:16:01.667Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 28 Feb 2022 02:16:01 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-02-28T02:16:01.669Z] >>> HTTP REQUEST PUT https://helpmeheal-49a3f-default-rtdb.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
+}
+
+[debug] [2022-02-28T02:16:02.189Z] <<< HTTP RESPONSE 200 {"server":"nginx","date":"Mon, 28 Feb 2022 02:16:02 GMT","content-type":"application/json; charset=utf-8","content-length":"15","connection":"keep-alive","access-control-allow-origin":"*","cache-control":"no-cache","strict-transport-security":"max-age=31556926; includeSubDomains; preload"}
+[info] ✔  database: rules syntax for database helpmeheal-49a3f-default-rtdb is valid 
+[debug] [2022-02-28T02:16:02.192Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/49a3f/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2022-02-28T02:16:02.192Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/helpmeheal-49a3g/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2022-02-28T02:16:02.498Z] <<< HTTP RESPONSE 500 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Mon, 28 Feb 2022 02:16:02 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-02-28T02:16:02.499Z] <<< HTTP RESPONSE BODY {"error":{"code":500,"message":"Internal error encountered.","status":"INTERNAL"}}
+[error] 
+[error] Error: HTTP Error: 500, Internal error encountered.
+[debug] [2022-02-28T02:16:02.634Z] Error Context: {
+  "body": {
+    "error": {
+      "code": 500,
+      "message": "Internal error encountered.",
+      "status": "INTERNAL"
+    }
+  },
+  "response": {
+    "statusCode": 500,
+    "body": {
+      "error": {
+        "code": 500,
+        "message": "Internal error encountered.",
+        "status": "INTERNAL"
+      }
+    },
+    "headers": {
+      "vary": "X-Origin, Referer, Origin,Accept-Encoding",
+      "content-type": "application/json; charset=UTF-8",
+      "date": "Mon, 28 Feb 2022 02:16:02 GMT",
+      "server": "ESF",
+      "cache-control": "private",
+      "x-xss-protection": "0",
+      "x-frame-options": "SAMEORIGIN",
+      "x-content-type-options": "nosniff",
+      "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"",
+      "accept-ranges": "none",
+      "transfer-encoding": "chunked"
+    },
+    "request": {
+      "uri": {
+        "protocol": "https:",
+        "slashes": true,
+        "auth": null,
+        "host": "firebasehosting.googleapis.com",
+        "port": 443,
+        "hostname": "firebasehosting.googleapis.com",
+        "hash": null,
+        "search": null,
+        "query": null,
+        "pathname": "/v1beta1/sites/49a3f/versions",
+        "path": "/v1beta1/sites/49a3f/versions",
+        "href": "https://firebasehosting.googleapis.com/v1beta1/sites/49a3f/versions"
+      },
+      "method": "POST"
+    }
+  }
+}
+[debug] [2022-02-28T02:16:02.737Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 28 Feb 2022 02:16:02 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-02-28T02:20:00.417Z] ----------------------------------------------------------------------
+[debug] [2022-02-28T02:20:00.417Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2022-02-28T02:20:00.418Z] CLI Version:   10.0.1
+[debug] [2022-02-28T02:20:00.418Z] Platform:      darwin
+[debug] [2022-02-28T02:20:00.418Z] Node Version:  v16.13.0
+[debug] [2022-02-28T02:20:00.418Z] Time:          Sun Feb 27 2022 20:20:00 GMT-0600 (Central Standard Time)
+[debug] [2022-02-28T02:20:00.418Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-02-28T02:20:00.443Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-02-28T02:20:00.443Z] > authorizing via signed-in user (zacdeng0720@gmail.com)
+[debug] [2022-02-28T02:20:00.443Z] [iam] checking project helpmeheal-49a3f for permissions ["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]
+[debug] [2022-02-28T02:20:00.444Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/helpmeheal-49a3f:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]}
+[debug] [2022-02-28T02:20:00.565Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 28 Feb 2022 02:20:00 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=42","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-02-28T02:20:00.567Z] > refreshing access token with scopes: []
+[debug] [2022-02-28T02:20:00.567Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-02-28T02:20:00.687Z] <<< HTTP RESPONSE 200 {"date":"Mon, 28 Feb 2022 02:20:00 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-02-28T02:20:00.739Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/helpmeheal-49a3f [none]
+[debug] [2022-02-28T02:20:00.995Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/helpmeheal-49a3f 200
+[debug] [2022-02-28T02:20:00.995Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/helpmeheal-49a3f {"projectId":"helpmeheal-49a3f","projectNumber":"659893085250","displayName":"HelpMeHeal","name":"projects/helpmeheal-49a3f","resources":{"hostingSite":"helpmeheal-49a3f","realtimeDatabaseInstance":"helpmeheal-49a3f-default-rtdb","storageBucket":"helpmeheal-49a3f.appspot.com","locationId":"us-central"},"state":"ACTIVE"}
+[debug] [2022-02-28T02:20:00.995Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/helpmeheal-49a3f [none]
+[debug] [2022-02-28T02:20:01.146Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/helpmeheal-49a3f 200
+[debug] [2022-02-28T02:20:01.147Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/helpmeheal-49a3f {"projectId":"helpmeheal-49a3f","projectNumber":"659893085250","displayName":"HelpMeHeal","name":"projects/helpmeheal-49a3f","resources":{"hostingSite":"helpmeheal-49a3f","realtimeDatabaseInstance":"helpmeheal-49a3f-default-rtdb","storageBucket":"helpmeheal-49a3f.appspot.com","locationId":"us-central"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'helpmeheal-49a3f'...
+[info] 
+[info] i  deploying database, hosting 
+[info] i  database: checking rules syntax... 
+[debug] [2022-02-28T02:20:01.150Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2022-02-28T02:20:01.151Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-02-28T02:20:01.254Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Mon, 28 Feb 2022 02:20:01 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-02-28T02:20:01.301Z] >>> HTTP REQUEST GET https://firebasedatabase.googleapis.com/v1beta/projects/helpmeheal-49a3f/locations/-/instances/helpmeheal-49a3f-default-rtdb  
+ 
+[debug] [2022-02-28T02:20:01.560Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 28 Feb 2022 02:20:01 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-02-28T02:20:01.568Z] >>> HTTP REQUEST PUT https://helpmeheal-49a3f-default-rtdb.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
+}
+
+[debug] [2022-02-28T02:20:01.702Z] <<< HTTP RESPONSE 200 {"server":"nginx","date":"Mon, 28 Feb 2022 02:20:01 GMT","content-type":"application/json; charset=utf-8","content-length":"15","connection":"keep-alive","access-control-allow-origin":"*","cache-control":"no-cache","strict-transport-security":"max-age=31556926; includeSubDomains; preload"}
+[info] ✔  database: rules syntax for database helpmeheal-49a3f-default-rtdb is valid 
+[debug] [2022-02-28T02:20:01.707Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/49a3f/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2022-02-28T02:20:01.707Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/helpmeheal-49a3g/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2022-02-28T02:20:01.876Z] <<< HTTP RESPONSE 500 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Mon, 28 Feb 2022 02:20:01 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-02-28T02:20:01.877Z] <<< HTTP RESPONSE BODY {"error":{"code":500,"message":"Internal error encountered.","status":"INTERNAL"}}
+[error] 
+[error] Error: HTTP Error: 500, Internal error encountered.
+[debug] [2022-02-28T02:20:01.994Z] Error Context: {
+  "body": {
+    "error": {
+      "code": 500,
+      "message": "Internal error encountered.",
+      "status": "INTERNAL"
+    }
+  },
+  "response": {
+    "statusCode": 500,
+    "body": {
+      "error": {
+        "code": 500,
+        "message": "Internal error encountered.",
+        "status": "INTERNAL"
+      }
+    },
+    "headers": {
+      "vary": "X-Origin, Referer, Origin,Accept-Encoding",
+      "content-type": "application/json; charset=UTF-8",
+      "date": "Mon, 28 Feb 2022 02:20:01 GMT",
+      "server": "ESF",
+      "cache-control": "private",
+      "x-xss-protection": "0",
+      "x-frame-options": "SAMEORIGIN",
+      "x-content-type-options": "nosniff",
+      "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"",
+      "accept-ranges": "none",
+      "transfer-encoding": "chunked"
+    },
+    "request": {
+      "uri": {
+        "protocol": "https:",
+        "slashes": true,
+        "auth": null,
+        "host": "firebasehosting.googleapis.com",
+        "port": 443,
+        "hostname": "firebasehosting.googleapis.com",
+        "hash": null,
+        "search": null,
+        "query": null,
+        "pathname": "/v1beta1/sites/49a3f/versions",
+        "path": "/v1beta1/sites/49a3f/versions",
+        "href": "https://firebasehosting.googleapis.com/v1beta1/sites/49a3f/versions"
+      },
+      "method": "POST"
+    }
+  }
+}
+[debug] [2022-02-28T02:20:02.098Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 28 Feb 2022 02:20:02 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-02-28T02:23:47.719Z] ----------------------------------------------------------------------
+[debug] [2022-02-28T02:23:47.720Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2022-02-28T02:23:47.720Z] CLI Version:   10.0.1
+[debug] [2022-02-28T02:23:47.720Z] Platform:      darwin
+[debug] [2022-02-28T02:23:47.720Z] Node Version:  v16.13.0
+[debug] [2022-02-28T02:23:47.721Z] Time:          Sun Feb 27 2022 20:23:47 GMT-0600 (Central Standard Time)
+[debug] [2022-02-28T02:23:47.721Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-02-28T02:23:47.747Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-02-28T02:23:47.748Z] > authorizing via signed-in user (zacdeng0720@gmail.com)
+[debug] [2022-02-28T02:23:47.748Z] [iam] checking project helpmeheal-49a3f for permissions ["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]
+[debug] [2022-02-28T02:23:47.749Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/helpmeheal-49a3f:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]}
+[debug] [2022-02-28T02:23:47.916Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 28 Feb 2022 02:23:47 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=44","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-02-28T02:23:47.917Z] > refreshing access token with scopes: []
+[debug] [2022-02-28T02:23:47.918Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-02-28T02:23:48.042Z] <<< HTTP RESPONSE 200 {"date":"Mon, 28 Feb 2022 02:23:48 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-02-28T02:23:48.087Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/helpmeheal-49a3f [none]
+[debug] [2022-02-28T02:23:48.317Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/helpmeheal-49a3f 200
+[debug] [2022-02-28T02:23:48.317Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/helpmeheal-49a3f {"projectId":"helpmeheal-49a3f","projectNumber":"659893085250","displayName":"HelpMeHeal","name":"projects/helpmeheal-49a3f","resources":{"hostingSite":"helpmeheal-49a3f","realtimeDatabaseInstance":"helpmeheal-49a3f-default-rtdb","storageBucket":"helpmeheal-49a3f.appspot.com","locationId":"us-central"},"state":"ACTIVE"}
+[debug] [2022-02-28T02:23:48.317Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/helpmeheal-49a3f [none]
+[debug] [2022-02-28T02:23:48.528Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/helpmeheal-49a3f 200
+[debug] [2022-02-28T02:23:48.529Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/helpmeheal-49a3f {"projectId":"helpmeheal-49a3f","projectNumber":"659893085250","displayName":"HelpMeHeal","name":"projects/helpmeheal-49a3f","resources":{"hostingSite":"helpmeheal-49a3f","realtimeDatabaseInstance":"helpmeheal-49a3f-default-rtdb","storageBucket":"helpmeheal-49a3f.appspot.com","locationId":"us-central"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'helpmeheal-49a3f'...
+[info] 
+[info] i  deploying database, hosting 
+[info] i  database: checking rules syntax... 
+[debug] [2022-02-28T02:23:48.532Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2022-02-28T02:23:48.532Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-02-28T02:23:48.635Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Mon, 28 Feb 2022 02:23:48 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-02-28T02:23:48.678Z] >>> HTTP REQUEST GET https://firebasedatabase.googleapis.com/v1beta/projects/helpmeheal-49a3f/locations/-/instances/helpmeheal-49a3f-default-rtdb  
+ 
+[debug] [2022-02-28T02:23:48.888Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 28 Feb 2022 02:23:48 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-02-28T02:23:48.889Z] >>> HTTP REQUEST PUT https://helpmeheal-49a3f-default-rtdb.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
+}
+
+[debug] [2022-02-28T02:23:49.049Z] <<< HTTP RESPONSE 200 {"server":"nginx","date":"Mon, 28 Feb 2022 02:23:49 GMT","content-type":"application/json; charset=utf-8","content-length":"15","connection":"keep-alive","access-control-allow-origin":"*","cache-control":"no-cache","strict-transport-security":"max-age=31556926; includeSubDomains; preload"}
+[info] ✔  database: rules syntax for database helpmeheal-49a3f-default-rtdb is valid 
+[debug] [2022-02-28T02:23:49.051Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/49a3f/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2022-02-28T02:23:49.051Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/helpmeheal-49a3g/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2022-02-28T02:23:49.252Z] <<< HTTP RESPONSE 500 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Mon, 28 Feb 2022 02:23:49 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-02-28T02:23:49.252Z] <<< HTTP RESPONSE BODY {"error":{"code":500,"message":"Internal error encountered.","status":"INTERNAL"}}
+[error] 
+[error] Error: HTTP Error: 500, Internal error encountered.
+[debug] [2022-02-28T02:23:49.353Z] Error Context: {
+  "body": {
+    "error": {
+      "code": 500,
+      "message": "Internal error encountered.",
+      "status": "INTERNAL"
+    }
+  },
+  "response": {
+    "statusCode": 500,
+    "body": {
+      "error": {
+        "code": 500,
+        "message": "Internal error encountered.",
+        "status": "INTERNAL"
+      }
+    },
+    "headers": {
+      "vary": "X-Origin, Referer, Origin,Accept-Encoding",
+      "content-type": "application/json; charset=UTF-8",
+      "date": "Mon, 28 Feb 2022 02:23:49 GMT",
+      "server": "ESF",
+      "cache-control": "private",
+      "x-xss-protection": "0",
+      "x-frame-options": "SAMEORIGIN",
+      "x-content-type-options": "nosniff",
+      "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"",
+      "accept-ranges": "none",
+      "transfer-encoding": "chunked"
+    },
+    "request": {
+      "uri": {
+        "protocol": "https:",
+        "slashes": true,
+        "auth": null,
+        "host": "firebasehosting.googleapis.com",
+        "port": 443,
+        "hostname": "firebasehosting.googleapis.com",
+        "hash": null,
+        "search": null,
+        "query": null,
+        "pathname": "/v1beta1/sites/49a3f/versions",
+        "path": "/v1beta1/sites/49a3f/versions",
+        "href": "https://firebasehosting.googleapis.com/v1beta1/sites/49a3f/versions"
+      },
+      "method": "POST"
+    }
+  }
+}
+[debug] [2022-02-28T02:23:49.446Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 28 Feb 2022 02:23:49 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}

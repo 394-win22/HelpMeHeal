@@ -8,7 +8,7 @@ import TablePagination from '@mui/material/TablePagination';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Chart } from 'react-chartjs-2';
+import { Chart, Doughnut } from 'react-chartjs-2';
 import Grow from '@mui/material/Grow';
 
 import { Chart as ChartJS, registerables } from 'chart.js';
@@ -20,7 +20,7 @@ const PatientDetail = (patientInfo) => {
     const [tablePage, setTablePage] = useState(0);
     const [rowsPerTablePage, setRowsPerTablePage] = useState(5);
     var painData = [];
-
+    var rehabSuccessData = [0, 0];
     const options = {
         responsive: true,
         plugins: {
@@ -54,6 +54,25 @@ const PatientDetail = (patientInfo) => {
         }
     };
 
+    const optionsRehab = {
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: 'Past Week Rehab Success',
+                font: {
+                    size: 26,
+                },
+                padding: {
+                    top: 30,
+                    bottom: 15
+                }
+            },
+        }
+
+    }
+
+
     const labels = ['Day1', 'Day2', 'Day3', 'Day4', 'Day5'];
 
     const data = {
@@ -79,6 +98,16 @@ const PatientDetail = (patientInfo) => {
         ],
     };
 
+    const rehabData = {
+        labels: ["Yes", "No"],
+        datasets: [
+            {
+                data: rehabSuccessData,
+                backgroundColor: ["green", 'rgba(255, 99, 132)'],
+            }
+        ],
+    };
+
     const handleChangePage = (event, newPage) => {
         setTablePage(newPage);
     };
@@ -87,7 +116,6 @@ const PatientDetail = (patientInfo) => {
         setRowsPerTablePage(+event.target.value);
         setTablePage(0);
     };
-
 
     const TableContainerStyle = {
         width: "80%",
@@ -119,8 +147,16 @@ const PatientDetail = (patientInfo) => {
     // obtain pain level of each patient
     if (patientInfo.patientInfo.surveyResults) {
         patientInfo.patientInfo.surveyResults.map((surveyResult) => painData.push(surveyResult.pain_rating));
+        patientInfo.patientInfo.surveyResults.map((surveyResult) => {
+            console.log(surveyResult.rehab_successful === 'Yes')
+            if (surveyResult.rehab_successful === 'Yes') {
+                rehabSuccessData[0] += 1;
+            } else {
+                rehabSuccessData[1] += 1;
+            }
+        });
     }
-
+    console.log(rehabSuccessData)
     return (
         <div>
             <Grow in={true} {...({ timeout: 1000 })}>
@@ -182,10 +218,16 @@ const PatientDetail = (patientInfo) => {
             </Grow>
 
             <Grow in={true} {...({ timeout: 1500 })}>
-                <div style={{ width: "50%", height: "30%", margin: "0 auto", marginBottom: '10rem' }}>
-                    <Chart type='bar' options={options} data={data} />
+                <div className="Graph" style={{marginBottom:"10%"}}>
+                    <div style={{ width: "40%", height: "30%", margin: "5% 10% 15% 14%", float:"left"}}>
+                        <Chart type='bar' options={options} data={data} />
+                    </div>
+                    <div style={{ width: "20%", height: "30%", margin: "5% 15% 15% 0", float:"left" }}>
+                        <Doughnut data={rehabData} options={optionsRehab} />
+                    </div>
                 </div>
             </Grow>
+
         </div>
     )
 }

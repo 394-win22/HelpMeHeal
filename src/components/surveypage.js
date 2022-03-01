@@ -5,22 +5,6 @@ import swal from 'sweetalert';
 import { setData } from "../utilities/firebase";
 import './surveypage.css'
 
-// const buttonStyle = {
-//     fontWeight: "normal",
-//     backgroundColor: "#b43434",
-//     color: 'white',
-//     fontSize: '1rem',
-//     padding: 1,
-//     borderRadius: 2,
-//     marginBottom: "10vh",
-//     '&:hover': {
-//         bgcolor: "#b36464"
-//     },
-//     '&:focus': {
-//         bgcolor: "#b36464"
-//     },
-// }
-
 const showPopupAlert = (pain) => {
     if (pain < 5) {
         swal("Happy to know", "You are on track with your progress, You got this!", "success");

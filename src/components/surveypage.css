@@ -3,7 +3,8 @@
 }
 
 .sv_main .sv_body {
-    border-color: #b43434
+    border-color: #b43434;
+    margin-bottom: 10rem
 } 
 
 .sv_main input[type=button] {

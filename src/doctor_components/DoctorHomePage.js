@@ -36,7 +36,6 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
     };
 
     const showPatientDetailPage = (patientInfo) => {
-
         setpatientInfo(patientInfo);
         setPage("PatientDetail");
     }
@@ -115,9 +114,8 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
                     <h2 style={{ textAlign: 'center' }}> Welcome back Doctor {username.toUpperCase() ? username : "Nobody"}, </h2>
                 </div>
             </Grow>
-
-            <Grow in={true} {...({ timeout: 1500 })}>
-                {patientDict ?
+            {patientDict ?
+                <Grow in={true} {...({ timeout: 1500 })}>
                     <Paper sx={TableContainerStyle}>
                         <div style={{ marginBottom: '2rem', float: 'right', marginRight: '2rem', width: '40%', marginTop: '2rem' }}>
                             <TextField
@@ -167,8 +165,8 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
                             onPageChange={handleChangePage}
                             onRowsPerPageChange={handleChangeRowsPerPage}
                         />
-                    </Paper>: "You have no patient yet!"}
-            </Grow>
+                    </Paper>
+                </Grow> : "You have no patient yet!"}
 
             <div style={{ marginBottom: '10rem' }}>
                 <CreateFakePatient googleUser={googleUser} />
