@@ -7,8 +7,9 @@ import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import FactCheckIcon from '@mui/icons-material/FactCheck';
 import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
+import Button from '@mui/material/Button';
 
-const ToDoList = ({setPage}) => {
+const ToDoList = ({setPage, surveyCheck, videoCheck}) => {
     return (
         <div style={{marginTop:"4%", marginLeft:"40%"}}>
             <List
@@ -16,17 +17,21 @@ const ToDoList = ({setPage}) => {
                 subheader={<ListSubheader sx={{bgcolor: "rgb(243, 245, 247)", borderRadius: "2rem"}}> To Do List </ListSubheader>}
             >
                 <ListItem>
-                    <Checkbox onChange={setPage("survey")}/>
+                    <Checkbox disabled checked={surveyCheck}/>
                     <ListItemText id="switch-list-label-survey" primary="Survey" />
                     <ListItemIcon>
-                        <FactCheckIcon />
+                        <Button onClick={() => setPage("survey")}>
+                            <FactCheckIcon />
+                        </Button>
                     </ListItemIcon>
                 </ListItem>
                 <ListItem>
-                    <Checkbox onChange={setPage("playVideo")}/>
+                    <Checkbox disabled checked={videoCheck}/>
                     <ListItemText id="switch-list-label-survey" primary="Video" />
                     <ListItemIcon>
-                        <PlayCircleFilledWhiteIcon />
+                        <Button onClick={() => setPage("playVideo")}>
+                            <PlayCircleFilledWhiteIcon />
+                        </Button>
                     </ListItemIcon>
                 </ListItem>
             </List>

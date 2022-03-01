@@ -5,22 +5,6 @@ import swal from 'sweetalert';
 import { setData } from "../utilities/firebase";
 import './surveypage.css'
 
-// const buttonStyle = {
-//     fontWeight: "normal",
-//     backgroundColor: "#b43434",
-//     color: 'white',
-//     fontSize: '1rem',
-//     padding: 1,
-//     borderRadius: 2,
-//     marginBottom: "10vh",
-//     '&:hover': {
-//         bgcolor: "#b36464"
-//     },
-//     '&:focus': {
-//         bgcolor: "#b36464"
-//     },
-// }
-
 const showPopupAlert = (pain) => {
     if (pain < 5) {
         swal("Happy to know", "You are on track with your progress, You got this!", "success");
@@ -36,7 +20,7 @@ var surveyValueChanged = function (sender, options) {
     }
 };
 
-function SurveyPage({ currentDay, googleUser, data }) {
+function SurveyPage({ currentDay, googleUser, data, setSurveyCheck }) {
     //Now is day1 if we want to have different survey everyday we will use currentDay
     const surveyJson = data["survey"]["day1"]
     // console.log(googleUser)
@@ -48,6 +32,7 @@ function SurveyPage({ currentDay, googleUser, data }) {
             setData(`/user/${googleUser?.uid}/surveyResults/${currentDay - 1}`, sender.data);
             //console.log(sender.data);
             showPopupAlert(sender.data.pain_rating);
+            setSurveyCheck(true);
             setPage("home");
         });
 
