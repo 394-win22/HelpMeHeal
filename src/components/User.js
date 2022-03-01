@@ -45,7 +45,7 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
             case "survey":
                 return <SurveyPage currentDay={currentDay} user={user} googleUser={googleUser} data={data} setSurveyCheck={setSurveyCheck} />;
             case "playVideo":
-                return <PlayVideo currentDay={currentDay} phase={activeIndex} data={data["surgery"][surgeryType]} setVideoCheck={setVideoCheck} />;
+                return <PlayVideo currentDay={currentDay} phase={calculatePhase(currentDay, data["surgery"][surgeryType]["phaseEndDay"])} data={data["surgery"][surgeryType]} setVideoCheck={setVideoCheck} />;
             default:
                 return <p>Sorry, there's been an error.</p>
         }
