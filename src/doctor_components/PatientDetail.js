@@ -8,7 +8,7 @@ import TablePagination from '@mui/material/TablePagination';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Chart } from 'react-chartjs-2';
+import { Chart, Doughnut } from 'react-chartjs-2';
 import Grow from '@mui/material/Grow';
 
 import { Chart as ChartJS, registerables } from 'chart.js';
@@ -54,6 +54,25 @@ const PatientDetail = (patientInfo) => {
         }
     };
 
+    const optionsRehab = {
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: 'Past Week Rehab Success',
+                font: {
+                    size: 26,
+                },
+                padding: {
+                    top: 30,
+                    bottom: 15
+                }
+            },
+        }
+
+    }
+
+
     const labels = ['Day1', 'Day2', 'Day3', 'Day4', 'Day5'];
 
     const data = {
@@ -75,6 +94,16 @@ const PatientDetail = (patientInfo) => {
                 borderColor: 'rgb(53, 162, 235, 0.5)',
                 backgroundColor: 'rgb(53, 162, 235, 0.5)',
                 borderRadius: 5,
+            }
+        ],
+    };
+
+    const rehabData = {
+        labels: ["Yes", "No"],
+        datasets: [
+            {
+                data: rehabSuccessData,
+                backgroundColor: ["green", 'rgba(255, 99, 132)'],
             }
         ],
     };
@@ -189,10 +218,16 @@ const PatientDetail = (patientInfo) => {
             </Grow>
 
             <Grow in={true} {...({ timeout: 1500 })}>
-                <div style={{ width: "50%", height: "30%", margin: "0 auto", marginBottom: '10rem' }}>
+                <div style={{ width: "50%", height: "30%", margin: "0 auto", marginBottom: 'auto' }}>
                     <Chart type='bar' options={options} data={data} />
                 </div>
             </Grow>
+            <Grow in={true} {...({ timeout: 1500 })}>
+                <div style={{ width: "50%", height: "30%", margin: "0 auto", marginBottom: '10rem' }}>
+                    <Doughnut data={rehabData} options={optionsRehab} />
+                </div>
+            </Grow>
+
         </div>
     )
 }
