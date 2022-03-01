@@ -1,5 +1,5 @@
 import Grow from "@mui/material/Grow";
-import {Chart} from "react-chartjs-2";
+import { Chart } from "react-chartjs-2";
 import React from "react";
 
 const PatientGraphs = (patientInfo) => {
