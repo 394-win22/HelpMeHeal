@@ -8,7 +8,7 @@ import HomePage from './HomePage';
 import PlayVideo from './PlayVideo';
 import NavBar from './NavBar';
 
-function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCurrentDay }) {
+function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCurrentDay, isFirstLogin }) {
     const setPage = useStore(state => state.setUserPage);
     const [zoom, setZoom] = useState(false);
     const page = useStore(state => state.UserPage);
@@ -38,7 +38,9 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
                     isMobile={isMobile}
                     setCurrentDay={setCurrentDay}
                     setZoom={setZoom}
+                    isFirstLogin = {isFirstLogin}
                     zoom={zoom}
+                    googleUser = {googleUser}
                 />;
             case "survey":
                 return <SurveyPage currentDay={currentDay} user={user} googleUser={googleUser} data={data} />;

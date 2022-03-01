@@ -1,13 +1,24 @@
 import Grow from '@mui/material/Grow';
+import { setData } from '../utilities/firebase';
+import swal from 'sweetalert';
 
-const Welcome = ({ username, surgeryType, firebaseData, activeIndex, currentDay, daysDict, phaseEndDay }) => {
+const Welcome = ({ username, surgeryType, firebaseData, user, activeIndex, currentDay, daysDict, phaseEndDay, googleUser }) => {
     let daysHasMessage;
 
+    let isFirstLogin = (localStorage.getItem("lastLoginDay") || localStorage.getItem("lastLoginDay") === currentDay) ? false : true;
+    if(isFirstLogin === true){
+        swal("Welcome message");
+        localStorage.setItem("lastLoginDay", currentDay);;
+    }
+    
+    console.log("isFirstLogin:" + isFirstLogin);
     for (const [key,] of Object.entries(daysDict)) {
         if (currentDay >= key) {
             daysHasMessage = key
         }
     }
+    
+    console.log("isFirstLogin: "+ isFirstLogin);
 
     const progressComplete = currentDay >= phaseEndDay[Object.entries(phaseEndDay).length];
 

@@ -1,8 +1,9 @@
 import User from './User';
 import '../App.css';
 import React, { useEffect, useState } from 'react';
-import { useUserState } from '../utilities/firebase';
+import { useUserState, setData } from '../utilities/firebase';
 import calculateDay from '../utilities/calculateday';
+import calculateFirstLogin from '../utilities/calculateFirstLogin';
 import { SignInOut } from './SignInWithGoogle';
 import RegisterPage from './Register';
 import Doctor from '../doctor_components/Doctor';
@@ -13,6 +14,7 @@ const GetUser = ({ googleUser, isMobile }) => {
   const [surgeryType, setSurgeryType] = useState("");
   const [currentDay, setCurrentDay] = useState();
   const user = useUserState(googleUser?.uid)[0];
+  
 
   useEffect(() => {
     if (user === undefined) return;
@@ -30,6 +32,7 @@ const GetUser = ({ googleUser, isMobile }) => {
     if (user) {
       if (user.userType === "patient") {
         initPatient()
+        
       }
       if (user.userType === "doctor") {
         initDoctor()
@@ -37,6 +40,7 @@ const GetUser = ({ googleUser, isMobile }) => {
     }
 
   }, [user]);
+
 
   function getUserType() {
     switch (user.userType) {
