@@ -2,7 +2,7 @@ import Grow from '@mui/material/Grow';
 import { setData } from '../utilities/firebase';
 import swal from 'sweetalert';
 import Button from "@mui/material/Button";
-
+import "./Welcome.css"
 const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysDict, phaseEndDay, isMobile }) => {
     let daysHasMessage;
 
@@ -23,7 +23,10 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
                     })
                 )
             })
-        swal(welcomeMsg)
+        swal({
+            title: `Welcome Back ${username ? username : "Nobody"}!`,
+            text: welcomeMsg
+        })
     }
 
     const buttonStyle = (isMobile) => ({
