@@ -1,6 +1,6 @@
 import Grow from '@mui/material/Grow';
 
-const Welcome = ({ username, surgeryType, firebaseData, activeIndex, currentDay, daysDict, phaseEndDay }) => {
+const Welcome = ({ username, surgeryType, firebaseData, phase, currentDay, daysDict, phaseEndDay }) => {
     let daysHasMessage;
 
     for (const [key,] of Object.entries(daysDict)) {
@@ -19,7 +19,7 @@ const Welcome = ({ username, surgeryType, firebaseData, activeIndex, currentDay,
                 </div>
 
                 <div style={{ textAlign: 'left', fontSize: '1.9rem' }}>
-                    Today you are on <b>phase {activeIndex}, day {progressComplete
+                    Today you are on <b>phase {phase}, day {progressComplete
                         ? phaseEndDay[Object.entries(phaseEndDay).length]
                         : currentDay}</b> of your ACL recovery. <br /> <br />
                     {Object.entries(firebaseData.surgery) // First: entry 'ACL'
