@@ -11,6 +11,7 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
             daysHasMessage = key
         }
     }
+
     const popupWelcomeMsg = () => {
         let welcomeMsg = '';
         Object.entries(firebaseData.surgery) // First: entry 'ACL'
@@ -63,21 +64,6 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
                     Today you are on <b>phase {phase}, day {progressComplete
                         ? phaseEndDay[Object.entries(phaseEndDay).length]
                         : currentDay}</b> of your ACL recovery. <br /> <br />
-                    {/* {Object.entries(firebaseData.surgery) // First: entry 'ACL'
-                        .filter(data => data[0] === surgeryType)
-                        .map(data => {
-                            return (Object.entries(data[1].days) // Second: entry phase
-                                .filter(days => days[0] === daysHasMessage)
-                                .map((msg, i) => {
-                                    return (
-                                        <span key={i}>{msg[1].message}</span>
-                                    )
-                                })
-                            )
-                        }
-
-                        )
-                    } */}
                     Remember to take the daily survey to ensure your recovery is on track.
                     <br /><br />
                 </div>

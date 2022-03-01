@@ -218,13 +218,13 @@ const PatientDetail = (patientInfo) => {
             </Grow>
 
             <Grow in={true} {...({ timeout: 1500 })}>
-                <div style={{ width: "50%", height: "30%", margin: "0 auto", marginBottom: 'auto' }}>
-                    <Chart type='bar' options={options} data={data} />
-                </div>
-            </Grow>
-            <Grow in={true} {...({ timeout: 1500 })}>
-                <div style={{ width: "50%", height: "30%", margin: "0 auto", marginBottom: '10rem' }}>
-                    <Doughnut data={rehabData} options={optionsRehab} />
+                <div className="Graph" style={{marginBottom:"10%"}}>
+                    <div style={{ width: "40%", height: "30%", margin: "5% 10% 15% 14%", float:"left"}}>
+                        <Chart type='bar' options={options} data={data} />
+                    </div>
+                    <div style={{ width: "20%", height: "30%", margin: "5% 15% 15% 0", float:"left" }}>
+                        <Doughnut data={rehabData} options={optionsRehab} />
+                    </div>
                 </div>
             </Grow>
 
