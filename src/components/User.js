@@ -13,7 +13,6 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
     const [zoom, setZoom] = useState(false);
     const page = useStore(state => state.UserPage);
     const [data, loadingData, errorData] = useData("/");
-    const [activeIndex, setActiveIndex] = useState();
     const [surveyCheck, setSurveyCheck] = useState(false);
     const [videoCheck, setVideoCheck] = useState(false);
 
@@ -34,8 +33,7 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
                     surgeryType={surgeryType}
                     name={name}
                     setPage={setPage}
-                    activeIndex={calculatePhase(currentDay, data["surgery"][surgeryType]["phaseEndDay"])}
-                    setActiveIndex={setActiveIndex}
+                    phase={calculatePhase(currentDay, data["surgery"][surgeryType]["phaseEndDay"])}
                     user={user}
                     isMobile={isMobile}
                     setCurrentDay={setCurrentDay}

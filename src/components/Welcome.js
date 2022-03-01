@@ -1,6 +1,6 @@
 import Grow from '@mui/material/Grow';
 
-const Welcome = ({ username, surgeryType, firebaseData, phase, currentDay, daysDict, phaseEndDay }) => {
+const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysDict, phaseEndDay }) => {
     let daysHasMessage;
 
     for (const [key,] of Object.entries(daysDict)) {
