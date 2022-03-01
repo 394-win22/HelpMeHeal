@@ -20,7 +20,7 @@ const PatientDetail = (patientInfo) => {
     const [tablePage, setTablePage] = useState(0);
     const [rowsPerTablePage, setRowsPerTablePage] = useState(5);
     var painData = [];
-
+    var rehabSuccessData = [0, 0];
     const options = {
         responsive: true,
         plugins: {
@@ -118,8 +118,16 @@ const PatientDetail = (patientInfo) => {
     // obtain pain level of each patient
     if (patientInfo.patientInfo.surveyResults) {
         patientInfo.patientInfo.surveyResults.map((surveyResult) => painData.push(surveyResult.pain_rating));
+        patientInfo.patientInfo.surveyResults.map((surveyResult) => {
+            console.log(surveyResult.rehab_successful === 'Yes')
+            if (surveyResult.rehab_successful === 'Yes') {
+                rehabSuccessData[0] += 1;
+            } else {
+                rehabSuccessData[1] += 1;
+            }
+        });
     }
-
+    console.log(rehabSuccessData)
     return (
         <div>
             <Grow in={true} {...({ timeout: 1000 })}>
