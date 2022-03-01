@@ -15,7 +15,7 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
     let isFirstLogin = (localStorage.getItem("lastLoginDay") === null || localStorage.getItem("lastLoginDay") !== currentDay.toString()) ? true : false;
     if (isFirstLogin === true) {
         //Better to use a modal instead of using swal?
-        swal(`Welcome back ${username ? username : "Nobody"}  Today you are on phase ${activeIndex}, day ${progressComplete
+        swal(`Welcome back ${username ? username : "Nobody"}  Today you are on phase ${phase}, day ${progressComplete
             ? phaseEndDay[Object.entries(phaseEndDay).length]
             : currentDay} of your ACL recovery.`)
         localStorage.setItem("lastLoginDay", currentDay);
@@ -27,7 +27,7 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
         //             </div>
 
         //             <div style={{ textAlign: 'left', fontSize: '1.9rem' }}>
-        //                 Today you are on <b>phase {activeIndex}, day {progressComplete
+        //                 Today you are on <b>phase {phase}, day {progressComplete
         //                     ? phaseEndDay[Object.entries(phaseEndDay).length]
         //                     : currentDay}</b> of your ACL recovery. <br /> <br />
         //                 {Object.entries(firebaseData.surgery) // First: entry 'ACL'

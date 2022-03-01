@@ -21,7 +21,7 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
     // firebase data initialize
     useEffect(() => {
         if (data === undefined) return;
-        setActiveIndex(calculatePhase(currentDay, data["surgery"][surgeryType]["phaseEndDay"]));
+
     }, [data]);
 
     if (errorData) return <Error404 />;
