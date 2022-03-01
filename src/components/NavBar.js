@@ -7,6 +7,7 @@ import FactCheckIcon from '@mui/icons-material/FactCheck';
 import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
 import MailTo from './emailWidget';
 import swal from 'sweetalert';
+import useStore from '../Store';
 
 const IconStyle = {
     color: 'white',
@@ -27,10 +28,10 @@ const NavBar = ({ data, currentDay, googleUser, setPage, user, setZoom }) => {
     const doctorEmail = data["user"][user.doctorId]["email"];
     const [showEmailForm, setShowEmailForm] = useState(false);
     const handleShowEmailFormClose = () => setShowEmailForm(false);
-    console.log(currentDay)
-    console.log(data["surveyResults"])
+    const page = useStore(state => state.UserPage);
+
     const isFilled = data["user"][googleUser.uid]["surveyResults"] ? data["user"][googleUser.uid]["surveyResults"][currentDay - 1] !== undefined : false;
-    console.log("isfilled", isFilled);
+
     const showPopupAlert = () => {
         swal({
             title: "Do you want to resubmit your survey?",
@@ -55,9 +56,9 @@ const NavBar = ({ data, currentDay, googleUser, setPage, user, setZoom }) => {
                 <EmailIcon sx={IconStyle} />
             </Button>
             <MailTo toEmail={doctorEmail} show={showEmailForm} handleClose={handleShowEmailFormClose} user={user} />
-            <Button onClick={() => isFilled ? showPopupAlert() : setPage("survey")} style={{ marginLeft: "5rem" }}>
+            {page !== "survey" ? <div> <Button Button onClick={() => isFilled ? showPopupAlert() : setPage("survey")} style={{ marginLeft: "5rem" }}>
                 <FactCheckIcon sx={IconStyle} />
-            </Button>
+            </Button></div> : <div></div>}
             <Button onClick={() => setPage("playVideo")} style={{ marginLeft: "5rem" }}>
                 <PlayCircleFilledWhiteIcon sx={IconStyle} />
             </Button>
