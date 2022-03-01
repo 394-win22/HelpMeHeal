@@ -63,7 +63,6 @@ const PatientGraphs = (patientInfo) => {
         ],
     };
 
-    console.log(patientInfo.patientInfo.surveyResults);
     if (patientInfo.patientInfo.surveyResults) {
         Object.entries(patientInfo.patientInfo.surveyResults).map((surveyResult) => painData.push(surveyResult[1].pain_rating));
     }
