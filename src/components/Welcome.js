@@ -31,11 +31,11 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
             customClass: {
                 title: 'custom-title-class',
             },
-            title: `Welcome back ${username ? username.charAt(0).toUpperCase() + username.slice(1).toLowerCase() : "Nobody"}!`,
+            title: `<div style = 'color:white; padding-bottom: 5%'> Welcome back ${username ? username.charAt(0).toUpperCase() + username.slice(1).toLowerCase() : "Nobody"}!</div>`,
             text: welcomeMsg,
             width: 600,
+            color: '#000',
             background: '#fff url(/images/trees.png)',
-            // showDenyButton: true,
             showConfirmButton: true,
             confirmButtonColor: "#b43434",
             confirmButtonText: `You got this!`,
