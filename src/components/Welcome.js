@@ -1,8 +1,5 @@
 import Grow from '@mui/material/Grow';
-import { setData } from '../utilities/firebase';
 import Swal from 'sweetalert2'
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import Icon from "@material-ui/core/Icon";
 import Button from "@mui/material/Button";
 import "./Welcome.css"
 const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysDict, phaseEndDay, isMobile }) => {
@@ -38,7 +35,7 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
             background: '#fff url(/images/trees.png)',
             showConfirmButton: true,
             confirmButtonColor: "#b43434",
-            confirmButtonText: `You got this!`,
+            confirmButtonText: `I got this!`,
             backdrop: `
               rgba(123, 110, 11,0.08)
               left top
@@ -70,6 +67,7 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
         //Better to use a modal instead of using swal?
         popupWelcomeMsg();
         localStorage.setItem("lastLoginDay", currentDay);
+        localStorage.setItem("videoCheck", false);
     }
     return (
         <Grow in={true} {...({ timeout: 1500 })}>

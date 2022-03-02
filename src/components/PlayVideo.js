@@ -19,13 +19,13 @@ const buttonStyle = () => ({
     },
 })
 
-const PlayVideo = ({ phase, data, setVideoCheck }) => {
+const PlayVideo = ({ phase, data }) => {
     return (
         <Grow in={true} {...({ timeout: 1500 })}>
             <div>
                 <h1>Please do these exercises to go along with phase {phase}:</h1>
                 <YoutubeEmbed embedId={data["videoUrls"][phase - 1]}></YoutubeEmbed>
-                <Button variant="contained" sx={() => buttonStyle()} onClick={() => setVideoCheck(true)}>Done</Button>
+                <Button variant="contained" sx={() => buttonStyle()} onClick={() => localStorage.setItem("videoCheck", true)}>Done</Button>
             </div>
         </Grow>
     );

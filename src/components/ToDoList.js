@@ -11,12 +11,12 @@ import Button from '@mui/material/Button';
 import Grow from "@mui/material/Grow";
 import "./toDoList.css";
 
-const ToDoList = ({ setPage, surveyCheck, videoCheck }) => {
+const ToDoList = ({ setPage, surveyCheck }) => {
     return (
         <Grow in={true} {...({ timeout: 1500 })}>
             <div className="toDoList">
                 <List
-                    sx={{marginTop: "10%", width: '100%', maxWidth: 360, bgcolor: "rgb(243, 245, 247)", borderRadius: "2rem" }}
+                    sx={{ marginTop: "10%", width: '100%', maxWidth: 360, bgcolor: "rgb(243, 245, 247)", borderRadius: "2rem" }}
                     subheader={<ListSubheader sx={{ bgcolor: "rgb(243, 245, 247)", borderRadius: "2rem" }}> To Do List </ListSubheader>}
                 >
                     <ListItem>
@@ -29,7 +29,7 @@ const ToDoList = ({ setPage, surveyCheck, videoCheck }) => {
                         </ListItemIcon>
                     </ListItem>
                     <ListItem>
-                        <Checkbox disabled checked={videoCheck} />
+                        <Checkbox disabled checked={localStorage.getItem("videoCheck") === true.toString()} />
                         <ListItemText id="switch-list-label-survey" primary="Video" />
                         <ListItemIcon>
                             <Button onClick={() => setPage("playVideo")}>
