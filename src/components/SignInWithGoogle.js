@@ -22,7 +22,7 @@ export const SignInOut = ({ isMobile }) => {
     const setPage = useStore(state => state.setDoctorPage);
     const [user] = useGoogleUserState();
     const SignInButton = () => (
-        <Button sx={() => buttonStyle(isMobile)} onClick={() => {
+        <Button data-cy="cySignInButton" sx={() => buttonStyle(isMobile)} onClick={() => {
             signInWithGoogle()
         }
         }> Sign In </Button>
