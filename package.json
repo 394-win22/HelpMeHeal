@@ -23,6 +23,7 @@
     "rumble-charts": "^4.0.0",
     "survey-react": "^1.9.12",
     "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.4.4",
     "web-vitals": "^2.1.4",
     "zustand": "^3.7.0"
   },

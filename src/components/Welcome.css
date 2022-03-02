@@ -1,7 +1,10 @@
-.swal-title{
-    
+
+.swal2-title{
+    color:white;
+    background-color: #b43434;
+    padding-bottom: 5%;
 }
-.swal-text {
+/* .swal-text {
     background-color: #FEFAE3;
     padding: 17px;
     border: 1px solid #F0E1A1;
@@ -9,4 +12,8 @@
     margin: 22px;
     text-align: center;
     color: #61534e;
-  }
+} */
+
+.swal2-styled.swal2-confirm{
+    background-color: #b43434;
+}
