@@ -39,7 +39,7 @@ const RegisterPage = ({ googleUser }) => {
         // console.log(userData[patientCodeParse[0]])
         return userData[patientCodeParse[0]] && userData[patientCodeParse[0]]['userType'] === 'doctor' && patientCodeParse[1] === 'acl'
     }
-    
+
     const onClickRegister = (googleUser, type, patientCode, userData) => {
         // TODO remove default values
         // const patientCode = document.querySelector('#patientCode').value;
@@ -53,7 +53,7 @@ const RegisterPage = ({ googleUser }) => {
             setData(`/user/${uid}/doctorId`, patientCodeParse[0]);
             setData(`/user/${uid}/surgeryType`, patientCodeParse[1]);
             setData(`/user/${patientCodeParse[0]}/patientId/${uid}`, googleUser?.displayName)
-        } 
+        }
         else if (type === 'doctor') {
             setData(`/user/${uid}/userType`, type);
             setData(`/user/${uid}/name`, googleUser?.displayName);
@@ -63,7 +63,7 @@ const RegisterPage = ({ googleUser }) => {
         setValidPatientCode(userType === 'patient' && ValidatePatientCode(patientCode, userData) && patientCode?.length > 0);
     }
 
-    
+
 
     useEffect(() => {
         if (userData === undefined) return;
@@ -78,7 +78,10 @@ const RegisterPage = ({ googleUser }) => {
             <h1>Are you a patient or doctor?</h1>
             <RadioGroup
                 style={{ alignItems: "center" }}
-                onChange={(e) => setUserType(e.target.value)}
+                onChange={(e) => {
+                    setUserType(e.target.value)
+                    document.querySelector('#patientCode').value = null;
+                }}
                 value={userType}
             >
                 <FormControlLabel value="patient" label="Patient" control={<Radio />} />
@@ -90,8 +93,8 @@ const RegisterPage = ({ googleUser }) => {
                 variant="outlined"
                 required
                 disabled={userType === 'doctor' ? true : false}
-                error={!validPatientCode}
-                helperText={!validPatientCode ? 'Invalid patient code.' : 'Please enter code provided by doctor.'}
+                error={userType === 'patient' ? !validPatientCode : false}
+                helperText={!validPatientCode && userType === 'patient' ? 'Invalid patient code.' : 'Please enter code provided by doctor.'}
                 onChange={e => {
                     setTextValue(e.target.value)
                 }}
