@@ -46,7 +46,7 @@ const NavBar = ({ data, currentDay, googleUser, setPage, user, setZoom, surveyCh
     }
 
     return (
-        <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, background: '#b43434', flexDirection: 'row', justifyContent: 'center', p: 2 }}>
+        <AppBar position="sticky" color="primary" sx={{ top: 'auto', bottom: 0, background: '#b43434', flexDirection: 'row', justifyContent: 'center', p: 2 }}>
             <Button onClick={() => { setPage("home"); setZoom(false); }}>
                 <HomeIcon sx={IconStyle} />
             </Button>
