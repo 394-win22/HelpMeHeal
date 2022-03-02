@@ -69,7 +69,6 @@ const PatientDetail = (patientInfo) => {
                 }
             },
         }
-
     }
 
 
@@ -150,13 +149,13 @@ const PatientDetail = (patientInfo) => {
         patientInfo.patientInfo.surveyResults.map((surveyResult) => {
             console.log(surveyResult.rehab_successful === 'Yes')
             if (surveyResult.rehab_successful === 'Yes') {
-                rehabSuccessData[0] += 1;
-            } else {
                 rehabSuccessData[1] += 1;
+            } else {
+                rehabSuccessData[0] += 1;
             }
         });
     }
-    console.log(rehabSuccessData)
+
     return (
         <div>
             <Grow in={true} {...({ timeout: 1000 })}>

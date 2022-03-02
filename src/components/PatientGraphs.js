@@ -1,9 +1,10 @@
 import Grow from "@mui/material/Grow";
-import { Chart } from "react-chartjs-2";
+import {Chart, Doughnut} from "react-chartjs-2";
 import React from "react";
 
 const PatientGraphs = (patientInfo) => {
     var painData = [];
+    var rehabSuccessData = [0, 0];
 
     const options = {
         responsive: true,
@@ -38,6 +39,23 @@ const PatientGraphs = (patientInfo) => {
         }
     };
 
+    const optionsRehab = {
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: 'Past Week Rehab Success',
+                font: {
+                    size: 26,
+                },
+                padding: {
+                    top: 30,
+                    bottom: 15
+                }
+            },
+        }
+    }
+
     const labels = ['Day1', 'Day2', 'Day3', 'Day4', 'Day5'];
 
     const data = {
@@ -63,14 +81,36 @@ const PatientGraphs = (patientInfo) => {
         ],
     };
 
+    const rehabData = {
+        labels: ["Yes", "No"],
+        datasets: [
+            {
+                data: rehabSuccessData,
+                backgroundColor: ["green", 'rgba(255, 99, 132)'],
+            }
+        ],
+    };
+
     if (patientInfo.patientInfo.surveyResults) {
         Object.entries(patientInfo.patientInfo.surveyResults).map((surveyResult) => painData.push(surveyResult[1].pain_rating));
+        Object.entries(patientInfo.patientInfo.surveyResults).map((surveyResult) => {
+            if (surveyResult.rehab_successful === 'Yes') {
+                rehabSuccessData[1] += 1;
+            } else {
+                rehabSuccessData[0] += 1;
+            }
+        });
     }
 
     return (
         <Grow in={true} {...({ timeout: 1500 })}>
-            <div style={{ width: "50%", height: "30%", margin: "0 auto", marginBottom: '10rem' }}>
-                <Chart type='bar' options={options} data={data} />
+            <div className="Graph">
+                <div style={{ width: "40%", height: "30%", margin: "5% 10% 7% 14%", float:"left"}}>
+                    <Chart type='bar' options={options} data={data} />
+                </div>
+                <div style={{ width: "20%", height: "30%", margin: "5% 15% 7% 0", float:"left" }}>
+                    <Doughnut data={rehabData} options={optionsRehab} />
+                </div>
             </div>
         </Grow>
     )
