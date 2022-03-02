@@ -28,6 +28,9 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
             })
 
         Swal.fire({
+            customClass: {
+                title: 'custom-title-class',
+            },
             title: `Welcome back ${username ? username.charAt(0).toUpperCase() + username.slice(1).toLowerCase() : "Nobody"}!`,
             text: welcomeMsg,
             width: 600,
