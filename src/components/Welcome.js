@@ -1,6 +1,8 @@
 import Grow from '@mui/material/Grow';
 import { setData } from '../utilities/firebase';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2'
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import Icon from "@material-ui/core/Icon";
 import Button from "@mui/material/Button";
 import "./Welcome.css"
 const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysDict, phaseEndDay, isMobile }) => {
@@ -24,10 +26,23 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
                     })
                 )
             })
-        swal({
-            title: `Welcome Back ${username ? username : "Nobody"}!`,
-            text: welcomeMsg
-        })
+
+        Swal.fire({
+            title: `Welcome back ${username ? username.charAt(0).toUpperCase() + username.slice(1).toLowerCase() : "Nobody"}!`,
+            text: welcomeMsg,
+            width: 600,
+            color: '#000',
+            background: '#fff url(/images/trees.png)',
+            // showDenyButton: true,
+            showConfirmButton:true,
+            confirmButtonText: `You got this!`,
+            backdrop: `
+              rgba(123, 110, 11,0.08)
+              left top
+              no-repeat
+            `,
+          })
+        
     }
 
     const buttonStyle = (isMobile) => ({
@@ -57,7 +72,7 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
         <Grow in={true} {...({ timeout: 1500 })}>
             <div style={{ width: '55%', marginLeft: '23%' }}>
                 <div style={{ color: '#b43434', fontSize: 25, marginBottom: '4rem', marginTop: '4rem' }}>
-                    <h2 style={{ textAlign: 'left' }}> Welcome back {username ? username : "Nobody"}, </h2>
+                    <h2 style={{ textAlign: 'left' }}> Welcome back {username ? username.charAt(0).toUpperCase() + username.slice(1).toLowerCase() : "Nobody"}, </h2>
                 </div>
 
                 <div style={{ textAlign: 'left', fontSize: '1.9rem' }}>
