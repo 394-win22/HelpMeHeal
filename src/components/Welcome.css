@@ -4,6 +4,9 @@
     background-color: #b43434;
     padding-bottom: 5%;
 }
+.swal-text{
+    color:#000;
+}
 /* .swal-text {
     background-color: #FEFAE3;
     padding: 17px;

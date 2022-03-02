@@ -31,7 +31,6 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
             title: `Welcome back ${username ? username.charAt(0).toUpperCase() + username.slice(1).toLowerCase() : "Nobody"}!`,
             text: welcomeMsg,
             width: 600,
-            color: '#000',
             background: '#fff url(/images/trees.png)',
             // showDenyButton: true,
             showConfirmButton: true,
