@@ -34,15 +34,16 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
             color: '#000',
             background: '#fff url(/images/trees.png)',
             // showDenyButton: true,
-            showConfirmButton:true,
+            showConfirmButton: true,
+            confirmButtonColor: "#b43434",
             confirmButtonText: `You got this!`,
             backdrop: `
               rgba(123, 110, 11,0.08)
               left top
               no-repeat
             `,
-          })
-        
+        })
+
     }
 
     const buttonStyle = (isMobile) => ({
