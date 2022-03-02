@@ -8,10 +8,10 @@ import Checkbox from '@mui/material/Checkbox';
 import FactCheckIcon from '@mui/icons-material/FactCheck';
 import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
 import Button from '@mui/material/Button';
-
+import "./toDoList.css";
 const ToDoList = ({ setPage, surveyCheck, videoCheck }) => {
     return (
-        <div style={{ marginTop: "0.8rem", marginLeft: "40%" }}>
+        <div className="toDoList">
             <List
                 sx={{ width: '100%', maxWidth: 360, bgcolor: "rgb(243, 245, 247)", borderRadius: "2rem" }}
                 subheader={<ListSubheader sx={{ bgcolor: "rgb(243, 245, 247)", borderRadius: "2rem" }}> To Do List </ListSubheader>}
