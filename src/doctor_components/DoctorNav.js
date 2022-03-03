@@ -19,16 +19,16 @@ const IconStyle = {
     marginRight: "1rem"
 }
 
-const DoctorNavBar = ({ setPage, user }) => {
+const DoctorNavBar = ({ setPage, user, isMobile }) => {
     const [showEmailForm, setShowEmailForm] = useState(false);
     const handleShowEmailFormClose = () => setShowEmailForm(false);
     return (
         <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, background: '#b43434', flexDirection: 'row', justifyContent: 'center', p: 2, marginTop: '2rem' }}>
-            <Button onClick={() => setPage("DoctorHome")} style={{ marginLeft: "5rem" }}>
-                <HomeIcon sx={IconStyle} />
+            <Button onClick={() => setPage("DoctorHome")}>
+                <HomeIcon sx={IconStyle} style={{ marginLeft: isMobile ? "2rem" : "5rem" }} />
             </Button>
             <Button onClick={() => setShowEmailForm(true)}>
-                <EmailIcon sx={IconStyle} />
+                <EmailIcon sx={IconStyle} style={isMobile ? { marginRight: "2rem" } : { marginLeft: "5rem" }} />
             </Button>
             <MailTo show={showEmailForm} handleClose={handleShowEmailFormClose} user={user} />
         </AppBar>

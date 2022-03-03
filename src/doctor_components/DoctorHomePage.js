@@ -22,6 +22,8 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
     const [rowsPerTablePage, setRowsPerTablePage] = useState(5);
     const [searchTerm, setSearchTerm] = useState("");
 
+    let usernameFormatted = username?.split(/\s/);
+
     const patientDict = data["user"][googleUser?.uid]["patientId"] ? data["user"][googleUser?.uid]["patientId"] : null;
 
     const patientsInfo = patientDict ? Object.keys(patientDict).map(key => data["user"][key]) : null;
@@ -111,7 +113,14 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
         <div>
             <Grow in={true} {...({ timeout: 1500 })}>
                 <div style={{ color: '#b43434', fontSize: 25, marginBottom: '2rem', marginTop: '4rem' }}>
-                    <h2 style={{ textAlign: 'center' }}> Welcome back Doctor {username.toUpperCase() ? username : "Nobody"}, </h2>
+                    <h2 style={{ textAlign: 'center' }}> Welcome back Doctor {
+                        usernameFormatted ? 
+                        usernameFormatted?.[0].charAt(0).toUpperCase() + 
+                        usernameFormatted?.[0].slice(1).toLowerCase() + 
+                        " " +
+                        usernameFormatted?.[1].charAt(0).toUpperCase() +
+                        usernameFormatted?.[1].slice(1).toLowerCase(): "Nobody"}, 
+                    </h2>
                 </div>
             </Grow>
             {patientDict ?
