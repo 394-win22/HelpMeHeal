@@ -29,12 +29,12 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
             customClass: {
                 title: 'custom-title-class',
             },
-            title: `<div style = 'color:white; padding-bottom: 5%'> Welcome back ${usernameFormatted ? 
-                usernameFormatted?.[0].charAt(0).toUpperCase() + 
-                usernameFormatted?.[0].slice(1).toLowerCase() + 
+            title: `<div style = 'color:white; padding-bottom: 5%'> Welcome back ${usernameFormatted ?
+                usernameFormatted?.[0].charAt(0).toUpperCase() +
+                usernameFormatted?.[0].slice(1).toLowerCase() +
                 " " +
                 usernameFormatted?.[1].charAt(0).toUpperCase() +
-                usernameFormatted?.[1].slice(1).toLowerCase() 
+                usernameFormatted?.[1].slice(1).toLowerCase()
                 : "Nobody"}!</div>`,
             text: welcomeMsg,
             width: 600,
@@ -78,18 +78,18 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
     }
     return (
         <Grow in={true} {...({ timeout: 1500 })}>
-            <div style={{ width: '55%', marginLeft: '23%' }}>
-                <div style={{ color: '#b43434', fontSize: 25, marginBottom: '4rem', marginTop: '4rem' }}>
-                    <h2 style={{ textAlign: 'left' }}> Welcome back {usernameFormatted ? 
-                        usernameFormatted?.[0].charAt(0).toUpperCase() + 
-                        usernameFormatted?.[0].slice(1).toLowerCase() + 
+            <div style={{ width: '70%', marginLeft: '23%' }}>
+                <div style={isMobile ? { color: '#b43434', fontSize: "3vw", marginBottom: '2vh', marginTop: '2vh' } : { color: '#b43434', fontSize: 25, marginBottom: '4rem', marginTop: '4rem' }}>
+                    <h2 style={{ textAlign: 'left' }}> Welcome back {usernameFormatted ?
+                        usernameFormatted?.[0].charAt(0).toUpperCase() +
+                        usernameFormatted?.[0].slice(1).toLowerCase() +
                         " " +
                         usernameFormatted?.[1].charAt(0).toUpperCase() +
-                        usernameFormatted?.[1].slice(1).toLowerCase()  : "Nobody"}, 
+                        usernameFormatted?.[1].slice(1).toLowerCase() : "Nobody"},
                     </h2>
                 </div>
 
-                <div style={{ textAlign: 'left', fontSize: '1.9rem' }}>
+                <div style={{ textAlign: 'left', fontSize: isMobile ? "4vw" : '1.9rem' }}>
                     Today you are on <b>phase {phase}, day {progressComplete
                         ? phaseEndDay[Object.entries(phaseEndDay).length]
                         : currentDay}</b> of your ACL recovery. <br /> <br />
