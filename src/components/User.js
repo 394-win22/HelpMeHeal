@@ -9,13 +9,13 @@ import PlayVideo from './PlayVideo';
 import NavBar from './NavBar';
 import calculatePhase from '../utilities/calculatePhase';
 
-function User({ name, surgeryType, currentDay, user, surveyCheck, googleUser, isMobile, setCurrentDay }) {
+function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCurrentDay }) {
 
     const setPage = useStore(state => state.setUserPage);
     const [zoom, setZoom] = useState(false);
     const page = useStore(state => state.UserPage);
     const [data, loadingData, errorData] = useData("/");
-
+    const surveyCheck = user.surveyResults ? user.surveyResults[currentDay - 1] !== undefined : false;
     // firebase data initialize
     useEffect(() => {
         if (data === undefined) return;
