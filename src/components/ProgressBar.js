@@ -16,8 +16,9 @@ const ProgressBar = ({ steps, phase, currentDay, phaseEndDay, isMobile, onPhaseC
                             onClick={phase - 1 === step.index ? () => onPhaseClick(phase, currentDay, phaseEndDay) : null}
                             key={step.index}
                             className={`
-                ${isMobile ? "progress-step mobile" : "progress-step"}
+                ${"progress-step"}
                 ${phase - 1 === step.index ? 'active' : 'inactive'}
+                ${isMobile?  "mobile" : "default"}
                 ${(phase - 1 > step.index || complete) ? 'complete' : 'incomplete'}
             `}
                         >
@@ -31,7 +32,7 @@ const ProgressBar = ({ steps, phase, currentDay, phaseEndDay, isMobile, onPhaseC
     );
 };
 
-const ProgressBarZoomed = ({ currentDay, phase, totalDays, onPhaseClick, phaseEndDay }) => {
+const ProgressBarZoomed = ({ currentDay, phase, totalDays, onPhaseClick, isMobile, phaseEndDay }) => {
     const complete = currentDay + phaseEndDay[phase - 1] >= phaseEndDay[Object.entries(phaseEndDay).length];
     return (
         <div>
@@ -43,7 +44,7 @@ const ProgressBarZoomed = ({ currentDay, phase, totalDays, onPhaseClick, phaseEn
                 <LinearProgress color='error' variant='determinate' value={complete ? 100 : Math.floor((currentDay / totalDays) * 100)} />
             </Box>
             <ul className='progress-indicator'>
-                <li className={`progress-step ${complete ? 'complete' : 'active'} zoomed`}
+                <li className={`progress-step ${complete ? 'complete' : 'active'} ${isMobile?  "mobile" : "default"} zoomed`}
                     onClick={onPhaseClick}
                 >
                     <span className='step-number'>{phase}</span>
@@ -66,13 +67,13 @@ const ProgressIndicator = ({ phase, currentDay, phaseEndDay, isMobile, setZoom, 
     const totalDays = phase > 1 ? phaseEndDay[phase] - phaseEndDay[phase - 1] : phaseEndDay[phase];
 
     const currentDayPhase = phase > 1 ? currentDay - phaseEndDay[phase - 1] : currentDay;
-
-
+    console.log('is mobile')
+    console.log(isMobile)
     return (
         <Grow in={true} {...({ timeout: 1500 })}>
             <div>
-                {zoom ? <ProgressBarZoomed totalDays={totalDays} phase={phase} currentDay={currentDayPhase} phaseEndDay={phaseEndDay} onPhaseClick={() => setZoom(!zoom)} /> :
-                    <ProgressBar steps={steps} phase={phase} currentDay={currentDayPhase} phaseEndDay={phaseEndDay} isMobile={isMobile} onPhaseClick={() => setZoom(!zoom)} />}
+                {zoom || isMobile ? <ProgressBarZoomed totalDays={totalDays} phase={phase} isMobile={isMobile} currentDay={currentDayPhase} phaseEndDay={phaseEndDay} onPhaseClick={() => setZoom(!zoom)} /> :
+                    <ProgressBar steps={steps} phase={phase} currentDay={currentDayPhase} isMobile={isMobile} phaseEndDay={phaseEndDay} onPhaseClick={() => setZoom(!zoom)} />}
             </div>
         </Grow>
     );

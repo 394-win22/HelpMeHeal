@@ -72,7 +72,7 @@
 
   }
 
-  .progress-step.active .step-number:hover {
+  .progress-step.active.default .step-number:hover {
     background-color: rgb(155, 11, 11);
     border: width 2px; 
     border-color: white;
