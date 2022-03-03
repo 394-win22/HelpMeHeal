@@ -19,7 +19,7 @@ function App() {
   useEffect(() => {
     window.addEventListener("DOMContentLoaded", handleResize);
     window.addEventListener("resize", handleResize);
-    
+
   })
 
   return (
@@ -28,8 +28,8 @@ function App() {
       <div>
         {googleUser ?
           <div>
-            <div className={isMobile ? "app-header mobile" : "app-header"} style={{marginBottom: isMobile ? "1rem" : "3rem", height: isMobile ? "6rem" : "10rem"}}>
-              <img className="logo" src="bannerlogo.jpg" alt="help-me-heal-logo" style={{height: isMobile ? "4rem" : "8rem"}} />
+            <div className={isMobile ? "app-header mobile" : "app-header"} style={{ marginBottom: isMobile ? "1rem" : "3rem", height: isMobile ? "6rem" : "10rem" }}>
+              <img className="logo" src="bannerlogo.jpg" alt="help-me-heal-logo" style={{ height: isMobile ? "4rem" : "8rem" }} />
               <h1>Help Me Heal</h1>
             </div>
             <GetUser googleUser={googleUser} isMobile={isMobile} />
