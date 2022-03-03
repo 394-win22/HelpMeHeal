@@ -47,8 +47,8 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
 
     const buttonStyle = (isMobile) => ({
         mx: 2,
-        fontSize: isMobile ? '3vw' : "0.8rem",
-        width: isMobile ? '12vw' : '10rem',
+        fontSize: "0.8rem",
+        width: '10rem',
         margin: '1%',
         bgcolor: "#b43434",
         borderRadius: 2,

@@ -4,8 +4,8 @@ import useStore from '../Store.js';
 
 const buttonStyle = (isMobile) => ({
     mx: 2,
-    fontSize: isMobile ? '3vw' : "0.8rem",
-    width: isMobile ? '12vw' : '6rem',
+    fontSize: isMobile ? '0.4rem' : "0.8rem",
+    width: isMobile ? '5rem' : '6rem',
     margin: '1%',
     bgcolor: "#b43434",
     borderRadius: 2,

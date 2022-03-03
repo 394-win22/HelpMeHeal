@@ -68,8 +68,7 @@
 
 @media(max-width:320px){
     .logoContent span{
-        margin-top: 0;
-        white-space: normal;
+        margin-left: 0.5rem;
     }
 }
 @media(max-width:400px){
