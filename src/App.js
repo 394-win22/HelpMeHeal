@@ -17,7 +17,9 @@ function App() {
   }
 
   useEffect(() => {
+    window.addEventListener("DOMContentLoaded", handleResize);
     window.addEventListener("resize", handleResize);
+    
   })
 
   return (
