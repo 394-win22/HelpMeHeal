@@ -149,9 +149,9 @@ const PatientDetail = (patientInfo) => {
         patientInfo.patientInfo.surveyResults.map((surveyResult) => {
             console.log(surveyResult.rehab_successful === 'Yes')
             if (surveyResult.rehab_successful === 'Yes') {
-                rehabSuccessData[1] += 1;
-            } else {
                 rehabSuccessData[0] += 1;
+            } else {
+                rehabSuccessData[1] += 1;
             }
         });
     }
@@ -217,11 +217,11 @@ const PatientDetail = (patientInfo) => {
             </Grow>
 
             <Grow in={true} {...({ timeout: 1500 })}>
-                <div className="Graph" style={{marginBottom:"10%"}}>
-                    <div style={{ width: "40%", height: "30%", margin: "5% 10% 15% 14%", float:"left"}}>
+                <div className="Graph" style={{ marginBottom: "10%" }}>
+                    <div style={{ width: "40%", height: "30%", margin: "5% 10% 15% 14%", float: "left" }}>
                         <Chart type='bar' options={options} data={data} />
                     </div>
-                    <div style={{ width: "20%", height: "30%", margin: "5% 15% 15% 0", float:"left" }}>
+                    <div style={{ width: "20%", height: "30%", margin: "5% 15% 15% 0", float: "left" }}>
                         <Doughnut data={rehabData} options={optionsRehab} />
                     </div>
                 </div>

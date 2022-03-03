@@ -95,9 +95,9 @@ const PatientGraphs = (patientInfo) => {
         Object.entries(patientInfo.patientInfo.surveyResults).map((surveyResult) => painData.push(surveyResult[1].pain_rating));
         Object.entries(patientInfo.patientInfo.surveyResults).map((surveyResult) => {
             if (surveyResult[1].rehab_successful === 'Yes') {
-                rehabSuccessData[1] += 1;
-            } else {
                 rehabSuccessData[0] += 1;
+            } else {
+                rehabSuccessData[1] += 1;
             }
         });
     }
