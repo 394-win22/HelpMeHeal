@@ -121,6 +121,7 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo, isMobile }
                             usernameFormatted?.[1].charAt(0).toUpperCase() +
                             usernameFormatted?.[1].slice(1).toLowerCase() : "Nobody"},
                     </h2>
+
                 </div>
             </Grow>
             {patientDict ?
