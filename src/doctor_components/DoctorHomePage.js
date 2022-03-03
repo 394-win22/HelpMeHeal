@@ -16,7 +16,7 @@ import TextField from '@mui/material/TextField';
 import Grow from '@mui/material/Grow';
 
 
-const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
+const DoctorHomePage = ({ username, data, googleUser, setpatientInfo, isMobile }) => {
     const setPage = useStore(state => state.setDoctorPage);
     const [tablePage, setTablePage] = useState(0);
     const [rowsPerTablePage, setRowsPerTablePage] = useState(5);
@@ -41,7 +41,7 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
     }
 
     const TableContainerStyle = {
-        width: "80%",
+        width: isMobile ? "98%" : "80%",
         margin: "0 auto",
         borderRadius: "1rem",
         marginBottom: "2rem",
@@ -110,7 +110,7 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
 
         <div>
             <Grow in={true} {...({ timeout: 1500 })}>
-                <div style={{ color: '#b43434', fontSize: 25, marginBottom: '2rem', marginTop: '4rem' }}>
+                <div style={{ color: '#b43434', fontSize: isMobile ? 20 : 25, marginBottom: isMobile ? '3rem' : '2rem', marginTop: isMobile ? '2rem' : '4rem' }}>
                     <h2 style={{ textAlign: 'center' }}> Welcome back Doctor {username.toUpperCase() ? username : "Nobody"}, </h2>
                 </div>
             </Grow>

@@ -26,7 +26,7 @@ const Doctor = ({ name, googleUser, user, isMobile }) => {
     function getPage() {
         switch (page) {
             case "DoctorHome":
-                return <DoctorHomePage username={name} data={data} googleUser={googleUser} setpatientInfo={setpatientInfo} />;
+                return <DoctorHomePage username={name} data={data} googleUser={googleUser} setpatientInfo={setpatientInfo} isMobile={isMobile} />;
             case "PatientDetail":
                 return <PatientDetail patientInfo={patientInfo} />;
 
