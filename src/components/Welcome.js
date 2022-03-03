@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import "./Welcome.css"
 const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysDict, phaseEndDay, isMobile }) => {
     let daysHasMessage;
+    let usernameFormatted = username?.split(/\s/);
 
     for (const [key,] of Object.entries(daysDict)) {
         if (currentDay >= key) {
@@ -28,7 +29,13 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
             customClass: {
                 title: 'custom-title-class',
             },
-            title: `<div style = 'color:white; padding-bottom: 5%'> Welcome back ${username ? username.charAt(0).toUpperCase() + username.slice(1).toLowerCase() : "Nobody"}!</div>`,
+            title: `<div style = 'color:white; padding-bottom: 5%'> Welcome back ${usernameFormatted ? 
+                usernameFormatted?.[0].charAt(0).toUpperCase() + 
+                usernameFormatted?.[0].slice(1).toLowerCase() + 
+                " " +
+                usernameFormatted?.[1].charAt(0).toUpperCase() +
+                usernameFormatted?.[1].slice(1).toLowerCase() 
+                : "Nobody"}!</div>`,
             text: welcomeMsg,
             width: 600,
             color: '#000',
@@ -73,7 +80,13 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
         <Grow in={true} {...({ timeout: 1500 })}>
             <div style={{ width: '55%', marginLeft: '23%' }}>
                 <div style={{ color: '#b43434', fontSize: 25, marginBottom: '4rem', marginTop: '4rem' }}>
-                    <h2 style={{ textAlign: 'left' }}> Welcome back {username ? username.charAt(0).toUpperCase() + username.slice(1).toLowerCase() : "Nobody"}, </h2>
+                    <h2 style={{ textAlign: 'left' }}> Welcome back {usernameFormatted ? 
+                        usernameFormatted?.[0].charAt(0).toUpperCase() + 
+                        usernameFormatted?.[0].slice(1).toLowerCase() + 
+                        " " +
+                        usernameFormatted?.[1].charAt(0).toUpperCase() +
+                        usernameFormatted?.[1].slice(1).toLowerCase()  : "Nobody"}, 
+                    </h2>
                 </div>
 
                 <div style={{ textAlign: 'left', fontSize: '1.9rem' }}>
