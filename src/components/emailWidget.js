@@ -61,64 +61,62 @@ const MailTo = ({ toEmail, show, handleClose, user }) => {
     };
 
     return (
-        <div className="emailform">
-            <Modal
-                open={show}
-                onClose={() => {
-                    handleClose();
-                    setValidFromEmail(true);
-                    setValidMessage(true);
-                }}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-                style={{ overflow: 'scroll' }}
-            >
-                <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2" style={{ textAlign: "center", marginBottom: 10 }}>
-                        {user.userType === "doctor" ? "Email Your Patient Now" : "Email Your Doctor Now"}
-                    </Typography>
+        <Modal
+            open={show}
+            onClose={() => {
+                handleClose();
+                setValidFromEmail(true);
+                setValidMessage(true);
+            }}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+            style={{ overflow: 'scroll' }}
+        >
+            <Box sx={style}>
+                <Typography id="modal-modal-title" variant="h6" component="h2" style={{ textAlign: "center", marginBottom: 10 }}>
+                    {user.userType === "doctor" ? "Email Your Patient Now" : "Email Your Doctor Now"}
+                </Typography>
 
-                    <Stack spacing={spacing}>
-                        <TextField id='fromEmail'
-                            label="From Email"
-                            name='from_email'
-                            variant="outlined"
-                            defaultValue={user ? user.email : ""}
-                            required
-                            helperText='Must be valid email'
-                            error={!validFromEmail} />
-                        <TextField id='toEmail'
-                            label={user.userType === "doctor" ? "Patient Email" : "Doctor Email"}
-                            name='to_email'
-                            variant="outlined"
-                            defaultValue={toEmail ? toEmail : ""}
-                            required
-                            disabled
-                            helperText='Must be valid email'
-                            error={!validFromEmail} />
-                        <TextField id='message'
-                            label="Message"
-                            name='msg'
-                            variant="outlined"
-                            multiline
-                            rows={4}
-                            placeholder="What is your concern?"
-                            required
-                            helperText="Cannot be blank"
-                            error={!validMessage} />
-                    </Stack>
+                <Stack spacing={spacing}>
+                    <TextField id='fromEmail'
+                        label="From Email"
+                        name='from_email'
+                        variant="outlined"
+                        defaultValue={user ? user.email : ""}
+                        required
+                        helperText='Must be valid email'
+                        error={!validFromEmail} />
+                    <TextField id='toEmail'
+                        label={user.userType === "doctor" ? "Patient Email" : "Doctor Email"}
+                        name='to_email'
+                        variant="outlined"
+                        defaultValue={toEmail ? toEmail : ""}
+                        required
+                        disabled
+                        helperText='Must be valid email'
+                        error={!validFromEmail} />
+                    <TextField id='message'
+                        label="Message"
+                        name='msg'
+                        variant="outlined"
+                        multiline
+                        rows={4}
+                        placeholder="What is your concern?"
+                        required
+                        helperText="Cannot be blank"
+                        error={!validMessage} />
+                </Stack>
 
-                    <Box textAlign="right">
-                        <Button sx={{ mt: spacing }} size="small" variant="outlined" onClick={() => ContactUs(toEmail, handleClose)}>
-                            Submit
-                        </Button>
-                        <Button sx={{ mt: spacing, marginLeft: "5%" }} size="small" variant="outlined" onClick={() => handleClose()}>
-                            Close
-                        </Button>
-                    </Box>
+                <Box textAlign="right">
+                    <Button sx={{ mt: spacing }} size="small" variant="outlined" onClick={() => ContactUs(toEmail, handleClose)}>
+                        Submit
+                    </Button>
+                    <Button sx={{ mt: spacing, marginLeft: "5%" }} size="small" variant="outlined" onClick={() => handleClose()}>
+                        Close
+                    </Button>
                 </Box>
-            </Modal>
-        </div>
+            </Box>
+        </Modal>
     );
 }
 

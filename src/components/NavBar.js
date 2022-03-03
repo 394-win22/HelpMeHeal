@@ -56,7 +56,7 @@ const NavBar = ({ data, currentDay, googleUser, setPage, user, setZoom, surveyCh
             <MailTo toEmail={doctorEmail} show={showEmailForm} handleClose={handleShowEmailFormClose} user={user} />
             {page !== "survey" ? <div> <Button Button onClick={() => surveyCheck ? showPopupAlert() : setPage("survey")} >
                 <FactCheckIcon sx={IconStyle} style={{ marginLeft: isMobile ? "0" : "5rem" }} />
-            </Button></div> : <div></div>}
+            </Button></div> : null}
             <Button onClick={() => setPage("playVideo")} >
                 <PlayCircleFilledWhiteIcon sx={IconStyle} style={isMobile ? { marginRight: "2rem" } : { marginLeft: "5rem" }} />
             </Button>
