@@ -24,7 +24,7 @@ const IconStyle = {
 
 
 
-const NavBar = ({ data, currentDay, googleUser, setPage, user, setZoom, surveyCheck }) => {
+const NavBar = ({ data, currentDay, googleUser, setPage, user, setZoom, surveyCheck, isMobile }) => {
     const doctorEmail = data["user"][user.doctorId]["email"];
     const [showEmailForm, setShowEmailForm] = useState(false);
     const handleShowEmailFormClose = () => setShowEmailForm(false);
@@ -46,19 +46,19 @@ const NavBar = ({ data, currentDay, googleUser, setPage, user, setZoom, surveyCh
     }
 
     return (
-        <AppBar position="sticky" color="primary" sx={{ top: 'auto', bottom: 0, background: '#b43434', flexDirection: 'row', justifyContent: 'center', p: 2 }}>
+        <AppBar position="sticky" color="primary" sx={{ top: 'auto', bottom: 0, background: '#b43434', flexDirection: 'row', justifyContent: isMobile ? 'space-between' : "center", p: 2 }}>
             <Button onClick={() => { setPage("home"); setZoom(false); }}>
-                <HomeIcon sx={IconStyle} />
+                <HomeIcon sx={IconStyle} style={{ marginLeft: isMobile ? "2rem" : "5rem" }} />
             </Button>
-            <Button onClick={() => setShowEmailForm(true)} style={{ marginLeft: "5rem" }}>
-                <EmailIcon sx={IconStyle} />
+            <Button onClick={() => setShowEmailForm(true)} >
+                <EmailIcon sx={IconStyle} style={{ marginLeft: isMobile ? "0" : "5rem" }} />
             </Button>
             <MailTo toEmail={doctorEmail} show={showEmailForm} handleClose={handleShowEmailFormClose} user={user} />
-            {page !== "survey" ? <div> <Button Button onClick={() => surveyCheck ? showPopupAlert() : setPage("survey")} style={{ marginLeft: "5rem" }}>
-                <FactCheckIcon sx={IconStyle} />
+            {page !== "survey" ? <div> <Button Button onClick={() => surveyCheck ? showPopupAlert() : setPage("survey")} >
+                <FactCheckIcon sx={IconStyle} style={{ marginLeft: isMobile ? "0" : "5rem" }} />
             </Button></div> : <div></div>}
-            <Button onClick={() => setPage("playVideo")} style={{ marginLeft: "5rem" }}>
-                <PlayCircleFilledWhiteIcon sx={IconStyle} />
+            <Button onClick={() => setPage("playVideo")} >
+                <PlayCircleFilledWhiteIcon sx={IconStyle} style={isMobile ? { marginRight: "2rem" } : { marginLeft: "5rem" }} />
             </Button>
         </AppBar>
     )
