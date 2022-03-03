@@ -4,7 +4,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 import { Box } from '@mui/system';
 import Grow from '@mui/material/Grow';
 
-const ProgressBar = ({ steps, phase, currentDay, phaseEndDay, isMobile, onPhaseClick }) => {
+const ProgressBar = ({ steps, phase, currentDay, data, phaseEndDay, isMobile, onPhaseClick, surgeryType }) => {
     const complete = currentDay + phaseEndDay[phase - 1] >= phaseEndDay[Object.entries(phaseEndDay).length];
     return (
         <div>
@@ -23,6 +23,7 @@ const ProgressBar = ({ steps, phase, currentDay, phaseEndDay, isMobile, onPhaseC
                         >
                             <span className="step-number">{step.index + 1}</span>
                             <h3>{step.label}</h3>
+                            <p class="phase-desc">{data["surgery"][surgeryType]["phases"][step.index + 1]}</p>
                         </li>
                     ))}
                 </ul>
@@ -55,7 +56,7 @@ const ProgressBarZoomed = ({ currentDay, phase, totalDays, onPhaseClick, phaseEn
 }
 
 //TODO: add iterable as an argument and map it
-const ProgressIndicator = ({ phase, currentDay, phaseEndDay, isMobile, setZoom, zoom }) => {
+const ProgressIndicator = ({ phase, currentDay, phaseEndDay, isMobile, setZoom, zoom, data, surgeryType }) => {
     //const [isZoom, setZoom] = useState(false);
     const steps = []
 
@@ -72,7 +73,7 @@ const ProgressIndicator = ({ phase, currentDay, phaseEndDay, isMobile, setZoom, 
         <Grow in={true} {...({ timeout: 1500 })}>
             <div>
                 {zoom ? <ProgressBarZoomed totalDays={totalDays} phase={phase} currentDay={currentDayPhase} phaseEndDay={phaseEndDay} onPhaseClick={() => setZoom(!zoom)} /> :
-                    <ProgressBar steps={steps} phase={phase} currentDay={currentDayPhase} phaseEndDay={phaseEndDay} isMobile={isMobile} onPhaseClick={() => setZoom(!zoom)} />}
+                    <ProgressBar steps={steps} phase={phase} currentDay={currentDayPhase} data={data} phaseEndDay={phaseEndDay} isMobile={isMobile} surgeryType={surgeryType} onPhaseClick={() => setZoom(!zoom)} />}
             </div>
         </Grow>
     );
