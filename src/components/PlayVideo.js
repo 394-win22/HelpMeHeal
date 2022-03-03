@@ -7,7 +7,7 @@ const buttonStyle = () => ({
     mx: 2,
     fontSize: '1.1vw',
     width: '6vw',
-    marginBottom: '2%',
+    marginBottom: '30rem',
     bgcolor: "#b43434",
     borderRadius: 2,
     color: "rgb(255, 255, 255)",
