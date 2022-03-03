@@ -1,5 +1,5 @@
 import Grow from "@mui/material/Grow";
-import {Chart, Doughnut} from "react-chartjs-2";
+import { Chart, Doughnut } from "react-chartjs-2";
 import React from "react";
 
 const PatientGraphs = (patientInfo) => {
@@ -94,7 +94,7 @@ const PatientGraphs = (patientInfo) => {
     if (patientInfo.patientInfo.surveyResults) {
         Object.entries(patientInfo.patientInfo.surveyResults).map((surveyResult) => painData.push(surveyResult[1].pain_rating));
         Object.entries(patientInfo.patientInfo.surveyResults).map((surveyResult) => {
-            if (surveyResult.rehab_successful === 'Yes') {
+            if (surveyResult[1].rehab_successful === 'Yes') {
                 rehabSuccessData[1] += 1;
             } else {
                 rehabSuccessData[0] += 1;
@@ -105,10 +105,10 @@ const PatientGraphs = (patientInfo) => {
     return (
         <Grow in={true} {...({ timeout: 1500 })}>
             <div className="Graph">
-                <div style={{ width: "40%", height: "30%", margin: "5% 10% 7% 14%", float:"left"}}>
+                <div style={{ width: "40%", height: "30%", margin: "5% 10% 7% 14%", float: "left" }}>
                     <Chart type='bar' options={options} data={data} />
                 </div>
-                <div style={{ width: "20%", height: "30%", margin: "5% 15% 7% 0", float:"left" }}>
+                <div style={{ width: "20%", height: "30%", margin: "5% 15% 7% 0", float: "left" }}>
                     <Doughnut data={rehabData} options={optionsRehab} />
                 </div>
             </div>
