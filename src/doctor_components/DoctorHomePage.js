@@ -110,7 +110,7 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
 
         <div>
             <Grow in={true} {...({ timeout: 1500 })}>
-                <div style={{ color: '#b43434', fontSize: 25, marginBottom: '2rem', marginTop: '4rem' }}>
+                <div data-cy="cyLoggedInDoctor" style={{ color: '#b43434', fontSize: 25, marginBottom: '2rem', marginTop: '4rem' }}>
                     <h2 style={{ textAlign: 'center' }}> Welcome back Doctor {username.toUpperCase() ? username : "Nobody"}, </h2>
                 </div>
             </Grow>
