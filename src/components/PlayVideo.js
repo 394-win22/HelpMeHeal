@@ -35,7 +35,7 @@ const showPopupAlert = () => {
                 localStorage.setItem("videoCheck", true)
             } else {
                 swal("Completing the exercises will help you heal, please keep doing it！", {
-                    icon: "warning",
+                    icon: "error",
                 });
                 localStorage.setItem("videoCheck", false)
             }
