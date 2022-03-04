@@ -146,7 +146,7 @@ const PatientDetail = (patientInfo) => {
     // obtain pain level of each patient
     if (patientInfo.patientInfo.surveyResults) {
         patientInfo.patientInfo.surveyResults.map((surveyResult) => painData.push(surveyResult.pain_rating));
-        patientInfo.patientInfo.surveyResults.map((surveyResult) => {
+        patientInfo.patientInfo.surveyResults.forEach((surveyResult) => {
             console.log(surveyResult.rehab_successful === 'Yes')
             if (surveyResult.rehab_successful === 'Yes') {
                 rehabSuccessData[0] += 1;

@@ -11,12 +11,12 @@ import Button from '@mui/material/Button';
 import Grow from "@mui/material/Grow";
 import "./toDoList.css";
 
-const ToDoList = ({ setPage, surveyCheck }) => {
+const ToDoList = ({ setPage, surveyCheck, isMobile}) => {
     return (
         <Grow in={true} {...({ timeout: 1500 })}>
             <div className="toDoList">
                 <List
-                    sx={{ marginTop: "10%", width: '100%', width: "360px", maxWidth: "80vw", bgcolor: "rgb(243, 245, 247)", borderRadius: "2rem" }}
+                    sx={{ marginLeft: "auto", marginRight: "auto", marginTop: "10%", width: '100%', maxWidth: "80vw", bgcolor: "rgb(243, 245, 247)", borderRadius: "2rem" }}
                     subheader={<ListSubheader sx={{ bgcolor: "rgb(243, 245, 247)", borderRadius: "2rem" }}> To Do List </ListSubheader>}
                 >
                     <ListItem>

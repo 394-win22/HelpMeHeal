@@ -19,7 +19,7 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
             .map(data => {
                 return (Object.entries(data[1].days) // Second: entry phase
                     .filter(days => days[0] === daysHasMessage)
-                    .map((msg) => {
+                    .forEach((msg) => {
                         welcomeMsg = msg[1].message
                     })
                 )

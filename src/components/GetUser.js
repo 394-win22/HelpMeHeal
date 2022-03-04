@@ -1,9 +1,8 @@
 import User from './User';
 import '../App.css';
 import React, { useEffect, useState } from 'react';
-import { useUserState, setData } from '../utilities/firebase';
+import { useUserState } from '../utilities/firebase';
 import calculateDay from '../utilities/calculateday';
-import calculateFirstLogin from '../utilities/calculateFirstLogin';
 import { SignInOut } from './SignInWithGoogle';
 import RegisterPage from './Register';
 import Doctor from '../doctor_components/Doctor';
