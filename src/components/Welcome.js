@@ -79,7 +79,7 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
     return (
         <Grow in={true} {...({ timeout: 1500 })}>
             <div className="welcomeMsg">
-                <div style={isMobile ? { color: '#b43434', fontSize: "3vw", marginBottom: '2vh', marginTop: '2vh' } : { color: '#b43434', fontSize: 25, marginBottom: '4rem', marginTop: '4rem' }}>
+                <div style={isMobile ? { color: '#b43434', fontSize: "3vw", marginBottom: '2vh', marginTop: '2vh' } : { color: '#b43434', fontSize: 25, marginBottom: '1rem', marginTop: '1rem' }}>
                     <h2 style={{ textAlign: 'left', paddingLeft: '10vw', paddingRight: '10vw' }}> Welcome back {usernameFormatted ?
                         usernameFormatted?.[0].charAt(0).toUpperCase() +
                         usernameFormatted?.[0].slice(1).toLowerCase() +
