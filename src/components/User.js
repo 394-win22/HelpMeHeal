@@ -62,8 +62,8 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
                 setPage={setPage}
                 user={user}
                 setZoom={setZoom}
-                surveyCheck={surveyCheck}
                 isMobile={isMobile}
+                surveyCheck={surveyCheck}
             />
         </div>
     );

@@ -1,9 +1,10 @@
 import Button from "@mui/material/Button";
 import { setData } from "../utilities/firebase";
 import { getRefByPush } from "../utilities/firebase";
-const buttonStyle = () => ({
+const buttonStyle = (isMobile) => ({
     mx: 2,
-    width: '20vw',
+    fontSize: "0.8rem",
+    width: '10rem',
     margin: '1%',
     bgcolor: "#b43434",
     borderRadius: 2,
