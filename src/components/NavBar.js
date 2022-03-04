@@ -24,7 +24,7 @@ const IconStyle = {
 
 
 
-const NavBar = ({ data, currentDay, googleUser, setPage, user, setZoom, isMobile }) => {
+const NavBar = ({ data, currentDay, googleUser, setPage, user, setZoom, isMobile, surveyCheck }) => {
     const doctorEmail = data["user"][user.doctorId]["email"];
     const [showEmailForm, setShowEmailForm] = useState(false);
     const handleShowEmailFormClose = () => setShowEmailForm(false);
@@ -54,7 +54,7 @@ const NavBar = ({ data, currentDay, googleUser, setPage, user, setZoom, isMobile
                 <EmailIcon sx={IconStyle} style={{ marginLeft: isMobile ? "0" : "5rem" }} />
             </Button>
             <MailTo toEmail={doctorEmail} show={showEmailForm} handleClose={handleShowEmailFormClose} user={user} />
-            <Button Button onClick={() => setPage("survey")} >
+            <Button Button onClick={() => surveyCheck && page !== "survey" ? showPopupAlert() : setPage("survey")} >
                 <FactCheckIcon sx={IconStyle} style={{ marginLeft: isMobile ? "0" : "5rem" }} />
             </Button>
             <Button onClick={() => setPage("playVideo")} >
