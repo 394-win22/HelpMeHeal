@@ -29,7 +29,7 @@ const showPopupAlert = () => {
     })
         .then((done) => {
             if (done) {
-                swal("Congratulations for finishing exercise and keep going!", {
+                swal("Congratulations on finishing exercise and keep going!", {
                     icon: "success",
                 });
                 localStorage.setItem("videoCheck", true)
@@ -47,7 +47,7 @@ const PlayVideo = ({ phase, data }) => {
     return (
         <Grow in={true} {...({ timeout: 1500 })}>
             <div>
-                <h1 style={{ marginLeft: '0%'}}>Phase {phase} Exercises</h1>
+                <h1 style={{ marginLeft: '0%' }}>Phase {phase} Exercises</h1>
                 <YoutubeEmbed embedId={data["videoUrls"][phase - 1]}></YoutubeEmbed>
                 <Button variant="contained" sx={() => buttonStyle()} onClick={() => showPopupAlert()}>Done</Button>
             </div>

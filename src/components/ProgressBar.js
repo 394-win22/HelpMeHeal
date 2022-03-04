@@ -18,13 +18,13 @@ const ProgressBar = ({ steps, phase, currentDay, data, phaseEndDay, isMobile, on
                             className={`
                 ${"progress-step"}
                 ${phase - 1 === step.index ? 'active' : 'inactive'}
-                ${isMobile?  "mobile" : "default"}
+                ${isMobile ? "mobile" : "default"}
                 ${(phase - 1 > step.index || complete) ? 'complete' : 'incomplete'}
             `}
                         >
                             <span className="step-number">{step.index + 1}</span>
                             <h3>{step.label}</h3>
-                            <p class="phase-desc">{data["surgery"][surgeryType]["phases"][step.index + 1]}</p>
+                            <p className="phase-desc">{data["surgery"][surgeryType]["phases"][step.index + 1]}</p>
                         </li>
                     ))}
                 </ul>
@@ -45,7 +45,7 @@ const ProgressBarZoomed = ({ currentDay, phase, totalDays, onPhaseClick, isMobil
                 <LinearProgress color='error' variant='determinate' value={complete ? 100 : Math.floor((currentDay / totalDays) * 100)} />
             </Box>
             <ul className='progress-indicator'>
-                <li className={`progress-step ${complete ? 'complete' : 'active'} ${isMobile?  "mobile" : "default"} zoomed`}
+                <li className={`progress-step ${complete ? 'complete' : 'active'} ${isMobile ? "mobile" : "default"} zoomed`}
                     onClick={onPhaseClick}
                 >
                     <span className='step-number'>{phase}</span>
