@@ -45,14 +45,21 @@ const ProgressBarZoomed = ({ currentDay, phase, totalDays, onPhaseClick, isMobil
                 <LinearProgress color='error' variant='determinate' value={complete ? 100 : Math.floor((currentDay / totalDays) * 100)} />
             </Box>
             <ul className='progress-indicator'>
-                <li className={`progress-step ${complete ? 'complete' : 'active'} ${isMobile ? "mobile" : "default"} zoomed`}
+                <li className={`progress-step ${complete ? 'complete' : 'active'} ${isMobile ? "mobile" : "default"} zoomed`} style={{
+                    display: "grid",
+                    gridTemplateColumns: "150px",
+                    gridTemplateRows: "70px 50px",
+                    justifyItems: "center",
+                    alignItems: "center",
+                    position: "relative"
+                }}
                     onClick={onPhaseClick}
                 >
                     <span className='step-number'>{phase}</span>
                     <h3>Phase {phase}</h3>
                 </li>
             </ul>
-        </div>
+        </div >
     );
 }
 
