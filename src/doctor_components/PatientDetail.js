@@ -15,7 +15,7 @@ import { Chart as ChartJS, registerables } from 'chart.js';
 ChartJS.register(...registerables);
 
 
-const PatientDetail = (patientInfo) => {
+const PatientDetail = ({ patientInfo, isMobile }) => {
 
     const [tablePage, setTablePage] = useState(0);
     const [rowsPerTablePage, setRowsPerTablePage] = useState(5);
@@ -144,9 +144,9 @@ const PatientDetail = (patientInfo) => {
     // handle the graph
 
     // obtain pain level of each patient
-    if (patientInfo.patientInfo.surveyResults) {
-        patientInfo.patientInfo.surveyResults.map((surveyResult) => painData.push(surveyResult.pain_rating));
-        patientInfo.patientInfo.surveyResults.forEach((surveyResult) => {
+    if (patientInfo.surveyResults) {
+        patientInfo.surveyResults.map((surveyResult) => painData.push(surveyResult.pain_rating));
+        patientInfo.surveyResults.forEach((surveyResult) => {
             console.log(surveyResult.rehab_successful === 'Yes')
             if (surveyResult.rehab_successful === 'Yes') {
                 rehabSuccessData[0] += 1;
@@ -160,13 +160,13 @@ const PatientDetail = (patientInfo) => {
         <div>
             <Grow in={true} {...({ timeout: 1000 })}>
                 <div>
-                    <h2>{patientInfo.patientInfo.name}</h2>
-                    <a href={"mailto:" + patientInfo.patientInfo.email}>{patientInfo.patientInfo.email}</a>
+                    <h2>{patientInfo.name}</h2>
+                    <a href={"mailto:" + patientInfo.email}>{patientInfo.email}</a>
                 </div>
             </Grow>
 
             <Grow in={true} {...({ timeout: 1500 })}>
-                {patientInfo.patientInfo.surveyResults ?
+                {patientInfo.surveyResults ?
                     <div style={{
                         display: "flex", alignItems: "flex-start", flexDirection: "column", justifyContent: "flex-start",
                         marginTop: "3rem"
@@ -185,7 +185,7 @@ const PatientDetail = (patientInfo) => {
                                     </TableHead>
                                     <TableBody>
                                         {
-                                            patientInfo.patientInfo.surveyResults.slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage)
+                                            patientInfo.surveyResults.slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage)
                                                 .map((surveyResult, i) => (
                                                     <StyledTableRow hover key={"surveyResult" + i}>
                                                         <StyledTableCell key={"pain_rating" + i} component="th" scope="row">
@@ -205,7 +205,7 @@ const PatientDetail = (patientInfo) => {
                                 rowsPerPageOptions={[5, 10, 15]}
                                 component="div"
                                 // first in array is empty, adjust for it in length
-                                count={patientInfo.patientInfo.surveyResults.length - 1}
+                                count={patientInfo.surveyResults.length - 1}
                                 rowsPerPage={rowsPerTablePage}
                                 page={tablePage}
                                 onPageChange={handleChangePage}
@@ -218,10 +218,14 @@ const PatientDetail = (patientInfo) => {
 
             <Grow in={true} {...({ timeout: 1500 })}>
                 <div className="Graph" style={{ marginBottom: "10%" }}>
-                    <div style={{ width: "40%", height: "30%", margin: "5% 10% 15% 14%", float: "left" }}>
+                    <div style={isMobile ? 
+                        { width: "100%", height: "30%", margin: "5% 15% 7% 0%", float: "left" } :
+                        { width: "40%", height: "30%", margin: "5% 10% 15% 14%", float: "left" }}>
                         <Chart type='bar' options={options} data={data} />
                     </div>
-                    <div style={{ width: "20%", height: "30%", margin: "5% 15% 15% 0", float: "left" }}>
+                    <div style={isMobile ? 
+                        { width: "100%", height: "30%", margin: "5% 15% 7% 0%", float: "left" } :
+                        { width: "20%", height: "30%", margin: "5% 15% 15% 0", float: "left" }}>
                         <Doughnut data={rehabData} options={optionsRehab} />
                     </div>
                 </div>

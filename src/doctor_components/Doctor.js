@@ -28,7 +28,7 @@ const Doctor = ({ name, googleUser, user, isMobile }) => {
             case "DoctorHome":
                 return <DoctorHomePage username={name} data={data} googleUser={googleUser} setpatientInfo={setpatientInfo} isMobile={isMobile} />;
             case "PatientDetail":
-                return <PatientDetail patientInfo={patientInfo} />;
+                return <PatientDetail patientInfo={patientInfo} isMobile={isMobile}/>;
 
             default:
                 return <p>Sorry, there's been an error.</p>
