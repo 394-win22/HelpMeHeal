@@ -29,7 +29,7 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
             customClass: {
                 title: 'custom-title-class',
             },
-            title: `<div style = 'color:white; padding-bottom: 5%'> Welcome back ${usernameFormatted ?
+            title: `<div style = 'color:white; padding-bottom: ${isMobile ? "8%" : "5%"}; ${isMobile ? "font-size: 6vw;" : null}'> Welcome back ${usernameFormatted ?
                 usernameFormatted?.[0].charAt(0).toUpperCase() +
                 usernameFormatted?.[0].slice(1).toLowerCase() +
                 " " +

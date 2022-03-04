@@ -16,7 +16,7 @@ const ToDoList = ({ setPage, surveyCheck }) => {
         <Grow in={true} {...({ timeout: 1500 })}>
             <div className="toDoList">
                 <List
-                    sx={{ marginTop: "10%", width: '100%', maxWidth: 360, bgcolor: "rgb(243, 245, 247)", borderRadius: "2rem" }}
+                    sx={{ marginTop: "10%", width: '100%', width: "360px", maxWidth: "80vw", bgcolor: "rgb(243, 245, 247)", borderRadius: "2rem" }}
                     subheader={<ListSubheader sx={{ bgcolor: "rgb(243, 245, 247)", borderRadius: "2rem" }}> To Do List </ListSubheader>}
                 >
                     <ListItem>
