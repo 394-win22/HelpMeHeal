@@ -2,7 +2,9 @@ import React from "react";
 import YoutubeEmbed from "./YouTubeEmbed";
 import Button from '@mui/material/Button';
 import Grow from '@mui/material/Grow';
+import useStore from '../Store';
 import swal from 'sweetalert';
+
 const buttonStyle = () => ({
     mx: 2,
     fontSize: '1.1vw',
@@ -19,7 +21,7 @@ const buttonStyle = () => ({
     },
 })
 
-const showPopupAlert = () => {
+const showPopupAlert = (setPage) => {
     swal({
         title: "Have you finished today's exercise？",
         text: "Please make sure you have finished today's exercise!",
@@ -39,17 +41,19 @@ const showPopupAlert = () => {
                 });
                 localStorage.setItem("videoCheck", false)
             }
+            setPage("home");
         });
 }
 
 const PlayVideo = ({ phase, data }) => {
+    const setPage = useStore(state => state.setUserPage);
 
     return (
         <Grow in={true} {...({ timeout: 1500 })}>
             <div>
                 <h1 style={{ marginLeft: '0%' }}>Phase {phase} Exercises</h1>
                 <YoutubeEmbed embedId={data["videoUrls"][phase - 1]}></YoutubeEmbed>
-                <Button variant="contained" sx={() => buttonStyle()} onClick={() => showPopupAlert()}>Done</Button>
+                <Button variant="contained" sx={() => buttonStyle()} onClick={() => showPopupAlert(setPage)}>Done</Button>
             </div>
         </Grow>
     );
