@@ -14,7 +14,15 @@ import Grow from '@mui/material/Grow';
 import { Chart as ChartJS, registerables } from 'chart.js';
 ChartJS.register(...registerables);
 
-
+const lengthOfpatientInfo = (patientInfo) => {
+    let count = 0;
+    Object.entries(patientInfo.surveyResults).map(([, value]) => {
+        if (value) {
+            count++;
+        }
+    })
+    return count;
+}
 const PatientDetail = ({ patientInfo, isMobile }) => {
 
     const [tablePage, setTablePage] = useState(0);
@@ -145,15 +153,14 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
 
     // obtain pain level of each patient
     if (patientInfo.surveyResults) {
-        patientInfo.surveyResults.map((surveyResult) => painData.push(surveyResult.pain_rating));
-        patientInfo.surveyResults.forEach((surveyResult) => {
-            console.log(surveyResult.rehab_successful === 'Yes')
-            if (surveyResult.rehab_successful === 'Yes') {
+        Object.entries(patientInfo.surveyResults).map(([, value]) => painData.push(value.pain_rating))
+        Object.entries(patientInfo.surveyResults).map(([, value]) => {
+            if (value.rehab_successful === 'Yes') {
                 rehabSuccessData[0] += 1;
             } else {
                 rehabSuccessData[1] += 1;
             }
-        });
+        })
     }
 
     return (
@@ -184,7 +191,7 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        {
+                                        {patientInfo.surveyResults.length ?
                                             patientInfo.surveyResults.slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage)
                                                 .map((surveyResult, i) => (
                                                     <StyledTableRow hover key={"surveyResult" + i}>
@@ -193,6 +200,16 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
                                                         </StyledTableCell>
                                                         <StyledTableCell key={"rehab" + i} align="right">{surveyResult.rehab_successful}</StyledTableCell>
                                                         <StyledTableCell key={"concerns" + i} align="right">{surveyResult.concerns}</StyledTableCell>
+                                                        {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+                                            <StyledTableCell align="right">{row.protein}</StyledTableCell> */}
+                                                    </StyledTableRow>
+                                                )) : Object.entries(patientInfo.surveyResults).map(([key, surveyResult]) => (
+                                                    <StyledTableRow hover key={"surveyResult" + key}>
+                                                        <StyledTableCell key={"pain_rating" + key} component="th" scope="row">
+                                                            {surveyResult.pain_rating}
+                                                        </StyledTableCell>
+                                                        <StyledTableCell key={"rehab" + key} align="right">{surveyResult.rehab_successful}</StyledTableCell>
+                                                        <StyledTableCell key={"concerns" + key} align="right">{surveyResult.concerns}</StyledTableCell>
                                                         {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
                                             <StyledTableCell align="right">{row.protein}</StyledTableCell> */}
                                                     </StyledTableRow>
@@ -205,7 +222,7 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
                                 rowsPerPageOptions={[5, 10, 15]}
                                 component="div"
                                 // first in array is empty, adjust for it in length
-                                count={patientInfo.surveyResults.length - 1}
+                                count={patientInfo.surveyResults.length ? lengthOfpatientInfo(patientInfo) : 1}
                                 rowsPerPage={rowsPerTablePage}
                                 page={tablePage}
                                 onPageChange={handleChangePage}
@@ -218,12 +235,12 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
 
             <Grow in={true} {...({ timeout: 1500 })}>
                 <div className="Graph" style={{ marginBottom: "10%" }}>
-                    <div style={isMobile ? 
+                    <div style={isMobile ?
                         { width: "100%", height: "30%", margin: "5% 15% 7% 0%", float: "left" } :
                         { width: "40%", height: "30%", margin: "5% 10% 15% 14%", float: "left" }}>
                         <Chart type='bar' options={options} data={data} />
                     </div>
-                    <div style={isMobile ? 
+                    <div style={isMobile ?
                         { width: "100%", height: "30%", margin: "5% 15% 7% 0%", float: "left" } :
                         { width: "20%", height: "30%", margin: "5% 15% 15% 0", float: "left" }}>
                         <Doughnut data={rehabData} options={optionsRehab} />

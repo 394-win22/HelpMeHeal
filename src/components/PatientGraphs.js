@@ -2,7 +2,7 @@ import Grow from "@mui/material/Grow";
 import { Chart, Doughnut } from "react-chartjs-2";
 import React from "react";
 
-const PatientGraphs = ({patientInfo, isMobile}) => {
+const PatientGraphs = ({ patientInfo, isMobile }) => {
     var painData = [];
     var rehabSuccessData = [0, 0];
 
@@ -92,25 +92,25 @@ const PatientGraphs = ({patientInfo, isMobile}) => {
     };
 
     if (patientInfo.surveyResults) {
-        Object.entries(patientInfo.surveyResults).map((surveyResult) => painData.push(surveyResult[1].pain_rating));
-        Object.entries(patientInfo.surveyResults).forEach((surveyResult) => {
-            if (surveyResult[1].rehab_successful === 'Yes') {
+        Object.entries(patientInfo.surveyResults).map(([, value]) => painData.push(value.pain_rating))
+        Object.entries(patientInfo.surveyResults).map(([, value]) => {
+            if (value.rehab_successful === 'Yes') {
                 rehabSuccessData[0] += 1;
             } else {
                 rehabSuccessData[1] += 1;
             }
-        });
+        })
     }
 
     return (
         <Grow in={true} {...({ timeout: 1500 })}>
             <div className="Graph">
-                <div style={isMobile ? 
-                    { width: "100%", height: "30%", margin: "5% 15% 7% 0%", float: "left" } : 
+                <div style={isMobile ?
+                    { width: "100%", height: "30%", margin: "5% 15% 7% 0%", float: "left" } :
                     { width: "40%", height: "30%", margin: "5% 10% 7% 14%", float: "left" }}>
                     <Chart type='bar' options={options} data={data} />
                 </div>
-                <div style={isMobile ? 
+                <div style={isMobile ?
                     { width: "100%", height: "30%", margin: "5% 15% 7% 0", float: "left" } :
                     { width: "20%", height: "30%", margin: "5% 15% 7% 0", float: "left" }}>
                     <Doughnut data={rehabData} options={optionsRehab} />
