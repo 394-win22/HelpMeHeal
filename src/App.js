@@ -2,6 +2,7 @@ import LoginPage from './components/LoginPage';
 import { useGoogleUserState } from './utilities/firebase';
 import GetUser from './components/GetUser';
 import { useEffect, useState } from 'react';
+import {Loading} from "./utilities/Loading";
 
 function App() {
   const [googleUser] = useGoogleUserState();
@@ -37,6 +38,7 @@ function App() {
           :
           <LoginPage isMobile={isMobile} />
         }
+        {/*<Loading isMobile={isMobile}/>*/}
       </div>
     </div>
   );

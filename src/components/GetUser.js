@@ -70,7 +70,7 @@ const GetUser = ({ googleUser, isMobile }) => {
             <div className="app-nav">
               <SignInOut></SignInOut>
             </div>
-            <RegisterPage googleUser={googleUser} />
+            <RegisterPage googleUser={googleUser} isMobile={isMobile} />
           </div>
         }
       </div>

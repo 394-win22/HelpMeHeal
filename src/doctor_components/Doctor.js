@@ -21,7 +21,7 @@ const Doctor = ({ name, googleUser, user, isMobile }) => {
     }, [data]);
 
     if (errorData) return <Error404 />;
-    if (loadingData) return <Loading />;
+    if (loadingData) return <Loading isMobile={isMobile}/>;
 
     function getPage() {
         switch (page) {

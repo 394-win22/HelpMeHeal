@@ -27,7 +27,7 @@ const buttonStyle = {
 
 
 
-const RegisterPage = ({ googleUser }) => {
+const RegisterPage = ({ googleUser, isMobile }) => {
     const [userType, setUserType] = useState("patient");
     const [textValue, setTextValue] = useState("")
     const [userData, loadingData, errorData] = useData("/user");
@@ -71,7 +71,7 @@ const RegisterPage = ({ googleUser }) => {
     }, [userData]);
 
     if (errorData) return <Error404 />;
-    if (loadingData) return <Loading />;
+    if (loadingData) return <Loading isMobile={isMobile}/>;
 
     return (
         <div>

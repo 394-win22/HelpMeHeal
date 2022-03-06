@@ -126,7 +126,7 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo, isMobile }
             {patientDict ?
                 <Grow in={true} {...({ timeout: 1500 })}>
                     <Paper sx={TableContainerStyle}>
-                        <div style={{ marginBottom: '2rem', float: 'right', marginRight: '2rem', width: '40%', marginTop: '2rem' }}>
+                        <div style={{ marginBottom: '2rem', float: 'right', marginRight: '2rem', width: isMobile ? '80%' : '40%', marginTop: '2rem' }}>
                             <TextField
                                 value={searchTerm}
                                 placeholder="Search…"

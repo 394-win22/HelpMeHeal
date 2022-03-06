@@ -236,12 +236,12 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
             <Grow in={true} {...({ timeout: 1500 })}>
                 <div className="Graph" style={{ marginBottom: "10%" }}>
                     <div style={isMobile ?
-                        { width: "100%", height: "30%", margin: "5% 15% 7% 0%", float: "left" } :
+                        { width: "90%", height: "90%", margin: "5% 5% 5% 5%", float: "left" } :
                         { width: "40%", height: "30%", margin: "5% 10% 15% 14%", float: "left" }}>
                         <Chart type='bar' options={options} data={data} />
                     </div>
                     <div style={isMobile ?
-                        { width: "100%", height: "30%", margin: "5% 15% 7% 0%", float: "left" } :
+                        { width: "80%", height: "30%", margin: "5% 10% 7% 10%", float: "left"  } :
                         { width: "20%", height: "30%", margin: "5% 15% 15% 0", float: "left" }}>
                         <Doughnut data={rehabData} options={optionsRehab} />
                     </div>
