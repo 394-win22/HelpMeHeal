@@ -30,7 +30,7 @@ const DoctorNavBar = ({ setPage, user, isMobile }) => {
             <Button onClick={() => setShowEmailForm(true)}>
                 <EmailIcon sx={IconStyle} style={isMobile ? { marginRight: "2rem" } : { marginLeft: "5rem" }} />
             </Button>
-            <MailTo show={showEmailForm} handleClose={handleShowEmailFormClose} user={user} />
+            <MailTo show={showEmailForm} handleClose={handleShowEmailFormClose} user={user} isMobile={isMobile} />
         </AppBar>
     )
 }

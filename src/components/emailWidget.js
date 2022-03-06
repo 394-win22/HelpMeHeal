@@ -9,7 +9,7 @@ import emailjs from '@emailjs/browser';
 import swal from 'sweetalert';
 
 //Name, description, photo, location, contact
-const MailTo = ({ toEmail, show, handleClose, user }) => {
+const MailTo = ({ toEmail, show, handleClose, user, isMobile }) => {
     const [validFromEmail, setValidFromEmail] = useState(true);
     const [validMessage, setValidMessage] = useState(true);
     const spacing = 2;
@@ -19,7 +19,7 @@ const MailTo = ({ toEmail, show, handleClose, user }) => {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: 400,
+        width: isMobile ? 280 : 400,
         bgcolor: 'background.paper',
         backgroundSize: "50% 50%",
         backgroundPosition: 'center', /* Center the image */
