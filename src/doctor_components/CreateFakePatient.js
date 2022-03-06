@@ -30,9 +30,10 @@ const CreateFakeData = ({ googleUser }) => {
     const fakesurveydata2 = { pain_rating: getRandomInt(3, 0), rehab_successful: 'Yes', concerns: "No" }
     const fakesurveydata3 = { pain_rating: getRandomInt(4, 7), rehab_successful: 'No', concerns: "Yes", concerns_description: "It finish the rehab exercise, because it is so painful." }
     const fakesurveydata4 = { pain_rating: getRandomInt(4, 7), rehab_successful: 'No', concerns: "Yes", concerns_description: "It finish the rehab exercise, because it is so painful." }
+    const fakesurveydata5 = { pain_rating: getRandomInt(4, 7), rehab_successful: 'No', concerns: "Yes", concerns_description: "It finish the rehab exercise, because it is so painful." }
     setData(`/user/${id}/userType`, "patient");
     setData(`/user/${id}/name`, "FakePatient");
-    setData(`/user/${id}/startDate`, Date.now() - 86400000 * 4);
+    setData(`/user/${id}/startDate`, Date.now() - 86400000 * 5);
     setData(`/user/${id}/email`, id + "@email.com");
     setData(`/user/${id}/doctorId`, googleUser?.uid);
     setData(`/user/${id}/surgeryType`, "acl");
@@ -42,6 +43,7 @@ const CreateFakeData = ({ googleUser }) => {
     setData(`/user/${id}/surveyResults/2`, fakesurveydata2)
     setData(`/user/${id}/surveyResults/3`, fakesurveydata3)
     setData(`/user/${id}/surveyResults/4`, fakesurveydata4)
+    setData(`/user/${id}/surveyResults/5`, fakesurveydata5)
 }
 
 const CreateFakePatient = (googleUser) => {
