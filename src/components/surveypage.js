@@ -23,6 +23,7 @@ var surveyValueChanged = function (sender, options) {
 function SurveyPage({ currentDay, googleUser, data }) {
     //Now is day1 if we want to have different survey everyday we will use currentDay
     const surveyJson = data["survey"]["day1"]
+    const newStartTime = Date.now() - (currentDay - 1) * 86400000;
     // console.log(googleUser)
     const setPage = useStore(state => state.setUserPage);
     const survey = new Model(surveyJson);
@@ -30,6 +31,8 @@ function SurveyPage({ currentDay, googleUser, data }) {
         .onComplete
         .add(function (sender) {
             setData(`/user/${googleUser?.uid}/surveyResults/${currentDay - 1}`, sender.data);
+            //for test purpose
+            setData(`/user/${googleUser?.uid}/startDate`, newStartTime);
             //console.log(sender.data);
             showPopupAlert(sender.data.pain_rating);
             setPage("home");

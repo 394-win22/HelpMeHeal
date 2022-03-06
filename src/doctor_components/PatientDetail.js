@@ -10,7 +10,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Chart, Doughnut } from 'react-chartjs-2';
 import Grow from '@mui/material/Grow';
-
+import calculateDay from '../utilities/calculateday';
 import { Chart as ChartJS, registerables } from 'chart.js';
 ChartJS.register(...registerables);
 
@@ -24,7 +24,7 @@ const lengthOfpatientInfo = (patientInfo) => {
     return count;
 }
 const PatientDetail = ({ patientInfo, isMobile }) => {
-
+    const currentDay = calculateDay(patientInfo.startDate)
     const [tablePage, setTablePage] = useState(0);
     const [rowsPerTablePage, setRowsPerTablePage] = useState(5);
     var painData = [];
@@ -80,7 +80,7 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
     }
 
 
-    const labels = ['Day1', 'Day2', 'Day3', 'Day4', 'Day5'];
+    const labels = [];
 
     const data = {
         labels,
@@ -153,12 +153,40 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
 
     // obtain pain level of each patient
     if (patientInfo.surveyResults) {
-        Object.entries(patientInfo.surveyResults).map(([, value]) => painData.push(value.pain_rating))
-        Object.entries(patientInfo.surveyResults).map(([, value]) => {
-            if (value.rehab_successful === 'Yes') {
-                rehabSuccessData[0] += 1;
-            } else {
-                rehabSuccessData[1] += 1;
+        let lastday = 0;
+        let isFirstDayOfWeek = true;
+        Object.entries(patientInfo.surveyResults).map(([key, value]) => {
+            if (currentDay - parseInt(key) - 1 < 7) {
+                if (isFirstDayOfWeek) {
+                    lastday = parseInt(key);
+                    let startOfweek = currentDay - 7 >= 0 ? currentDay - 7 : 0;
+                    for (let i = startOfweek; i < startOfweek + 7; i++) {
+                        labels.push(`Day${i + 1}`)
+                    }
+                    for (let i = startOfweek; i < parseInt(key); i++) {
+                        painData.push(null);
+                    }
+                    painData.push(value.pain_rating);
+                    isFirstDayOfWeek = false;
+                } else {
+                    let diff = parseInt(key) - lastday;
+                    if (diff > 1) {
+                        for (let i = 1; i < diff; i++) {
+                            painData.push(null);
+                        }
+                    }
+                    painData.push(value.pain_rating);
+                    lastday = parseInt(key);
+                }
+            }
+        })
+        Object.entries(patientInfo.surveyResults).map(([key, value]) => {
+            if (currentDay - parseInt(key) - 1 < 7) {
+                if (value.rehab_successful === 'Yes') {
+                    rehabSuccessData[0] += 1;
+                } else {
+                    rehabSuccessData[1] += 1;
+                }
             }
         })
     }
@@ -169,6 +197,7 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
                 <div>
                     <h2>{patientInfo.name}</h2>
                     <a href={"mailto:" + patientInfo.email}>{patientInfo.email}</a>
+                    <h3>Current Day: Day {currentDay}</h3>
                 </div>
             </Grow>
 
@@ -185,35 +214,27 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
                                 <Table sx={{ minWidth: 700 }} aria-label="customized table">
                                     <TableHead>
                                         <TableRow>
+                                            <StyledTableCell>Day</StyledTableCell>
                                             <StyledTableCell>Pain Level</StyledTableCell>
                                             <StyledTableCell align="right">Rehab Successful</StyledTableCell>
                                             <StyledTableCell align="right">Concerns</StyledTableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        {patientInfo.surveyResults.length ?
-                                            patientInfo.surveyResults.slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage)
-                                                .map((surveyResult, i) => (
-                                                    <StyledTableRow hover key={"surveyResult" + i}>
-                                                        <StyledTableCell key={"pain_rating" + i} component="th" scope="row">
-                                                            {surveyResult.pain_rating}
-                                                        </StyledTableCell>
-                                                        <StyledTableCell key={"rehab" + i} align="right">{surveyResult.rehab_successful}</StyledTableCell>
-                                                        <StyledTableCell key={"concerns" + i} align="right">{surveyResult.concerns}</StyledTableCell>
-                                                        {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+                                        {Object.entries(patientInfo.surveyResults).slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage).map(([key, surveyResult]) => (
+                                            <StyledTableRow hover key={"surveyResult" + key}>
+                                                <StyledTableCell key={"day" + key} component="th" scope="row">
+                                                    Day {parseInt(key) + 1}
+                                                </StyledTableCell>
+                                                <StyledTableCell key={"pain_rating" + key} component="th" scope="row">
+                                                    {surveyResult.pain_rating}
+                                                </StyledTableCell>
+                                                <StyledTableCell key={"rehab" + key} align="right">{surveyResult.rehab_successful}</StyledTableCell>
+                                                <StyledTableCell key={"concerns" + key} align="right">{surveyResult.concerns}</StyledTableCell>
+                                                {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
                                             <StyledTableCell align="right">{row.protein}</StyledTableCell> */}
-                                                    </StyledTableRow>
-                                                )) : Object.entries(patientInfo.surveyResults).map(([key, surveyResult]) => (
-                                                    <StyledTableRow hover key={"surveyResult" + key}>
-                                                        <StyledTableCell key={"pain_rating" + key} component="th" scope="row">
-                                                            {surveyResult.pain_rating}
-                                                        </StyledTableCell>
-                                                        <StyledTableCell key={"rehab" + key} align="right">{surveyResult.rehab_successful}</StyledTableCell>
-                                                        <StyledTableCell key={"concerns" + key} align="right">{surveyResult.concerns}</StyledTableCell>
-                                                        {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                                            <StyledTableCell align="right">{row.protein}</StyledTableCell> */}
-                                                    </StyledTableRow>
-                                                ))
+                                            </StyledTableRow>
+                                        ))
                                         }
                                     </TableBody>
                                 </Table>
@@ -241,7 +262,7 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
                         <Chart type='bar' options={options} data={data} />
                     </div>
                     <div style={isMobile ?
-                        { width: "80%", height: "30%", margin: "5% 10% 7% 10%", float: "left"  } :
+                        { width: "80%", height: "30%", margin: "5% 10% 7% 10%", float: "left" } :
                         { width: "20%", height: "30%", margin: "5% 15% 15% 0", float: "left" }}>
                         <Doughnut data={rehabData} options={optionsRehab} />
                     </div>

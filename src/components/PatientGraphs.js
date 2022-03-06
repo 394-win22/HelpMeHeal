@@ -1,8 +1,9 @@
 import Grow from "@mui/material/Grow";
 import { Chart, Doughnut } from "react-chartjs-2";
 import React from "react";
-
+import calculateDay from "../utilities/calculateday";
 const PatientGraphs = ({ patientInfo, isMobile }) => {
+    const currentDay = calculateDay(patientInfo.startDate)
     var painData = [];
     var rehabSuccessData = [0, 0];
 
@@ -56,7 +57,7 @@ const PatientGraphs = ({ patientInfo, isMobile }) => {
         }
     }
 
-    const labels = ['Day1', 'Day2', 'Day3', 'Day4', 'Day5'];
+    const labels = [];
 
     const data = {
         labels,
@@ -92,12 +93,40 @@ const PatientGraphs = ({ patientInfo, isMobile }) => {
     };
 
     if (patientInfo.surveyResults) {
-        Object.entries(patientInfo.surveyResults).map(([, value]) => painData.push(value.pain_rating))
-        Object.entries(patientInfo.surveyResults).map(([, value]) => {
-            if (value.rehab_successful === 'Yes') {
-                rehabSuccessData[0] += 1;
-            } else {
-                rehabSuccessData[1] += 1;
+        let lastday = 0;
+        let isFirstDayOfWeek = true;
+        Object.entries(patientInfo.surveyResults).map(([key, value]) => {
+            if (currentDay - parseInt(key) - 1 < 7) {
+                if (isFirstDayOfWeek) {
+                    lastday = parseInt(key);
+                    let startOfweek = currentDay - 7 >= 0 ? currentDay - 7 : 0;
+                    for (let i = startOfweek; i < startOfweek + 7; i++) {
+                        labels.push(`Day${i + 1}`)
+                    }
+                    for (let i = startOfweek; i < parseInt(key); i++) {
+                        painData.push(null);
+                    }
+                    painData.push(value.pain_rating);
+                    isFirstDayOfWeek = false;
+                } else {
+                    let diff = parseInt(key) - lastday;
+                    if (diff > 1) {
+                        for (let i = 1; i < diff; i++) {
+                            painData.push(null);
+                        }
+                    }
+                    painData.push(value.pain_rating);
+                    lastday = parseInt(key);
+                }
+            }
+        })
+        Object.entries(patientInfo.surveyResults).map(([key, value]) => {
+            if (currentDay - parseInt(key) - 1 < 7) {
+                if (value.rehab_successful === 'Yes') {
+                    rehabSuccessData[0] += 1;
+                } else {
+                    rehabSuccessData[1] += 1;
+                }
             }
         })
     }
