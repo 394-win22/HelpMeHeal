@@ -221,7 +221,7 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        {Object.entries(patientInfo.surveyResults).slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage).map(([key, surveyResult]) => (
+                                        {Object.entries(patientInfo.surveyResults).reverse().slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage).map(([key, surveyResult]) => (
                                             <StyledTableRow hover key={"surveyResult" + key}>
                                                 <StyledTableCell key={"day" + key} component="th" scope="row">
                                                     Day {parseInt(key) + 1}
