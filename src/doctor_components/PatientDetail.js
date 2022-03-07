@@ -12,7 +12,7 @@ import { Chart, Doughnut } from 'react-chartjs-2';
 import Grow from '@mui/material/Grow';
 import calculateDay from '../utilities/calculateday';
 import { Chart as ChartJS, registerables } from 'chart.js';
-ChartJS.register(...registerables);
+//ChartJS.register(...registerables);
 
 const lengthOfpatientInfo = (patientInfo) => {
     let count = 0;
