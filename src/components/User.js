@@ -48,7 +48,7 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
             case "playVideo":
                 return <PlayVideo currentDay={currentDay} phase={calculatePhase(currentDay, data["surgery"][surgeryType]["phaseEndDay"])} data={data["surgery"][surgeryType]} />;
             case "charts":
-                return <PatientGraphs patientInfo={user} isMobile={isMobile} />
+                return <PatientGraphs patientInfo={user} isMobile={isMobile} currentDay={currentDay} />
             default:
                 return <p>Sorry, there's been an error.</p>
         }
