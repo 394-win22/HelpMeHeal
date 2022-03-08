@@ -66,6 +66,44 @@
           "rateMin" : 1,
           "title" : "What is your pain level today on a scale from 1 to 10?",
           "type" : "rating"
+        }, 
+        {
+          "choices" : [ "Yes", " No" ],
+          "colCount" : 1,
+          "isRequired" : true,
+          "name" : "concerns",
+          "title" : "Do you have any concerns with where you are in recovery?",
+          "type" : "radiogroup"
+        }, {
+          "isRequired" : true,
+          "name" : "concerns_description",
+          "title" : "Please describe your concerns.",
+          "type" : "comment",
+          "visibleIf" : "{concerns}='Yes'"
+        } ],
+        "name" : "page1"
+      } ],
+      "showQuestionNumbers" : "off"
+    },
+    "day2" : {
+      "completedHtml" : "<h3>Thank you for completing the check-in survey.</h3> <h5>Remember to contact your doctor if you have any concerns about your recovery.</h5>",
+      "completedHtmlOnCondition" : [ {
+        "expression" : "{pain_rating} <= 3",
+        "html" : "<h3>Please contact your doctor to discuss your pain.</h3>"
+      }, {
+        "expression" : "{nps_score} > 3",
+        "html" : "<h3>Thank you for completing the check-in survey.</h3> <h5>Remember to contact your doctor if you have any concerns about your recovery.</h5>"
+      } ],
+      "pages" : [ {
+        "elements" : [ {
+          "isRequired" : true,
+          "maxRateDescription" : "Unbearable pain",
+          "minRateDescription" : "No pain",
+          "name" : "pain_rating",
+          "rateMax" : 10,
+          "rateMin" : 1,
+          "title" : "What is your pain level today on a scale from 1 to 10?",
+          "type" : "rating"
         }, {
           "choices" : [ "Yes", " No" ],
           "colCount" : 1,
