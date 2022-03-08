@@ -16,7 +16,7 @@ const ToDoList = ({ setPage, surveyCheck, isMobile}) => {
         <Grow in={true} {...({ timeout: 1500 })}>
             <div className="toDoList">
                 <List
-                    sx={{ marginLeft: "auto", marginRight: "auto", marginTop: "10%", width: '100%', maxWidth: "80vw", bgcolor: "rgb(243, 245, 247)", borderRadius: "2rem" }}
+                    sx={{ marginLeft: "auto", marginRight: "auto", marginTop: "10%", width: '100%', maxWidth: "80vw", bgcolor: "rgb(243, 245, 247)", borderRadius: "2rem"}}
                     subheader={<ListSubheader sx={{ bgcolor: "rgb(243, 245, 247)", borderRadius: "2rem" }}> To Do List </ListSubheader>}
                 >
                     <ListItem>
@@ -24,7 +24,7 @@ const ToDoList = ({ setPage, surveyCheck, isMobile}) => {
                         <ListItemText id="switch-list-label-survey" primary="Survey" />
                         <ListItemIcon>
                             <Button onClick={() => setPage("survey")}>
-                                <FactCheckIcon />
+                                <FactCheckIcon sx={{ color: '#b43434'}}/>
                             </Button>
                         </ListItemIcon>
                     </ListItem>
@@ -33,7 +33,7 @@ const ToDoList = ({ setPage, surveyCheck, isMobile}) => {
                         <ListItemText id="switch-list-label-survey" primary="Video" />
                         <ListItemIcon>
                             <Button onClick={() => setPage("playVideo")}>
-                                <PlayCircleFilledWhiteIcon />
+                                <PlayCircleFilledWhiteIcon sx={{ color: '#b43434'}}/>
                             </Button>
                         </ListItemIcon>
                     </ListItem>

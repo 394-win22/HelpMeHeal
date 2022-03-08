@@ -79,7 +79,7 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
     return (
         <Grow in={true} {...({ timeout: 1500 })}>
             <div className="welcomeMsg">
-                <div style={isMobile ? { color: '#b43434', fontSize: "3vw", marginBottom: '2vh', marginTop: '2vh' } : { color: '#b43434', fontSize: 25, marginBottom: '1rem', marginTop: '1rem' }}>
+                <div style={isMobile ? { color: '#b43434', fontSize: isMobile ? "1.1" : '1.5rem', marginBottom: '2vh', marginTop: '2vh' } : { color: '#b43434', fontSize: 25, marginBottom: '1rem', marginTop: '1rem' }}>
                     <h2 style={{ textAlign: 'left', paddingLeft: '10vw', paddingRight: '10vw' }}> Welcome back {usernameFormatted ?
                         usernameFormatted?.[0].charAt(0).toUpperCase() +
                         usernameFormatted?.[0].slice(1).toLowerCase() +
@@ -89,7 +89,7 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
                     </h2>
                 </div>
 
-                <div style={{ textAlign: 'left', fontSize: isMobile ? "4vw" : '1.9rem', paddingLeft: '10vw', paddingRight: '10vw' }}>
+                <div style={{ textAlign: 'left', fontSize: isMobile ? "1rem" : '1.3rem', paddingLeft: '10vw', paddingRight: '10vw', lineHeight: isMobile ? "default" : '1.2rem', }}>
                     Today you are on <b>phase {phase}, day {progressComplete
                         ? phaseEndDay[Object.entries(phaseEndDay).length]
                         : currentDay}</b> of your ACL recovery. <br /> <br />

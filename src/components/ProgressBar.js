@@ -10,7 +10,7 @@ const ProgressBar = ({ steps, phase, currentDay, data, phaseEndDay, isMobile, on
         <div>
             {complete && <h1>Congratulations! You have completed recovery!</h1>}
             <div className="progress-container">
-                <ul className="progress-indicator">
+                <ul className="progress-indicator" style={{alignItems: isMobile ? "center": "center"}}>
                     {steps.map((step) => (
                         <li
                             onClick={phase - 1 === step.index ? () => onPhaseClick(phase, currentDay, phaseEndDay) : null}

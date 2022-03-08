@@ -8,6 +8,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-bottom: 5rem;
+    }
+
+    @media(max-width:1357px){
+        .welcomeMsg{
+            padding-bottom: 3rem;
+        }
     /* margin-left: calc(50% - 180px);
     margin-right: calc(50% - 180px); */
 }
