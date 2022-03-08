@@ -95,7 +95,7 @@ const PatientGraphs = ({ patientInfo, isMobile }) => {
     if (patientInfo.surveyResults) {
         let lastday = 0;
         let isFirstDayOfWeek = true;
-        Object.entries(patientInfo.surveyResults).map(([key, value]) => {
+        Object.entries(patientInfo.surveyResults).forEach(([key, value]) => {
             if (currentDay - parseInt(key) - 1 < 7) {
                 if (isFirstDayOfWeek) {
                     lastday = parseInt(key);
@@ -120,7 +120,7 @@ const PatientGraphs = ({ patientInfo, isMobile }) => {
                 }
             }
         })
-        Object.entries(patientInfo.surveyResults).map(([key, value]) => {
+        Object.entries(patientInfo.surveyResults).forEach(([key, value]) => {
             if (currentDay - parseInt(key) - 1 < 7) {
                 if (value.rehab_successful === 'Yes') {
                     rehabSuccessData[0] += 1;
