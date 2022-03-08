@@ -45,14 +45,18 @@ const showPopupAlert = (setPage) => {
         });
 }
 
-const PlayVideo = ({ phase, data }) => {
+const PlayVideo = ({ currentDay, phase, data }) => {
     const setPage = useStore(state => state.setUserPage);
-
+    const embedURL = data["videoUrls"][phase - 1];
+    const startTime = data["days"][currentDay]["start"];
+    const endTime =  data["days"][currentDay]["end"];
+    console.log("PlayVideo: "+embedURL+" start: "+startTime+" end: "+endTime);
+    
     return (
         <Grow in={true} {...({ timeout: 1500 })}>
             <div>
                 <h1 style={{ marginLeft: '0%' }}>Phase {phase} Exercises</h1>
-                <YoutubeEmbed embedId={data["videoUrls"][phase - 1]}></YoutubeEmbed>
+                <YoutubeEmbed embedId={embedURL} start={startTime} end={endTime}></YoutubeEmbed>
                 <Button variant="contained" sx={() => buttonStyle()} onClick={() => showPopupAlert(setPage)}>Done</Button>
             </div>
         </Grow>
