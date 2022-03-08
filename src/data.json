@@ -1,142 +1,486 @@
 {
-  "doctor": {
-    "Yg2OvFEEFJSOKquVD3XKtORiNjB2": "Kaixin Zheng"
+  "doctor" : {
+    "Yg2OvFEEFJSOKquVD3XKtORiNjB2" : "Kaixin Zheng"
   },
-  "surgery": {
-    "acl": {
-      "days": {
-        "1": {
-          "message": "The first day after surgery is hard, but today marks the beginning of your recovery journey. Please make sure to ice and elevate your leg today. Eat as well as you can. Good nutrition will help the recovery time."
-        },
-        "2": {
-          "message": "Over the next week, we will be working towards small controlled movements of the knee. This may be painful at first, but it's necessary to get your range of motion back as soon as possible. Please see today's exercise to help you stay on track. Don't forget to ice!"
-        },
-        "6": {
-          "message": "Your almost at the end of your first week. If you can, it's time to think about tapering down on the pain medication. Please reach out the your doctor if your pain is too high to begin tapering down."
-        },
-        "8": {
-          "message": "Tomorrow is your first post-surgery doctor appointment. The doctor will be looking at your leg flexion and extension, and reviewing the swelling and incision."
-        },
-        "10": {
-          "message": "Today you should have reached full leg extension. Not quite there yet? Don't worry, that's not uncommon. Try these additional excercises to help get you there."
-        },
-        "12": {
-          "message": "Today you should be able to bend your knee to 90 degrees. Have you reached this milestone? If not, no need to worry. Here are some more exercises to help get you there."
-        },
-        "14": {
-          "message": "You survived your first 2 weeks post-ACL surgery. The hardest part is over, but it's still a long road ahead. Don't give up! Here are some inspirational stories to help you feel motivated."
-        },
-        "22": {
-          "message": "Congratulations on reaching Phase 2 of your ACL Recovery. You can expect to feel some soreness still. We will be working through a few exercises and stetches today."
-        }
-      },
-      "phaseEndDay": [
-        null,
-        21,
-        42,
-        43,
-        44,
-        45
-      ]
+  "surgery" : {
+    "acl" : {
+      "days" : [ null, {
+        "message" : "The first day after surgery is hard, but today marks the beginning of your recovery journey. Please make sure to ice and elevate your leg today. Eat as well as you can. Good nutrition will help the recovery time."
+      }, {
+        "message" : "Over the next week, we will be working towards small controlled movements of the knee. This may be painful at first, but it's necessary to get your range of motion back as soon as possible. Please see today's exercise to help you stay on track. Don't forget to ice!"
+      }, {
+        "message" : "Good job on the progress. We need to start working on bending and extending the knee. The goal is to have your knee bent to 90 degrees by Day 12 and 0 degrees by Day 10."
+      }, {
+        "message" : "Keep up the good work! This first phase is critical in laying the groundwork."
+      }, {
+        "message" : "Your almost at the end of your first week. If you can, it's time to think about tapering down on the pain medication. Please reach out the your doctor if your pain is too high to begin tapering down."
+      }, {
+        "message" : "Your almost at the end of your first week. If you can, it's time to think about tapering down on the pain medication. Please reach out the your doctor if your pain is too high to begin tapering down."
+      }, {
+        "message" : "Tomorrow is your first post-surgery doctor appointment. The doctor will be looking at your leg flexion and extension, and reviewing the swelling and incision."
+      }, {
+        "message" : "Remember to stretch your quad today after you complete your exercise."
+      }, {
+        "message" : "Today you should have reached full leg extension. Not quite there yet? Don't worry, that's not uncommon. Try these additional excercises to help get you there."
+      }, {
+        "message" : "Keep up the good work! This first phase is critical in laying the groundwork."
+      }, {
+        "message" : "Today you should be able to bend your knee to 90 degrees. Have you reached this milestone? If not, no need to worry. Here are some more exercises to help get you there."
+      }, null, {
+        "message" : "You survived your first 2 weeks post-ACL surgery. The hardest part is over, but it's still a long road ahead. Don't give up! Here are some inspirational stories to help you feel motivated."
+      }, null, {
+        "message" : "Keep up the good work! This first phase is critical in laying the groundwork."
+      }, {
+        "message" : "Remember to stretch your quad today after you complete your exercise."
+      }, {
+        "message" : "You have about a week left, these exercises should start to feel quite a bit easier!"
+      }, null, {
+        "message" : "Only a few more days in this phase, stay consistent!"
+      }, null, {
+        "message" : "It's been 3 weeks, you should start to feel like your making some solid progress towards regaining mobility."
+      }, {
+        "message" : "Congratulations on reaching Phase 2 of your ACL Recovery. You can expect to feel some soreness still. We will be working through a few exercises and stetches today."
+      } ],
+      "phaseEndDay" : [ null, 21, 42, 43, 44, 46 ],
+      "phases" : [ null, "Early Motion and Muscle Activation", "Balancing and Normal Gate", "Early Strengthening and Conditioning", "Advanced Strengthening and Conditioning", "Plyometrics and Conditioning", "Advanced Sports and Functional Training" ],
+      "videoUrls" : [ "7TAslg8p2Vo", "QzVdEyyIiu4", "M9thyTdrYxw", "l8kzoAx8VkU", "zaFv0qNjSs0", "ZWu9MSC6WMw" ]
     }
   },
-  "survey": {
-    "1": "{     'completedHtml': '<h3>Thank you for completing the check-in survey.</h3> <h5>Remember to contact your doctor if you have any concerns about your recovery.</h5>',     'completedHtmlOnCondition': [         {             'expression': '{pain_rating} <= 3',             'html': '<h3>Please contact your doctor to discuss your pain.</h3>'         }, {             'expression': '{nps_score} > 3',             'html': '<h3>Thank you for completing the check-in survey.</h3> <h5>Remember to contact your doctor if you have any concerns about your recovery.</h5>',         }     ],     'pages': [         {             'name': 'page1',             'elements': [                 {                     'type': 'rating',                     'name': 'pain_rating',                     'title': 'What is your pain level today on a scale from 1 to 10?',                     'isRequired': true,                     'rateMin': 1,                     'rateMax': 10,                     'minRateDescription': 'No pain',                     'maxRateDescription': 'Unbearable pain'                 }, {                     'type': 'checkbox',                     'name': 'rehab_successful',                     'title': 'Were you able to complete yesterday's rehab completely?',                     'isRequired': true,                     'validators': [                         {                             'type': 'answercount',                             'text': 'Please select only one response.',                             'maxCount': 1                         }                     ],                     'choices': [                         'Yes', 'No'                     ],                 }, {                     'type': 'comment',                     'name': 'concerns',                     'title': 'Do you have any concerns with where you are in recovery?'                 },             ]         }     ],     'showQuestionNumbers': 'off' }",
-    "day1": {
-      "completedHtml": "<h3>Thank you for completing the check-in survey.</h3> <h5>Remember to contact your doctor if you have any concerns about your recovery.</h5>",
-      "completedHtmlOnCondition": [
-        {
-          "expression": "{pain_rating} <= 3",
-          "html": "<h3>Please contact your doctor to discuss your pain.</h3>"
-        },
-        {
-          "expression": "{nps_score} > 3",
-          "html": "<h3>Thank you for completing the check-in survey.</h3> <h5>Remember to contact your doctor if you have any concerns about your recovery.</h5>"
-        }
-      ],
-      "pages": [
-        {
-          "elements": [
-            {
-              "isRequired": true,
-              "maxRateDescription": "Unbearable pain",
-              "minRateDescription": "No pain",
-              "name": "pain_rating",
-              "rateMax": 10,
-              "rateMin": 1,
-              "title": "What is your pain level today on a scale from 1 to 10?",
-              "type": "rating"
-            },
-            {
-              "choices": [
-                "Yes",
-                "No"
-              ],
-              "isRequired": true,
-              "name": "rehab_successful",
-              "title": "Were you able to complete yesterday's rehab completely?",
-              "type": "checkbox",
-              "validators": [
-                {
-                  "maxCount": 1,
-                  "text": "Please select only one response.",
-                  "type": "answercount"
-                }
-              ]
-            },
-            {
-              "name": "concerns",
-              "title": "Do you have any concerns with where you are in recovery?",
-              "type": "comment"
-            }
-          ],
-          "name": "page1"
-        }
-      ],
-      "showQuestionNumbers": "off"
+  "survey" : {
+    "day1" : {
+      "completedHtml" : "<h3>Thank you for completing the check-in survey.</h3> <h5>Remember to contact your doctor if you have any concerns about your recovery.</h5>",
+      "completedHtmlOnCondition" : [ {
+        "expression" : "{pain_rating} <= 3",
+        "html" : "<h3>Please contact your doctor to discuss your pain.</h3>"
+      }, {
+        "expression" : "{nps_score} > 3",
+        "html" : "<h3>Thank you for completing the check-in survey.</h3> <h5>Remember to contact your doctor if you have any concerns about your recovery.</h5>"
+      } ],
+      "pages" : [ {
+        "elements" : [ {
+          "isRequired" : true,
+          "maxRateDescription" : "Unbearable pain",
+          "minRateDescription" : "No pain",
+          "name" : "pain_rating",
+          "rateMax" : 10,
+          "rateMin" : 1,
+          "title" : "What is your pain level today on a scale from 1 to 10?",
+          "type" : "rating"
+        }, {
+          "choices" : [ "Yes", " No" ],
+          "colCount" : 1,
+          "isRequired" : true,
+          "name" : "rehab_successful",
+          "title" : "Were you able to complete yesterday's rehab completely?",
+          "type" : "radiogroup"
+        }, {
+          "choices" : [ "Yes", " No" ],
+          "colCount" : 1,
+          "isRequired" : true,
+          "name" : "concerns",
+          "title" : "Do you have any concerns with where you are in recovery?",
+          "type" : "radiogroup"
+        }, {
+          "isRequired" : true,
+          "name" : "concerns_description",
+          "title" : "Please describe your concerns.",
+          "type" : "comment",
+          "visibleIf" : "{concerns}='Yes'"
+        } ],
+        "name" : "page1"
+      } ],
+      "showQuestionNumbers" : "off"
     }
   },
-  "user": {
-    "LXVdjGl5pRcYfW3nqUwFR9KtTnx2": {
-      "doctorId": "Yg2OvFEEFJSOKquVD3XKtORiNjB2",
-      "email": "kiss101326@gmail.com",
-      "name": "郑凯鑫",
-      "startDate": 1645318965367,
-      "surgeryType": "acl",
-      "surveyResults": [
-        null,
-        {
-          "pain_rating": 7,
-          "rehab_successful": [
-            "No"
-          ]
+  "user" : {
+    "D0UBsRxynwbeW6s5Jb1PxWQJZIo1" : {
+      "doctorId" : "Yg2OvFEEFJSOKquVD3XKtORiNjB2",
+      "email" : "maximetokman@gmail.com",
+      "name" : "Max Tokman",
+      "startDate" : 1646199746196,
+      "surgeryType" : "acl",
+      "surveyResults" : {
+        "2" : {
+          "concerns" : " No",
+          "pain_rating" : 7,
+          "rehab_successful" : "Yes"
         }
-      ],
-      "userType": "patient"
-    },
-    "OGSakRcYhRbKPGKAQHvdPCCjoNJ2": {
-      "doctorId": "jtRLOtCtchahnMHcPNDvrZTyyGE3",
-      "email": "zacdeng0720@gmail.com",
-      "name": "zachary Deng",
-      "startDate": 1645313218366,
-      "surgeryType": "acl",
-      "userType": "patient"
-    },
-    "Yg2OvFEEFJSOKquVD3XKtORiNjB2": {
-      "email": "kaixinzheng2022@u.northwestern.edu",
-      "name": "Kaixin Zheng",
-      "patientId": {
-        "LXVdjGl5pRcYfW3nqUwFR9KtTnx2": "郑凯鑫"
       },
-      "userType": "doctor"
+      "userType" : "patient"
     },
-    "jtRLOtCtchahnMHcPNDvrZTyyGE3": {
-      "email": "zhihaodeng2023@u.northwestern.edu",
-      "name": "Zhihao Deng",
-      "patientId": {
-        "OGSakRcYhRbKPGKAQHvdPCCjoNJ2": "zachary Deng"
+    "Fake-Mx2klEPpBDBdPDhDsQP" : {
+      "doctorId" : "Yg2OvFEEFJSOKquVD3XKtORiNjB2",
+      "email" : "Fake-Mx2klEPpBDBdPDhDsQP@email.com",
+      "name" : "FakePatient",
+      "startDate" : 1645763732443,
+      "surgeryType" : "acl",
+      "surveyResults" : [ {
+        "concerns" : "No",
+        "pain_rating" : 0,
+        "rehab_successful" : "Yes"
+      }, {
+        "concerns" : "Yes",
+        "concerns_description" : "It finish the rehab exercise, because it is so painful.",
+        "pain_rating" : 7,
+        "rehab_successful" : "No"
+      }, {
+        "concerns" : "No",
+        "pain_rating" : 2,
+        "rehab_successful" : "Yes"
+      }, {
+        "concerns" : "Yes",
+        "concerns_description" : "It finish the rehab exercise, because it is so painful.",
+        "pain_rating" : 8,
+        "rehab_successful" : "No"
+      }, {
+        "concerns" : "Yes",
+        "concerns_description" : "It finish the rehab exercise, because it is so painful.",
+        "pain_rating" : 8,
+        "rehab_successful" : "No"
+      } ],
+      "userType" : "patient"
+    },
+    "Fake-Mx2km9jkv75hVoQJMKR" : {
+      "doctorId" : "KFMvwBhYEJQUQmk3WJeZZu5KGrr1",
+      "email" : "Fake-Mx2km9jkv75hVoQJMKR@email.com",
+      "name" : "FakePatient",
+      "startDate" : 1645763736208,
+      "surgeryType" : "acl",
+      "surveyResults" : [ {
+        "concerns" : "No",
+        "pain_rating" : 2,
+        "rehab_successful" : "Yes"
+      }, {
+        "concerns" : "Yes",
+        "concerns_description" : "It finish the rehab exercise, because it is so painful.",
+        "pain_rating" : 10,
+        "rehab_successful" : "No"
+      }, {
+        "concerns" : "No",
+        "pain_rating" : 2,
+        "rehab_successful" : "Yes"
+      }, {
+        "concerns" : "Yes",
+        "concerns_description" : "It finish the rehab exercise, because it is so painful.",
+        "pain_rating" : 7,
+        "rehab_successful" : "No"
+      }, {
+        "concerns" : "Yes",
+        "concerns_description" : "It finish the rehab exercise, because it is so painful.",
+        "pain_rating" : 7,
+        "rehab_successful" : "No"
+      } ],
+      "userType" : "patient"
+    },
+    "Fake-Mx5SqOXc5owqCwMMTSS" : {
+      "doctorId" : "jtRLOtCtchahnMHcPNDvrZTyyGE3",
+      "email" : "Fake-Mx5SqOXc5owqCwMMTSS@email.com",
+      "name" : "FakePatient",
+      "startDate" : 1645809104440,
+      "surgeryType" : "acl",
+      "surveyResults" : [ {
+        "concerns" : "No",
+        "pain_rating" : 0,
+        "rehab_successful" : "Yes"
+      }, {
+        "concerns" : "Yes",
+        "concerns_description" : "It finish the rehab exercise, because it is so painful.",
+        "pain_rating" : 9,
+        "rehab_successful" : "No"
+      }, {
+        "concerns" : "No",
+        "pain_rating" : 2,
+        "rehab_successful" : "Yes"
+      }, {
+        "concerns" : "Yes",
+        "concerns_description" : "It finish the rehab exercise, because it is so painful.",
+        "pain_rating" : 7,
+        "rehab_successful" : "No"
+      }, {
+        "concerns" : "Yes",
+        "concerns_description" : "It finish the rehab exercise, because it is so painful.",
+        "pain_rating" : 8,
+        "rehab_successful" : "No"
+      } ],
+      "userType" : "patient"
+    },
+    "Fake-MxCbaDGqA4US6wFJimj" : {
+      "doctorId" : "VsT3XzgFTkWy8sMLjYFohWuVesI2",
+      "email" : "Fake-MxCbaDGqA4US6wFJimj@email.com",
+      "name" : "FakePatient",
+      "startDate" : 1645929101747,
+      "surgeryType" : "acl",
+      "surveyResults" : [ {
+        "concerns" : "No",
+        "pain_rating" : 2,
+        "rehab_successful" : "Yes"
+      }, {
+        "concerns" : "Yes",
+        "concerns_description" : "It finish the rehab exercise, because it is so painful.",
+        "pain_rating" : 7,
+        "rehab_successful" : "No"
+      }, {
+        "concerns" : "No",
+        "pain_rating" : 2,
+        "rehab_successful" : "Yes"
+      }, {
+        "concerns" : "Yes",
+        "concerns_description" : "It finish the rehab exercise, because it is so painful.",
+        "pain_rating" : 10,
+        "rehab_successful" : "No"
+      }, {
+        "concerns" : "Yes",
+        "concerns_description" : "It finish the rehab exercise, because it is so painful.",
+        "pain_rating" : 10,
+        "rehab_successful" : "No"
+      } ],
+      "userType" : "patient"
+    },
+    "HbygqYvyYERZT4mHYHWBJ0DbDIa2" : {
+      "doctorId" : "Yg2OvFEEFJSOKquVD3XKtORiNjB2",
+      "email" : "water.b.mania@gmail.com",
+      "name" : "Dan Petikian",
+      "startDate" : 1646184523322,
+      "surgeryType" : "acl",
+      "surveyResults" : [ {
+        "concerns" : " No",
+        "pain_rating" : 7,
+        "rehab_successful" : " No"
+      } ],
+      "userType" : "patient"
+    },
+    "IqExbBxl3ZOfLTUWq01btcW5mey1" : {
+      "email" : "sophiamrollins@gmail.com",
+      "name" : "Sophia Rollins",
+      "patientId" : {
+        "fRWmBMIg5SbCIXDbtRz3EEgGGkI2" : "Maya Lundell",
+        "tUb04XoKNJSYMMAVvFHDI9t1UqJ3" : "Quest Board"
       },
-      "userType": "doctor"
+      "userType" : "doctor"
+    },
+    "JZcVuPC1iBWycldifJi2Gf4LWr13" : {
+      "doctorId" : "Yg2OvFEEFJSOKquVD3XKtORiNjB2",
+      "email" : "wilsonbeebe2022@u.northwestern.edu",
+      "name" : "Wilson Beebe",
+      "startDate" : 1646183165917,
+      "surgeryType" : "acl",
+      "userType" : "patient"
+    },
+    "KFMvwBhYEJQUQmk3WJeZZu5KGrr1" : {
+      "email" : "ddysideacc@gmail.com",
+      "name" : "side acc",
+      "patientId" : {
+        "Fake-Mx2km9jkv75hVoQJMKR" : "FakePatient"
+      },
+      "userType" : "doctor"
+    },
+    "LXVdjGl5pRcYfW3nqUwFR9KtTnx2" : {
+      "doctorId" : "Yg2OvFEEFJSOKquVD3XKtORiNjB2",
+      "email" : "kiss101326@gmail.com",
+      "name" : "Sam Zheng",
+      "startDate" : 1646109365542,
+      "surgeryType" : "acl",
+      "surveyResults" : [ {
+        "concerns" : "Yes",
+        "concerns_description" : "I don't know how to finish the exercise!",
+        "pain_rating" : 6,
+        "rehab_successful" : "Yes"
+      }, {
+        "concerns" : " No",
+        "pain_rating" : 3,
+        "rehab_successful" : "Yes"
+      }, {
+        "concerns" : "Yes",
+        "concerns_description" : "Help me plz.",
+        "pain_rating" : 6,
+        "rehab_successful" : " No"
+      }, {
+        "concerns" : " No",
+        "pain_rating" : 2,
+        "rehab_successful" : "Yes"
+      } ],
+      "userType" : "patient"
+    },
+    "OGSakRcYhRbKPGKAQHvdPCCjoNJ2" : {
+      "doctorId" : "jtRLOtCtchahnMHcPNDvrZTyyGE3",
+      "email" : "zacdeng0720@gmail.com",
+      "name" : "zachary Deng",
+      "startDate" : 1646108115938,
+      "surgeryType" : "acl",
+      "surveyResults" : [ {
+        "concerns" : "Yes",
+        "concerns_description" : "test",
+        "pain_rating" : 10,
+        "rehab_successful" : "Yes"
+      }, {
+        "concerns" : " No",
+        "pain_rating" : 8,
+        "rehab_successful" : "Yes"
+      }, {
+        "concerns" : " No",
+        "pain_rating" : 6,
+        "rehab_successful" : "Yes"
+      }, {
+        "concerns" : " No",
+        "pain_rating" : 4,
+        "rehab_successful" : "Yes"
+      } ],
+      "userType" : "patient"
+    },
+    "RRq5DR8VMAeBUOkJt5kOVvvUP532" : {
+      "doctorId" : "Yg2OvFEEFJSOKquVD3XKtORiNjB2",
+      "email" : "danyang2023@u.northwestern.edu",
+      "name" : "Dan Yang",
+      "startDate" : 1646108597401,
+      "surgeryType" : "acl",
+      "surveyResults" : [ {
+        "concerns" : " No",
+        "pain_rating" : 8,
+        "rehab_successful" : "Yes"
+      } ],
+      "userType" : "patient"
+    },
+    "SjzyVATAhjYkPORibohMvwdSosk1" : {
+      "email" : "maximetokman2022@u.northwestern.edu",
+      "name" : "Maxime Tokman",
+      "userType" : "doctor"
+    },
+    "VsT3XzgFTkWy8sMLjYFohWuVesI2" : {
+      "email" : "beebecalendar@gmail.com",
+      "name" : "wilson beebe",
+      "patientId" : {
+        "Fake-MxCbaDGqA4US6wFJimj" : "FakePatient"
+      },
+      "userType" : "doctor"
+    },
+    "Yg2OvFEEFJSOKquVD3XKtORiNjB2" : {
+      "email" : "kaixinzheng2022@u.northwestern.edu",
+      "name" : "Kaixin Zheng",
+      "patientId" : {
+        "D0UBsRxynwbeW6s5Jb1PxWQJZIo1" : "Max Tokman",
+        "Fake-Mx2klEPpBDBdPDhDsQP" : "FakePatient",
+        "HbygqYvyYERZT4mHYHWBJ0DbDIa2" : "Dan Petikian",
+        "JZcVuPC1iBWycldifJi2Gf4LWr13" : "Wilson Beebe",
+        "LXVdjGl5pRcYfW3nqUwFR9KtTnx2" : "郑凯鑫",
+        "RRq5DR8VMAeBUOkJt5kOVvvUP532" : "Dan Yang",
+        "ZDpli2JoajT9HY8GfWAlBJOPok83" : "Wilson Beebe",
+        "duYf7eE7ACWUGmxC3e7qqf2rajB2" : "Daniel Petikian",
+        "jELJ5w3L4GgroWO22pIawDdHeTi2" : "sathvik sanagavarapu",
+        "zsp74u7FR7R5axj2Lffjz5gwtaB3" : "Sathvik"
+      },
+      "userType" : "doctor"
+    },
+    "ZDpli2JoajT9HY8GfWAlBJOPok83" : {
+      "doctorId" : "Yg2OvFEEFJSOKquVD3XKtORiNjB2",
+      "email" : "wilsonbeebeid@gmail.com",
+      "name" : "Wilson Beebe",
+      "startDate" : 1646274456065,
+      "surgeryType" : "acl",
+      "surveyResults" : {
+        "1" : {
+          "concerns" : " No",
+          "pain_rating" : 1,
+          "rehab_successful" : "Yes"
+        },
+        "8" : {
+          "concerns" : " No",
+          "pain_rating" : 7,
+          "rehab_successful" : "Yes"
+        }
+      },
+      "userType" : "patient"
+    },
+    "apuwSqu4uyWBLZIBQCrI2pGrx2j1" : {
+      "email" : "mglundell00@gmail.com",
+      "name" : "Maya Lundell",
+      "patientId" : {
+        "hRiAuS8fCcSvRK3BBTXmkfgKvWZ2" : "Maya Lundell",
+        "n3PCiQtgncP2RnGTEON8wo3esGi1" : "Sophie Rollins"
+      },
+      "userType" : "doctor"
+    },
+    "duYf7eE7ACWUGmxC3e7qqf2rajB2" : {
+      "doctorId" : "Yg2OvFEEFJSOKquVD3XKtORiNjB2",
+      "email" : "danielpetikian2023@u.northwestern.edu",
+      "name" : "Daniel Petikian",
+      "startDate" : 1646186034238,
+      "surgeryType" : "acl",
+      "userType" : "patient"
+    },
+    "fRWmBMIg5SbCIXDbtRz3EEgGGkI2" : {
+      "doctorId" : "IqExbBxl3ZOfLTUWq01btcW5mey1",
+      "email" : "maya.lundell1221@gmail.com",
+      "name" : "Maya Lundell",
+      "startDate" : 1646109461003,
+      "surgeryType" : "acl",
+      "userType" : "patient"
+    },
+    "fRfRBmi6u1WtfBgOkQxNnzo8vFl1" : {
+      "email" : "dp.spamboks@gmail.com",
+      "name" : "David Peterman",
+      "userType" : "doctor"
+    },
+    "hRiAuS8fCcSvRK3BBTXmkfgKvWZ2" : {
+      "doctorId" : "apuwSqu4uyWBLZIBQCrI2pGrx2j1",
+      "email" : "mayalundell2023@u.northwestern.edu",
+      "name" : "Maya Lundell",
+      "startDate" : 1646109189967,
+      "surgeryType" : "acl",
+      "surveyResults" : [ {
+        "concerns" : "Yes",
+        "concerns_description" : "pain </3",
+        "pain_rating" : 8,
+        "rehab_successful" : "Yes"
+      } ],
+      "userType" : "patient"
+    },
+    "jELJ5w3L4GgroWO22pIawDdHeTi2" : {
+      "doctorId" : "Yg2OvFEEFJSOKquVD3XKtORiNjB2",
+      "email" : "sathu.sathvik@gmail.com",
+      "lastLoginDay" : 1,
+      "name" : "sathvik sanagavarapu",
+      "startDate" : 1646108350568,
+      "surgeryType" : "acl",
+      "userType" : "patient"
+    },
+    "jtRLOtCtchahnMHcPNDvrZTyyGE3" : {
+      "email" : "zhihaodeng2023@u.northwestern.edu",
+      "name" : "Zhihao Deng",
+      "patientId" : {
+        "Fake-Mx5SqOXc5owqCwMMTSS" : "FakePatient"
+      },
+      "userType" : "doctor"
+    },
+    "n3PCiQtgncP2RnGTEON8wo3esGi1" : {
+      "doctorId" : "apuwSqu4uyWBLZIBQCrI2pGrx2j1",
+      "email" : "sophierollins2023@u.northwestern.edu",
+      "name" : "Sophie Rollins",
+      "startDate" : 1646109445757,
+      "surgeryType" : "acl",
+      "userType" : "patient"
+    },
+    "tUb04XoKNJSYMMAVvFHDI9t1UqJ3" : {
+      "doctorId" : "IqExbBxl3ZOfLTUWq01btcW5mey1",
+      "email" : "questboard338@gmail.com",
+      "name" : "Quest Board",
+      "startDate" : 1646185774266,
+      "surgeryType" : "acl",
+      "surveyResults" : {
+        "2" : {
+          "concerns" : " No",
+          "pain_rating" : 3,
+          "rehab_successful" : "Yes"
+        }
+      },
+      "userType" : "patient"
+    },
+    "zsp74u7FR7R5axj2Lffjz5gwtaB3" : {
+      "doctorId" : "Yg2OvFEEFJSOKquVD3XKtORiNjB2",
+      "email" : "saisanagavarapu2022@u.northwestern.edu",
+      "name" : "Sathvik",
+      "startDate" : 1646109341556,
+      "surgeryType" : "acl",
+      "userType" : "patient"
     }
   }
 }
