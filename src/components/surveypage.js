@@ -4,7 +4,7 @@ import useStore from '../Store';
 import swal from 'sweetalert';
 import { setData } from "../utilities/firebase";
 import './surveypage.css'
-
+import calculateDay from '../utilities/calculateday';
 const showPopupAlert = (pain) => {
     if (pain < 5) {
         swal("Happy to know", "You are on track with your progress, You got this!", "success");
@@ -32,7 +32,9 @@ function SurveyPage({ currentDay, googleUser, data }) {
         .add(function (sender) {
             setData(`/user/${googleUser?.uid}/surveyResults/${currentDay - 1}`, sender.data);
             //for test purpose
-            setData(`/user/${googleUser?.uid}/startDate`, newStartTime);
+            if (currentDay > calculateDay(data["user"][`${googleUser?.uid}`]["startDate"])) {
+                setData(`/user/${googleUser?.uid}/startDate`, newStartTime);
+            }
             //console.log(sender.data);
             showPopupAlert(sender.data.pain_rating);
             setPage("home");
