@@ -57,7 +57,7 @@ const PlayVideo = ({ currentDay, phase, data }) => {
             <div>
                 <h1 style={{ marginLeft: '0%' }}>Phase {phase} Exercises</h1>
                 <YoutubeEmbed embedId={embedURL} start={startTime} end={endTime}></YoutubeEmbed>
-                <Button variant="contained" sx={() => buttonStyle()} onClick={() => showPopupAlert(setPage)}>Done</Button>
+                <Button data-cy="cyVideoDoneButton" variant="contained" sx={() => buttonStyle()} onClick={() => showPopupAlert(setPage)}>Done</Button>
             </div>
         </Grow>
     );
