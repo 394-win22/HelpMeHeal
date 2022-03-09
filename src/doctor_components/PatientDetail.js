@@ -12,6 +12,7 @@ import { Chart, Doughnut } from 'react-chartjs-2';
 import Grow from '@mui/material/Grow';
 import calculateDay from '../utilities/calculateday';
 import { Chart as ChartJS, registerables } from 'chart.js';
+import Swal from "sweetalert2";
 ChartJS.register(...registerables);
 
 const lengthOfpatientInfo = (patientInfo) => {
@@ -23,12 +24,16 @@ const lengthOfpatientInfo = (patientInfo) => {
     })
     return count;
 }
+
 const PatientDetail = ({ patientInfo, isMobile }) => {
-    const currentDay = calculateDay(patientInfo.startDate)
+    const currentDay = calculateDay(patientInfo.startDate);
     const [tablePage, setTablePage] = useState(0);
     const [rowsPerTablePage, setRowsPerTablePage] = useState(5);
+    const labels = [];
+    let concernMsg = '';
     var painData = [];
     var rehabSuccessData = [0, 0];
+
     const options = {
         responsive: true,
         plugins: {
@@ -78,9 +83,6 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
             },
         }
     }
-
-
-    const labels = [];
 
     const data = {
         labels,
@@ -189,6 +191,34 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
                 }
             }
         })
+        Object.entries(patientInfo.surveyResults)
+            .filter(data => parseInt(data[0]) === currentDay-1)
+            .map(data => {
+                concernMsg = data[1].concerns_description ? data[1].concerns_description : '';
+            })
+    }
+
+    const PatientConcerns = () => {
+        Swal.fire({
+            customClass: {
+                title: 'custom-title-class',
+            },
+            title: `<div style = 'color:white; padding-bottom: ${isMobile ? "8%" : "5%"}; ${isMobile ? "font-size: 6vw;" : null}'>
+                    Patient's Concerns
+                </div>`,
+            text: concernMsg,
+            width: 600,
+            color: '#000',
+            background: '#fff url(/images/trees.png)',
+            showConfirmButton: true,
+            confirmButtonColor: "#b43434",
+            confirmButtonText: `I got this!`,
+            backdrop: `
+          rgba(123, 110, 11,0.08)
+          left top
+          no-repeat
+        `,
+        })
     }
 
     return (
@@ -197,6 +227,7 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
                 <div>
                     <h2>{patientInfo.name}</h2>
                     <a href={"mailto:" + patientInfo.email}>{patientInfo.email}</a>
+                    <h3>Concerns for today: {concernMsg ? concernMsg : "N/A"}</h3>
                     <h3>Current Day: Day {currentDay}</h3>
                 </div>
             </Grow>
@@ -268,6 +299,8 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
                     </div>
                 </div>
             </Grow>
+
+            { concernMsg ? PatientConcerns() : null}
 
         </div>
     )
