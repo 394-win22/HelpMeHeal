@@ -5,11 +5,22 @@ import swal from 'sweetalert';
 import { setData } from "../utilities/firebase";
 import './surveypage.css'
 import calculateDay from '../utilities/calculateday';
-const showPopupAlert = (pain) => {
-    if (pain < 5) {
-        swal("Happy to know", "You are on track with your progress, You got this!", "success");
-    } else {
-        swal("Sorry to hear that", "We have informed the doctor and you will hear back soon", "warning");
+const showPopupAlert = (pain, concerns, phase1) => {
+    if (phase1)
+    {
+        if (!concerns) {
+            swal("Happy to know", "You are on track with your progress, You got this!", "success");
+        } else {
+            swal("Sorry to hear that", "We have informed the doctor and you will hear back soon", "warning");
+        }
+    }
+    else
+    {
+        if (pain < 5) {
+            swal("Happy to know", "You are on track with your progress, You got this!", "success");
+        } else {
+            swal("Sorry to hear that", "We have informed the doctor and you will hear back soon", "warning");
+        }
     }
 }
 
@@ -21,7 +32,6 @@ var surveyValueChanged = function (sender, options) {
 };
 
 function SurveyPage({ currentDay, googleUser, data }) {
-    //Now is day1 if we want to have different survey everyday we will use currentDay
     const surveyJson = (currentDay === 1) ? data["survey"]["day1"] : data["survey"]["day2"];
     const newStartTime = Date.now() - (currentDay - 1) * 86400000;
     // console.log(googleUser)
@@ -35,8 +45,8 @@ function SurveyPage({ currentDay, googleUser, data }) {
             if (currentDay > calculateDay(data["user"][`${googleUser?.uid}`]["startDate"])) {
                 setData(`/user/${googleUser?.uid}/startDate`, newStartTime);
             }
-            //console.log(sender.data);
-            showPopupAlert(sender.data.pain_rating);
+            
+            showPopupAlert(sender.data.pain_rating, sender.data.concerns.includes("Yes"), currentDay <= data["surgery"]["acl"]["phaseEndDay"][1]);
             setPage("home");
         });
 
