@@ -136,7 +136,7 @@ const PatientGraphs = ({ patientInfo, isMobile, currentDay }) => {
 
     return (
         <Grow in={true} {...({ timeout: 1500 })}>
-            <div className="Graph">
+            <div className="Graph" style={{ marginBottom: "6rem" }}>
                 <div style={isMobile ?
                     { width: "100%", height: "30%", margin: "5% 15% 7% 0%", float: "left" } :
                     { width: "40%", height: "30%", margin: "5% 10% 7% 14%", float: "left" }}>
@@ -144,7 +144,7 @@ const PatientGraphs = ({ patientInfo, isMobile, currentDay }) => {
                 </div>
                 <div style={isMobile ?
                     { width: "70%", height: "30%", margin: "5% 15% 7% 15%", float: "left" } :
-                    { width: "20%", height: "30%", margin: "5% 15% 7% 0", float: "left" }}>
+                    { width: "20%", height: "30%", margin: "5% 15% 7% 15%", float: "left" }}>
                     <Doughnut data={rehabData} options={optionsRehab} />
                 </div>
             </div>
