@@ -143,7 +143,7 @@ const PatientGraphs = ({ patientInfo, isMobile, currentDay }) => {
                     <Chart type='bar' options={options} data={data} />
                 </div>
                 <div style={isMobile ?
-                    { width: "70%", height: "30%", margin: "5% 15% 7% 15%", float: "left" } :
+                    { width: "70%", height: "30%", margin: "5% 30% 30% 15%", float: "left" } :
                     { width: "20%", height: "30%", margin: "5% 15% 7% 0", float: "left" }}>
                     <Doughnut data={rehabData} options={optionsRehab} />
                 </div>
