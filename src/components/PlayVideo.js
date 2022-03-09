@@ -9,7 +9,7 @@ const buttonStyle = () => ({
     mx: 2,
     fontSize: '1.1vw',
     width: '6vw',
-    marginBottom: '30rem',
+    marginBottom: '10rem',
     bgcolor: "#b43434",
     borderRadius: 2,
     color: "rgb(255, 255, 255)",
@@ -49,9 +49,9 @@ const PlayVideo = ({ currentDay, phase, data }) => {
     const setPage = useStore(state => state.setUserPage);
     const embedURL = data["videoUrls"][phase - 1];
     const startTime = data["days"][currentDay]["start"];
-    const endTime =  data["days"][currentDay]["end"];
-    console.log("PlayVideo: "+embedURL+" start: "+startTime+" end: "+endTime);
-    
+    const endTime = data["days"][currentDay]["end"];
+    console.log("PlayVideo: " + embedURL + " start: " + startTime + " end: " + endTime);
+
     return (
         <Grow in={true} {...({ timeout: 1500 })}>
             <div>

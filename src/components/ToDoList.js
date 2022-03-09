@@ -11,12 +11,12 @@ import Button from '@mui/material/Button';
 import Grow from "@mui/material/Grow";
 import "./toDoList.css";
 
-const ToDoList = ({ setPage, surveyCheck, isMobile}) => {
+const ToDoList = ({ setPage, surveyCheck, isMobile }) => {
     return (
         <Grow in={true} {...({ timeout: 1500 })}>
             <div className="toDoList">
                 <List
-                    sx={{ marginLeft: "auto", marginRight: "auto", marginTop: "10%", width: '100%', maxWidth: "80vw", bgcolor: "rgb(243, 245, 247)", borderRadius: "2rem"}}
+                    sx={{ marginLeft: "auto", marginRight: "auto", marginTop: "10%", width: '100%', maxWidth: "80vw", bgcolor: "rgb(243, 245, 247)", borderRadius: "2rem" }}
                     subheader={<ListSubheader sx={{ bgcolor: "rgb(243, 245, 247)", borderRadius: "2rem" }}> To Do List </ListSubheader>}
                 >
                     <ListItem>
@@ -24,7 +24,7 @@ const ToDoList = ({ setPage, surveyCheck, isMobile}) => {
                         <ListItemText id="switch-list-label-survey" primary="Survey" />
                         <ListItemIcon>
                             <Button onClick={() => setPage("survey")}>
-                                <FactCheckIcon sx={{ color: '#b43434'}}/>
+                                <FactCheckIcon sx={{ color: '#b43434' }} />
                             </Button>
                         </ListItemIcon>
                     </ListItem>
@@ -33,7 +33,7 @@ const ToDoList = ({ setPage, surveyCheck, isMobile}) => {
                         <ListItemText id="switch-list-label-survey" primary="Video" />
                         <ListItemIcon>
                             <Button onClick={() => setPage("playVideo")}>
-                                <PlayCircleFilledWhiteIcon sx={{ color: '#b43434'}}/>
+                                <PlayCircleFilledWhiteIcon sx={{ color: '#b43434' }} />
                             </Button>
                         </ListItemIcon>
                     </ListItem>
