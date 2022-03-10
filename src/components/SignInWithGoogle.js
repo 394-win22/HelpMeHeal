@@ -36,7 +36,7 @@ export const SignInOut = ({ isMobile }) => {
         }> Sign Out </Button>
     );
     return (
-        <div className="signInAndOut">
+        <div className="signInAndOut" >
             {user ? <SignOutButton /> : <SignInButton />}
         </div>);
 };

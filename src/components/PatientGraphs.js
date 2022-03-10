@@ -1,9 +1,11 @@
 import Grow from "@mui/material/Grow";
 import { Chart, Doughnut } from "react-chartjs-2";
 import React from "react";
-import calculateDay from "../utilities/calculateday";
-const PatientGraphs = ({ patientInfo, isMobile }) => {
-    const currentDay = calculateDay(patientInfo.startDate)
+import useStore from '../Store';
+
+
+const PatientGraphs = ({ patientInfo, isMobile, currentDay }) => {
+    const setPage = useStore(state => state.setUserPage);
     var painData = [];
     var rehabSuccessData = [0, 0];
 
@@ -96,7 +98,7 @@ const PatientGraphs = ({ patientInfo, isMobile }) => {
         let lastday = 0;
         let isFirstDayOfWeek = true;
         Object.entries(patientInfo.surveyResults).map(([key, value]) => {
-            if (currentDay - parseInt(key) - 1 < 7) {
+            if (currentDay - parseInt(key) - 1 < 7 && parseInt(key) < currentDay) {
                 if (isFirstDayOfWeek) {
                     lastday = parseInt(key);
                     let startOfweek = currentDay - 7 >= 0 ? currentDay - 7 : 0;
@@ -121,7 +123,8 @@ const PatientGraphs = ({ patientInfo, isMobile }) => {
             }
         })
         Object.entries(patientInfo.surveyResults).map(([key, value]) => {
-            if (currentDay - parseInt(key) - 1 < 7) {
+            if (currentDay - parseInt(key) - 1 < 7 && parseInt(key) < currentDay) {
+                console.log(key, value.rehab_successful);
                 if (value.rehab_successful === 'Yes') {
                     rehabSuccessData[0] += 1;
                 } else {
@@ -140,7 +143,7 @@ const PatientGraphs = ({ patientInfo, isMobile }) => {
                     <Chart type='bar' options={options} data={data} />
                 </div>
                 <div style={isMobile ?
-                    { width: "70%", height: "30%", margin: "5% 15% 7% 15%", float: "left" } :
+                    { width: "70%", height: "30%", margin: "5% 30% 30% 15%", float: "left" } :
                     { width: "20%", height: "30%", margin: "5% 15% 7% 0", float: "left" }}>
                     <Doughnut data={rehabData} options={optionsRehab} />
                 </div>

@@ -82,8 +82,7 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo, isMobile }
             else {
                 return "No";
             }
-        }
-        else {
+        } else {
             return "N/A" // maybe change in future
         }
     };
@@ -101,8 +100,7 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo, isMobile }
             else {
                 return " "
             }
-        }
-        else {
+        } else {
             return "N/A" // maybe change in future
         }
     };

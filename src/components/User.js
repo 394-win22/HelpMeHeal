@@ -6,6 +6,7 @@ import { Loading } from "../utilities/Loading";
 import { Error404 } from "../utilities/404";
 import HomePage from './HomePage';
 import PlayVideo from './PlayVideo';
+import PatientGraphs from './PatientGraphs';
 import NavBar from './NavBar';
 import calculatePhase from '../utilities/calculatePhase';
 
@@ -23,7 +24,7 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
     }, [data]);
 
     if (errorData) return <Error404 />;
-    if (loadingData) return <Loading isMobile={isMobile}/>;
+    if (loadingData) return <Loading isMobile={isMobile} />;
 
     function getPage() {
         switch (page) {
@@ -46,6 +47,8 @@ function User({ name, surgeryType, currentDay, user, googleUser, isMobile, setCu
                 return <SurveyPage currentDay={currentDay} user={user} googleUser={googleUser} data={data} />;
             case "playVideo":
                 return <PlayVideo currentDay={currentDay} phase={calculatePhase(currentDay, data["surgery"][surgeryType]["phaseEndDay"])} data={data["surgery"][surgeryType]} />;
+            case "charts":
+                return <PatientGraphs patientInfo={user} isMobile={isMobile} currentDay={currentDay} />
             default:
                 return <p>Sorry, there's been an error.</p>
         }

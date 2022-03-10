@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 import Grow from "@mui/material/Grow";
 import "./toDoList.css";
 
-const ToDoList = ({ setPage, surveyCheck, isMobile}) => {
+const ToDoList = ({ setPage, surveyCheck, isMobile }) => {
     return (
         <Grow in={true} {...({ timeout: 1500 })}>
             <div className="toDoList">
@@ -24,7 +24,7 @@ const ToDoList = ({ setPage, surveyCheck, isMobile}) => {
                         <ListItemText id="switch-list-label-survey" primary="Survey" />
                         <ListItemIcon>
                             <Button onClick={() => setPage("survey")}>
-                                <FactCheckIcon />
+                                <FactCheckIcon sx={{ color: '#b43434' }} />
                             </Button>
                         </ListItemIcon>
                     </ListItem>
@@ -33,7 +33,7 @@ const ToDoList = ({ setPage, surveyCheck, isMobile}) => {
                         <ListItemText id="switch-list-label-survey" primary="Video" />
                         <ListItemIcon>
                             <Button onClick={() => setPage("playVideo")}>
-                                <PlayCircleFilledWhiteIcon />
+                                <PlayCircleFilledWhiteIcon sx={{ color: '#b43434' }} />
                             </Button>
                         </ListItemIcon>
                     </ListItem>

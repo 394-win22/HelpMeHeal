@@ -2,7 +2,6 @@ import LoginPage from './components/LoginPage';
 import { useGoogleUserState } from './utilities/firebase';
 import GetUser from './components/GetUser';
 import { useEffect, useState } from 'react';
-import {Loading} from "./utilities/Loading";
 
 function App() {
   const [googleUser] = useGoogleUserState();
@@ -29,9 +28,9 @@ function App() {
       <div>
         {googleUser ?
           <div>
-            <div className={isMobile ? "app-header mobile" : "app-header"} style={{ marginBottom: isMobile ? "1rem" : "3rem", height: isMobile ? "6rem" : "10rem" }}>
-              <img className="logo" src="bannerlogo.jpg" alt="help-me-heal-logo" style={{ height: isMobile ? "4rem" : "8rem" }} />
-              <h1>Help Me Heal</h1>
+            <div className={isMobile ? "app-header mobile" : "app-header"} style={{ marginBottom: isMobile ? "1rem" : "1rem", height: isMobile ? "4rem" : "6rem" }}>
+              <img className="logo" src="bannerlogo.jpg" alt="help-me-heal-logo" style={{ height: isMobile ? "2rem" : "4rem" }} />
+              <h1 style={{ fontSize: isMobile? '2rem': '3rem'}}>Help Me Heal</h1>
             </div>
             <GetUser googleUser={googleUser} isMobile={isMobile} />
           </div>
