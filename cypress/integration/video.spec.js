@@ -26,5 +26,9 @@ describe ('Test App', () => {
         cy.get('[data-cy=cyGoHomeButton]').click({ force: true });
     })
    
+    //logs you out
+    afterEach(() => {
+    cy.logout();
+    });
 
   });
