@@ -95,8 +95,8 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
                     Today you are on <b>phase {phase}, day {progressComplete
                         ? phaseEndDay[Object.entries(phaseEndDay).length]
                         : currentDay}</b> of your ACL recovery. <br /> <br />
-                    Press <FactCheckIcon sx={{ color: '#b43434' }} />  take the daily survey to ensure your recovery is on track.<br /> <br />
-                    Press <PlayCircleFilledWhiteIcon sx={{ color: '#b43434' }} /> watch the video to complete daily rehabilitation exercises
+                    Press <FactCheckIcon sx={{ color: '#b43434' }} /> to take the daily survey to ensure your recovery is on track.<br /> <br />
+                    Press <PlayCircleFilledWhiteIcon sx={{ color: '#b43434' }} /> to watch the video to complete daily rehabilitation exercises.
                     <br /><br />
                 </div>
                 <Button sx={() => buttonStyle(isMobile)} onClick={() => { popupWelcomeMsg() }} >Welcome Message</Button>
