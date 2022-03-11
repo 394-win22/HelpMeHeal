@@ -21,6 +21,9 @@ function getRandomInt(max, offset) {
     return Math.floor(Math.random() * max + offset);
 }
 
+const FakeFirstName = ["Peter", "Matthew", "Thomas", "Nancy", "Francesca", "Matthew"];
+const FakeLastName = ["Smith", "Johnson", "Quinn", "Adams", "Redding", "Johnson"];
+
 const CreateFakeData = ({ googleUser }) => {
     const id = "Fake" + getRefByPush('/');
     const fakesurveydata0 = { pain_rating: getRandomInt(3, 0), rehab_successful: 'Yes', concerns: "No" }
@@ -31,8 +34,10 @@ const CreateFakeData = ({ googleUser }) => {
     const fakesurveydata3 = { pain_rating: getRandomInt(4, 7), rehab_successful: 'No', concerns: "Yes", concerns_description: "It finish the rehab exercise, because it is so painful." }
     const fakesurveydata4 = { pain_rating: getRandomInt(4, 7), rehab_successful: 'No', concerns: "Yes", concerns_description: "It finish the rehab exercise, because it is so painful." }
     const fakesurveydata5 = { pain_rating: getRandomInt(4, 7), rehab_successful: 'No', concerns: "Yes", concerns_description: "It finish the rehab exercise, because it is so painful." }
+    let idx = getRandomInt(5, 0);
+    let name = FakeFirstName[idx] + " " + FakeLastName[idx];
     setData(`/user/${id}/userType`, "patient");
-    setData(`/user/${id}/name`, "Fake Patient");
+    setData(`/user/${id}/name`, name);
     setData(`/user/${id}/startDate`, Date.now() - 86400000 * 5);
     setData(`/user/${id}/email`, id + "@email.com");
     setData(`/user/${id}/doctorId`, googleUser?.uid);
