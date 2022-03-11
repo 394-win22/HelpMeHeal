@@ -40,7 +40,7 @@ const CreateFakeData = ({ googleUser }) => {
     setData(`/user/${id}/email`, id + "@email.com");
     setData(`/user/${id}/doctorId`, googleUser?.uid);
     setData(`/user/${id}/surgeryType`, "acl");
-    setData(`/user/${googleUser?.uid}/patientId/${id}`, "FakePatient")
+    setData(`/user/${googleUser?.uid}/patientId/${id}`, name)
     setData(`/user/${id}/surveyResults/0`, fakesurveydata0)
     setData(`/user/${id}/surveyResults/1`, fakesurveydata1)
     setData(`/user/${id}/surveyResults/2`, fakesurveydata2)
