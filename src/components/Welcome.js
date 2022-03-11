@@ -89,7 +89,7 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
                     </h2>
                 </div>
 
-                <div style={{ textAlign: 'left', fontSize: isMobile ? "1rem" : '1.3rem', paddingLeft: '10vw', paddingRight: '10vw', lineHeight: isMobile ? "default" : '1.2rem', }}>
+                <div className="welcome-text" style={{ textAlign: 'left', fontSize: isMobile ? "1rem" : '1.3rem', lineHeight: isMobile ? "default" : '1.2rem', }}>
                     Today you are on <b>phase {phase}, day {progressComplete
                         ? phaseEndDay[Object.entries(phaseEndDay).length]
                         : currentDay}</b> of your ACL recovery. <br /> <br />

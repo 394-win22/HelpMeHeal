@@ -7,11 +7,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    }
+}
 
-    /* @media(max-width:1357px){
-        .welcomeMsg{
-            padding-bottom: 3rem;
-        } */
-    /* margin-left: calc(50% - 180px);
-    margin-right: calc(50% - 180px); */
+@media(max-width:1053px){
+    .welcome-text{
+        padding-left: 10vw;
+        padding-right: 10vw;
+    }
+  }
