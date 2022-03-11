@@ -9,9 +9,27 @@ import FactCheckIcon from '@mui/icons-material/FactCheck';
 import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
 import Button from '@mui/material/Button';
 import Grow from "@mui/material/Grow";
+import swal from 'sweetalert';
 import "./toDoList.css";
+import useStore from '../Store';
 
 const ToDoList = ({ setPage, surveyCheck, isMobile }) => {
+    const page = useStore(state => state.UserPage);
+    const showPopupAlert = () => {
+        swal({
+            title: "Do you want to resubmit your survey?",
+            text: "You have already filled in the survey today!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willresubmit) => {
+                if (willresubmit) {
+                    setPage("survey")
+                }
+            });
+    }
+
     return (
         <Grow in={true} {...({ timeout: 1500 })}>
             <div className="toDoList">
@@ -23,7 +41,7 @@ const ToDoList = ({ setPage, surveyCheck, isMobile }) => {
                         <Checkbox disabled checked={surveyCheck} />
                         <ListItemText id="switch-list-label-survey" primary="Survey" />
                         <ListItemIcon>
-                            <Button onClick={() => setPage("survey")}>
+                            <Button onClick={() => surveyCheck && page !== "survey" ? showPopupAlert() : setPage("survey")}>
                                 <FactCheckIcon sx={{ color: '#b43434' }} />
                             </Button>
                         </ListItemIcon>
