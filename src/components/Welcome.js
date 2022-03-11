@@ -2,6 +2,7 @@ import Grow from '@mui/material/Grow';
 import Swal from 'sweetalert2'
 import Button from "@mui/material/Button";
 import "./Welcome.css"
+import FactCheckIcon from '@mui/icons-material/FactCheck';
 const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysDict, phaseEndDay, isMobile }) => {
     let daysHasMessage;
     let usernameFormatted = username?.split(/\s/);
@@ -93,7 +94,7 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
                     Today you are on <b>phase {phase}, day {progressComplete
                         ? phaseEndDay[Object.entries(phaseEndDay).length]
                         : currentDay}</b> of your ACL recovery. <br /> <br />
-                    Remember to take the daily survey to ensure your recovery is on track.
+                    Press <FactCheckIcon sx={{ color: '#b43434' }} /> below to take the daily survey to ensure your recovery is on track.
                     <br /><br />
                 </div>
                 <Button sx={() => buttonStyle(isMobile)} onClick={() => { popupWelcomeMsg() }} >Welcome Message</Button>
