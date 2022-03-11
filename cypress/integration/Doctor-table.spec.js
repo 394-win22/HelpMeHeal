@@ -9,7 +9,7 @@ describe('Test App', () => {
                 cy.get('[data-cy=cy-table]')
                     .then(len => {
                         count = Cypress.$(len).length;
-                        for (let i = 0; i < count; i++) {
+                        for (let i = 0; i < count - 1; i++) {
                             cy.get('[data-cy=cy-patientName]').eq(i).then(($name) => {
                                 cy.get('[data-cy=cy-table]').eq(i).click();
                                 let usernameFormatted = $name.text()?.split(/\s/);
