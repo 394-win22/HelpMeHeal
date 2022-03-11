@@ -2,8 +2,6 @@ import ProgressIndicator from './ProgressBar';
 import Welcome from './Welcome';
 import { SwitchDay } from './SwitchDay'
 import ToDoList from "./ToDoList";
-import Grow from '@mui/material/Grow';
-import { padding } from '@mui/system';
 
 
 const HomePage = ({ phase, data, currentDay, surgeryType, name, isMobile, setCurrentDay, setZoom, zoom, user, setPage, surveyCheck, videoCheck }) => {
