@@ -56,6 +56,7 @@ const PlayVideo = ({ currentDay, phase, data }) => {
         <Grow in={true} {...({ timeout: 1500 })}>
             <div>
                 <h1 style={{ marginLeft: '0%' }}>Phase {phase} Exercises</h1>
+                <h3>Today exercise from {Math.floor(startTime / 60)}:{startTime - Math.floor(startTime / 60) * 60} to {Math.floor(endTime / 60)}:{endTime - Math.floor(endTime / 60) * 60}</h3>
                 <YoutubeEmbed embedId={embedURL} start={startTime} end={endTime}></YoutubeEmbed>
                 <Button variant="contained" sx={() => buttonStyle()} onClick={() => showPopupAlert(setPage)}>Done</Button>
             </div>
