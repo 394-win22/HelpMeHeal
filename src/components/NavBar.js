@@ -62,7 +62,7 @@ const NavBar = ({ data, currentDay, googleUser, setPage, user, setZoom, isMobile
                 <InsertChartIcon sx={IconStyle} style={{ marginLeft: isMobile ? "0" : "2.5rem", marginRight: isMobile ? "0" : "2.5rem" }} />
             </Button>
             <Button onClick={() => setPage("playVideo")} >
-                <PlayCircleFilledWhiteIcon sx={IconStyle} style={{ marginLeft: isMobile ? "0" : "2.5rem", marginRight: isMobile ? "0" : "2.5rem" }} />
+                <PlayCircleFilledWhiteIcon sx={IconStyle} style={{ marginLeft: isMobile ? "0" : "2.5rem", marginRight: isMobile ? "2rem" : "2.5rem" }} />
             </Button>
         </AppBar >
     )
