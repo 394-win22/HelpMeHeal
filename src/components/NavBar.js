@@ -55,7 +55,7 @@ const NavBar = ({ data, currentDay, googleUser, setPage, user, setZoom, isMobile
                 <EmailIcon sx={IconStyle} style={{ marginLeft: isMobile ? "0" : "2.5rem", marginRight: isMobile ? "0" : "2.5rem" }} />
             </Button>
             <MailTo toEmail={doctorEmail} show={showEmailForm} handleClose={handleShowEmailFormClose} user={user} isMobile={isMobile} />
-            <Button Button onClick={() => surveyCheck && page !== "survey" ? showPopupAlert() : setPage("survey")} >
+            <Button data-cy="cySurveyIcon" Button onClick={() => surveyCheck && page !== "survey" ? showPopupAlert() : setPage("survey")} >
                 <FactCheckIcon sx={IconStyle} style={{ marginLeft: isMobile ? "0" : "2.5rem", marginRight: isMobile ? "0" : "2.5rem" }} />
             </Button>
             <Button onClick={() => setPage("charts")} >
