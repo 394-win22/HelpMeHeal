@@ -148,9 +148,9 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo, isMobile }
                                 <TableBody>
                                     {patientsInfo.filter(patientInfo => patientInfo.name.toLowerCase().includes(searchTerm.toLowerCase()))
                                         .slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage)
-                                        .map((patientInfo) => (
-                                            <StyledTableRow hover key={patientInfo.email} onClick={() => showPatientDetailPage(patientInfo)}>
-                                                <StyledTableCell component="th" scope="row">
+                                        .map((patientInfo, i) => (
+                                            <StyledTableRow hover data-cy={`cy-table`} key={patientInfo.email} onClick={() => showPatientDetailPage(patientInfo)}>
+                                                <StyledTableCell component="th" scope="row" data-cy={`cy-patientName`}>
                                                     {patientInfo.name.toUpperCase()}
                                                 </StyledTableCell>
                                                 <StyledTableCell align="center">{patientInfo.surgeryType.toUpperCase()}</StyledTableCell>
