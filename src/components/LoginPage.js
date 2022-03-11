@@ -36,7 +36,7 @@ const LoginPage = ({ isMobile }) => {
 
                     <Grow in={true} {...({ timeout: 2000 })}>
                         <div className="demo-img">
-                            <img src="Demo.png" alt="app-demo" />
+                            <img src="Demo.png" alt="app-demo" style={{height:"60vh"}} />
                         </div>
                     </Grow>
                 </div>
