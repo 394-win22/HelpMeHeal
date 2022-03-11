@@ -35,9 +35,3 @@
 .app-nav {
   text-align: right;
 }
-
-.toDoList{
-  margin-top: 0.8rem;
-  margin-left: calc(50% - 180px);
-  margin-right: calc(50% - 180px);
-}

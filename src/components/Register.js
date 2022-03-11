@@ -71,8 +71,8 @@ const RegisterPage = ({ googleUser, isMobile }) => {
     }, [userData]);
 
     if (errorData) return <Error404 />;
-    if (loadingData) return <Loading isMobile={isMobile}/>;
-
+    if (loadingData) return <Loading isMobile={isMobile} />;
+    console.log(validPatientCode);
     return (
         <div>
             <h1>Are you a patient or doctor?</h1>

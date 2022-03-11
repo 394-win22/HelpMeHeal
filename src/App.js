@@ -9,7 +9,7 @@ function App() {
 
   //choose the screen size
   const handleResize = () => {
-    if (window.innerWidth < 720) {
+    if (window.innerWidth < 900) {
       setIsMobile(true)
     } else {
       setIsMobile(false)
@@ -30,7 +30,7 @@ function App() {
           <div>
             <div className={isMobile ? "app-header mobile" : "app-header"} style={{ marginBottom: isMobile ? "1rem" : "1rem", height: isMobile ? "4rem" : "6rem" }}>
               <img className="logo" src="bannerlogo.jpg" alt="help-me-heal-logo" style={{ height: isMobile ? "2rem" : "4rem" }} />
-              <h1 style={{ fontSize: isMobile? '2rem': '3rem'}}>Help Me Heal</h1>
+              <h1 style={{ fontSize: isMobile ? '2rem' : '3rem' }}>Help Me Heal</h1>
             </div>
             <GetUser googleUser={googleUser} isMobile={isMobile} />
           </div>

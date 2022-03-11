@@ -10,7 +10,7 @@ const ProgressBar = ({ steps, phase, currentDay, data, phaseEndDay, isMobile, on
         <div>
             {complete && <h1>Congratulations! You have completed recovery!</h1>}
             <div className="progress-container">
-                <ul className="progress-indicator" style={{alignItems: isMobile ? "center": "center"}}>
+                <ul className="progress-indicator" style={{ alignItems: isMobile ? "center" : "center" }}>
                     {steps.map((step) => (
                         <li
                             onClick={phase - 1 === step.index ? () => onPhaseClick(phase, currentDay, phaseEndDay) : null}
@@ -75,8 +75,6 @@ const ProgressIndicator = ({ phase, currentDay, phaseEndDay, isMobile, setZoom, 
     const totalDays = phase > 1 ? phaseEndDay[phase] - phaseEndDay[phase - 1] : phaseEndDay[phase];
 
     const currentDayPhase = phase > 1 ? currentDay - phaseEndDay[phase - 1] : currentDay;
-    console.log('is mobile')
-    console.log(isMobile)
     return (
         <Grow in={true} {...({ timeout: 1500 })}>
             <div>
