@@ -192,7 +192,7 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
             }
         })
         Object.entries(patientInfo.surveyResults)
-            .filter(data => parseInt(data[0]) === currentDay-1)
+            .filter(data => parseInt(data[0]) === currentDay - 1)
             .forEach(data => {
                 concernMsg = data[1].concerns_description ? data[1].concerns_description : '';
             })
@@ -225,7 +225,7 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
         <div>
             <Grow in={true} {...({ timeout: 1000 })}>
                 <div>
-                    <h2>{patientInfo.name}</h2>
+                    <h2 data-cy={"cy-patientDetail-name"}>{patientInfo.name}</h2>
                     <a href={"mailto:" + patientInfo.email}>{patientInfo.email}</a>
                     <h3>Concerns for today: {concernMsg ? concernMsg : "N/A"}</h3>
                     <h3>Current Day: Day {currentDay}</h3>
@@ -241,7 +241,7 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
                         <b style={{ margin: "0 auto", fontSize: "26px", paddingTop: "1rem", paddingBottom: "1rem" }}>Survey Results </b>
 
                         <Paper sx={TableContainerStyle}>
-                            <TableContainer>
+                            <TableContainer data-cy="cy-detail-table">
                                 <Table sx={{ minWidth: 700 }} aria-label="customized table">
                                     <TableHead>
                                         <TableRow>
@@ -290,17 +290,17 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
                     <div style={isMobile ?
                         { width: "90%", height: "90%", margin: "5% 5% 5% 5%", float: "left" } :
                         { width: "40%", height: "30%", margin: "5% 10% 15% 14%", float: "left" }}>
-                        <Chart type='bar' options={options} data={data} />
+                        <Chart data-cy="cy-chart" type='bar' options={options} data={data} />
                     </div>
                     <div style={isMobile ?
                         { width: "80%", height: "30%", margin: "5% 10% 7% 10%", float: "left" } :
                         { width: "20%", height: "30%", margin: "5% 15% 15% 0", float: "left" }}>
-                        <Doughnut data={rehabData} options={optionsRehab} />
+                        <Doughnut data-cy="cy-Doughnut" data={rehabData} options={optionsRehab} />
                     </div>
                 </div>
             </Grow>
 
-            { concernMsg ? PatientConcerns() : null}
+            {concernMsg ? PatientConcerns() : null}
 
         </div>
     )
