@@ -1,10 +1,11 @@
 // App.test.js
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+//import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 import {useData, useUserState, useGoogleUserState} from './utilities/firebase'
 import App from './App';
 import data from './data.json';
+import Welcome from './components/Welcome';
 //import { registerables } from 'chart.js';
 //import PatientGraphs from './components/PatientGraphs'
 jest.mock('./utilities/firebase');
@@ -45,12 +46,28 @@ test('fails if no logged in user', () => {
     expect(linkElement).not.toBeInTheDocument();
 });
 
-test('mock user', () => {
-    useGoogleUserState.mockReturnValue([data['user']['D0UBsRxynwbeW6s5Jb1PxWQJZIo1']]);
-    useUserState.mockReturnValue([data['user']['D0UBsRxynwbeW6s5Jb1PxWQJZIo1'][0]]);
-    // console.log(data['surgery']['acl']['phaseEndDay'])
+test('user logs in', () => {
+    const user = data['user']['D0UBsRxynwbeW6s5Jb1PxWQJZIo1'];
+    useGoogleUserState.mockReturnValue([user]);
+    useUserState.mockReturnValue([user[0]]);
     useData.mockReturnValue([data])
     render(<App />);
     const linkElement = screen.queryByText(/SIGN OUT/i);
     expect(linkElement).toBeInTheDocument();
 });
+
+test('user data there', () => {
+    let user = data['user']['D0UBsRxynwbeW6s5Jb1PxWQJZIo1'];
+    user["name"] = "David Hello";
+    useGoogleUserState.mockReturnValue([user]);
+    useUserState.mockReturnValue([user[0]]);
+    useData.mockReturnValue([data])
+    render(<Welcome phase={null} username={user['name']} surgeryType={user['surgeryType']} 
+                    firebaseData={data} phaseEndDay={{}} isMobile={false} daysDict={{}}/>
+                    );
+
+    const linkElement = screen.getByText(/Welcome back David Hello!/i);
+    expect(linkElement).toBeInTheDocument();
+});
+
+//Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysDict, phaseEndDay, isMobile }) 
