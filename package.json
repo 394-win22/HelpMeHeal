@@ -23,6 +23,7 @@
     "rumble-charts": "^4.0.0",
     "survey-react": "^1.9.12",
     "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.4.4",
     "web-vitals": "^2.1.4",
     "zustand": "^3.7.0"
   },
@@ -30,7 +31,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cypress:open": "cypress open"
   },
   "eslintConfig": {
     "extends": [
@@ -49,5 +51,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cypress": "^9.5.1",
+    "cypress-firebase": "^2.2.1",
+    "firebase-admin": "^10.0.2"
   }
 }

@@ -4,12 +4,23 @@ import useStore from '../Store';
 import swal from 'sweetalert';
 import { setData } from "../utilities/firebase";
 import './surveypage.css'
-
-const showPopupAlert = (pain) => {
-    if (pain < 5) {
-        swal("Happy to know", "You are on track with your progress, You got this!", "success");
-    } else {
-        swal("Sorry to hear that", "We have informed the doctor and you will hear back soon", "warning");
+import calculateDay from '../utilities/calculateday';
+const showPopupAlert = (pain, concerns, phase1) => {
+    if (phase1)
+    {
+        if (!concerns) {
+            swal("Happy to know", "You are on track with your progress, You got this!", "success");
+        } else {
+            swal("Sorry to hear that", "We have informed the doctor and you will hear back soon", "warning");
+        }
+    }
+    else
+    {
+        if (pain < 5) {
+            swal("Happy to know", "You are on track with your progress, You got this!", "success");
+        } else {
+            swal("Sorry to hear that", "We have informed the doctor and you will hear back soon", "warning");
+        }
     }
 }
 
@@ -21,8 +32,8 @@ var surveyValueChanged = function (sender, options) {
 };
 
 function SurveyPage({ currentDay, googleUser, data }) {
-    //Now is day1 if we want to have different survey everyday we will use currentDay
-    const surveyJson = data["survey"]["day1"]
+    const surveyJson = (currentDay === 1) ? data["survey"]["day1"] : data["survey"]["day2"];
+    const newStartTime = Date.now() - (currentDay - 1) * 86400000;
     // console.log(googleUser)
     const setPage = useStore(state => state.setUserPage);
     const survey = new Model(surveyJson);
@@ -30,8 +41,12 @@ function SurveyPage({ currentDay, googleUser, data }) {
         .onComplete
         .add(function (sender) {
             setData(`/user/${googleUser?.uid}/surveyResults/${currentDay - 1}`, sender.data);
-            //console.log(sender.data);
-            showPopupAlert(sender.data.pain_rating);
+            //for test purpose
+            if (currentDay > calculateDay(data["user"][`${googleUser?.uid}`]["startDate"])) {
+                setData(`/user/${googleUser?.uid}/startDate`, newStartTime);
+            }
+            
+            showPopupAlert(sender.data.pain_rating, sender.data.concerns.includes("Yes"), currentDay <= data["surgery"]["acl"]["phaseEndDay"][1]);
             setPage("home");
         });
 

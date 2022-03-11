@@ -20,13 +20,12 @@
   }
 
   .progress-step {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 150px;
+    grid-template-rows: 70px 50px 70px;
+    justify-items: center;
     align-items: center;
-    flex: auto;
     position: relative;
-
   }
 
   .progress-container {
@@ -35,7 +34,7 @@
     align-items: center;
   }
   
-  .progress-step .step-number {
+  .step-number {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -72,7 +71,7 @@
 
   }
 
-  .progress-step.active .step-number:hover {
+  .progress-step.active.default .step-number:hover {
     background-color: rgb(155, 11, 11);
     border: width 2px; 
     border-color: white;
@@ -161,7 +160,7 @@
     display: flex;
     justify-content: center;
   }
-  
+
   .progress-button {
     background: none;
     cursor: pointer;
@@ -174,3 +173,13 @@
     min-width: 200px;
     border-radius: 8px;
   }
+
+.phase-desc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.7rem;
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
+  color: rgb(22, 22, 22);
+  font-weight: 600;
+}

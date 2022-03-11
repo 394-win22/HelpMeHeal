@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import HomeIcon from '@mui/icons-material/Home';
 import AppBar from '@mui/material/AppBar';
 import EmailIcon from '@mui/icons-material/Email';
+import InsertChartIcon from '@mui/icons-material/InsertChart';
 import Button from '@mui/material/Button';
 import FactCheckIcon from '@mui/icons-material/FactCheck';
 import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
@@ -24,7 +25,7 @@ const IconStyle = {
 
 
 
-const NavBar = ({ data, currentDay, googleUser, setPage, user, setZoom, surveyCheck }) => {
+const NavBar = ({ data, currentDay, googleUser, setPage, user, setZoom, isMobile, surveyCheck }) => {
     const doctorEmail = data["user"][user.doctorId]["email"];
     const [showEmailForm, setShowEmailForm] = useState(false);
     const handleShowEmailFormClose = () => setShowEmailForm(false);
@@ -46,21 +47,24 @@ const NavBar = ({ data, currentDay, googleUser, setPage, user, setZoom, surveyCh
     }
 
     return (
-        <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, background: '#b43434', flexDirection: 'row', justifyContent: 'center', p: 2 }}>
+        <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, background: '#b43434', flexDirection: 'row', justifyContent: isMobile ? 'space-between' : "center", p: 2, display: "flex" }}>
             <Button onClick={() => { setPage("home"); setZoom(false); }}>
-                <HomeIcon sx={IconStyle} />
+                <HomeIcon sx={IconStyle} style={{ marginLeft: isMobile ? "2rem" : "2.5rem", marginRight: isMobile ? "0" : "2.5rem" }} />
             </Button>
-            <Button onClick={() => setShowEmailForm(true)} style={{ marginLeft: "5rem" }}>
-                <EmailIcon sx={IconStyle} />
+            <Button onClick={() => setShowEmailForm(true)} >
+                <EmailIcon sx={IconStyle} style={{ marginLeft: isMobile ? "0" : "2.5rem", marginRight: isMobile ? "0" : "2.5rem" }} />
             </Button>
-            <MailTo toEmail={doctorEmail} show={showEmailForm} handleClose={handleShowEmailFormClose} user={user} />
-            {page !== "survey" ? <div> <Button Button onClick={() => surveyCheck ? showPopupAlert() : setPage("survey")} style={{ marginLeft: "5rem" }}>
-                <FactCheckIcon sx={IconStyle} />
-            </Button></div> : <div></div>}
-            <Button onClick={() => setPage("playVideo")} style={{ marginLeft: "5rem" }}>
-                <PlayCircleFilledWhiteIcon sx={IconStyle} />
+            <MailTo toEmail={doctorEmail} show={showEmailForm} handleClose={handleShowEmailFormClose} user={user} isMobile={isMobile} />
+            <Button Button onClick={() => surveyCheck && page !== "survey" ? showPopupAlert() : setPage("survey")} >
+                <FactCheckIcon sx={IconStyle} style={{ marginLeft: isMobile ? "0" : "2.5rem", marginRight: isMobile ? "0" : "2.5rem" }} />
             </Button>
-        </AppBar>
+            <Button onClick={() => setPage("charts")} >
+                <InsertChartIcon sx={IconStyle} style={{ marginLeft: isMobile ? "0" : "2.5rem", marginRight: isMobile ? "0" : "2.5rem" }} />
+            </Button>
+            <Button onClick={() => setPage("playVideo")} >
+                <PlayCircleFilledWhiteIcon sx={IconStyle} style={{ marginLeft: isMobile ? "0" : "2.5rem", marginRight: isMobile ? "0" : "2.5rem" }} />
+            </Button>
+        </AppBar >
     )
 }
 

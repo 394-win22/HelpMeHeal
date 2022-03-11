@@ -7,16 +7,14 @@
   justify-content: center;
   background-color: #b43434;
   height: 10rem;
-  margin-bottom: 3rem;
 }
 
 .app-header.mobile {
   position: relative;
-  font-size: 10px;
+  font-size: 6px;
 }
 
 .logo{
-  border: 3px solid #b43434;
   background-color: white;
   height: 8rem;
   margin-top: 1rem;
@@ -36,4 +34,10 @@
 
 .app-nav {
   text-align: right;
+}
+
+.toDoList{
+  margin-top: 0.8rem;
+  margin-left: calc(50% - 180px);
+  margin-right: calc(50% - 180px);
 }

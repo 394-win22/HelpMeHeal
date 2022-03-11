@@ -8,34 +8,56 @@ import Checkbox from '@mui/material/Checkbox';
 import FactCheckIcon from '@mui/icons-material/FactCheck';
 import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
 import Button from '@mui/material/Button';
+import Grow from "@mui/material/Grow";
+import swal from 'sweetalert';
+import "./toDoList.css";
+import useStore from '../Store';
 
-const ToDoList = ({ setPage, surveyCheck, videoCheck }) => {
+const ToDoList = ({ setPage, surveyCheck, isMobile }) => {
+    const page = useStore(state => state.UserPage);
+    const showPopupAlert = () => {
+        swal({
+            title: "Do you want to resubmit your survey?",
+            text: "You have already filled in the survey today!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willresubmit) => {
+                if (willresubmit) {
+                    setPage("survey")
+                }
+            });
+    }
+
     return (
-        <div style={{ marginTop: "0.8rem", marginLeft: "40%" }}>
-            <List
-                sx={{ width: '100%', maxWidth: 360, bgcolor: "rgb(243, 245, 247)", borderRadius: "2rem" }}
-                subheader={<ListSubheader sx={{ bgcolor: "rgb(243, 245, 247)", borderRadius: "2rem" }}> To Do List </ListSubheader>}
-            >
-                <ListItem>
-                    <Checkbox disabled checked={surveyCheck} />
-                    <ListItemText id="switch-list-label-survey" primary="Survey" />
-                    <ListItemIcon>
-                        <Button onClick={() => setPage("survey")}>
-                            <FactCheckIcon />
-                        </Button>
-                    </ListItemIcon>
-                </ListItem>
-                <ListItem>
-                    <Checkbox disabled checked={videoCheck} />
-                    <ListItemText id="switch-list-label-survey" primary="Video" />
-                    <ListItemIcon>
-                        <Button onClick={() => setPage("playVideo")}>
-                            <PlayCircleFilledWhiteIcon />
-                        </Button>
-                    </ListItemIcon>
-                </ListItem>
-            </List>
-        </div>
+        <Grow in={true} {...({ timeout: 1500 })}>
+            <div className="toDoList">
+                <List
+                    sx={{ marginLeft: "auto", marginRight: "auto", marginTop: "10%", width: '100%', maxWidth: "80vw", bgcolor: "rgb(243, 245, 247)", borderRadius: "2rem" }}
+                    subheader={<ListSubheader sx={{ bgcolor: "rgb(243, 245, 247)", borderRadius: "2rem" }}> To Do List </ListSubheader>}
+                >
+                    <ListItem>
+                        <Checkbox disabled checked={surveyCheck} />
+                        <ListItemText id="switch-list-label-survey" primary="Survey" />
+                        <ListItemIcon>
+                            <Button onClick={() => surveyCheck && page !== "survey" ? showPopupAlert() : setPage("survey")}>
+                                <FactCheckIcon sx={{ color: '#b43434' }} />
+                            </Button>
+                        </ListItemIcon>
+                    </ListItem>
+                    <ListItem>
+                        <Checkbox disabled checked={localStorage.getItem("videoCheck") === true.toString()} />
+                        <ListItemText id="switch-list-label-survey" primary="Video" />
+                        <ListItemIcon>
+                            <Button onClick={() => setPage("playVideo")}>
+                                <PlayCircleFilledWhiteIcon sx={{ color: '#b43434' }} />
+                            </Button>
+                        </ListItemIcon>
+                    </ListItem>
+                </List>
+            </div>
+        </Grow>
     )
 }
 

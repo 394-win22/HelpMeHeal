@@ -4,8 +4,8 @@ import useStore from '../Store.js';
 
 const buttonStyle = (isMobile) => ({
     mx: 2,
-    fontSize: isMobile ? '3vw' : "0.8rem",
-    width: isMobile ? '12vw' : '6rem',
+    fontSize: isMobile ? '0.6rem' : "0.8rem",
+    width: isMobile ? '3rem' : '6rem',
     margin: '1%',
     bgcolor: "#b43434",
     borderRadius: 2,
@@ -22,7 +22,7 @@ export const SignInOut = ({ isMobile }) => {
     const setPage = useStore(state => state.setDoctorPage);
     const [user] = useGoogleUserState();
     const SignInButton = () => (
-        <Button sx={() => buttonStyle(isMobile)} onClick={() => {
+        <Button data-cy="cySignInButton" sx={() => buttonStyle(isMobile)} onClick={() => {
             signInWithGoogle()
         }
         }> Sign In </Button>
@@ -36,7 +36,7 @@ export const SignInOut = ({ isMobile }) => {
         }> Sign Out </Button>
     );
     return (
-        <div className="signInAndOut">
+        <div className="signInAndOut" >
             {user ? <SignOutButton /> : <SignInButton />}
         </div>);
 };

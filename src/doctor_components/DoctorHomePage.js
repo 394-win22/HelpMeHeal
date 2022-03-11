@@ -16,11 +16,13 @@ import TextField from '@mui/material/TextField';
 import Grow from '@mui/material/Grow';
 
 
-const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
+const DoctorHomePage = ({ username, data, googleUser, setpatientInfo, isMobile }) => {
     const setPage = useStore(state => state.setDoctorPage);
     const [tablePage, setTablePage] = useState(0);
     const [rowsPerTablePage, setRowsPerTablePage] = useState(5);
     const [searchTerm, setSearchTerm] = useState("");
+
+    let usernameFormatted = username?.split(/\s/);
 
     const patientDict = data["user"][googleUser?.uid]["patientId"] ? data["user"][googleUser?.uid]["patientId"] : null;
 
@@ -41,7 +43,7 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
     }
 
     const TableContainerStyle = {
-        width: "80%",
+        width: isMobile ? "98%" : "80%",
         margin: "0 auto",
         borderRadius: "1rem",
         marginBottom: "2rem",
@@ -80,8 +82,7 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
             else {
                 return "No";
             }
-        }
-        else {
+        } else {
             return "N/A" // maybe change in future
         }
     };
@@ -99,8 +100,7 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
             else {
                 return " "
             }
-        }
-        else {
+        } else {
             return "N/A" // maybe change in future
         }
     };
@@ -110,14 +110,21 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo }) => {
 
         <div>
             <Grow in={true} {...({ timeout: 1500 })}>
-                <div style={{ color: '#b43434', fontSize: 25, marginBottom: '2rem', marginTop: '4rem' }}>
-                    <h2 style={{ textAlign: 'center' }}> Welcome back Doctor {username.toUpperCase() ? username : "Nobody"}, </h2>
+                <div style={isMobile ? { color: '#b43434', fontSize: "3vw", marginBottom: '2vh', marginTop: '2vh' } : { color: '#b43434', fontSize: 25, marginBottom: '2rem', marginTop: '4rem' }}>
+                    <h2 style={{ textAlign: 'center' }}> Welcome back Doctor {
+                        usernameFormatted ?
+                            usernameFormatted?.[0].charAt(0).toUpperCase() +
+                            usernameFormatted?.[0].slice(1).toLowerCase() +
+                            " " +
+                            usernameFormatted?.[1].charAt(0).toUpperCase() +
+                            usernameFormatted?.[1].slice(1).toLowerCase() : "Nobody"},
+                    </h2>
                 </div>
             </Grow>
             {patientDict ?
                 <Grow in={true} {...({ timeout: 1500 })}>
                     <Paper sx={TableContainerStyle}>
-                        <div style={{ marginBottom: '2rem', float: 'right', marginRight: '2rem', width: '40%', marginTop: '2rem' }}>
+                        <div style={{ marginBottom: '2rem', float: 'right', marginRight: '2rem', width: isMobile ? '80%' : '40%', marginTop: '2rem' }}>
                             <TextField
                                 value={searchTerm}
                                 placeholder="Search…"

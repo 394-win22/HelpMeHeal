@@ -11,9 +11,9 @@ const LoginPage = ({ isMobile }) => {
         <div className="loginPage">
             <div className="navbar">
                 <div className="container navbarContent">
-                    <div className="logoContent">
+                    <div className="logoContent" data-cy="cyLogoContent">
                         <img src="bannerlogo.jpg" alt="help-me-heal-logo" style={{ borderRadius: "0.2rem", height: "2rem" }} />
-                        <span><b>Help Me Heal</b></span>
+                        <span ><b>Help Me Heal</b></span>
                     </div>
                     <div style={{marginLeft: isMobile ? "35%" : "70%"}}>
                         <SignInOut isMobile={isMobile} />

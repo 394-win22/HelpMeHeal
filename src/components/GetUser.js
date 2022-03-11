@@ -1,9 +1,8 @@
 import User from './User';
 import '../App.css';
 import React, { useEffect, useState } from 'react';
-import { useUserState, setData } from '../utilities/firebase';
+import { useUserState } from '../utilities/firebase';
 import calculateDay from '../utilities/calculateday';
-import calculateFirstLogin from '../utilities/calculateFirstLogin';
 import { SignInOut } from './SignInWithGoogle';
 import RegisterPage from './Register';
 import Doctor from '../doctor_components/Doctor';
@@ -13,7 +12,6 @@ const GetUser = ({ googleUser, isMobile }) => {
   const [name, setName] = useState("");
   const [surgeryType, setSurgeryType] = useState("");
   const [currentDay, setCurrentDay] = useState();
-  const [surveyCheck, setSurveyCheck] = useState(false);
   const user = useUserState(googleUser?.uid)[0];
 
 
@@ -24,7 +22,6 @@ const GetUser = ({ googleUser, isMobile }) => {
       setName(user.name.toUpperCase());
       setSurgeryType(user.surgeryType);
       setCurrentDay(calculateDay(user.startDate));
-      setSurveyCheck(user.surveyResults ? user.surveyResults[calculateDay(user.startDate) - 1] !== undefined : false)
     }
 
     const initDoctor = () => {
@@ -49,11 +46,11 @@ const GetUser = ({ googleUser, isMobile }) => {
       case "patient":
         return (
           <div>
-            <User name={name} surgeryType={surgeryType} currentDay={currentDay} user={user} surveyCheck={surveyCheck} googleUser={googleUser} isMobile={isMobile} setCurrentDay={setCurrentDay} />
+            <User name={name} surgeryType={surgeryType} currentDay={currentDay} user={user} googleUser={googleUser} isMobile={isMobile} setCurrentDay={setCurrentDay} />
           </div>
         )
       case "doctor":
-        return <Doctor name={name} googleUser={googleUser} user={user} />
+        return <Doctor name={name} googleUser={googleUser} user={user} isMobile={isMobile} />
       default:
         return <p>Sorry, there's been an error.</p>
     }
@@ -73,7 +70,7 @@ const GetUser = ({ googleUser, isMobile }) => {
             <div className="app-nav">
               <SignInOut></SignInOut>
             </div>
-            <RegisterPage googleUser={googleUser} />
+            <RegisterPage googleUser={googleUser} isMobile={isMobile} />
           </div>
         }
       </div>

@@ -10,17 +10,30 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Chart, Doughnut } from 'react-chartjs-2';
 import Grow from '@mui/material/Grow';
-
+import calculateDay from '../utilities/calculateday';
 import { Chart as ChartJS, registerables } from 'chart.js';
+import Swal from "sweetalert2";
 ChartJS.register(...registerables);
 
+const lengthOfpatientInfo = (patientInfo) => {
+    let count = 0;
+    Object.entries(patientInfo.surveyResults).forEach(([, value]) => {
+        if (value) {
+            count++;
+        }
+    })
+    return count;
+}
 
-const PatientDetail = (patientInfo) => {
-
+const PatientDetail = ({ patientInfo, isMobile }) => {
+    const currentDay = calculateDay(patientInfo.startDate);
     const [tablePage, setTablePage] = useState(0);
     const [rowsPerTablePage, setRowsPerTablePage] = useState(5);
+    const labels = [];
+    let concernMsg = '';
     var painData = [];
     var rehabSuccessData = [0, 0];
+
     const options = {
         responsive: true,
         plugins: {
@@ -69,11 +82,7 @@ const PatientDetail = (patientInfo) => {
                 }
             },
         }
-
     }
-
-
-    const labels = ['Day1', 'Day2', 'Day3', 'Day4', 'Day5'];
 
     const data = {
         labels,
@@ -145,29 +154,86 @@ const PatientDetail = (patientInfo) => {
     // handle the graph
 
     // obtain pain level of each patient
-    if (patientInfo.patientInfo.surveyResults) {
-        patientInfo.patientInfo.surveyResults.map((surveyResult) => painData.push(surveyResult.pain_rating));
-        patientInfo.patientInfo.surveyResults.map((surveyResult) => {
-            console.log(surveyResult.rehab_successful === 'Yes')
-            if (surveyResult.rehab_successful === 'Yes') {
-                rehabSuccessData[0] += 1;
-            } else {
-                rehabSuccessData[1] += 1;
+    if (patientInfo.surveyResults) {
+        let lastday = 0;
+        let isFirstDayOfWeek = true;
+        Object.entries(patientInfo.surveyResults).forEach(([key, value]) => {
+            if (currentDay - parseInt(key) - 1 < 7) {
+                if (isFirstDayOfWeek) {
+                    lastday = parseInt(key);
+                    let startOfweek = currentDay - 7 >= 0 ? currentDay - 7 : 0;
+                    for (let i = startOfweek; i < startOfweek + 7; i++) {
+                        labels.push(`Day${i + 1}`)
+                    }
+                    for (let i = startOfweek; i < parseInt(key); i++) {
+                        painData.push(null);
+                    }
+                    painData.push(value.pain_rating);
+                    isFirstDayOfWeek = false;
+                } else {
+                    let diff = parseInt(key) - lastday;
+                    if (diff > 1) {
+                        for (let i = 1; i < diff; i++) {
+                            painData.push(null);
+                        }
+                    }
+                    painData.push(value.pain_rating);
+                    lastday = parseInt(key);
+                }
             }
-        });
+        })
+        Object.entries(patientInfo.surveyResults).forEach(([key, value]) => {
+            if (currentDay - parseInt(key) - 1 < 7) {
+                if (value.rehab_successful === 'Yes') {
+                    rehabSuccessData[0] += 1;
+                } else {
+                    rehabSuccessData[1] += 1;
+                }
+            }
+        })
+        Object.entries(patientInfo.surveyResults)
+            .filter(data => parseInt(data[0]) === currentDay-1)
+            .forEach(data => {
+                concernMsg = data[1].concerns_description ? data[1].concerns_description : '';
+            })
     }
-    console.log(rehabSuccessData)
+
+    const PatientConcerns = () => {
+        Swal.fire({
+            customClass: {
+                title: 'custom-title-class',
+            },
+            title: `<div style = 'color:white; padding-bottom: ${isMobile ? "8%" : "5%"}; ${isMobile ? "font-size: 6vw;" : null}'>
+                    Patient's Concerns
+                </div>`,
+            text: concernMsg,
+            width: 600,
+            color: '#000',
+            background: '#fff url(/images/trees.png)',
+            showConfirmButton: true,
+            confirmButtonColor: "#b43434",
+            confirmButtonText: `I got this!`,
+            backdrop: `
+          rgba(123, 110, 11,0.08)
+          left top
+          no-repeat
+        `,
+        })
+    }
+
     return (
         <div>
             <Grow in={true} {...({ timeout: 1000 })}>
                 <div>
-                    <h2>{patientInfo.patientInfo.name}</h2>
-                    <a href={"mailto:" + patientInfo.patientInfo.email}>{patientInfo.patientInfo.email}</a>
+                    <h2>{patientInfo.name}</h2>
+                    <a href={"mailto:" + patientInfo.email}>{patientInfo.email}</a>
+                    <h3>Concerns for today: {concernMsg ? concernMsg : "N/A"}</h3>
+                    <h3>Current Day: Day {currentDay}</h3>
                 </div>
             </Grow>
 
             <Grow in={true} {...({ timeout: 1500 })}>
-                {patientInfo.patientInfo.surveyResults ?
+                {patientInfo.surveyResults ?
                     <div style={{
                         display: "flex", alignItems: "flex-start", flexDirection: "column", justifyContent: "flex-start",
                         marginTop: "3rem"
@@ -179,25 +245,27 @@ const PatientDetail = (patientInfo) => {
                                 <Table sx={{ minWidth: 700 }} aria-label="customized table">
                                     <TableHead>
                                         <TableRow>
+                                            <StyledTableCell>Day</StyledTableCell>
                                             <StyledTableCell>Pain Level</StyledTableCell>
                                             <StyledTableCell align="right">Rehab Successful</StyledTableCell>
                                             <StyledTableCell align="right">Concerns</StyledTableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        {
-                                            patientInfo.patientInfo.surveyResults.slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage)
-                                                .map((surveyResult, i) => (
-                                                    <StyledTableRow hover key={"surveyResult" + i}>
-                                                        <StyledTableCell key={"pain_rating" + i} component="th" scope="row">
-                                                            {surveyResult.pain_rating}
-                                                        </StyledTableCell>
-                                                        <StyledTableCell key={"rehab" + i} align="right">{surveyResult.rehab_successful}</StyledTableCell>
-                                                        <StyledTableCell key={"concerns" + i} align="right">{surveyResult.concerns}</StyledTableCell>
-                                                        {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+                                        {Object.entries(patientInfo.surveyResults).reverse().slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage).map(([key, surveyResult]) => (
+                                            <StyledTableRow hover key={"surveyResult" + key}>
+                                                <StyledTableCell key={"day" + key} component="th" scope="row">
+                                                    Day {parseInt(key) + 1}
+                                                </StyledTableCell>
+                                                <StyledTableCell key={"pain_rating" + key} component="th" scope="row">
+                                                    {surveyResult.pain_rating}
+                                                </StyledTableCell>
+                                                <StyledTableCell key={"rehab" + key} align="right">{surveyResult.rehab_successful}</StyledTableCell>
+                                                <StyledTableCell key={"concerns" + key} align="right">{surveyResult.concerns}</StyledTableCell>
+                                                {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
                                             <StyledTableCell align="right">{row.protein}</StyledTableCell> */}
-                                                    </StyledTableRow>
-                                                ))
+                                            </StyledTableRow>
+                                        ))
                                         }
                                     </TableBody>
                                 </Table>
@@ -206,7 +274,7 @@ const PatientDetail = (patientInfo) => {
                                 rowsPerPageOptions={[5, 10, 15]}
                                 component="div"
                                 // first in array is empty, adjust for it in length
-                                count={patientInfo.patientInfo.surveyResults.length - 1}
+                                count={patientInfo.surveyResults.length ? lengthOfpatientInfo(patientInfo) : 1}
                                 rowsPerPage={rowsPerTablePage}
                                 page={tablePage}
                                 onPageChange={handleChangePage}
@@ -218,15 +286,21 @@ const PatientDetail = (patientInfo) => {
             </Grow>
 
             <Grow in={true} {...({ timeout: 1500 })}>
-                <div className="Graph" style={{marginBottom:"10%"}}>
-                    <div style={{ width: "40%", height: "30%", margin: "5% 10% 15% 14%", float:"left"}}>
+                <div className="Graph" style={{ marginBottom: "10%" }}>
+                    <div style={isMobile ?
+                        { width: "90%", height: "90%", margin: "5% 5% 5% 5%", float: "left" } :
+                        { width: "40%", height: "30%", margin: "5% 10% 15% 14%", float: "left" }}>
                         <Chart type='bar' options={options} data={data} />
                     </div>
-                    <div style={{ width: "20%", height: "30%", margin: "5% 15% 15% 0", float:"left" }}>
+                    <div style={isMobile ?
+                        { width: "80%", height: "30%", margin: "5% 10% 7% 10%", float: "left" } :
+                        { width: "20%", height: "30%", margin: "5% 15% 15% 0", float: "left" }}>
                         <Doughnut data={rehabData} options={optionsRehab} />
                     </div>
                 </div>
             </Grow>
+
+            { concernMsg ? PatientConcerns() : null}
 
         </div>
     )

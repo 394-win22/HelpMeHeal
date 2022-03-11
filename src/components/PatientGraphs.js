@@ -1,9 +1,11 @@
 import Grow from "@mui/material/Grow";
-import { Chart } from "react-chartjs-2";
+import { Chart, Doughnut } from "react-chartjs-2";
 import React from "react";
 
-const PatientGraphs = (patientInfo) => {
+
+const PatientGraphs = ({ patientInfo, isMobile, currentDay }) => {
     var painData = [];
+    var rehabSuccessData = [0, 0];
 
     const options = {
         responsive: true,
@@ -38,7 +40,24 @@ const PatientGraphs = (patientInfo) => {
         }
     };
 
-    const labels = ['Day1', 'Day2', 'Day3', 'Day4', 'Day5'];
+    const optionsRehab = {
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: 'Past Week Rehab Success',
+                font: {
+                    size: 26,
+                },
+                padding: {
+                    top: 30,
+                    bottom: 15
+                }
+            },
+        }
+    }
+
+    const labels = [];
 
     const data = {
         labels,
@@ -63,14 +82,69 @@ const PatientGraphs = (patientInfo) => {
         ],
     };
 
-    if (patientInfo.patientInfo.surveyResults) {
-        Object.entries(patientInfo.patientInfo.surveyResults).map((surveyResult) => painData.push(surveyResult[1].pain_rating));
+    const rehabData = {
+        labels: ["Yes", "No"],
+        datasets: [
+            {
+                data: rehabSuccessData,
+                backgroundColor: ["green", 'rgba(255, 99, 132)'],
+            }
+        ],
+    };
+
+    if (patientInfo.surveyResults) {
+        let lastday = 0;
+        let isFirstDayOfWeek = true;
+        Object.entries(patientInfo.surveyResults).forEach(([key, value]) => {
+            if (currentDay - parseInt(key) - 1 < 7 && parseInt(key) < currentDay) {
+                if (isFirstDayOfWeek) {
+                    lastday = parseInt(key);
+                    let startOfweek = currentDay - 7 >= 0 ? currentDay - 7 : 0;
+                    for (let i = startOfweek; i < startOfweek + 7; i++) {
+                        labels.push(`Day${i + 1}`)
+                    }
+                    for (let i = startOfweek; i < parseInt(key); i++) {
+                        painData.push(null);
+                    }
+                    painData.push(value.pain_rating);
+                    isFirstDayOfWeek = false;
+                } else {
+                    let diff = parseInt(key) - lastday;
+                    if (diff > 1) {
+                        for (let i = 1; i < diff; i++) {
+                            painData.push(null);
+                        }
+                    }
+                    painData.push(value.pain_rating);
+                    lastday = parseInt(key);
+                }
+            }
+        })
+        Object.entries(patientInfo.surveyResults).forEach(([key, value]) => {
+            if (currentDay - parseInt(key) - 1 < 7 && parseInt(key) < currentDay) {
+                console.log(key, value.rehab_successful);
+                if (value.rehab_successful === 'Yes') {
+                    rehabSuccessData[0] += 1;
+                } else {
+                    rehabSuccessData[1] += 1;
+                }
+            }
+        })
     }
 
     return (
         <Grow in={true} {...({ timeout: 1500 })}>
-            <div style={{ width: "50%", height: "30%", margin: "0 auto", marginBottom: '10rem' }}>
-                <Chart type='bar' options={options} data={data} />
+            <div className="Graph">
+                <div style={isMobile ?
+                    { width: "100%", height: "30%", margin: "5% 15% 7% 0%", float: "left" } :
+                    { width: "40%", height: "30%", margin: "5% 10% 7% 14%", float: "left" }}>
+                    <Chart type='bar' options={options} data={data} />
+                </div>
+                <div style={isMobile ?
+                    { width: "70%", height: "30%", margin: "5% 30% 30% 15%", float: "left" } :
+                    { width: "20%", height: "30%", margin: "5% 15% 7% 0", float: "left" }}>
+                    <Doughnut data={rehabData} options={optionsRehab} />
+                </div>
             </div>
         </Grow>
     )

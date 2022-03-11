@@ -1,12 +1,20 @@
-.swal-title{
-    
+.custom-title-class{
+    background-color: #b43434;
 }
-.swal-text {
-    background-color: #FEFAE3;
-    padding: 17px;
-    border: 1px solid #F0E1A1;
-    display: block;
-    margin: 22px;
-    text-align: center;
-    color: #61534e;
-  }
+
+.welcomeMsg{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5rem;
+    }
+
+    @media(max-width:1357px){
+        .welcomeMsg{
+            padding-bottom: 3rem;
+        }
+    /* margin-left: calc(50% - 180px);
+    margin-right: calc(50% - 180px); */
+}

@@ -1,10 +1,10 @@
 import Grow from '@mui/material/Grow';
-import { setData } from '../utilities/firebase';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2'
 import Button from "@mui/material/Button";
 import "./Welcome.css"
 const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysDict, phaseEndDay, isMobile }) => {
     let daysHasMessage;
+    let usernameFormatted = username?.split(/\s/);
 
     for (const [key,] of Object.entries(daysDict)) {
         if (currentDay >= key) {
@@ -19,21 +19,43 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
             .map(data => {
                 return (Object.entries(data[1].days) // Second: entry phase
                     .filter(days => days[0] === daysHasMessage)
-                    .map((msg) => {
+                    .forEach((msg) => {
                         welcomeMsg = msg[1].message
                     })
                 )
             })
-        swal({
-            title: `Welcome Back ${username ? username : "Nobody"}!`,
-            text: welcomeMsg
+
+        Swal.fire({
+            customClass: {
+                title: 'custom-title-class',
+            },
+            title: `<div style = 'color:white; padding-bottom: ${isMobile ? "8%" : "5%"}; ${isMobile ? "font-size: 6vw;" : null}'> Welcome back ${usernameFormatted ?
+                usernameFormatted?.[0].charAt(0).toUpperCase() +
+                usernameFormatted?.[0].slice(1).toLowerCase() +
+                " " +
+                usernameFormatted?.[1].charAt(0).toUpperCase() +
+                usernameFormatted?.[1].slice(1).toLowerCase()
+                : "Nobody"}!</div>`,
+            text: welcomeMsg,
+            width: 600,
+            color: '#000',
+            background: '#fff url(/images/trees.png)',
+            showConfirmButton: true,
+            confirmButtonColor: "#b43434",
+            confirmButtonText: `I got this!`,
+            backdrop: `
+              rgba(123, 110, 11,0.08)
+              left top
+              no-repeat
+            `,
         })
+
     }
 
     const buttonStyle = (isMobile) => ({
         mx: 2,
-        fontSize: isMobile ? '3vw' : "0.8rem",
-        width: isMobile ? '12vw' : '10rem',
+        fontSize: "0.8rem",
+        width: '10rem',
         margin: '1%',
         bgcolor: "#b43434",
         borderRadius: 2,
@@ -52,15 +74,22 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
         //Better to use a modal instead of using swal?
         popupWelcomeMsg();
         localStorage.setItem("lastLoginDay", currentDay);
+        localStorage.setItem("videoCheck", false);
     }
     return (
         <Grow in={true} {...({ timeout: 1500 })}>
-            <div style={{ width: '55%', marginLeft: '23%' }}>
-                <div style={{ color: '#b43434', fontSize: 25, marginBottom: '4rem', marginTop: '4rem' }}>
-                    <h2 style={{ textAlign: 'left' }}> Welcome back {username ? username : "Nobody"}, </h2>
+            <div className="welcomeMsg">
+                <div style={isMobile ? { color: '#b43434', fontSize: isMobile ? "1.1" : '1.5rem', marginBottom: '2vh', marginTop: '2vh' } : { color: '#b43434', fontSize: 25, marginBottom: '1rem', marginTop: '1rem' }}>
+                    <h2 style={{ textAlign: 'left', paddingLeft: '10vw', paddingRight: '10vw' }}> Welcome back {usernameFormatted ?
+                        usernameFormatted?.[0].charAt(0).toUpperCase() +
+                        usernameFormatted?.[0].slice(1).toLowerCase() +
+                        " " +
+                        usernameFormatted?.[1].charAt(0).toUpperCase() +
+                        usernameFormatted?.[1].slice(1).toLowerCase() : "Nobody"},
+                    </h2>
                 </div>
 
-                <div style={{ textAlign: 'left', fontSize: '1.9rem' }}>
+                <div style={{ textAlign: 'left', fontSize: isMobile ? "1rem" : '1.3rem', paddingLeft: '10vw', paddingRight: '10vw', lineHeight: isMobile ? "default" : '1.2rem', }}>
                     Today you are on <b>phase {phase}, day {progressComplete
                         ? phaseEndDay[Object.entries(phaseEndDay).length]
                         : currentDay}</b> of your ACL recovery. <br /> <br />
