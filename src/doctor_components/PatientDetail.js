@@ -193,7 +193,7 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
         })
         Object.entries(patientInfo.surveyResults)
             .filter(data => parseInt(data[0]) === currentDay-1)
-            .map(data => {
+            .forEach(data => {
                 concernMsg = data[1].concerns_description ? data[1].concerns_description : '';
             })
     }
