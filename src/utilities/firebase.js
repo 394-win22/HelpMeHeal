@@ -29,15 +29,15 @@ const database = getDatabase(app);
 export const storage = getStorage(app);
 
 
-if (window.Cypress) {
-    connectAuthEmulator(auth, "http://localhost:9099");
-    connectDatabaseEmulator(database, "localhost", 9000);
+/*if (window.Cypress) {
+//     connectAuthEmulator(auth, "http://localhost:9099");
+//     connectDatabaseEmulator(database, "localhost", 9000);
     
-    //const provider = new GoogleAuthProvider();
-    //provider.credential();
-    var credential = GoogleAuthProvider.credential('{"sub": "abc123", "email": "foo@example.com", "email_verified": true}');
-    signInWithCredential(auth, credential);
-}
+//     //const provider = new GoogleAuthProvider();
+//     //provider.credential();
+//     var credential = GoogleAuthProvider.credential('{"sub": "abc123", "email": "foo@example.com", "email_verified": true}');
+//     signInWithCredential(auth, credential);
+}*/
 
 export const useData = (path, transform) => {
     const [data, setData] = useState();
