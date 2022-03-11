@@ -19,7 +19,10 @@ describe('Test App', () => {
                                 cy.get('[data-cy=cy-patientDetail-name]').should('contain', usernameFormatted?.[0].charAt(0).toUpperCase() +
                                     usernameFormatted?.[0].slice(1).toLowerCase() + lastName);
                             })
-                            cy.get('[data-cy = cy-detail-table]');
+                            if(document.querySelector(".MuiTableContainer-root")){
+                                cy.get('[data-cy = cy-detail-table]');
+                            }
+                            //cy.get('[data-cy = cy-detail-table]');
                             cy.get('[data-cy = cy-chart]');
                             cy.get('[data-cy = cy-Doughnut]');
                             cy.get('[data-cy =cyDoctorHomeButton]').click();
