@@ -58,7 +58,7 @@ const NavBar = ({ data, currentDay, googleUser, setPage, user, setZoom, isMobile
             <Button data-cy="cySurveyIcon" Button onClick={() => surveyCheck && page !== "survey" ? showPopupAlert() : setPage("survey")} >
                 <FactCheckIcon sx={IconStyle} style={{ marginLeft: isMobile ? "0" : "2.5rem", marginRight: isMobile ? "0" : "2.5rem" }} />
             </Button>
-            <Button onClick={() => setPage("charts")} >
+            <Button data-cy="cyViewStatsButton" onClick={() => setPage("charts")} >
                 <InsertChartIcon sx={IconStyle} style={{ marginLeft: isMobile ? "0" : "2.5rem", marginRight: isMobile ? "0" : "2.5rem" }} />
             </Button>
             <Button onClick={() => setPage("playVideo")} >
