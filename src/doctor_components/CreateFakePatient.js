@@ -4,7 +4,7 @@ import { getRefByPush } from "../utilities/firebase";
 const buttonStyle = (isMobile) => ({
     mx: 2,
     fontSize: "0.8rem",
-    width: '10rem',
+    width: '12rem',
     margin: '1%',
     bgcolor: "#b43434",
     borderRadius: 2,
@@ -51,7 +51,7 @@ const CreateFakeData = ({ googleUser }) => {
 
 const CreateFakePatient = (googleUser) => {
     return (
-        <Button sx={() => buttonStyle()} onClick={() => CreateFakeData(googleUser)}> CreateFakePatient </Button>
+        <Button sx={() => buttonStyle()} onClick={() => CreateFakeData(googleUser)}> Create Fake for Test </Button>
     )
 }
 
