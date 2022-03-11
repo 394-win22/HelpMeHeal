@@ -51,7 +51,7 @@ const NavBar = ({ data, currentDay, googleUser, setPage, user, setZoom, isMobile
             <Button onClick={() => { setPage("home"); setZoom(false); }}>
                 <HomeIcon sx={IconStyle} style={{ marginLeft: isMobile ? "2rem" : "2.5rem", marginRight: isMobile ? "0" : "2.5rem" }} />
             </Button>
-            <Button onClick={() => setShowEmailForm(true)} >
+            <Button data-cy="cyEmailIcon" onClick={() => setShowEmailForm(true)} >
                 <EmailIcon sx={IconStyle} style={{ marginLeft: isMobile ? "0" : "2.5rem", marginRight: isMobile ? "0" : "2.5rem" }} />
             </Button>
             <MailTo toEmail={doctorEmail} show={showEmailForm} handleClose={handleShowEmailFormClose} user={user} isMobile={isMobile} />
