@@ -14,9 +14,14 @@ describe("able to get to home page and click on active phase and not other ones"
         cy.get('[data-cy=cySignInButton]').click();
     });
 
-    it('clicks the i got this', () => {
+    it('clicks the "i got this" welcome message', () => {
         //expect(Swal.isVisible()).toBeTruthy();
         cy.get('.swal2-confirm').click();
+    });
+
+    it('no welcome message', () => {
+        //expect(Swal.isVisible()).toBeTruthy();
+        cy.get('.swal2-confirm').should('not.exist');
     });
 
     it('clicks the active phase', () => {

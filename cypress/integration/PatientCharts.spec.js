@@ -14,7 +14,7 @@ describe("able to reach charts and they are there", () => {
         cy.get('[data-cy=cySignInButton]').click();
     });
 
-    it('clicks the i got this', () => {
+    it('clicks the "i got this" welcome message', () => {
         //expect(Swal.isVisible()).toBeTruthy();
         cy.get('.swal2-confirm').click();
     });
