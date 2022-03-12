@@ -1,4 +1,4 @@
-describe("able to get to home page and click on active phase", () => {
+describe("able to get to home page and click on active phase and not other ones", () => {
     it ('launches', () => {
         cy.visit ('/');
     });
@@ -23,6 +23,13 @@ describe("able to get to home page and click on active phase", () => {
         cy.get('[data-cy=cyActive]').click();
         cy.get('.swal2-confirm').click();
         cy.get('[data-cy=cyDaysComplete]').should('contain', 'days complete in this phase');
+        cy.get('[data-cy=cyActiveZoom]').click();
+    });
+
+    it('should not click on other phases', () => {
+        cy.get('[data-cy=cyInactive]').click({ multiple: true });
+        cy.get('[data-cy=cyProgressBar');
+        cy.get('[data-cy=cyProgressBarZoomed').should('not.exist');
     });
 
     it('clicks the welcome message again', () => {
