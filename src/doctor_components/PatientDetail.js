@@ -203,7 +203,7 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
             customClass: {
                 title: 'custom-title-class',
             },
-            title: `<div style = 'color:white; padding-bottom: ${isMobile ? "8%" : "5%"}; ${isMobile ? "font-size: 6vw;" : null}'>
+            title: `<div data-cy = "cy-alert-title" style = 'color:white; padding-bottom: ${isMobile ? "8%" : "5%"}; ${isMobile ? "font-size: 6vw;" : null}'>
                     Patient's Concerns
                 </div>`,
             text: concernMsg,
@@ -281,7 +281,7 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
                                 onRowsPerPageChange={handleChangeRowsPerPage}
                             />
                         </Paper>
-                    </div> : <div style={{ textAlign: "center", marginTop: "10px" }}><strong>No survey Result yet!</strong></div>
+                    </div> : <div style={{ textAlign: "center", marginTop: "10px" }}><strong data-cy="cy-no-survey-text">No survey Result yet!</strong></div>
                 }
             </Grow>
 
