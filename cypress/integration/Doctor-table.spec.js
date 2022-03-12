@@ -1,6 +1,6 @@
 describe('Test App', () => {
 
-    it('test-table-click-show-correct-username', () => {
+    it('test-table-click-show-correct-info', () => {
         cy.login("Yg2OvFEEFJSOKquVD3XKtORiNjB2");
         cy.visit('/');
         let count = 0
