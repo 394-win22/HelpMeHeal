@@ -11,10 +11,12 @@ const ProgressBar = ({ steps, phase, currentDay, data, phaseEndDay, isMobile, on
             {complete && <h1>Congratulations! You have completed recovery!</h1>}
             <div className="progress-container">
                 <ul className="progress-indicator" style={{ alignItems: isMobile ? "center" : "center" }}>
-                    {steps.map((step) => (
+                    {steps.map((step) => 
+                    (
                         <li
                             onClick={phase - 1 === step.index ? () => onPhaseClick(phase, currentDay, phaseEndDay) : null}
                             key={step.index}
+                            data-cy={`cy${phase - 1 === step.index ? 'Active' : 'Inactive'}`}
                             className={`
                 ${"progress-step"}
                 ${phase - 1 === step.index ? 'active' : 'inactive'}
@@ -39,7 +41,7 @@ const ProgressBarZoomed = ({ currentDay, phase, totalDays, onPhaseClick, isMobil
         <div>
             {complete ?
                 <h1>Congratulations! You have completed recovery!</h1> :
-                <h3 style={{ color: "rgb(155, 11, 11)" }}>{currentDay}/{totalDays} days complete in this phase</h3>
+                <h3 data-cy="cyDaysComplete" style={{ color: "rgb(155, 11, 11)" }}>{currentDay}/{totalDays} days complete in this phase</h3>
             }
             <Box sx={{ mr: '25%', ml: '25%' }}>
                 <LinearProgress color='error' variant='determinate' value={complete ? 100 : Math.floor((currentDay / totalDays) * 100)} />
