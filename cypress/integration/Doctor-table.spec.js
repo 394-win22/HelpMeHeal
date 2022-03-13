@@ -1,8 +1,18 @@
 describe('Test App', () => {
 
-    it('test-table-click-show-correct-info', () => {
+
+    it('launches', () => {
+        cy.visit('/');
+    });
+
+    it('logs you in as doctor', () => {
         cy.login("Yg2OvFEEFJSOKquVD3XKtORiNjB2");
         cy.visit('/');
+        cy.get('[data-cy=cySignInButton]').click();
+        cy.get('[data-cy=cyLoggedInDoctor]').should('contain', 'Kaixin')
+    })
+
+    it('test table each row click show correct info', () => {
         let count = 0
         cy.get('tbody').then((val) => {
             if (val.find('[data-cy=cy-table]').length > 0) {
@@ -38,12 +48,11 @@ describe('Test App', () => {
                         }
                     });
             }
-        })
-    });
+        });
+    })
 
     // //logs you out
     // afterEach(() => {
     //     cy.logout();
     // });
-
 });
