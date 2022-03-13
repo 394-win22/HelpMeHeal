@@ -1,11 +1,9 @@
 import Grow from "@mui/material/Grow";
 import { Chart, Doughnut } from "react-chartjs-2";
 import React from "react";
-import useStore from '../Store';
 
 
 const PatientGraphs = ({ patientInfo, isMobile, currentDay }) => {
-    const setPage = useStore(state => state.setUserPage);
     var painData = [];
     var rehabSuccessData = [0, 0];
 
@@ -97,7 +95,7 @@ const PatientGraphs = ({ patientInfo, isMobile, currentDay }) => {
     if (patientInfo.surveyResults) {
         let lastday = 0;
         let isFirstDayOfWeek = true;
-        Object.entries(patientInfo.surveyResults).map(([key, value]) => {
+        Object.entries(patientInfo.surveyResults).forEach(([key, value]) => {
             if (currentDay - parseInt(key) - 1 < 7 && parseInt(key) < currentDay) {
                 if (isFirstDayOfWeek) {
                     lastday = parseInt(key);
@@ -122,7 +120,7 @@ const PatientGraphs = ({ patientInfo, isMobile, currentDay }) => {
                 }
             }
         })
-        Object.entries(patientInfo.surveyResults).map(([key, value]) => {
+        Object.entries(patientInfo.surveyResults).forEach(([key, value]) => {
             if (currentDay - parseInt(key) - 1 < 7 && parseInt(key) < currentDay) {
                 console.log(key, value.rehab_successful);
                 if (value.rehab_successful === 'Yes') {
@@ -140,12 +138,12 @@ const PatientGraphs = ({ patientInfo, isMobile, currentDay }) => {
                 <div style={isMobile ?
                     { width: "100%", height: "30%", margin: "5% 15% 7% 0%", float: "left" } :
                     { width: "40%", height: "30%", margin: "5% 10% 7% 14%", float: "left" }}>
-                    <Chart type='bar' options={options} data={data} />
+                    <Chart data-cy="cyWeeklyReport" type='bar' options={options} data={data} />
                 </div>
                 <div style={isMobile ?
                     { width: "70%", height: "30%", margin: "5% 30% 30% 15%", float: "left" } :
                     { width: "20%", height: "30%", margin: "5% 15% 7% 0", float: "left" }}>
-                    <Doughnut data={rehabData} options={optionsRehab} />
+                    <Doughnut data-cy="cyRehabSuccess" data={rehabData} options={optionsRehab} />
                 </div>
             </div>
         </Grow>

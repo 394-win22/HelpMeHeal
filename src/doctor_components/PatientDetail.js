@@ -192,8 +192,8 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
             }
         })
         Object.entries(patientInfo.surveyResults)
-            .filter(data => parseInt(data[0]) === currentDay-1)
-            .map(data => {
+            .filter(data => parseInt(data[0]) === currentDay - 1)
+            .forEach(data => {
                 concernMsg = data[1].concerns_description ? data[1].concerns_description : '';
             })
     }
@@ -203,7 +203,7 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
             customClass: {
                 title: 'custom-title-class',
             },
-            title: `<div style = 'color:white; padding-bottom: ${isMobile ? "8%" : "5%"}; ${isMobile ? "font-size: 6vw;" : null}'>
+            title: `<div data-cy = "cy-alert-title" style = 'color:white; padding-bottom: ${isMobile ? "8%" : "5%"}; ${isMobile ? "font-size: 6vw;" : null}'>
                     Patient's Concerns
                 </div>`,
             text: concernMsg,
@@ -225,7 +225,7 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
         <div>
             <Grow in={true} {...({ timeout: 1000 })}>
                 <div>
-                    <h2>{patientInfo.name}</h2>
+                    <h2 data-cy={"cy-patientDetail-name"}>{patientInfo.name}</h2>
                     <a href={"mailto:" + patientInfo.email}>{patientInfo.email}</a>
                     <h3>Concerns for today: {concernMsg ? concernMsg : "N/A"}</h3>
                     <h3>Current Day: Day {currentDay}</h3>
@@ -241,7 +241,7 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
                         <b style={{ margin: "0 auto", fontSize: "26px", paddingTop: "1rem", paddingBottom: "1rem" }}>Survey Results </b>
 
                         <Paper sx={TableContainerStyle}>
-                            <TableContainer>
+                            <TableContainer data-cy="cy-detail-table">
                                 <Table sx={{ minWidth: 700 }} aria-label="customized table">
                                     <TableHead>
                                         <TableRow>
@@ -281,7 +281,7 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
                                 onRowsPerPageChange={handleChangeRowsPerPage}
                             />
                         </Paper>
-                    </div> : <div style={{ textAlign: "center", marginTop: "10px" }}><strong>No survey Result yet!</strong></div>
+                    </div> : <div style={{ textAlign: "center", marginTop: "10px" }}><strong data-cy="cy-no-survey-text">No survey Result yet!</strong></div>
                 }
             </Grow>
 
@@ -289,18 +289,18 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
                 <div className="Graph" style={{ marginBottom: "10%" }}>
                     <div style={isMobile ?
                         { width: "90%", height: "90%", margin: "5% 5% 5% 5%", float: "left" } :
-                        { width: "40%", height: "30%", margin: "5% 10% 15% 14%", float: "left" }}>
-                        <Chart type='bar' options={options} data={data} />
+                        { width: "40%", height: "40%", margin: "5% 10% 15% 14%", float: "left" }}>
+                        <Chart data-cy="cy-chart" type='bar' options={options} data={data} />
                     </div>
                     <div style={isMobile ?
-                        { width: "80%", height: "30%", margin: "5% 10% 7% 10%", float: "left" } :
-                        { width: "20%", height: "30%", margin: "5% 15% 15% 0", float: "left" }}>
-                        <Doughnut data={rehabData} options={optionsRehab} />
+                        { width: "70%", height: "30%", margin: "5% 30% 30% 15%", float: "left" } :
+                        { width: "20%", height: "30%", margin: "5% 15% 7% 0", float: "left" }}>
+                        <Doughnut data-cy="cy-Doughnut" data={rehabData} options={optionsRehab} />
                     </div>
                 </div>
             </Grow>
 
-            { concernMsg ? PatientConcerns() : null}
+            {concernMsg ? PatientConcerns() : null}
 
         </div>
     )

@@ -111,7 +111,7 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo, isMobile }
         <div>
             <Grow in={true} {...({ timeout: 1500 })}>
                 <div style={isMobile ? { color: '#b43434', fontSize: "3vw", marginBottom: '2vh', marginTop: '2vh' } : { color: '#b43434', fontSize: 25, marginBottom: '2rem', marginTop: '4rem' }}>
-                    <h2 style={{ textAlign: 'center' }}> Welcome back Doctor {
+                    <h2 data-cy="cyLoggedInDoctor" style={{ textAlign: 'center' }}> Welcome back Doctor {
                         usernameFormatted ?
                             usernameFormatted?.[0].charAt(0).toUpperCase() +
                             usernameFormatted?.[0].slice(1).toLowerCase() +
@@ -148,9 +148,9 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo, isMobile }
                                 <TableBody>
                                     {patientsInfo.filter(patientInfo => patientInfo.name.toLowerCase().includes(searchTerm.toLowerCase()))
                                         .slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage)
-                                        .map((patientInfo) => (
-                                            <StyledTableRow hover key={patientInfo.email} onClick={() => showPatientDetailPage(patientInfo)}>
-                                                <StyledTableCell component="th" scope="row">
+                                        .map((patientInfo, i) => (
+                                            <StyledTableRow hover data-cy={`cy-table`} key={patientInfo.email} onClick={() => showPatientDetailPage(patientInfo)}>
+                                                <StyledTableCell component="th" scope="row" data-cy={`cy-patientName`}>
                                                     {patientInfo.name.toUpperCase()}
                                                 </StyledTableCell>
                                                 <StyledTableCell align="center">{patientInfo.surgeryType.toUpperCase()}</StyledTableCell>

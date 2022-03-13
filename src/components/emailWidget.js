@@ -62,6 +62,7 @@ const MailTo = ({ toEmail, show, handleClose, user, isMobile }) => {
 
     return (
         <Modal
+            id="emailModal"
             open={show}
             onClose={() => {
                 handleClose();
@@ -108,10 +109,10 @@ const MailTo = ({ toEmail, show, handleClose, user, isMobile }) => {
                 </Stack>
 
                 <Box textAlign="right">
-                    <Button sx={{ mt: spacing }} size="small" variant="outlined" onClick={() => ContactUs(toEmail, handleClose)}>
+                    <Button id="submit" sx={{ mt: spacing }} size="small" variant="outlined" onClick={() => ContactUs(toEmail, handleClose)}>
                         Submit
                     </Button>
-                    <Button sx={{ mt: spacing, marginLeft: "5%" }} size="small" variant="outlined" onClick={() => handleClose()}>
+                    <Button id="close" sx={{ mt: spacing, marginLeft: "5%" }} size="small" variant="outlined" onClick={() => handleClose()}>
                         Close
                     </Button>
                 </Box>

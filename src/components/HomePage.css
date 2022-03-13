@@ -1,0 +1,12 @@
+.HomePage{
+    display: flex;
+    flex-direction:column;
+}
+@media(min-width:1054px){
+    .wel-todo{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+}
