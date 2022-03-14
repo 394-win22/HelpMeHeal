@@ -1,5 +1,6 @@
 import create from 'zustand';
-
+//use zustand to save state
+//use to change pages
 const useStore = create(set => ({
     UserPage: "home",
     setUserPage: (newPage) => set({ UserPage: newPage }),

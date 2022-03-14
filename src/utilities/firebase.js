@@ -14,13 +14,7 @@ import { getAuth, GoogleAuthProvider, onIdTokenChanged, signInWithPopup, signOut
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyAdjQ9ZnfXyb258VqFgbVUz4SzEiWBiPAQ",
-    authDomain: "helpmeheal-49a3f.firebaseapp.com",
-    databaseURL: "https://helpmeheal-49a3f-default-rtdb.firebaseio.com",
-    projectId: "helpmeheal-49a3f",
-    storageBucket: "helpmeheal-49a3f.appspot.com",
-    messagingSenderId: "659893085250",
-    appId: "1:659893085250:web:df1b73d52c11f8fef7f9db"
+    //set your own firebase
 };
 
 
@@ -91,14 +85,13 @@ export const signInWithGoogle = () => {
 const firebaseSignOut = () => signOut(getAuth(app));
 
 export { firebaseSignOut as signOut };
-
+//get user from firebase
 export const useUserState = (uid) => {
-    // const [user, setUser] = useState();ref
     const [user] = useData(`/user/${uid}`);
     console.log(user);
     return [user];
 };
-
+//get google user state
 export const useGoogleUserState = () => {
     const [user, setUser] = useState();
 

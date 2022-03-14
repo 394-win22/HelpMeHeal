@@ -18,7 +18,6 @@ const YoutubeEmbed = ({ embedId, start, end }) => {
         width="853"
         height="480"
         src={url}
-        //src={`https://www.youtube.com/embed/ZZ0AENyvytk`}
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
@@ -27,9 +26,5 @@ const YoutubeEmbed = ({ embedId, start, end }) => {
     </div>
   );
 }
-
-// YoutubeEmbed.propTypes = {
-//   embedId: PropTypes.string.isRequired
-// };
 
 export default YoutubeEmbed;

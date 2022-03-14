@@ -1,5 +1,5 @@
 const calculateDay = (startdate) => {
-    //now use central
+    //use central timezone
     let timeDifToUTC = 6
     let milisec_in_hours = 3600000
     let milisec_in_days = 86400000;

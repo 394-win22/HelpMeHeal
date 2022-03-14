@@ -17,7 +17,7 @@ const GetUser = ({ googleUser, isMobile }) => {
 
   useEffect(() => {
     if (user === undefined) return;
-
+    //set user information
     const initPatient = () => {
       setName(user.name.toUpperCase());
       setSurgeryType(user.surgeryType);

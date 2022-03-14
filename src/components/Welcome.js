@@ -7,7 +7,7 @@ import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite
 const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysDict, phaseEndDay, isMobile }) => {
     let daysHasMessage;
     let usernameFormatted = username?.split(/\s/);
-
+    //get days that has message to skip those days has no message
     for (const [key,] of Object.entries(daysDict)) {
         if (currentDay >= key) {
             daysHasMessage = key
@@ -16,10 +16,10 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
 
     const popupWelcomeMsg = () => {
         let welcomeMsg = '';
-        Object.entries(firebaseData.surgery) // First: entry 'ACL'
+        Object.entries(firebaseData.surgery)
             .filter(data => data[0] === surgeryType)
             .map(data => {
-                return (Object.entries(data[1].days) // Second: entry phase
+                return (Object.entries(data[1].days)
                     .filter(days => days[0] === daysHasMessage)
                     .forEach((msg) => {
                         welcomeMsg = msg[1].message

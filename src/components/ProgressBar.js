@@ -11,7 +11,7 @@ const ProgressBar = ({ steps, phase, currentDay, data, phaseEndDay, isMobile, on
             {complete && <h1>Congratulations! You have completed recovery!</h1>}
             <div className="progress-container">
                 <ul data-cy="cyProgressBar" className="progress-indicator" style={{ alignItems: isMobile ? "center" : "center" }}>
-                    {steps.map((step) => 
+                    {steps.map((step) =>
                     (
                         <li
                             onClick={phase - 1 === step.index ? () => onPhaseClick(phase, currentDay, phaseEndDay) : null}
@@ -65,9 +65,8 @@ const ProgressBarZoomed = ({ currentDay, phase, totalDays, onPhaseClick, isMobil
     );
 }
 
-//TODO: add iterable as an argument and map it
 const ProgressIndicator = ({ phase, currentDay, phaseEndDay, isMobile, setZoom, zoom, data, surgeryType }) => {
-    //const [isZoom, setZoom] = useState(false);
+
     const steps = []
 
     for (const [key,] of Object.entries(phaseEndDay)) {

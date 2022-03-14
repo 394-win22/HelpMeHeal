@@ -75,7 +75,6 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo, isMobile }
         const currDate = calculateDay(user.startDate);
 
         if (user.surveyResults && user.surveyResults.length === currDate) {
-            //console.log("k",Math.max(user.surveyResults.filter(n=>n).map));
             if (user.surveyResults[currDate - 1].concerns) {
                 return "Yes";
             }
@@ -83,7 +82,7 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo, isMobile }
                 return "No";
             }
         } else {
-            return "N/A" // maybe change in future
+            return "N/A"
         }
     };
 
@@ -91,7 +90,6 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo, isMobile }
         const currDate = calculateDay(user.startDate);
 
         if (user.surveyResults && user.surveyResults.length === currDate) {
-            //console.log("k",Math.max(user.surveyResults.filter(n=>n).map));
             if (user.surveyResults[currDate - 1].concerns) {
                 return (<div style={{ color: '#b43434' }}>
                     <ErrorIcon sx={{ styleIcon }} />
@@ -101,13 +99,13 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo, isMobile }
                 return " "
             }
         } else {
-            return "N/A" // maybe change in future
+            return "N/A"
         }
     };
 
 
     return (
-
+        //table
         <div>
             <Grow in={true} {...({ timeout: 1500 })}>
                 <div style={isMobile ? { color: '#b43434', fontSize: "3vw", marginBottom: '2vh', marginTop: '2vh' } : { color: '#b43434', fontSize: 25, marginBottom: '2rem', marginTop: '4rem' }}>
@@ -141,11 +139,10 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo, isMobile }
                                         <StyledTableCell align="center">SurgeryType</StyledTableCell>
                                         <StyledTableCell align="center">Status</StyledTableCell>
                                         <StyledTableCell align="center">Concerns</StyledTableCell>
-                                        {/* <StyledTableCell align="right">Concer</StyledTableCell>
-                                    <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell> */}
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
+                                    {/* slice to 5 row each page */}
                                     {patientsInfo.filter(patientInfo => patientInfo.name.toLowerCase().includes(searchTerm.toLowerCase()))
                                         .slice(tablePage * rowsPerTablePage, tablePage * rowsPerTablePage + rowsPerTablePage)
                                         .map((patientInfo, i) => (
@@ -156,8 +153,6 @@ const DoctorHomePage = ({ username, data, googleUser, setpatientInfo, isMobile }
                                                 <StyledTableCell align="center">{patientInfo.surgeryType.toUpperCase()}</StyledTableCell>
                                                 <StyledTableCell align="center">{statusIcon(patientInfo)}</StyledTableCell>
                                                 <StyledTableCell align="center">{concernRow(patientInfo)}</StyledTableCell>
-                                                {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                                            <StyledTableCell align="right">{row.protein}</StyledTableCell> */}
                                             </StyledTableRow>
                                         ))}
                                 </TableBody>

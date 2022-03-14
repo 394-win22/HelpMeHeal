@@ -10,7 +10,6 @@ const HomePage = ({ phase, data, currentDay, surgeryType, name, isMobile, setCur
     return (
         <div style={{ marginBottom: "10rem" }}>
 
-            {/* the zero bellow has to change userid as its real id later */}
             <div className="HomePage">
                 <ProgressIndicator phase={phase} currentDay={currentDay} phaseEndDay={data["surgery"][surgeryType]["phaseEndDay"]} isMobile={isMobile} setZoom={setZoom} zoom={zoom} data={data} surgeryType={surgeryType} />
                 <SwitchDay currentDay={currentDay} setCurrentDay={setCurrentDay} isMobile={isMobile} phaseEndDay={data["surgery"][surgeryType]["phaseEndDay"]} />
@@ -19,7 +18,6 @@ const HomePage = ({ phase, data, currentDay, surgeryType, name, isMobile, setCur
                     <ToDoList setPage={setPage} surveyCheck={surveyCheck} videoCheck={videoCheck} isMobile={isMobile} />
                 </div>
             </div>
-            {/* <PatientGraphs patientInfo={user} isMobile={isMobile} /> */}
         </div>
     )
 

@@ -25,7 +25,7 @@ const IconStyle = {
 
 
 
-const NavBar = ({ data, currentDay, googleUser, setPage, user, setZoom, isMobile, surveyCheck }) => {
+const NavBar = ({ data, setPage, user, setZoom, isMobile, surveyCheck }) => {
     const doctorEmail = data["user"][user.doctorId]["email"];
     const [showEmailForm, setShowEmailForm] = useState(false);
     const handleShowEmailFormClose = () => setShowEmailForm(false);

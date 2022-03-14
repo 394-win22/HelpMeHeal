@@ -47,7 +47,8 @@ const MailTo = ({ toEmail, show, handleClose, user, isMobile }) => {
         };
 
         if (toEmail?.length > 0 && fromEmail?.length > 0 && validateEmail(fromEmail) && message?.length > 0) {
-            emailjs.send('service_helpMeHeal', 'template_92okgn8', params, 'user_38zgdjEGploG9vvDO3x1d')
+            //send(service ID, Template ID, Template params, UserID) get more information from emailjs plz.
+            emailjs.send('Fake-service ID', 'Fake-Template ID', params, 'Fake-userId')
                 .then((result) => {
                     swal("Message received!", "Will Reply Back Soon..", "success");
                 }, (error) => {
