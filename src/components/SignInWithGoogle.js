@@ -29,7 +29,7 @@ export const SignInOut = ({ isMobile }) => {
     );
 
     const SignOutButton = () => (
-        <Button sx={() => buttonStyle(isMobile)} onClick={() => {
+        <Button data-cy="cySignOutButton" sx={() => buttonStyle(isMobile)} onClick={() => {
             setPage("DoctorHome");
             signOut();
         }

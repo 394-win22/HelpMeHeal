@@ -12,23 +12,19 @@ describe('Test App', () => {
   });
 
   it('logs you in as patient', () => {
-    cy.login("LXVdjGl5pRcYfW3nqUwFR9KtTnx2");
+    cy.login("XVdjGl5pRcYfW3nqUwFR9KtTnx2");
     cy.visit('/');
     cy.get('[data-cy=cySignInButton]').click();
-    cy.get('[data-cy=cyLoggedInPatient]').should('contain', 'Sam Zheng')
   });
 
-  //logs you out
-  afterEach(() => {
-    cy.logout();
-  });
+  it('plays today\'s video', () => {
+    cy.get('[data-cy=cyPlayVideoButton]').click();
+    cy.get('[data-cy=cyVideoDoneButton]').click({ force: true });
+  })
 
-  it('logs you in as Doctor', () => {
-    cy.login("Yg2OvFEEFJSOKquVD3XKtORiNjB2");
-    cy.visit('/');
-    cy.get('[data-cy=cySignInButton]').click();
-    cy.get('[data-cy=cyLoggedInDoctor]').should('contain', 'Kaixin')
-  });
+  it('checks if it\'s done in TODO list', () => {
+    cy.get('[data-cy=cyGoHomeButton]').click({ force: true });
+  })
 
   //logs you out
   afterEach(() => {

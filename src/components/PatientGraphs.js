@@ -138,12 +138,12 @@ const PatientGraphs = ({ patientInfo, isMobile, currentDay }) => {
                 <div style={isMobile ?
                     { width: "100%", height: "30%", margin: "5% 15% 7% 0%", float: "left" } :
                     { width: "40%", height: "30%", margin: "5% 10% 7% 14%", float: "left" }}>
-                    <Chart type='bar' options={options} data={data} />
+                    <Chart data-cy="cyWeeklyReport" type='bar' options={options} data={data} />
                 </div>
                 <div style={isMobile ?
                     { width: "70%", height: "30%", margin: "5% 30% 30% 15%", float: "left" } :
                     { width: "20%", height: "30%", margin: "5% 15% 7% 0", float: "left" }}>
-                    <Doughnut data={rehabData} options={optionsRehab} />
+                    <Doughnut data-cy="cyRehabSuccess" data={rehabData} options={optionsRehab} />
                 </div>
             </div>
         </Grow>

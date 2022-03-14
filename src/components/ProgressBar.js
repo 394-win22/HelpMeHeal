@@ -10,11 +10,13 @@ const ProgressBar = ({ steps, phase, currentDay, data, phaseEndDay, isMobile, on
         <div>
             {complete && <h1>Congratulations! You have completed recovery!</h1>}
             <div className="progress-container">
-                <ul className="progress-indicator" style={{ alignItems: isMobile ? "center" : "center" }}>
-                    {steps.map((step) => (
+                <ul data-cy="cyProgressBar" className="progress-indicator" style={{ alignItems: isMobile ? "center" : "center" }}>
+                    {steps.map((step) => 
+                    (
                         <li
                             onClick={phase - 1 === step.index ? () => onPhaseClick(phase, currentDay, phaseEndDay) : null}
                             key={step.index}
+                            data-cy={`cy${phase - 1 === step.index ? 'Active' : 'Inactive'}`}
                             className={`
                 ${"progress-step"}
                 ${phase - 1 === step.index ? 'active' : 'inactive'}
@@ -39,13 +41,13 @@ const ProgressBarZoomed = ({ currentDay, phase, totalDays, onPhaseClick, isMobil
         <div>
             {complete ?
                 <h1>Congratulations! You have completed recovery!</h1> :
-                <h3 style={{ color: "rgb(155, 11, 11)" }}>{currentDay}/{totalDays} days complete in this phase</h3>
+                <h3 data-cy="cyDaysComplete" style={{ color: "rgb(155, 11, 11)" }}>{currentDay}/{totalDays} days complete in this phase</h3>
             }
             <Box sx={{ mr: '25%', ml: '25%' }}>
                 <LinearProgress color='error' variant='determinate' value={complete ? 100 : Math.floor((currentDay / totalDays) * 100)} />
             </Box>
-            <ul className='progress-indicator'>
-                <li className={`progress-step ${complete ? 'complete' : 'active'} ${isMobile ? "mobile" : "default"} zoomed`} style={{
+            <ul data-cy="cyProgressBarZoomed" className='progress-indicator'>
+                <li className={`progress-step ${complete ? 'complete' : 'active'} ${isMobile ? "mobile" : "default"} zoomed`} data-cy="cyActiveZoom" style={{
                     display: "grid",
                     gridTemplateColumns: "150px",
                     gridTemplateRows: "70px 50px",

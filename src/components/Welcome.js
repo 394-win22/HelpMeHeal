@@ -99,7 +99,7 @@ const Welcome = ({ phase, username, surgeryType, firebaseData, currentDay, daysD
                     Press <PlayCircleFilledWhiteIcon sx={{ color: '#b43434' }} /> to watch the video to complete daily rehabilitation exercises.
                     <br /><br />
                 </div>
-                <Button sx={() => buttonStyle(isMobile)} onClick={() => { popupWelcomeMsg() }} >Welcome Message</Button>
+                <Button data-cy="cyWelcomeMessage" sx={() => buttonStyle(isMobile)} onClick={() => { popupWelcomeMsg() }} >Welcome Message</Button>
             </div>
         </Grow>)
 }
