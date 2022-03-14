@@ -16,7 +16,7 @@ describe('patient views stats', () => {
     });
 
     it('looks at your patient statistics', () => {
-        cy.get('[data-cy=cyViewStatsButton]').click();
+        cy.get('[data-cy=cyToCharts]').click();
     });
 
     after(() => {
