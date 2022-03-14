@@ -10,7 +10,7 @@ describe('patient views stats', () => {
     });
 
     it('logs you in as patient', () => {
-        cy.login("hRiAuS8fCcSvRK3BBTXmkfgKvWZ2");
+        cy.login("LXVdjGl5pRcYfW3nqUwFR9KtTnx2");
         cy.visit('/');
         cy.get('[data-cy=cySignInButton]').click();
     });
