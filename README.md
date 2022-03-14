@@ -1,70 +1,93 @@
-# Getting Started with Create React App
+### Background
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+HelpMeHeal is an app that helps patients who just finished surgery to be on track for their rehabilitation and provide an easy channel for communication with the doctor. It also allows the doctor to easily track and monitor the progress of his/her patients.
 
-## Available Scripts
+### Installation
+Node
+Install Node.js for your system. Once installed, download dependencies with `npm install`. To view the live version of the web app, run `npm start` in the project’s  root directory. 
 
-In the project directory, you can run:
+### Firebase
+The backend for this project uses firebase. To attach the database to the project, create an account in firebase and create a realtime database. Note that the database is stored as one large JSON file. We store data in the following structure
+```
+root:
+  surgery
+    acl 
+      days 
+        1
+        …
+      phaseEndDay
+        21
+        …
+      phases
+        1
+        …
+      videoUrls
+        0
+        …
+  …  (other surgery recovery programs)
+  survey
+    Day 1
+      (the specifics vary, we use survey.js to create the surveys and they have their syntax for storing a survey which is a json. Consult their documentation for storing a survey into firebase. 
+    …
+  user 
+    googleID 
+      doctorID (int)
+      Email (string)
+      Name (string)
+      startDate (time in Epoch)
+      surgeryType (a type from root-surgery)
+      surveyResults (response data to survey)
+        0
+        …
+      userType (patient/doctor)
+```
+### Integration Tests
+Run `​​npm install cypress --save-dev` to install Cypress on your machine. Next, run `npm start` to start the local development server. Once the server is running, run `npm run cypress:open` to launch the Cypress desktop application. In the Cypress UI, you will see the `.spec.js` files that are created. Click on any of them to run them.
 
-### `npm start`
+### Usage
+You can use this application as both patient and as a doctor. Check below for more details.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### As Patient:
+You can create an account using google login and then use the code issued by hospital which would fetch the details regarding your surgery type and link you with doctor.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+As soon as patient login, on the landing page, he/she would see
+A welcome message
+Currently, which phase and day of the phase he/she are in their recovery progress
+A Todo list to track their day’s tasks
+Navigation bar at the bottom to take them to daily survey, rehabilitation video, email doctor and logout
 
-### `npm test`
+DAILY SURVEY: 
+To track a patient’s progress and keep the doctor updated, we have a daily survey which is expected to be filled out by the patient every day.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+REHABILITATION VIDEO:
+To help a patient deal with varying pain levels at varying stages of recovery they are provided with videos of the exercises they are supposed to perform on that day.
 
-### `npm run build`
+EMAIL DOCTOR:
+In case the patient needs to communicate with a doctor, they can use the email doctor feature to send in the message across to a doctor.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+LOGOUT:
+Logs the patient out of application.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### As Doctor:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+You can create an account using google login and add patients to their list with the surgery type by giving patients codes.
 
-### `npm run eject`
+The home page of the doctor should include
+A table with the list of patients and their surgery types, status, and concerns
+A button to add new patients
+A navigation bar at the bottom with a home button and an email button
+A search bar for patients
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+PATIENT DETAILS:
+Click on any of your patients in the table to view information regarding their recovery progress.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+PATIENT PAGE: 
+The doctor can see the patient’s progress through a table with pain, rehab successful, and concerns columns along with two graphs at the bottom.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+EMAIL PATIENT:
+In case the doctor needs to communicate with a patient, they can use the email patient feature to send a message to a specific patient.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+LOGOUT:
+Logs the doctor out of application.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Contributors: The Yellow Team
