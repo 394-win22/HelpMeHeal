@@ -1,3 +1,5 @@
+# Help Me Heal
+
 ### Background
 
 HelpMeHeal is an app that helps patients who just finished surgery to be on track for their rehabilitation and provide an easy channel for communication with the doctor. It also allows the doctor to easily track and monitor the progress of his/her patients.
@@ -27,7 +29,8 @@ root:
   …  (other surgery recovery programs)
   survey
     Day 1
-      (the specifics vary, we use survey.js to create the surveys and they have their syntax for storing a survey which is a json. Consult their documentation for storing a survey into firebase. 
+      (the specifics vary, we use survey.js to create the surveys and they have their syntax for storing a survey which is a json. 
+      Consult their documentation for storing a survey into firebase. 
     …
   user 
     googleID 
