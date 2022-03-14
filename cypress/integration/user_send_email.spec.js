@@ -10,7 +10,7 @@ describe('test user emails doctor successfully', () => {
     });
 
     it('log in as patient', () => {
-        cy.login("n3PCiQtgncP2RnGTEON8wo3esGi1");
+        cy.login("LXVdjGl5pRcYfW3nqUwFR9KtTnx2");
         cy.visit('/');
         cy.get('[data-cy=cySignInButton]').click();
     });
@@ -56,7 +56,7 @@ describe('test no email sends when no message entered', () => {
     });
 
     it('log in as patient', () => {
-        cy.login("n3PCiQtgncP2RnGTEON8wo3esGi1");
+        cy.login("LXVdjGl5pRcYfW3nqUwFR9KtTnx2");
         cy.visit('/');
         cy.get('[data-cy=cySignInButton]').click();
     });

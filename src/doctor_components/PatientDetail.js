@@ -203,7 +203,7 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
             customClass: {
                 title: 'custom-title-class',
             },
-            title: `<div style = 'color:white; padding-bottom: ${isMobile ? "8%" : "5%"}; ${isMobile ? "font-size: 6vw;" : null}'>
+            title: `<div data-cy = "cy-alert-title" style = 'color:white; padding-bottom: ${isMobile ? "8%" : "5%"}; ${isMobile ? "font-size: 6vw;" : null}'>
                     Patient's Concerns
                 </div>`,
             text: concernMsg,
@@ -281,7 +281,7 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
                                 onRowsPerPageChange={handleChangeRowsPerPage}
                             />
                         </Paper>
-                    </div> : <div style={{ textAlign: "center", marginTop: "10px" }}><strong>No survey Result yet!</strong></div>
+                    </div> : <div style={{ textAlign: "center", marginTop: "10px" }}><strong data-cy="cy-no-survey-text">No survey Result yet!</strong></div>
                 }
             </Grow>
 
@@ -289,12 +289,12 @@ const PatientDetail = ({ patientInfo, isMobile }) => {
                 <div className="Graph" style={{ marginBottom: "10%" }}>
                     <div style={isMobile ?
                         { width: "90%", height: "90%", margin: "5% 5% 5% 5%", float: "left" } :
-                        { width: "40%", height: "30%", margin: "5% 10% 15% 14%", float: "left" }}>
+                        { width: "40%", height: "40%", margin: "5% 10% 15% 14%", float: "left" }}>
                         <Chart data-cy="cy-chart" type='bar' options={options} data={data} />
                     </div>
                     <div style={isMobile ?
-                        { width: "80%", height: "30%", margin: "5% 10% 7% 10%", float: "left" } :
-                        { width: "20%", height: "30%", margin: "5% 15% 15% 0", float: "left" }}>
+                        { width: "70%", height: "30%", margin: "5% 30% 30% 15%", float: "left" } :
+                        { width: "20%", height: "30%", margin: "5% 15% 7% 0", float: "left" }}>
                         <Doughnut data-cy="cy-Doughnut" data={rehabData} options={optionsRehab} />
                     </div>
                 </div>

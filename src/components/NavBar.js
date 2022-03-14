@@ -25,7 +25,7 @@ const IconStyle = {
 
 
 
-const NavBar = ({ data, currentDay, googleUser, setPage, user, setZoom, isMobile, surveyCheck }) => {
+const NavBar = ({ data, setPage, user, setZoom, isMobile, surveyCheck }) => {
     const doctorEmail = data["user"][user.doctorId]["email"];
     const [showEmailForm, setShowEmailForm] = useState(false);
     const handleShowEmailFormClose = () => setShowEmailForm(false);
@@ -48,7 +48,7 @@ const NavBar = ({ data, currentDay, googleUser, setPage, user, setZoom, isMobile
 
     return (
         <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, background: '#b43434', flexDirection: 'row', justifyContent: isMobile ? 'space-between' : "center", p: 2, display: "flex" }}>
-            <Button onClick={() => { setPage("home"); setZoom(false); }}>
+            <Button data-cy="cyGoHomeButton" onClick={() => { setPage("home"); setZoom(false); }}>
                 <HomeIcon sx={IconStyle} style={{ marginLeft: isMobile ? "2rem" : "2.5rem", marginRight: isMobile ? "0" : "2.5rem" }} />
             </Button>
             <Button data-cy="cyEmailIcon" onClick={() => setShowEmailForm(true)} >
@@ -58,11 +58,12 @@ const NavBar = ({ data, currentDay, googleUser, setPage, user, setZoom, isMobile
             <Button data-cy="cySurveyIcon" Button onClick={() => surveyCheck && page !== "survey" ? showPopupAlert() : setPage("survey")} >
                 <FactCheckIcon sx={IconStyle} style={{ marginLeft: isMobile ? "0" : "2.5rem", marginRight: isMobile ? "0" : "2.5rem" }} />
             </Button>
-            <Button onClick={() => setPage("charts")} >
+            <Button onClick={() => setPage("charts")} data-cy="cyToCharts">
                 <InsertChartIcon sx={IconStyle} style={{ marginLeft: isMobile ? "0" : "2.5rem", marginRight: isMobile ? "0" : "2.5rem" }} />
             </Button>
-            <Button onClick={() => setPage("playVideo")} >
-                <PlayCircleFilledWhiteIcon sx={IconStyle} style={{ marginLeft: isMobile ? "0" : "2.5rem", marginRight: isMobile ? "0" : "2.5rem" }} />
+            <Button data-cy="cyPlayVideoButton" onClick={() => setPage("playVideo")} >
+                <PlayCircleFilledWhiteIcon sx={IconStyle} style={{ marginLeft: isMobile ? "0" : "2.5rem", marginRight: isMobile ? "2rem" : "2.5rem" }} />
+
             </Button>
         </AppBar >
     )

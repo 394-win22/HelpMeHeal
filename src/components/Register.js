@@ -35,14 +35,11 @@ const RegisterPage = ({ googleUser, isMobile }) => {
 
     const ValidatePatientCode = (patientCode, userData) => {
         let patientCodeParse = patientCode.split("+")
-        // console.log(patientCodeParse[0])
-        // console.log(userData[patientCodeParse[0]])
         return userData[patientCodeParse[0]] && userData[patientCodeParse[0]]['userType'] === 'doctor' && patientCodeParse[1] === 'acl'
     }
 
     const onClickRegister = (googleUser, type, patientCode, userData) => {
-        // TODO remove default values
-        // const patientCode = document.querySelector('#patientCode').value;
+
         let patientCodeParse = patientCode.split("+")
         const uid = googleUser?.uid;
         if (ValidatePatientCode(patientCode, userData) && type === 'patient' && patientCode?.length > 0) {
@@ -71,8 +68,8 @@ const RegisterPage = ({ googleUser, isMobile }) => {
     }, [userData]);
 
     if (errorData) return <Error404 />;
-    if (loadingData) return <Loading isMobile={isMobile}/>;
-
+    if (loadingData) return <Loading isMobile={isMobile} />;
+    console.log(validPatientCode);
     return (
         <div>
             <h1>Are you a patient or doctor?</h1>

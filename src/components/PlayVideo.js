@@ -9,7 +9,7 @@ const buttonStyle = () => ({
     mx: 2,
     fontSize: '1.1vw',
     width: '6vw',
-    marginBottom: '10rem',
+    marginBottom: '2rem',
     bgcolor: "#b43434",
     borderRadius: 2,
     color: "rgb(255, 255, 255)",
@@ -56,8 +56,14 @@ const PlayVideo = ({ currentDay, phase, data }) => {
         <Grow in={true} {...({ timeout: 1500 })}>
             <div>
                 <h1 style={{ marginLeft: '0%' }}>Phase {phase} Exercises</h1>
+
+                <div style={{ paddingLeft: "10px", paddingRight: "10px" }}>
+                    <h3>Today's exercise is from {Math.floor(startTime / 60)}:{startTime - Math.floor(startTime / 60) * 60} to {Math.floor(endTime / 60)}:{endTime - Math.floor(endTime / 60) * 60}</h3>
+                    <h3>Please contact your doctor if you have any difficulties!</h3>
+                </div>
+                <Button data-cy="cyVideoDoneButton" variant="contained" sx={() => buttonStyle()} onClick={() => showPopupAlert(setPage)}>Done</Button>
                 <YoutubeEmbed embedId={embedURL} start={startTime} end={endTime}></YoutubeEmbed>
-                <Button variant="contained" sx={() => buttonStyle()} onClick={() => showPopupAlert(setPage)}>Done</Button>
+
             </div>
         </Grow>
     );

@@ -21,6 +21,19 @@ jest.mock('./doctor_components/PatientDetail', () => ({
     register: ([]) => null
 }));
 
+const fakePatient = {
+    "email": "Fake-PatientData@email.com",
+    "name": "Fake Patient",
+    "startDate": 1646583369397,
+    "surgeryType": "acl",
+    "surveyResults": [
+        {
+            "concerns": "No",
+            "pain_rating": 1,
+            "rehab_successful": "Yes"
+        }
+    ]
+};
 
 it('shows Sign In if not logged in', () => {
     useGoogleUserState.mockReturnValue([null]);
@@ -47,7 +60,7 @@ test('fails if no logged in user', () => {
 });
 
 test('user logs in', () => {
-    const user = data['user']['D0UBsRxynwbeW6s5Jb1PxWQJZIo1'];
+    const user = fakePatient;
     useGoogleUserState.mockReturnValue([user]);
     useUserState.mockReturnValue([user[0]]);
     useData.mockReturnValue([data])
@@ -57,7 +70,7 @@ test('user logs in', () => {
 });
 
 test('user data there', () => {
-    let user = data['user']['D0UBsRxynwbeW6s5Jb1PxWQJZIo1'];
+    const user = fakePatient;
     user["name"] = "David Hello";
     useGoogleUserState.mockReturnValue([user]);
     useUserState.mockReturnValue([user[0]]);

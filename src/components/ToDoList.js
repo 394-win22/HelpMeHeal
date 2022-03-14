@@ -47,7 +47,7 @@ const ToDoList = ({ setPage, surveyCheck, isMobile }) => {
                         </ListItemIcon>
                     </ListItem>
                     <ListItem>
-                        <Checkbox disabled checked={localStorage.getItem("videoCheck") === true.toString()} />
+                        <Checkbox data-cy='cyVideoCheckButton' disabled checked={localStorage.getItem("videoCheck") === true.toString()} />
                         <ListItemText id="switch-list-label-survey" primary="Video" />
                         <ListItemIcon>
                             <Button onClick={() => setPage("playVideo")}>

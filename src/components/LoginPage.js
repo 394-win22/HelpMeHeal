@@ -4,9 +4,7 @@ import Divider from '@mui/material/Divider';
 import Grow from '@mui/material/Grow';
 
 const LoginPage = ({ isMobile }) => {
-    /*To do
-        1. style it!
-       */
+
     return (
         <div className="loginPage">
             <div className="navbar">
@@ -15,7 +13,7 @@ const LoginPage = ({ isMobile }) => {
                         <img src="bannerlogo.jpg" alt="help-me-heal-logo" style={{ borderRadius: "0.2rem", height: "2rem" }} />
                         <span ><b>Help Me Heal</b></span>
                     </div>
-                    <div style={{marginLeft: isMobile ? "35%" : "70%"}}>
+                    <div style={{ marginLeft: isMobile ? "35%" : "70%" }}>
                         <SignInOut isMobile={isMobile} />
                     </div>
                 </div>
@@ -36,7 +34,7 @@ const LoginPage = ({ isMobile }) => {
 
                     <Grow in={true} {...({ timeout: 2000 })}>
                         <div className="demo-img">
-                            <img src="Demo.png" alt="app-demo" style={{height:"60vh"}} />
+                            <img src="Demo.png" alt="app-demo" style={{ height: "60vh" }} />
                         </div>
                     </Grow>
                 </div>
