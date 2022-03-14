@@ -12,7 +12,7 @@ describe('Test App', () => {
   });
 
   it('logs you in as patient', () => {
-    cy.login("XVdjGl5pRcYfW3nqUwFR9KtTnx2");
+    cy.login("LXVdjGl5pRcYfW3nqUwFR9KtTnx2");
     cy.visit('/');
     cy.get('[data-cy=cySignInButton]').click();
   });
@@ -26,9 +26,9 @@ describe('Test App', () => {
     cy.get('[data-cy=cyGoHomeButton]').click({ force: true });
   })
 
-  //logs you out
-  afterEach(() => {
-    cy.logout();
-  });
+  // //logs you out
+  // afterEach(() => {
+  //   cy.logout();
+  // });
 
 });
