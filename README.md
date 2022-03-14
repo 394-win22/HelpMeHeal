@@ -48,8 +48,8 @@ root:
 Run `​​npm install cypress --save-dev` to install Cypress on your machine. Next, run `npm start` to start the local development server. Once the server is running, run `npm run cypress:open` to launch the Cypress desktop application. In the Cypress UI, you will see the `.spec.js` files that are created. Click on any of them to run them.
 
 ### EmailJs 
-Go to https://www.emailjs.com/ to create an service account. Set up a new service and set up template and templateParams for replying. Put the serviceId, templateId, your userId in below code.
-emailjs.send(serviceID, templateID, templateParams, userID);
+Go to https://www.emailjs.com/ to create an service account. Set up a new service and set up template and templateParams for replying. Put the serviceId, templateId, your userId in below code. <br />
+`emailjs.send(serviceID, templateID, templateParams, userID);`
 
 ### Usage
 You can use this application as both patient and as a doctor. Check below for more details.
