@@ -20,6 +20,16 @@ describe('Test App', () => {
   it('plays today\'s video', () => {
     cy.get('[data-cy=cyPlayVideoButton]').click();
     cy.get('[data-cy=cyVideoDoneButton]').click({ force: true });
+    cy.get('.swal-title').should('contain', "Have you finished today's")
+    cy.get('.swal-button--confirm').click();
+    cy.get('.swal-text').should('contain', "Congratulations")
+    cy.get('.swal-button--confirm').click();
+    cy.get('[data-cy=cyPlayVideoButton]').click();
+    cy.get('[data-cy=cyVideoDoneButton]').click({ force: true });
+    cy.get('.swal-title').should('contain', "Have you finished today's")
+    cy.get('.swal-button--cancel').click();
+    cy.get('.swal-text').should('contain', "please keep doing it！")
+    cy.get('.swal-button--confirm').click();
   })
 
   it('checks if it\'s done in TODO list', () => {
