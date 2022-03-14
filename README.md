@@ -93,4 +93,5 @@ In case the doctor needs to communicate with a patient, they can use the email p
 LOGOUT:
 Logs the doctor out of application.
 
-Contributors: The Yellow Team
+### Contributors: 
+The Yellow Team
