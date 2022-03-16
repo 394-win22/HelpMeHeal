@@ -30,7 +30,7 @@ describe('Test App', () => {
                                 cy.get('[data-cy=cy-patientDetail-name]').should('contain', usernameFormatted?.[0].charAt(0).toUpperCase() +
                                     usernameFormatted?.[0].slice(1).toLowerCase() + lastName);
                             })
-                            //console.log(cy.get('body').find('[data-cy = cy-alert-title]').length)
+
                             cy.get('body').then((val) => {
                                 if (val.find('.swal2-confirm').length > 0) {
                                     cy.get('.swal2-title').should('contain', "Patient's Concerns")

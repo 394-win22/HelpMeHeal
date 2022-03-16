@@ -27,7 +27,7 @@ const DoctorNavBar = ({ setPage, user, isMobile }) => {
             <Button data-cy="cyDoctorHomeButton" onClick={() => setPage("DoctorHome")}>
                 <HomeIcon sx={IconStyle} style={{ marginLeft: isMobile ? "2rem" : "5rem" }} />
             </Button>
-            <Button onClick={() => setShowEmailForm(true)}>
+            <Button data-cy="cyDoctorEmailButton" onClick={() => setShowEmailForm(true)}>
                 <EmailIcon sx={IconStyle} style={isMobile ? { marginRight: "2rem" } : { marginLeft: "5rem" }} />
             </Button>
             <MailTo show={showEmailForm} handleClose={handleShowEmailFormClose} user={user} isMobile={isMobile} />
