@@ -38,19 +38,19 @@ const ToDoList = ({ setPage, surveyCheck, isMobile }) => {
                     subheader={<ListSubheader sx={{ bgcolor: "rgb(243, 245, 247)", borderRadius: "2rem" }}> To Do List </ListSubheader>}
                 >
                     <ListItem>
-                        <Checkbox disabled checked={surveyCheck} />
+                        <Checkbox data-cy='cySurveyCheckBoxn' disabled checked={surveyCheck} />
                         <ListItemText id="switch-list-label-survey" primary="Survey" />
                         <ListItemIcon>
-                            <Button onClick={() => surveyCheck && page !== "survey" ? showPopupAlert() : setPage("survey")}>
+                            <Button data-cy='cySurveyIconButton' onClick={() => surveyCheck && page !== "survey" ? showPopupAlert() : setPage("survey")}>
                                 <FactCheckIcon sx={{ color: '#b43434' }} />
                             </Button>
                         </ListItemIcon>
                     </ListItem>
                     <ListItem>
-                        <Checkbox data-cy='cyVideoCheckButton' disabled checked={localStorage.getItem("videoCheck") === true.toString()} />
+                        <Checkbox data-cy='cyVideoCheckBox' disabled checked={localStorage.getItem("videoCheck") === true.toString()} />
                         <ListItemText id="switch-list-label-survey" primary="Video" />
                         <ListItemIcon>
-                            <Button onClick={() => setPage("playVideo")}>
+                            <Button data-cy='cyVideoIconButton' onClick={() => setPage("playVideo")}>
                                 <PlayCircleFilledWhiteIcon sx={{ color: '#b43434' }} />
                             </Button>
                         </ListItemIcon>
